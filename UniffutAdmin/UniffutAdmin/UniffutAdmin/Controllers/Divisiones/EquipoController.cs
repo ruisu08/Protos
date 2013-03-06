@@ -57,7 +57,8 @@ namespace UniffutAdmin.Controllers
             {
                if (db.division.First(d => d.idDivisiones.Equals(Equipo.idDivision)).estado != false)
                 {
-                    var oldEquipo = db.equipo.FirstOrDefault(e => e.nombre == Equipo.nombre);
+                    Equipo.abreviatura = Equipo.abreviatura.ToUpper();
+                    var oldEquipo = db.equipo.FirstOrDefault(e => e.abreviatura == Equipo.abreviatura);
                     if (oldEquipo != null)
                     {
                         oldEquipo.abreviatura = Equipo.abreviatura;
@@ -133,7 +134,7 @@ namespace UniffutAdmin.Controllers
                             divisiones = db.division.ToList()
                         };
 
-                        viewModel.equipo.abreviatura = equipo.abreviatura;
+                        viewModel.equipo.abreviatura = equipo.abreviatura.ToUpper();
                         viewModel.equipo.estado = equipo.estado;
                         viewModel.equipo.nombre = equipo.nombre;
                         viewModel.equipo.historia = equipo.historia;

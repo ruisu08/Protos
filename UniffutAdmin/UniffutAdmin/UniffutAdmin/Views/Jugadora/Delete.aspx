@@ -14,23 +14,29 @@
         
         <div class="display-label">ID</div>
         <div class="display-field"><%: Model.idJugadora %></div>
+
+        <div class="display-label">Identificacion</div>
+        <div class="display-field"><%: Model.identificacion %></div>
         
         <div class="display-label">Nombre</div>
         <div class="display-field"><%: Model.nombre %></div>
         
         <div class="display-label">Apellidos</div>
         <div class="display-field"><%: Model.apellidos %></div>
+
+        <div class="display-label">Fecha de Nacimiento</div>
+        <div class="display-field"><%: Model.fechaNacimiento %></div>
         
         <div class="display-label">Equipo</div>
-        <div class="display-field"><%: Model.Equipo_idEquipo %></div>
+        <div class="display-field"><%: Model.equipo.nombre %></div>
         
-        <div class="display-label">Estado</div>
-        <div class="display-field"><%: (bool)Model.estado ? "Activa" : "Inactiva"%></div>
+        <div class="display-label">Nacionalidad</div>
+        <div class="display-field"><%: Model.nacionalidad%></div>
         
     </fieldset>
     <% using (Html.BeginForm()) { %>
         <p>
-		    <input type="submit" value="Eliminar" /> |
+		    <input type="submit" value="Eliminar" data-confirm="Si elimina a esta jugadora se eliminara toda la multimedia asociada a ella. Esta seguro que desea eliminar a la jugadora?" /> |
 		    <%: Html.ActionLink("Volver a la lista", "Index") %>
         </p>
     <% } %>

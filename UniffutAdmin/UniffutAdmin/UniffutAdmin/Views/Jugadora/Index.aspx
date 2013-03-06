@@ -12,7 +12,7 @@
         <tr>
             <th></th>
             <th>
-                ID
+                Identificacion
             </th>
             <th>
                 Nombre
@@ -26,6 +26,9 @@
             <th>
                 Equipo
             </th>
+            <th>
+                Nacionalidad
+            </th>
         </tr>
 
     <% foreach (var item in Model) { %>
@@ -37,7 +40,7 @@
                 <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idJugadora })%>
             </td>
             <td>
-                <%: item.idJugadora %>
+                <%: item.identificacion %>
             </td>
             <td>
                 <%: item.nombre %>
@@ -45,6 +48,7 @@
             <td>
                 <%: item.apellidos %>
             </td>
+
             <td>
             <!---String.Format("{0:g}", item.fechaNacimiento)-->
                 <% DateTime dob = Convert.ToDateTime(item.fechaNacimiento);
@@ -56,6 +60,9 @@
             </td>
             <td>
                 <%:item.equipo.nombre%>
+            </td>
+            <td>
+                <%:item.nacionalidad%>
             </td>
         </tr>
     

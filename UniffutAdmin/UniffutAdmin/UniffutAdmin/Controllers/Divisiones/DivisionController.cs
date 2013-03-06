@@ -46,6 +46,7 @@ namespace UniffutAdmin.Controllers.Divisiones
             try
             {
                 // TODO: Add insert logic here
+                Division.abreviatura = Division.abreviatura.ToUpper();
                 var oldDivision = db.division.FirstOrDefault(j => j.abreviatura == Division.abreviatura);
                 if (oldDivision != null)
                 {
@@ -88,7 +89,7 @@ namespace UniffutAdmin.Controllers.Divisiones
                 var division = db.division.FirstOrDefault(p => p.idDivisiones.Equals(id) && p.estado == true);
                 if (division != null)
                 {
-                    division.abreviatura = Divisiones.abreviatura;
+                    division.abreviatura = Divisiones.abreviatura.ToUpper();
                     division.nombre = Divisiones.nombre;
                     division.descripcion = Divisiones.descripcion;
                     db.SaveChanges();

@@ -36,7 +36,7 @@ namespace UniffutAdmin.Controllers
         {
             var viewModel = new JugadoraEquipoViewModel
             {
-                Equipos = db.equipo.ToList(),
+                Equipos = db.equipo.Where<equipo>(e=>e.estado == true).ToList(),
                 Jugadora = Jugadora
             };
             if (viewModel.Equipos.Count <= 0)
@@ -59,22 +59,33 @@ namespace UniffutAdmin.Controllers
             {
                 /*viewModel.Equipos=db.equipo.ToList();
                 viewModel.Jugadora = Jugadora;*/
-                var oldJugadora = db.jugadora.First(j => j.identificacion == Jugadora.identificacion);
-                if (oldJugadora != null)
+                if (db.equipo.First(e => e.idEquipo.Equals(Jugadora.Equipo_idEquipo)).estado != false)
                 {
-                    oldJugadora.nacionalidad = Jugadora.nacionalidad;
-                    oldJugadora.nombre = Jugadora.nombre;
-                    oldJugadora.apellidos = Jugadora.apellidos;
-                    oldJugadora.Equipo_idEquipo = Jugadora.Equipo_idEquipo;
-                    oldJugadora.fechaNacimiento = Jugadora.fechaNacimiento;
-                    oldJugadora.estado = true;
+                    var oldJugadora = db.jugadora.FirstOrDefault(j => j.identificacion == Jugadora.identificacion);
+                    if (oldJugadora != null)
+                    {
+                        oldJugadora.nacionalidad = Jugadora.nacionalidad;
+                        oldJugadora.nombre = Jugadora.nombre;
+                        oldJugadora.apellidos = Jugadora.apellidos;
+                        oldJugadora.Equipo_idEquipo = Jugadora.Equipo_idEquipo;
+                        oldJugadora.fechaNacimiento = Jugadora.fechaNacimiento;
+                        oldJugadora.estado = true;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    viewModel.Jugadora = Jugadora;
+                    viewModel.Jugadora.estado = true;
+                    db.jugadora.AddObject(viewModel.Jugadora);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                viewModel.Jugadora.estado = true;
-                db.jugadora.AddObject(viewModel.Jugadora);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                else
+                {
+                    ErrorModel error = new ErrorModel();
+                    error.mensaje = "Otro usuario elimino el equipo de la jugadora durante la operacion";
+                    return View("Error", error);
+                }
+
             }
             catch(Exception e)
             {
@@ -95,9 +106,15 @@ namespace UniffutAdmin.Controllers
 
             var viewModel = new JugadoraEquipoViewModel
             {
-                Equipos = db.equipo.ToList(),
+                Equipos = db.equipo.Where<equipo>(e=>e.estado == true).ToList(),
                 Jugadora = jugadora
             };
+            if (viewModel.Equipos.Count <= 0)
+            {
+                ErrorModel error = new ErrorModel();
+                error.mensaje = "No existen equipos, otro usuario elimino los equipos durante la operacion";
+                return View("Error", error);
+            }
             return View(viewModel);
         }
 
@@ -109,20 +126,39 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-                var jugadora = db.jugadora.First(p => p.idJugadora.Equals(id));
-                viewModel = new JugadoraEquipoViewModel
+                if (db.equipo.First(e => e.idEquipo.Equals(Jugadora.Equipo_idEquipo)).estado != false)
                 {
-                    Equipos = db.equipo.ToList(),
-                    Jugadora = jugadora
-                };
-                viewModel.Jugadora.apellidos = Jugadora.apellidos;
-                viewModel.Jugadora.Equipo_idEquipo = Jugadora.Equipo_idEquipo;
-                viewModel.Jugadora.fechaNacimiento = Jugadora.fechaNacimiento;
-                viewModel.Jugadora.historia = Jugadora.historia;
-                viewModel.Jugadora.nombre = Jugadora.nombre;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    var jugadora = db.jugadora.FirstOrDefault(p => p.idJugadora.Equals(id) && p.estado == true);
+                    if (jugadora != null)
+                    {
+                        viewModel = new JugadoraEquipoViewModel
+                        {
+                            Equipos = db.equipo.ToList(),
+                            Jugadora = jugadora
+                        };
+                        viewModel.Jugadora.apellidos = Jugadora.apellidos;
+                        viewModel.Jugadora.Equipo_idEquipo = Jugadora.Equipo_idEquipo;
+                        viewModel.Jugadora.fechaNacimiento = Jugadora.fechaNacimiento;
+                        viewModel.Jugadora.historia = Jugadora.historia;
+                        viewModel.Jugadora.nombre = Jugadora.nombre;
+                        viewModel.Jugadora.nacionalidad = Jugadora.nacionalidad;
+                        viewModel.Jugadora.identificacion = Jugadora.identificacion;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else {
+                        ErrorModel error = new ErrorModel
+                        {
+                            mensaje = "Otro usuario elimino la jugadora durante la operacion"
+                        };
+                        return View("Error", error);
+                    }
+                }
+                else {
+                    ErrorModel error = new ErrorModel();
+                    error.mensaje = "Otro usuario elimino el equipo de la jugadora durante la operacion";
+                    return View("Error", error);
+                }
             }
             catch(Exception e)
             {
@@ -140,23 +176,38 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Delete(int id)
         {
-            var jugadora = db.jugadora.First(p => p.idJugadora.Equals(id));
-            return View(jugadora);
+            var Jugadora = db.jugadora.First(p => p.idJugadora.Equals(id));
+            if (!Jugadora.estado) {
+                ErrorModel error = new ErrorModel { mensaje = "La jugadora ya fue eliminada" };
+                return View("Error", error);
+            }
+            return View(Jugadora);
         }
 
         //
         // POST: /Jugadora/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id,  jugadora Jugadora)
         {
             try
             {
-                var jugadora = db.jugadora.First(p => p.idJugadora.Equals(id));
-                // TODO: Add delete logic here
-                jugadora.estado = false;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                Jugadora = db.jugadora.FirstOrDefault(p => p.idJugadora.Equals(id) && p.estado == true);
+                if (Jugadora != null)
+                {
+                    var MultimediaDeJugadora = Jugadora.multimedia;
+                    foreach (var x in MultimediaDeJugadora) {
+                        x.estado = false;
+                    }
+                    Jugadora.estado = false;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else {
+                    ErrorModel error = new ErrorModel { mensaje = "La jugadora ya fue eliminada" };
+                    return View("Error", error);
+                }
+
             }
             catch(Exception e)
             {

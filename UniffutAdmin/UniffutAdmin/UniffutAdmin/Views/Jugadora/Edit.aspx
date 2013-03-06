@@ -12,8 +12,15 @@
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
-            <legend>Fields</legend>
-            
+            <legend>Informacion</legend>
+            <div class="editor-label">
+                <h3>Identificacion</h3>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.Jugadora.identificacion, new { @maxlength = "25" })%>
+                <%: Html.ValidationMessageFor(model => model.Jugadora.identificacion)%>
+            </div>
+
             <div class="editor-label">
                 <h3>Nombre</h3>
             </div>
@@ -52,6 +59,14 @@
             <div class="editor-field">
                 <%: Html.DropDownListFor(model => model.Jugadora.Equipo_idEquipo, new SelectList(Model.Equipos,"idEquipo","nombre",Model.Equipos.First().idEquipo))%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.Equipo_idEquipo)%>
+            </div>
+
+            <div class="editor-label">
+                <h3>Nacionalidad</h3>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.Jugadora.nacionalidad, new { @maxlength = "45" })%>
+                <%: Html.ValidationMessageFor(model => model.Jugadora.nacionalidad)%>
             </div>
             
             <p>

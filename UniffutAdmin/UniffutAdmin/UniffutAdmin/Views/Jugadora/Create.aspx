@@ -15,11 +15,11 @@
             <legend>Información</legend>
             
             <div class="editor-label">
-                <h3>ID</h3>
+                <h3>Identificacion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.idJugadora, new { @maxlength = "10" })%>
-                <%: Html.ValidationMessageFor(model => model.Jugadora.idJugadora)%>
+                <%: Html.TextBoxFor(model => model.Jugadora.identificacion, new { @maxlength = "25" })%>
+                <%: Html.ValidationMessageFor(model => model.Jugadora.identificacion)%>
             </div>
             
             <div class="editor-label">
@@ -60,6 +60,14 @@
             <div class="editor-field">
                 <%: Html.DropDownListFor(model => model.Jugadora.Equipo_idEquipo, new SelectList(Model.Equipos, "idEquipo", "nombre", Model.Equipos.First().idEquipo))%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.Equipo_idEquipo)%>
+            </div>
+
+            <div class="editor-label">
+                <h3>Nacionalidad</h3>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.Jugadora.nacionalidad)%>
+                <%: Html.ValidationMessageFor(model => model.Jugadora.nacionalidad)%>
             </div>
             
             <p>

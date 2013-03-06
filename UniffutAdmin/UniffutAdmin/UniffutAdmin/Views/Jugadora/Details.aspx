@@ -13,6 +13,9 @@
         
         <div class="display-label">ID</div>
         <div class="display-field"><%: Model.idJugadora %></div>
+
+        <div class="display-label">Identificacion</div>
+        <div class="display-field"><%: Model.identificacion %></div>
         
         <div class="display-label">Nombre</div>
         <div class="display-field"><%: Model.nombre %></div>
@@ -29,8 +32,8 @@
         <div class="display-label">Equipo</div>
         <div class="display-field"><%: Model.Equipo_idEquipo %></div>
         
-        <div class="display-label">Estado</div>
-        <div class="display-field"><%: (bool)Model.estado ? "Activa":"Inactiva" %></div>
+        <div class="display-label">Nacionalidad</div>
+        <div class="display-field"><%: Model.nacionalidad %></div>
         
     </fieldset>
     <p>
