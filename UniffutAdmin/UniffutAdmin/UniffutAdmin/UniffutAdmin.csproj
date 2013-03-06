@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E789F598-EFBD-4415-A87F-DD252E413CD0}</ProjectGuid>
+    <ProjectTypeGuids>{F85E285D-A4E0-4152-9332-AB1D724D3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UniffutAdmin</RootNamespace>
+    <AssemblyName>UniffutAdmin</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\Administracion\RolController.cs" />
+    <Compile Include="Controllers\Campeonatos\TablaPosicionesController.cs" />
+    <Compile Include="Controllers\Comunes\LogroController.cs" />
+    <Compile Include="Controllers\Campeonatos\CalendarioController.cs" />
+    <Compile Include="Controllers\Campeonatos\CampeonatoController.cs" />
+    <Compile Include="Controllers\Divisiones\DivisionController.cs" />
+    <Compile Include="Controllers\Divisiones\EquipoController.cs" />
+    <Compile Include="Controllers\EstructuraDePagina\AdministracionController.cs" />
+    <Compile Include="Controllers\EstructuraDePagina\CampeonatoSubMenuController.cs" />
+    <Compile Include="Controllers\EstructuraDePagina\HomeController.cs" />
+    <Compile Include="Controllers\EstructuraDePagina\MultimediaSubMenuController.cs" />
+    <Compile Include="Controllers\EstructuraDePagina\NoticiasSubMenuController.cs" />
+    <Compile Include="Controllers\Informativos\PaginaInformativaController.cs" />
+    <Compile Include="Controllers\Informativos\PatrocinadorController.cs" />
+    <Compile Include="Controllers\Jugadoras\JugadoraController.cs" />
+    <Compile Include="Controllers\Multimedia\MultimediaController.cs" />
+    <Compile Include="Controllers\Informativos\NoticiaController.cs" />
+    <Compile Include="Controllers\Administracion\UsuarioController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\uniffutDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>uniffutDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\CalendarioCampeonatoViewModel.cs" />
+    <Compile Include="Models\ViewModels\CampeonatoDivisionViewModel.cs" />
+    <Compile Include="Models\ViewModels\EquipoDivisionesViewModel.cs" />
+    <Compile Include="Models\ViewModels\JugadoraEquipoViewModel.cs" />
+    <Compile Include="Models\ViewModels\NoticiaViewModel.cs" />
+    <Compile Include="Models\ViewModels\TablaPosicionesEquipoViewModel.cs" />
+    <Compile Include="Models\ViewModels\UsuarioRolViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\jquery-ui-1.10.1.custom.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\dpLanguage.js" />
+    <Content Include="Scripts\inputs.js" />
+    <Content Include="Scripts\JQ1.6.4.js" />
+    <Content Include="Scripts\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="Views\Administracion\Index.aspx" />
+    <Content Include="Views\Calendario\Create.aspx" />
+    <Content Include="Views\Calendario\Delete.aspx" />
+    <Content Include="Views\Calendario\Details.aspx" />
+    <Content Include="Views\Calendario\Edit.aspx" />
+    <Content Include="Views\Calendario\Index.aspx" />
+    <Content Include="Views\CampeonatoSubMenu\Index.aspx" />
+    <Content Include="Views\Campeonato\Create.aspx" />
+    <Content Include="Views\Campeonato\Delete.aspx" />
+    <Content Include="Views\Campeonato\Details.aspx" />
+    <Content Include="Views\Campeonato\Edit.aspx" />
+    <Content Include="Views\Campeonato\Index.aspx" />
+    <Content Include="Views\Division\Create.aspx" />
+    <Content Include="Views\Division\Delete.aspx" />
+    <Content Include="Views\Division\Details.aspx" />
+    <Content Include="Views\Division\Edit.aspx" />
+    <Content Include="Views\Division\Index.aspx" />
+    <Content Include="Views\Equipo\Create.aspx" />
+    <Content Include="Views\Equipo\Delete.aspx" />
+    <Content Include="Views\Equipo\Details.aspx" />
+    <Content Include="Views\Equipo\Edit.aspx" />
+    <Content Include="Views\Equipo\Index.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Jugadora\Create.aspx" />
+    <Content Include="Views\Jugadora\Delete.aspx" />
+    <Content Include="Views\Jugadora\Details.aspx" />
+    <Content Include="Views\Jugadora\Edit.aspx" />
+    <Content Include="Views\Jugadora\Index.aspx" />
+    <Content Include="Views\Logro\Index.aspx" />
+    <Content Include="Views\MultimediaSubMenu\Index.aspx" />
+    <Content Include="Views\NoticiasSubMenu\Index.aspx" />
+    <Content Include="Views\Noticia\Create.aspx" />
+    <Content Include="Views\Noticia\Delete.aspx" />
+    <Content Include="Views\Noticia\Details.aspx" />
+    <Content Include="Views\Noticia\Edit.aspx" />
+    <Content Include="Views\Noticia\Index.aspx" />
+    <Content Include="Views\PaginaInformativa\Index.aspx" />
+    <Content Include="Views\Patrocinador\Index.aspx" />
+    <Content Include="Views\Rol\Create.aspx" />
+    <Content Include="Views\Rol\Delete.aspx" />
+    <Content Include="Views\Rol\Details.aspx" />
+    <Content Include="Views\Rol\Edit.aspx" />
+    <Content Include="Views\Rol\Index.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\TablaPosiciones\Create.aspx" />
+    <Content Include="Views\TablaPosiciones\Delete.aspx" />
+    <Content Include="Views\TablaPosiciones\Details.aspx" />
+    <Content Include="Views\TablaPosiciones\Edit.aspx" />
+    <Content Include="Views\TablaPosiciones\Index.aspx" />
+    <Content Include="Views\Usuario\Create.aspx" />
+    <Content Include="Views\Usuario\Delete.aspx" />
+    <Content Include="Views\Usuario\Details.aspx" />
+    <Content Include="Views\Usuario\Edit.aspx" />
+    <Content Include="Views\Usuario\Index.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\UniffutAdmin.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\uniffutDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>uniffutDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2899</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

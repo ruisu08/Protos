@@ -1,0 +1,79 @@
+a 
+{
+    text-decoration:none;
+    color:#043C6B;    
+    font-weight:bold;
+    font-size:90%;
+}
+body
+{
+    margin:0 0 0 0;
+    padding: 0 0 0 0;
+    width:100%;
+    height:auto;   
+    font-family:Century Gothic; 
+    font-size:75%
+}
+#pagina
+{
+    width:100%;
+    height:100%;   
+    margin:0 0 0 0;
+    padding: 0 0 0 0; 
+}
+
+#header
+{
+    width:100%;   
+    height:100px;
+}
+
+#contenedorTitulo
+{
+    float:left;
+    width:20%;
+    height:auto;
+    padding:0 0 0 2%;    
+}
+#menu
+{
+    float:left;
+    width:100%;    
+}
+#contenedorMenu
+{
+    float:right;
+    margin-top:3%;
+    width:75%;
+    height:auto;   
+}
+
+.opcionMenu
+{
+    display:inline-block;
+    margin:0 2% 0 2%;    
+}
+
+#contenido
+{
+    width:100%;
+    height:300px; 
+    padding:0 0 0 2%;  
+}
+
+
+td{
+
+  width: 20%;
+  text-align:center;
+  
+}
+
+th{
+    width: 20%;
+    text-align:center;
+}
+
+
+
+
