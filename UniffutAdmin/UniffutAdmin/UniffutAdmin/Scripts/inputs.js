@@ -6,4 +6,5 @@
         }
     });
 
+    $("validateForm").validator();
 });

@@ -8,7 +8,7 @@
 
     <h2>Crear usuario</h2>
 
-    <% using (Html.BeginForm()) {%>
+    <form id="validateForm" action= '<%:Url.Action("Create","Usuario")%>' method="post">
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
@@ -26,7 +26,7 @@
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.nombre)%>
+                <%: Html.TextBoxFor(model => model.Usuario.nombre,  new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "30" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.nombre)%>
             </div>
             
@@ -34,7 +34,7 @@
                 <h3>Apellido</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.apellido)%>
+                <%: Html.TextBoxFor(model => model.Usuario.apellido, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "50" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.apellido)%>
             </div>
             
@@ -42,7 +42,7 @@
                <h3>Teléfono</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.telefono)%>
+                <%: Html.TextBoxFor(model => model.Usuario.telefono, new { @required = "required", @size = "15" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.telefono)%>
             </div>
             
@@ -50,7 +50,7 @@
                 <h3>Correo</h3>
             </div>
             <div class="editor-field">
-                <%:Html.TextBoxFor(model => model.Usuario.correo)%>
+                <%:Html.TextBoxFor(model => model.Usuario.correo, new { @required = "required", @maxlength="50", @type="email", @name="email" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.correo)%>
             </div>
             
@@ -58,7 +58,7 @@
                 <h3>Password</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.password)%>
+                <%: Html.TextBoxFor(model => model.Usuario.password, new { @required = "required", @pattern="[a-zA-Z0-9]{2,}" , @maxlength="50" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.password)%>
             </div>
 
