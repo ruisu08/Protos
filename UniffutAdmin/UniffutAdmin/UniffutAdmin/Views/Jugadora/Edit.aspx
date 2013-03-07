@@ -8,7 +8,7 @@
 
     <h2>Edit</h2>
 
-    <% using (Html.BeginForm()) {%>
+     <form id="validateForm" action= '<%:Url.Action("Edit","Jugadora")%>' method="post">
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
@@ -17,7 +17,7 @@
                 <h3>Identificacion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.identificacion, new { @maxlength = "25" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.identificacion, new { @required = "required", @size = "20" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.identificacion)%>
             </div>
 
@@ -25,7 +25,7 @@
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.nombre, new { @maxlength = "45" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "45" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.nombre)%>
             </div>
             
@@ -33,7 +33,7 @@
                 <h3>Apellidos</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.apellidos, new { @maxlength = "45" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.apellidos, new { @required = "required",  @pattern = "[a-zA-Z ]{2,}", @maxlength = "45" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.apellidos)%>
             </div>
             
@@ -65,7 +65,7 @@
                 <h3>Nacionalidad</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.nacionalidad, new { @maxlength = "45" })%>
+                <%: Html.TextBoxFor(model => new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "45" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.nacionalidad)%>
             </div>
             
@@ -74,7 +74,7 @@
             </p>
         </fieldset>
 
-    <% } %>
+    </form>
 
     <div>
         <%: Html.ActionLink("Volver a lista", "Index") %>

@@ -8,7 +8,7 @@
 
     <h2>Crear tabla de posiciones</h2>
 
-    <% using (Html.BeginForm()) {%>
+    <form id="validateForm" action= '<%:Url.Action("Create","TablaPosiciones")%>' method="post">
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
@@ -39,7 +39,7 @@
                 <h3>Puntos</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.tablaPosiciones.puntos) %>
+                <%: Html.TextBoxFor(model => model.tablaPosiciones.puntos, new { @required = "required", @size = "10" })%>
                 <%: Html.ValidationMessageFor(model => model.tablaPosiciones.puntos) %>
             </div>
             
@@ -48,7 +48,7 @@
             </p>
         </fieldset>
 
-    <% } %>
+    </form>
 
     <div>
         <%: Html.ActionLink("Volver a la lista", "Index") %>

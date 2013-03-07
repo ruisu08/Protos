@@ -8,7 +8,7 @@
 
     <h2>Crear nueva noticia</h2>
 
-    <% using (Html.BeginForm()) {%>
+    <form id="validateForm" action= '<%:Url.Action("Create","Noticia")%>' method="post">
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
@@ -18,7 +18,7 @@
                 <h3>ID</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Noticia.idNoticia) %>
+                <%: Html.TextBoxFor(model => model.Noticia.idNoticia, new { @required = "required", @size = "4" })%>
                 <%: Html.ValidationMessageFor(model => model.Noticia.idNoticia)%>
             </div>
             
@@ -26,7 +26,7 @@
                 <h3>Titulo</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Noticia.titulo)%>
+                <%: Html.TextBoxFor(model => model.Noticia.titulo, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "50" })%>
                 <%: Html.ValidationMessageFor(model => model.Noticia.titulo)%>
             </div>
             
@@ -67,7 +67,7 @@
             </p>
         </fieldset>
 
-    <% } %>
+    </form>
 
     <div>
         <%: Html.ActionLink("Volver a lista", "Index") %>

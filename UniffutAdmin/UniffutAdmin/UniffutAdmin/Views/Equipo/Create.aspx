@@ -8,7 +8,7 @@
 
     <h2>Nuevo Equipo</h2>
 
-    <form action= '<%:Url.Action("Create","Equipo")%>' method="post">
+    <form id="validateForm" action= '<%:Url.Action("Create","Equipo")%>' method="post">
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
@@ -19,7 +19,7 @@
                 <h3>Abreviatura</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.equipo.abreviatura) %>
+                <%: Html.TextBoxFor(model => model.equipo.abreviatura, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "10" })%>
                 <%: Html.ValidationMessageFor(model => model.equipo.abreviatura) %>
             </div>
             
@@ -27,7 +27,7 @@
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.equipo.nombre) %>
+                <%: Html.TextBoxFor(model => model.equipo.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{5,}", @maxlength = "40" })%>
                 <%: Html.ValidationMessageFor(model => model.equipo.nombre) %>
             </div>
             
@@ -42,7 +42,7 @@
                 <h3>Campeonatos Ganados</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.equipo.campeonatosGanados) %>
+                <%: Html.TextBoxFor(model => model.equipo.campeonatosGanados, new { @required = "required", @size = "4" })%>
                 <%: Html.ValidationMessageFor(model => model.equipo.campeonatosGanados) %>
             </div>
             

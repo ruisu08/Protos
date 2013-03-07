@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Editar rol</h2>
-    <% using (Html.BeginForm()) {%>
+   <form id="validateForm" action= '<%:Url.Action("Edit","Rol")%>' method="post">
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
@@ -16,7 +16,7 @@
                 <h3>Descripción</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.descripcion)%>
+                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "100" })%>
                 <%: Html.ValidationMessageFor(model => model.descripcion)%>
             </div>
 
@@ -25,7 +25,7 @@
             </p>
         </fieldset>
 
-         <% } %>
+         </form>
 
     <div>
         <%: Html.ActionLink("Volver a lista de roles", "Index") %>

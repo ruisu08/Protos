@@ -75,7 +75,7 @@
             </p>
         </fieldset>
 
-    <% } %>
+    </form>
 
     <div>
         <%: Html.ActionLink("Back to List", "Index") %>

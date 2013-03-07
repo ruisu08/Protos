@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Nuevo Rol</h2>
-        <% using (Html.BeginForm()) {%>
+        <form id="validateForm" action= '<%:Url.Action("Create","Rol")%>' method="post">
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
@@ -16,7 +16,7 @@
                 <h3>ID</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.idRol, new { @maxlength = "10" })%>
+                <%: Html.TextBoxFor(model => model.idRol, new { @required = "required", @size = "4" })%>
                 <%: Html.ValidationMessageFor(model => model.idRol)%>
             </div>
 
@@ -24,7 +24,7 @@
                 <h3>Descripción</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.descripcion, new { @maxlength = "20" })%>
+                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "100" })%>
                 <%: Html.ValidationMessageFor(model => model.descripcion)%>
             </div>
 
@@ -32,7 +32,7 @@
                 <input type="submit" value="Crear rol" />
             </p>
       </fieldset>
-        <% } %>
+        </form>
 
         <div>
         <%: Html.ActionLink("Volver a la lista de roles", "Index") %>

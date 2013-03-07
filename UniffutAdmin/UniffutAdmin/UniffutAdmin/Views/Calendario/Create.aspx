@@ -8,7 +8,7 @@
 
     <h2>Nuevo Calendario</h2>
 
-    <% using (Html.BeginForm()) {%>
+    <form id="validateForm" action= '<%:Url.Action("Create","Calendario")%>' method="post">
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
@@ -18,7 +18,7 @@
                 <h3>ID</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Calendario.idCalendario, new { @maxlength = "32" })%>
+                <%: Html.TextBoxFor(model => model.Calendario.idCalendario, new { @required = "required", @size = "4" })%>
                 <%: Html.ValidationMessageFor(model => model.Calendario.idCalendario) %>
             </div>
             
@@ -51,7 +51,7 @@
             </p>
         </fieldset>
 
-    <% } %>
+    </form>
 
     <div>
         <%: Html.ActionLink("Volver a la lista", "Index") %>

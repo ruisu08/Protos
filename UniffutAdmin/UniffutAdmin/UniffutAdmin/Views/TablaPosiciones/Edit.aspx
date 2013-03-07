@@ -8,7 +8,7 @@
 
     <h2>Actualizar Datos</h2>
 
-    <% using (Html.BeginForm()) {%>
+    <form id="validateForm" action= '<%:Url.Action("Edit","TablaPosiciones")%>' method="post">
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
@@ -18,7 +18,7 @@
                 <h3>Puntos</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.tablaPosiciones.puntos)%>
+                <%: Html.TextBoxFor(model => model.tablaPosiciones.puntos, new { @required = "required", @size = "10" })%>
                 <%: Html.ValidationMessageFor(model => model.tablaPosiciones.puntos) %>
                 
             </div>
@@ -29,7 +29,7 @@
             </p>
         </fieldset>
 
-    <% } %>
+    </form>
 
     <div>
         <%: Html.ActionLink("Volver a la lista", "Index") %>

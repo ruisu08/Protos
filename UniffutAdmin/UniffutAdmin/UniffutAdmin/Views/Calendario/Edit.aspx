@@ -8,7 +8,7 @@
 
     <h2>Editar</h2>
 
-    <% using (Html.BeginForm()) {%>
+    <form id="validateForm" action= '<%:Url.Action("Edit","Calendario")%>' method="post">
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
@@ -43,7 +43,7 @@
             </p>
         </fieldset>
 
-    <% } %>
+    </form>
 
     <div>
         <%: Html.ActionLink("Volver a la Lista", "Index") %>

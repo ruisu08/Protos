@@ -8,7 +8,7 @@
 
     <h2>Crear nuevo Campeonato</h2>
 
-    <% using (Html.BeginForm()) {%>
+    <form id="validateForm" action= '<%:Url.Action("Create","Campeonato")%>' method="post">
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
@@ -18,7 +18,7 @@
                 <h3>ID del Campeonato</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Campeonato.idCampeonato, new { @maxlength = "10" })%>
+                <%: Html.TextBoxFor(model => model.Campeonato.idCampeonato, new { @required = "required", @size = "4" })%>
                 <%: Html.ValidationMessageFor(model => model.Campeonato.idCampeonato)%>
             </div>
             
@@ -26,7 +26,7 @@
                 <h3>Nombre del Campeonato</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Campeonato.nombre, new { @maxlength = "45" })%>
+                <%: Html.TextBoxFor(model => model.Campeonato.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "40" })%>
                 <%: Html.ValidationMessageFor(model => model.Campeonato.nombre)%>
             </div>
             
@@ -34,7 +34,7 @@
                 <h3>Descripcion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Campeonato.descripcion, new { @maxlength = "140" })%>
+                <%: Html.TextBoxFor(model => model.Campeonato.descripcion, new { @required = "required", @pattern = "[a-zA-Z0-9]{2,}", @maxlength = "140" })%>
                 <%: Html.ValidationMessageFor(model => model.Campeonato.descripcion)%>
             </div>
             
@@ -51,7 +51,7 @@
             </p>
         </fieldset>
 
-    <% } %>
+    </form>
 
     <div>
         <%: Html.ActionLink("Regresar a la lista", "Index") %>

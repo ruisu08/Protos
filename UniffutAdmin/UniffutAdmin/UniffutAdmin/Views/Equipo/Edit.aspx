@@ -8,7 +8,7 @@
 
     <h2>Actualizar Datos</h2>
 
-    <% using (Html.BeginForm()) {%>
+    <form id="validateForm" action= '<%:Url.Action("Edit","Equipo")%>' method="post">
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
@@ -18,7 +18,7 @@
                  <h3>Abreviatura</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.equipo.abreviatura) %>
+                <%: Html.TextBoxFor(model => model.equipo.abreviatura, new { @required = "required", @name = "Abrev", @pattern = "[a-zA-Z ]{2,}", @maxlength = "10" })%>
                 <%: Html.ValidationMessageFor(model => model.equipo.abreviatura) %>
             </div>
             
@@ -26,7 +26,7 @@
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.equipo.nombre) %>
+                <%: Html.TextBoxFor(model => model.equipo.nombre, new { @required = "required", @name = "name", @pattern = "[a-zA-Z ]{5,}", @maxlength = "40" })%>
                 <%: Html.ValidationMessageFor(model => model.equipo.nombre) %>
             </div>
             
@@ -42,7 +42,7 @@
                  <h3>Campeonatos Ganados</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.equipo.campeonatosGanados) %>
+                <%: Html.TextBoxFor(model => model.equipo.campeonatosGanados, new { @required = "required", @name = "champs", @size = "4" })%>
                 <%: Html.ValidationMessageFor(model => model.equipo.campeonatosGanados) %>
             </div>
             
@@ -59,7 +59,7 @@
             </p>
         </fieldset>
 
-    <% } %>
+    </form>
 
     <div>
         <%: Html.ActionLink("Volver a la lista", "Index") %>

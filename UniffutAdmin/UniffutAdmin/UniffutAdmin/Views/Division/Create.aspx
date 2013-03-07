@@ -17,7 +17,7 @@
                 <h3>Abreviatura</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.abreviatura, new { @maxlength = "10" })%>
+                <%: Html.TextBoxFor(model => model.abreviatura, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "10" })%>
                 <%: Html.ValidationMessageFor(model => model.abreviatura) %>
             </div>
 
@@ -25,7 +25,7 @@
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.nombre, new { @maxlength = "45" })%>
+                <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "40" })%>
                 <%: Html.ValidationMessageFor(model => model.nombre) %>
             </div>
             
@@ -33,7 +33,7 @@
                 <h3>Descripcion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.descripcion, new { @maxlength = "45" })%>
+                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z0-9]{2,}", @maxlength = "140" })%>
                 <%: Html.ValidationMessageFor(model => model.descripcion) %>
             </div>
             
