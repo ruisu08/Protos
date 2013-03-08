@@ -35,8 +35,7 @@
                 <h3>Historia</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextAreaFor(model => model.equipo.historia) %>
-                <%: Html.ValidationMessageFor(model => model.equipo.historia) %>
+                <%: Html.TextAreaFor(model => model.equipo.historia, new { @encoding="xml"})%>
             </div>
             
             <div class="editor-label">

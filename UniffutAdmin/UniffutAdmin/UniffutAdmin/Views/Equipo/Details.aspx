@@ -21,7 +21,7 @@
         <div class="display-field"><%: Model.nombre %></div>
         
         <div class="display-label" style="text-decoration:underline;">Historia</div>
-        <div class="display-field"><%: Model.historia %></div>
+        <div class="display-field"><%:Html.TextAreaFor(model=>model.historia) %></div>
         
         <div class="display-label" style="text-decoration:underline;">Campeonatos Ganados</div>
         <div class="display-field"><%: Model.campeonatosGanados %></div>

@@ -1,5 +1,7 @@
 ﻿
     tinyMCE.init({
         // General options
-        mode: "textareas"
+        mode: "textareas",
+        language: "es",
+        encoding: "xml"
     });
