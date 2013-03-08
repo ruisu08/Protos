@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Campeonatoa</h2>
+    <h2>Campeonato</h2>
 
     <table>
         <tr>
@@ -46,7 +46,7 @@
                 <%: item.descripcion %>
             </td>
             <td>
-                <%: item.Divisiones_idDivisiones %>
+                <%: item.division.nombre %>
             </td>
             <td>
                 <%: item.estado %>

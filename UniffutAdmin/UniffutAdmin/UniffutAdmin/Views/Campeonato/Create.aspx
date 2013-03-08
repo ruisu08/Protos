@@ -34,7 +34,7 @@
                 <h3>Descripcion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Campeonato.descripcion, new { @required = "required", @pattern = "[a-zA-Z0-9]{2,}", @maxlength = "140" })%>
+                <%: Html.TextBoxFor(model => model.Campeonato.descripcion, new { @required = "required", @pattern = "[a-zA-Z]{2,}", @maxlength = "140" })%>
                 <%: Html.ValidationMessageFor(model => model.Campeonato.descripcion)%>
             </div>
             
