@@ -1232,7 +1232,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="uniffutDB" ZoomLevel="60">
+      <Diagram Name="uniffutDB" ZoomLevel="78">
         <EntityTypeShape EntityType="uniffut.bitacora" Width="1.5" PointX="12.75" PointY="7.375" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="uniffut.calendario" Width="1.5" PointX="5.25" PointY="8.625" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="uniffut.campeonato" Width="1.5" PointX="3" PointY="8.25" Height="2.7494921874999996" IsExpanded="true" />
