@@ -11,6 +11,8 @@
     <ul>
     <li><h3>ID</h3></li>
     <li><%: Model.idRol %></li>
+     <li><h3>Nombre</h3></li>
+    <li><%: Model.nombre %></li>
     <li><h3>Descripción</h3></li>
     <li><%: Model.descripcion %></li>
     <li><h3>Estado</h3></li>

@@ -15,6 +15,9 @@
                 ID
             </th>
             <th>
+                Nombre
+            </th>
+            <th>
                 Descripcion
             </th>
 
@@ -30,6 +33,9 @@
             </td>
             <td>
                 <%: item.idRol %>
+            </td>
+            <td>
+                <%: item.nombre %>
             </td>
             <td>
                 <%: item.descripcion %>

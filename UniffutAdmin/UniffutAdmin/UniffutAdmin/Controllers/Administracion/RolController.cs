@@ -45,7 +45,17 @@ namespace UniffutAdmin.Controllers.Administracion
         {
             try
             {
-                // TODO: Add insert logic here
+                Rol.nombre = Rol.nombre.ToUpper();
+                var oldRol = db.rol.FirstOrDefault(e => e.nombre == Rol.nombre);
+                if (oldRol != null)
+                {
+                    oldRol.nombre = Rol.nombre;
+                    oldRol.descripcion = Rol.descripcion;
+                    oldRol.estado = true;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                 }
+                
                 Rol.estado = true;
                 db.rol.AddObject(Rol);
                 db.SaveChanges();
@@ -57,7 +67,7 @@ namespace UniffutAdmin.Controllers.Administracion
                 {
                     mensaje = e.InnerException.ToString()
                 };
-                return View("Error a la hora de crear el rol", error);
+                return View("Error", error);
             }
         }
         
@@ -78,12 +88,20 @@ namespace UniffutAdmin.Controllers.Administracion
         {
             try
             {
-                var rol = db.rol.First(r => r.idRol.Equals(id));
-                // TODO: Add update logic here
-
-                rol.descripcion = rRol.descripcion;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var rol = db.rol.FirstOrDefault(e => e.idRol.Equals(id) && e.estado == true);
+                if (rol != null)
+                {
+                    rol.nombre = rRol.nombre;
+                    rol.descripcion = rRol.descripcion;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ErrorModel error = new ErrorModel { mensaje = "Otro usuario elimino el rol durante la operacion"};
+                    return View("Error", error);
+                }
+                
             }
             catch (Exception e)
             {
@@ -102,6 +120,11 @@ namespace UniffutAdmin.Controllers.Administracion
         public ActionResult Delete(int id)
         {
             var rol = db.rol.First(r => r.idRol.Equals(id));
+            if (!rol.estado)
+            {
+                ErrorModel error = new ErrorModel { mensaje = "El rol ya fue eliminado"};
+                return View("Error", error);
+            }
             return View(rol);
         }
 
@@ -109,15 +132,22 @@ namespace UniffutAdmin.Controllers.Administracion
         // POST: /Rol/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, rol Rol)
         {
             try
             {
-                var rol = db.rol.First(r => r.idRol.Equals(id));
-                // TODO: Add delete logic here
-                rol.estado = false;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                Rol = db.rol.FirstOrDefault(r => r.idRol.Equals(id) && r.estado == true);
+                if (Rol != null)
+                {
+                    Rol.estado = false;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ErrorModel error = new ErrorModel { mensaje ="El rol ya fue eliminado"};
+                    return View("Error", error);
+                }
             }
             catch (Exception e)
             {

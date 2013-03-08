@@ -18,7 +18,7 @@
                 <h3>Identificacion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.identificacion, new { @required = "required", @size = "20" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.identificacion, new { @required = "required", @type="number", @size = "20" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.identificacion)%>
             </div>
             

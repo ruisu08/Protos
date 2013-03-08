@@ -21,6 +21,14 @@
             </div>
 
             <div class="editor-label">
+                <h3>Nombre</h3>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "45" })%>
+                <%: Html.ValidationMessageFor(model => model.nombre)%>
+            </div>
+
+            <div class="editor-label">
                 <h3>Descripción</h3>
             </div>
             <div class="editor-field">
