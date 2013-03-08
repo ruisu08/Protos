@@ -8,7 +8,7 @@
 
     <h2>Nuevo Equipo</h2>
 
-    <% using (Html.BeginForm()) {%>
+    <form action= '<%:Url.Action("Create","Equipo")%>' method="post">
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
@@ -60,7 +60,7 @@
             </p>
         </fieldset>
 
-    <% } %>
+    </form>
 
     <div>
         <%: Html.ActionLink("Volver a la Lista", "Index") %>

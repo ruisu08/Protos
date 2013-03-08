@@ -7,8 +7,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Crear Division</h2>
-
-    <% using (Html.BeginForm()) {%>
+    <form action= '<%:Url.Action("Create","Division")%>' method="post">
+   
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
@@ -41,8 +41,8 @@
                 <input type="submit" value="Crear" />
             </p>
         </fieldset>
-
-    <% } %>
+    </form>
+    
 
     <div>
         <%: Html.ActionLink("Regresar a la lista", "Index") %>
