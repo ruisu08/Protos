@@ -36,9 +36,15 @@ namespace UniffutAdmin.Controllers
         {
             var viewModel = new UsuarioRolViewModel
             {
-                Roles = db.rol.ToList(),
+                Roles = db.rol.Where<rol>(d => d.estado == true).ToList(),
                 Usuario = Usuario
             };
+            if (viewModel.Roles.Count <= 0)
+            {
+                ErrorModel error = new ErrorModel();                
+                error.mensaje = "No existen roles, debe crear el rol para este usuario.";
+                return View("Error", error);
+            }
             return View(viewModel);
         } 
 
@@ -50,13 +56,35 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                viewModel.Roles = db.rol.ToList();
-                viewModel.Usuario = Usuario;
-                viewModel.Usuario.estado = true;
-                db.usuario.AddObject(viewModel.Usuario);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (db.rol.First(d => d.idRol.Equals(Usuario.Rol_idRol)).estado != false)
+                {
+                    var oldUsuario = db.usuario.FirstOrDefault(e => e.identificacion == Usuario.identificacion);
+                    if (oldUsuario != null)
+                    {
+                        oldUsuario.nombre = Usuario.nombre;
+                        oldUsuario.apellido = Usuario.apellido;
+                        oldUsuario.telefono = Usuario.telefono;
+                        oldUsuario.correo = Usuario.correo;
+                        oldUsuario.password = Usuario.password;
+                        oldUsuario.Rol_idRol = Usuario.Rol_idRol;
+                        oldUsuario.estado = true;
+                        oldUsuario.identificacion = Usuario.identificacion;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+
+                    viewModel.Usuario = Usuario;
+                    viewModel.Usuario.estado = true;
+                    db.usuario.AddObject(viewModel.Usuario);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ErrorModel error = new ErrorModel();
+                    error.mensaje = "Otro usuario elimino el rol durante la operacion";
+                    return View("Error", error);
+                }
             }
             catch(Exception e)
             {
@@ -73,9 +101,15 @@ namespace UniffutAdmin.Controllers
             var u = db.usuario.First(s => s.idUsuario.Equals(id));
             var viewModel = new UsuarioRolViewModel
             {
-                Roles = db.rol.ToList(),
+                Roles = db.rol.Where<rol>(d => d.estado == true).ToList(),
                 Usuario = u
             };
+            if (viewModel.Roles.Count <= 0)
+            {
+                ErrorModel error = new ErrorModel();
+                error.mensaje = "No existen roles, otro usuario elimino los roles durante la operacion";
+                return View("Error", error);
+            }
             return View(viewModel);
         }
 
@@ -87,18 +121,47 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-                var u = db.usuario.First(s => s.idUsuario.Equals(id));
-                viewModel.Usuario = u;
-                viewModel.Roles = db.rol.ToList();
-                viewModel.Usuario.apellido = Usuario.apellido;
-                viewModel.Usuario.nombre = Usuario.nombre;
-                viewModel.Usuario.correo = Usuario.correo;
-                viewModel.Usuario.estado = Usuario.estado;
-                viewModel.Usuario.password = Usuario.password;
-                viewModel.Usuario.telefono = Usuario.telefono;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                if (db.rol.First(d => d.idRol.Equals(Usuario.Rol_idRol)).estado != false)
+                {
+                    var usuario = db.usuario.FirstOrDefault(r => r.idUsuario.Equals(id) && r.estado == true);
+                    if (usuario != null)
+                    {
+                        viewModel = new UsuarioRolViewModel
+                        {
+                            Usuario = usuario,
+                            Roles = db.rol.ToList()
+                        };
+
+                        viewModel.Usuario.nombre = Usuario.nombre;
+                        viewModel.Usuario.apellido = Usuario.apellido;
+                        viewModel.Usuario.telefono = Usuario.telefono;
+                        viewModel.Usuario.correo = Usuario.correo;
+                        viewModel.Usuario.password = Usuario.password;
+                        viewModel.Usuario.identificacion = Usuario.identificacion;
+                        viewModel.Usuario.estado = Usuario.estado;
+                        viewModel.Usuario.Rol_idRol = Usuario.Rol_idRol;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+
+                    }
+                    else
+                    {
+                        ErrorModel error = new ErrorModel()
+                        {
+                            mensaje = "Otro usuario elimino el Usuario durante la operacion"
+                        };
+                        return View("Error", error);
+                    }
+                }
+                else
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "Otro usuario elimino el rol durante la operacion"
+                    };
+                    return View("Error", error);
+                }
             }
             catch(Exception e)
             
@@ -114,6 +177,11 @@ namespace UniffutAdmin.Controllers
         public ActionResult Delete(int id)
         {
             var u = db.usuario.First(s => s.idUsuario.Equals(id));
+            if (!u.estado)
+            {
+                ErrorModel error = new ErrorModel { mensaje = "El usuario ya fue eliminado" };
+                return View("Error", error);
+            }
             return View(u);
         }
 
@@ -124,11 +192,20 @@ namespace UniffutAdmin.Controllers
         public ActionResult Delete(int id, usuario Usuario){
             try
             {
-                // TODO: Add delete logic here
-                var u = db.usuario.First(s => s.idUsuario.Equals(id));
-                u.estado = false;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                Usuario = db.usuario.FirstOrDefault(p => p.idUsuario.Equals(id) && p.estado == true);
+                if (Usuario != null)
+                {
+                    Usuario.estado = false;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ErrorModel error = new ErrorModel { mensaje = "El Usuario ya fue eliminado" };
+                    return View("Error", error);
+                }
+               
             }
             catch (Exception e)
             {
