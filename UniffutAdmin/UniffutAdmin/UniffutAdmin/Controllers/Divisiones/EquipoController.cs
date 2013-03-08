@@ -135,7 +135,6 @@ namespace UniffutAdmin.Controllers
                         };
 
                         viewModel.equipo.abreviatura = equipo.abreviatura.ToUpper();
-                        viewModel.equipo.estado = equipo.estado;
                         viewModel.equipo.nombre = equipo.nombre;
                         viewModel.equipo.historia = equipo.historia;
                         viewModel.equipo.idDivision = equipo.idDivision;
