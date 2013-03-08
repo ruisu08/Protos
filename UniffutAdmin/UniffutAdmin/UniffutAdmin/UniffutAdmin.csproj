@@ -451,6 +451,7 @@
   <ItemGroup>
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\classes\utils\" />
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\includes\" />
+    <Folder Include="UserFiles\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
