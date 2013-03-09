@@ -4,32 +4,35 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="uniffut.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="uniffut.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="uniffutStoreContainer">
+          <EntitySet Name="album_equipo" EntityType="uniffut.Store.album_equipo" store:Type="Tables" Schema="uniffut" />
+          <EntitySet Name="album_jugadora" EntityType="uniffut.Store.album_jugadora" store:Type="Tables" Schema="uniffut" />
+          <EntitySet Name="album_multimedia_equipo" EntityType="uniffut.Store.album_multimedia_equipo" store:Type="Tables" Schema="uniffut" />
+          <EntitySet Name="album_multimedia_jugadora" EntityType="uniffut.Store.album_multimedia_jugadora" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="bitacora" EntityType="uniffut.Store.bitacora" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="calendario" EntityType="uniffut.Store.calendario" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="campeonato" EntityType="uniffut.Store.campeonato" store:Type="Tables" Schema="uniffut" />
-          <EntitySet Name="campeonato_has_multimedia" EntityType="uniffut.Store.campeonato_has_multimedia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="directortecnico" EntityType="uniffut.Store.directortecnico" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="division" EntityType="uniffut.Store.division" store:Type="Tables" Schema="uniffut" />
-          <EntitySet Name="divisiones_has_multimedia" EntityType="uniffut.Store.divisiones_has_multimedia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="equipo" EntityType="uniffut.Store.equipo" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="equipo_has_campeonato" EntityType="uniffut.Store.equipo_has_campeonato" store:Type="Tables" Schema="uniffut" />
-          <EntitySet Name="equipo_has_logro" EntityType="uniffut.Store.equipo_has_logro" store:Type="Tables" Schema="uniffut" />
-          <EntitySet Name="equipo_has_multimedia" EntityType="uniffut.Store.equipo_has_multimedia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="jugadora" EntityType="uniffut.Store.jugadora" store:Type="Tables" Schema="uniffut" />
-          <EntitySet Name="jugadora_has_logro" EntityType="uniffut.Store.jugadora_has_logro" store:Type="Tables" Schema="uniffut" />
-          <EntitySet Name="jugadora_has_multimedia" EntityType="uniffut.Store.jugadora_has_multimedia" store:Type="Tables" Schema="uniffut" />
-          <EntitySet Name="logro" EntityType="uniffut.Store.logro" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="multimedia" EntityType="uniffut.Store.multimedia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="noticia" EntityType="uniffut.Store.noticia" store:Type="Tables" Schema="uniffut" />
-          <EntitySet Name="noticia_has_multimedia" EntityType="uniffut.Store.noticia_has_multimedia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="pagina informativa" EntityType="uniffut.Store.pagina informativa" store:Type="Tables" Schema="uniffut" />
-          <EntitySet Name="pagina informativa_has_multimedia" EntityType="uniffut.Store.pagina informativa_has_multimedia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="patrocinador" EntityType="uniffut.Store.patrocinador" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="rol" EntityType="uniffut.Store.rol" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="tiponoticia" EntityType="uniffut.Store.tiponoticia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="usuario" EntityType="uniffut.Store.usuario" store:Type="Tables" Schema="uniffut" />
+          <AssociationSet Name="album_has_equipo" Association="uniffut.Store.album_has_equipo">
+            <End Role="equipo" EntitySet="equipo" />
+            <End Role="album_equipo" EntitySet="album_equipo" />
+          </AssociationSet>
+          <AssociationSet Name="album_Jugadora1" Association="uniffut.Store.album_Jugadora1">
+            <End Role="jugadora" EntitySet="jugadora" />
+            <End Role="album_jugadora" EntitySet="album_jugadora" />
+          </AssociationSet>
           <AssociationSet Name="calendario_campeonato" Association="uniffut.Store.calendario_campeonato">
             <End Role="campeonato" EntitySet="campeonato" />
             <End Role="calendario" EntitySet="calendario" />
@@ -42,25 +45,9 @@
             <End Role="division" EntitySet="division" />
             <End Role="campeonato" EntitySet="campeonato" />
           </AssociationSet>
-          <AssociationSet Name="fk_Campeonato_has_Multimedia_Campeonato1" Association="uniffut.Store.fk_Campeonato_has_Multimedia_Campeonato1">
-            <End Role="campeonato" EntitySet="campeonato" />
-            <End Role="campeonato_has_multimedia" EntitySet="campeonato_has_multimedia" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Campeonato_has_Multimedia_Multimedia1" Association="uniffut.Store.fk_Campeonato_has_Multimedia_Multimedia1">
-            <End Role="multimedia" EntitySet="multimedia" />
-            <End Role="campeonato_has_multimedia" EntitySet="campeonato_has_multimedia" />
-          </AssociationSet>
           <AssociationSet Name="fk_DirectorTecnico_Equipo1" Association="uniffut.Store.fk_DirectorTecnico_Equipo1">
             <End Role="equipo" EntitySet="equipo" />
             <End Role="directortecnico" EntitySet="directortecnico" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Divisiones_has_Multimedia_Divisiones1" Association="uniffut.Store.fk_Divisiones_has_Multimedia_Divisiones1">
-            <End Role="division" EntitySet="division" />
-            <End Role="divisiones_has_multimedia" EntitySet="divisiones_has_multimedia" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Divisiones_has_Multimedia_Multimedia1" Association="uniffut.Store.fk_Divisiones_has_Multimedia_Multimedia1">
-            <End Role="multimedia" EntitySet="multimedia" />
-            <End Role="divisiones_has_multimedia" EntitySet="divisiones_has_multimedia" />
           </AssociationSet>
           <AssociationSet Name="fk_Equipo_Divisiones1" Association="uniffut.Store.fk_Equipo_Divisiones1">
             <End Role="division" EntitySet="division" />
@@ -74,49 +61,9 @@
             <End Role="equipo" EntitySet="equipo" />
             <End Role="equipo_has_campeonato" EntitySet="equipo_has_campeonato" />
           </AssociationSet>
-          <AssociationSet Name="fk_Equipo_has_Logro_Equipo1" Association="uniffut.Store.fk_Equipo_has_Logro_Equipo1">
-            <End Role="equipo" EntitySet="equipo" />
-            <End Role="equipo_has_logro" EntitySet="equipo_has_logro" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Equipo_has_Logro_Logro1" Association="uniffut.Store.fk_Equipo_has_Logro_Logro1">
-            <End Role="logro" EntitySet="logro" />
-            <End Role="equipo_has_logro" EntitySet="equipo_has_logro" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Equipo_has_Multimedia_Equipo1" Association="uniffut.Store.fk_Equipo_has_Multimedia_Equipo1">
-            <End Role="equipo" EntitySet="equipo" />
-            <End Role="equipo_has_multimedia" EntitySet="equipo_has_multimedia" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Equipo_has_Multimedia_Multimedia1" Association="uniffut.Store.fk_Equipo_has_Multimedia_Multimedia1">
-            <End Role="multimedia" EntitySet="multimedia" />
-            <End Role="equipo_has_multimedia" EntitySet="equipo_has_multimedia" />
-          </AssociationSet>
           <AssociationSet Name="fk_Jugadora_Equipo1" Association="uniffut.Store.fk_Jugadora_Equipo1">
             <End Role="equipo" EntitySet="equipo" />
             <End Role="jugadora" EntitySet="jugadora" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Jugadora_has_Logro_Jugadora1" Association="uniffut.Store.fk_Jugadora_has_Logro_Jugadora1">
-            <End Role="jugadora" EntitySet="jugadora" />
-            <End Role="jugadora_has_logro" EntitySet="jugadora_has_logro" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Jugadora_has_Logro_Logro1" Association="uniffut.Store.fk_Jugadora_has_Logro_Logro1">
-            <End Role="logro" EntitySet="logro" />
-            <End Role="jugadora_has_logro" EntitySet="jugadora_has_logro" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Jugadora_has_Multimedia_Jugadora1" Association="uniffut.Store.fk_Jugadora_has_Multimedia_Jugadora1">
-            <End Role="jugadora" EntitySet="jugadora" />
-            <End Role="jugadora_has_multimedia" EntitySet="jugadora_has_multimedia" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Jugadora_has_Multimedia_Multimedia1" Association="uniffut.Store.fk_Jugadora_has_Multimedia_Multimedia1">
-            <End Role="multimedia" EntitySet="multimedia" />
-            <End Role="jugadora_has_multimedia" EntitySet="jugadora_has_multimedia" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Noticia_has_Multimedia_Multimedia1" Association="uniffut.Store.fk_Noticia_has_Multimedia_Multimedia1">
-            <End Role="multimedia" EntitySet="multimedia" />
-            <End Role="noticia_has_multimedia" EntitySet="noticia_has_multimedia" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Noticia_has_Multimedia_Noticia" Association="uniffut.Store.fk_Noticia_has_Multimedia_Noticia">
-            <End Role="noticia" EntitySet="noticia" />
-            <End Role="noticia_has_multimedia" EntitySet="noticia_has_multimedia" />
           </AssociationSet>
           <AssociationSet Name="fk_Noticia_TipoNoticia1" Association="uniffut.Store.fk_Noticia_TipoNoticia1">
             <End Role="tiponoticia" EntitySet="tiponoticia" />
@@ -126,27 +73,65 @@
             <End Role="usuario" EntitySet="usuario" />
             <End Role="noticia" EntitySet="noticia" />
           </AssociationSet>
-          <AssociationSet Name="fk_Pagina Informativa_has_Multimedia_Multimedia1" Association="uniffut.Store.fk_Pagina Informativa_has_Multimedia_Multimedia1">
-            <End Role="multimedia" EntitySet="multimedia" />
-            <End Role="pagina informativa_has_multimedia" EntitySet="pagina informativa_has_multimedia" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Pagina Informativa_has_Multimedia_Pagina Informativa1" Association="uniffut.Store.fk_Pagina Informativa_has_Multimedia_Pagina Informativa1">
-            <End Role="pagina informativa" EntitySet="pagina informativa" />
-            <End Role="pagina informativa_has_multimedia" EntitySet="pagina informativa_has_multimedia" />
-          </AssociationSet>
           <AssociationSet Name="fk_Pagina Informativa_Usuario1" Association="uniffut.Store.fk_Pagina Informativa_Usuario1">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="pagina informativa" EntitySet="pagina informativa" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Patrocinador_Multimedia1" Association="uniffut.Store.fk_Patrocinador_Multimedia1">
-            <End Role="multimedia" EntitySet="multimedia" />
-            <End Role="patrocinador" EntitySet="patrocinador" />
           </AssociationSet>
           <AssociationSet Name="fk_Usuario_Rol1" Association="uniffut.Store.fk_Usuario_Rol1">
             <End Role="rol" EntitySet="rol" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
+          <AssociationSet Name="R_album_multimedia" Association="uniffut.Store.R_album_multimedia">
+            <End Role="album_jugadora" EntitySet="album_jugadora" />
+            <End Role="album_multimedia_jugadora" EntitySet="album_multimedia_jugadora" />
+          </AssociationSet>
+          <AssociationSet Name="R_albumEquipo_multimedia" Association="uniffut.Store.R_albumEquipo_multimedia">
+            <End Role="album_equipo" EntitySet="album_equipo" />
+            <End Role="album_multimedia_equipo" EntitySet="album_multimedia_equipo" />
+          </AssociationSet>
+          <AssociationSet Name="R_multimedia_album" Association="uniffut.Store.R_multimedia_album">
+            <End Role="multimedia" EntitySet="multimedia" />
+            <End Role="album_multimedia_jugadora" EntitySet="album_multimedia_jugadora" />
+          </AssociationSet>
+          <AssociationSet Name="R_multimedia_albumEquipo" Association="uniffut.Store.R_multimedia_albumEquipo">
+            <End Role="multimedia" EntitySet="multimedia" />
+            <End Role="album_multimedia_equipo" EntitySet="album_multimedia_equipo" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="album_equipo">
+          <Key>
+            <PropertyRef Name="idAlbum_Equipo" />
+          </Key>
+          <Property Name="idAlbum_Equipo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="idEquipo" Type="int" Nullable="false" />
+          <Property Name="estado" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="album_jugadora">
+          <Key>
+            <PropertyRef Name="idAlbum_Jugadora" />
+          </Key>
+          <Property Name="idAlbum_Jugadora" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idJugadora" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="estado" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="album_multimedia_equipo">
+          <Key>
+            <PropertyRef Name="idAlbum" />
+            <PropertyRef Name="idMultimedia" />
+          </Key>
+          <Property Name="idAlbum" Type="int" Nullable="false" />
+          <Property Name="idMultimedia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="album_multimedia_jugadora">
+          <Key>
+            <PropertyRef Name="idAlbum" />
+            <PropertyRef Name="idMultimedia" />
+          </Key>
+          <Property Name="idAlbum" Type="int" Nullable="false" />
+          <Property Name="idMultimedia" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="bitacora">
           <Key>
             <PropertyRef Name="idbitacora" />
@@ -177,14 +162,6 @@
           <Property Name="idDivision" Type="int" Nullable="false" />
           <Property Name="estado" Type="bool" Nullable="false" />
         </EntityType>
-        <EntityType Name="campeonato_has_multimedia">
-          <Key>
-            <PropertyRef Name="Campeonato_idCampeonato" />
-            <PropertyRef Name="Multimedia_idMultimedia" />
-          </Key>
-          <Property Name="Campeonato_idCampeonato" Type="int" Nullable="false" />
-          <Property Name="Multimedia_idMultimedia" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="directortecnico">
           <Key>
             <PropertyRef Name="idDirectorTecnico" />
@@ -208,14 +185,6 @@
           <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="estado" Type="bool" Nullable="false" />
         </EntityType>
-        <EntityType Name="divisiones_has_multimedia">
-          <Key>
-            <PropertyRef Name="Divisiones_idDivisiones" />
-            <PropertyRef Name="Multimedia_idMultimedia" />
-          </Key>
-          <Property Name="Divisiones_idDivisiones" Type="int" Nullable="false" />
-          <Property Name="Multimedia_idMultimedia" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="equipo">
           <Key>
             <PropertyRef Name="idEquipo" />
@@ -227,6 +196,7 @@
           <Property Name="campeonatosGanados" Type="int" Nullable="false" />
           <Property Name="idDivision" Type="int" Nullable="false" />
           <Property Name="estado" Type="bool" Nullable="false" />
+          <Property Name="escudo" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="equipo_has_campeonato">
           <Key>
@@ -237,22 +207,6 @@
           <Property Name="Campeonato_idCampeonato" Type="int" Nullable="false" />
           <Property Name="puntos" Type="int" />
           <Property Name="estado" Type="bool" />
-        </EntityType>
-        <EntityType Name="equipo_has_logro">
-          <Key>
-            <PropertyRef Name="Equipo_idEquipo" />
-            <PropertyRef Name="Logro_idLogro" />
-          </Key>
-          <Property Name="Equipo_idEquipo" Type="int" Nullable="false" />
-          <Property Name="Logro_idLogro" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="equipo_has_multimedia">
-          <Key>
-            <PropertyRef Name="Equipo_idEquipo" />
-            <PropertyRef Name="Multimedia_idMultimedia" />
-          </Key>
-          <Property Name="Equipo_idEquipo" Type="int" Nullable="false" />
-          <Property Name="Multimedia_idMultimedia" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="jugadora">
           <Key>
@@ -268,38 +222,13 @@
           <Property Name="identificacion" Type="int" Nullable="false" />
           <Property Name="nacionalidad" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
-        <EntityType Name="jugadora_has_logro">
-          <Key>
-            <PropertyRef Name="Jugadora_idJugadora" />
-            <PropertyRef Name="Logro_idLogro" />
-          </Key>
-          <Property Name="Jugadora_idJugadora" Type="int" Nullable="false" />
-          <Property Name="Logro_idLogro" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="jugadora_has_multimedia">
-          <Key>
-            <PropertyRef Name="Jugadora_idJugadora" />
-            <PropertyRef Name="Multimedia_idMultimedia" />
-          </Key>
-          <Property Name="Jugadora_idJugadora" Type="int" Nullable="false" />
-          <Property Name="Multimedia_idMultimedia" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="logro">
-          <Key>
-            <PropertyRef Name="idLogro" />
-          </Key>
-          <Property Name="idLogro" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="fecha" Type="date" Nullable="false" />
-          <Property Name="estado" Type="bool" Nullable="false" />
-        </EntityType>
         <EntityType Name="multimedia">
           <Key>
             <PropertyRef Name="idMultimedia" />
           </Key>
           <Property Name="idMultimedia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="fuente" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="fuenteGrafica" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="comentario" Type="varchar" MaxLength="200" />
           <Property Name="estado" Type="bool" Nullable="false" />
         </EntityType>
         <EntityType Name="noticia">
@@ -314,14 +243,6 @@
           <Property Name="autor" Type="int" Nullable="false" />
           <Property Name="TipoNoticia_idTipoNoticia" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="noticia_has_multimedia">
-          <Key>
-            <PropertyRef Name="Noticia_idNoticia" />
-            <PropertyRef Name="Multimedia_idMultimedia" />
-          </Key>
-          <Property Name="Noticia_idNoticia" Type="int" Nullable="false" />
-          <Property Name="Multimedia_idMultimedia" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="pagina informativa">
           <Key>
             <PropertyRef Name="idPagina Informativa" />
@@ -333,14 +254,6 @@
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="autor" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="pagina informativa_has_multimedia">
-          <Key>
-            <PropertyRef Name="Pagina Informativa_idPagina Informativa" />
-            <PropertyRef Name="Multimedia_idMultimedia" />
-          </Key>
-          <Property Name="Pagina Informativa_idPagina Informativa" Type="int" Nullable="false" />
-          <Property Name="Multimedia_idMultimedia" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="patrocinador">
           <Key>
             <PropertyRef Name="idPatrocinador" />
@@ -350,8 +263,8 @@
           <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="fechaIngreso" Type="date" Nullable="false" />
           <Property Name="fechaSalida" Type="date" Nullable="false" />
-          <Property Name="Multimedia_idMultimedia" Type="int" Nullable="false" />
           <Property Name="estado" Type="bool" Nullable="false" />
+          <Property Name="fuenteGrafica" Type="varchar" Nullable="false" MaxLength="2000" />
         </EntityType>
         <EntityType Name="rol">
           <Key>
@@ -384,6 +297,30 @@
           <Property Name="Rol_idRol" Type="int" Nullable="false" />
           <Property Name="identificacion" Type="varchar" Nullable="false" MaxLength="10" />
         </EntityType>
+        <Association Name="album_has_equipo">
+          <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="1" />
+          <End Role="album_equipo" Type="uniffut.Store.album_equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipo">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="album_equipo">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="album_Jugadora1">
+          <End Role="jugadora" Type="uniffut.Store.jugadora" Multiplicity="1" />
+          <End Role="album_jugadora" Type="uniffut.Store.album_jugadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jugadora">
+              <PropertyRef Name="idJugadora" />
+            </Principal>
+            <Dependent Role="album_jugadora">
+              <PropertyRef Name="idJugadora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="calendario_campeonato">
           <End Role="campeonato" Type="uniffut.Store.campeonato" Multiplicity="1" />
           <End Role="calendario" Type="uniffut.Store.calendario" Multiplicity="*" />
@@ -420,30 +357,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Campeonato_has_Multimedia_Campeonato1">
-          <End Role="campeonato" Type="uniffut.Store.campeonato" Multiplicity="1" />
-          <End Role="campeonato_has_multimedia" Type="uniffut.Store.campeonato_has_multimedia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="campeonato">
-              <PropertyRef Name="idCampeonato" />
-            </Principal>
-            <Dependent Role="campeonato_has_multimedia">
-              <PropertyRef Name="Campeonato_idCampeonato" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Campeonato_has_Multimedia_Multimedia1">
-          <End Role="multimedia" Type="uniffut.Store.multimedia" Multiplicity="1" />
-          <End Role="campeonato_has_multimedia" Type="uniffut.Store.campeonato_has_multimedia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="multimedia">
-              <PropertyRef Name="idMultimedia" />
-            </Principal>
-            <Dependent Role="campeonato_has_multimedia">
-              <PropertyRef Name="Multimedia_idMultimedia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_DirectorTecnico_Equipo1">
           <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="1" />
           <End Role="directortecnico" Type="uniffut.Store.directortecnico" Multiplicity="*" />
@@ -453,30 +366,6 @@
             </Principal>
             <Dependent Role="directortecnico">
               <PropertyRef Name="Equipo_idEquipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Divisiones_has_Multimedia_Divisiones1">
-          <End Role="division" Type="uniffut.Store.division" Multiplicity="1" />
-          <End Role="divisiones_has_multimedia" Type="uniffut.Store.divisiones_has_multimedia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="division">
-              <PropertyRef Name="idDivisiones" />
-            </Principal>
-            <Dependent Role="divisiones_has_multimedia">
-              <PropertyRef Name="Divisiones_idDivisiones" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Divisiones_has_Multimedia_Multimedia1">
-          <End Role="multimedia" Type="uniffut.Store.multimedia" Multiplicity="1" />
-          <End Role="divisiones_has_multimedia" Type="uniffut.Store.divisiones_has_multimedia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="multimedia">
-              <PropertyRef Name="idMultimedia" />
-            </Principal>
-            <Dependent Role="divisiones_has_multimedia">
-              <PropertyRef Name="Multimedia_idMultimedia" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -516,54 +405,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Equipo_has_Logro_Equipo1">
-          <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="1" />
-          <End Role="equipo_has_logro" Type="uniffut.Store.equipo_has_logro" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="equipo">
-              <PropertyRef Name="idEquipo" />
-            </Principal>
-            <Dependent Role="equipo_has_logro">
-              <PropertyRef Name="Equipo_idEquipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Equipo_has_Logro_Logro1">
-          <End Role="logro" Type="uniffut.Store.logro" Multiplicity="1" />
-          <End Role="equipo_has_logro" Type="uniffut.Store.equipo_has_logro" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="logro">
-              <PropertyRef Name="idLogro" />
-            </Principal>
-            <Dependent Role="equipo_has_logro">
-              <PropertyRef Name="Logro_idLogro" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Equipo_has_Multimedia_Equipo1">
-          <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="1" />
-          <End Role="equipo_has_multimedia" Type="uniffut.Store.equipo_has_multimedia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="equipo">
-              <PropertyRef Name="idEquipo" />
-            </Principal>
-            <Dependent Role="equipo_has_multimedia">
-              <PropertyRef Name="Equipo_idEquipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Equipo_has_Multimedia_Multimedia1">
-          <End Role="multimedia" Type="uniffut.Store.multimedia" Multiplicity="1" />
-          <End Role="equipo_has_multimedia" Type="uniffut.Store.equipo_has_multimedia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="multimedia">
-              <PropertyRef Name="idMultimedia" />
-            </Principal>
-            <Dependent Role="equipo_has_multimedia">
-              <PropertyRef Name="Multimedia_idMultimedia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_Jugadora_Equipo1">
           <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="1" />
           <End Role="jugadora" Type="uniffut.Store.jugadora" Multiplicity="*" />
@@ -573,78 +414,6 @@
             </Principal>
             <Dependent Role="jugadora">
               <PropertyRef Name="Equipo_idEquipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Jugadora_has_Logro_Jugadora1">
-          <End Role="jugadora" Type="uniffut.Store.jugadora" Multiplicity="1" />
-          <End Role="jugadora_has_logro" Type="uniffut.Store.jugadora_has_logro" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="jugadora">
-              <PropertyRef Name="idJugadora" />
-            </Principal>
-            <Dependent Role="jugadora_has_logro">
-              <PropertyRef Name="Jugadora_idJugadora" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Jugadora_has_Logro_Logro1">
-          <End Role="logro" Type="uniffut.Store.logro" Multiplicity="1" />
-          <End Role="jugadora_has_logro" Type="uniffut.Store.jugadora_has_logro" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="logro">
-              <PropertyRef Name="idLogro" />
-            </Principal>
-            <Dependent Role="jugadora_has_logro">
-              <PropertyRef Name="Logro_idLogro" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Jugadora_has_Multimedia_Jugadora1">
-          <End Role="jugadora" Type="uniffut.Store.jugadora" Multiplicity="1" />
-          <End Role="jugadora_has_multimedia" Type="uniffut.Store.jugadora_has_multimedia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="jugadora">
-              <PropertyRef Name="idJugadora" />
-            </Principal>
-            <Dependent Role="jugadora_has_multimedia">
-              <PropertyRef Name="Jugadora_idJugadora" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Jugadora_has_Multimedia_Multimedia1">
-          <End Role="multimedia" Type="uniffut.Store.multimedia" Multiplicity="1" />
-          <End Role="jugadora_has_multimedia" Type="uniffut.Store.jugadora_has_multimedia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="multimedia">
-              <PropertyRef Name="idMultimedia" />
-            </Principal>
-            <Dependent Role="jugadora_has_multimedia">
-              <PropertyRef Name="Multimedia_idMultimedia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Noticia_has_Multimedia_Multimedia1">
-          <End Role="multimedia" Type="uniffut.Store.multimedia" Multiplicity="1" />
-          <End Role="noticia_has_multimedia" Type="uniffut.Store.noticia_has_multimedia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="multimedia">
-              <PropertyRef Name="idMultimedia" />
-            </Principal>
-            <Dependent Role="noticia_has_multimedia">
-              <PropertyRef Name="Multimedia_idMultimedia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Noticia_has_Multimedia_Noticia">
-          <End Role="noticia" Type="uniffut.Store.noticia" Multiplicity="1" />
-          <End Role="noticia_has_multimedia" Type="uniffut.Store.noticia_has_multimedia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="noticia">
-              <PropertyRef Name="idNoticia" />
-            </Principal>
-            <Dependent Role="noticia_has_multimedia">
-              <PropertyRef Name="Noticia_idNoticia" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -672,30 +441,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Pagina Informativa_has_Multimedia_Multimedia1">
-          <End Role="multimedia" Type="uniffut.Store.multimedia" Multiplicity="1" />
-          <End Role="pagina informativa_has_multimedia" Type="uniffut.Store.pagina informativa_has_multimedia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="multimedia">
-              <PropertyRef Name="idMultimedia" />
-            </Principal>
-            <Dependent Role="pagina informativa_has_multimedia">
-              <PropertyRef Name="Multimedia_idMultimedia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Pagina Informativa_has_Multimedia_Pagina Informativa1">
-          <End Role="pagina informativa" Type="uniffut.Store.pagina informativa" Multiplicity="1" />
-          <End Role="pagina informativa_has_multimedia" Type="uniffut.Store.pagina informativa_has_multimedia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="pagina informativa">
-              <PropertyRef Name="idPagina Informativa" />
-            </Principal>
-            <Dependent Role="pagina informativa_has_multimedia">
-              <PropertyRef Name="Pagina Informativa_idPagina Informativa" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_Pagina Informativa_Usuario1">
           <End Role="usuario" Type="uniffut.Store.usuario" Multiplicity="1" />
           <End Role="pagina informativa" Type="uniffut.Store.pagina informativa" Multiplicity="*" />
@@ -705,18 +450,6 @@
             </Principal>
             <Dependent Role="pagina informativa">
               <PropertyRef Name="autor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Patrocinador_Multimedia1">
-          <End Role="multimedia" Type="uniffut.Store.multimedia" Multiplicity="1" />
-          <End Role="patrocinador" Type="uniffut.Store.patrocinador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="multimedia">
-              <PropertyRef Name="idMultimedia" />
-            </Principal>
-            <Dependent Role="patrocinador">
-              <PropertyRef Name="Multimedia_idMultimedia" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -732,8 +465,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+        <Association Name="R_album_multimedia">
+          <End Role="album_jugadora" Type="uniffut.Store.album_jugadora" Multiplicity="1" />
+          <End Role="album_multimedia_jugadora" Type="uniffut.Store.album_multimedia_jugadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="album_jugadora">
+              <PropertyRef Name="idAlbum_Jugadora" />
+            </Principal>
+            <Dependent Role="album_multimedia_jugadora">
+              <PropertyRef Name="idAlbum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_albumEquipo_multimedia">
+          <End Role="album_equipo" Type="uniffut.Store.album_equipo" Multiplicity="1" />
+          <End Role="album_multimedia_equipo" Type="uniffut.Store.album_multimedia_equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="album_equipo">
+              <PropertyRef Name="idAlbum_Equipo" />
+            </Principal>
+            <Dependent Role="album_multimedia_equipo">
+              <PropertyRef Name="idAlbum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_multimedia_album">
+          <End Role="multimedia" Type="uniffut.Store.multimedia" Multiplicity="1" />
+          <End Role="album_multimedia_jugadora" Type="uniffut.Store.album_multimedia_jugadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="multimedia">
+              <PropertyRef Name="idMultimedia" />
+            </Principal>
+            <Dependent Role="album_multimedia_jugadora">
+              <PropertyRef Name="idMultimedia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_multimedia_albumEquipo">
+          <End Role="multimedia" Type="uniffut.Store.multimedia" Multiplicity="1" />
+          <End Role="album_multimedia_equipo" Type="uniffut.Store.album_multimedia_equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="multimedia">
+              <PropertyRef Name="idMultimedia" />
+            </Principal>
+            <Dependent Role="album_multimedia_equipo">
+              <PropertyRef Name="idMultimedia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="uniffut" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -746,8 +526,6 @@
           <EntitySet Name="equipo" EntityType="uniffut.equipo" />
           <EntitySet Name="equipo_has_campeonato" EntityType="uniffut.equipo_has_campeonato" />
           <EntitySet Name="jugadora" EntityType="uniffut.jugadora" />
-          <EntitySet Name="logro" EntityType="uniffut.logro" />
-          <EntitySet Name="multimedia" EntityType="uniffut.multimedia" />
           <EntitySet Name="noticia" EntityType="uniffut.noticia" />
           <EntitySet Name="pagina_informativa" EntityType="uniffut.pagina_informativa" />
           <EntitySet Name="patrocinador" EntityType="uniffut.patrocinador" />
@@ -786,10 +564,6 @@
             <End Role="equipo" EntitySet="equipo" />
             <End Role="jugadora" EntitySet="jugadora" />
           </AssociationSet>
-          <AssociationSet Name="fk_Patrocinador_Multimedia1" Association="uniffut.fk_Patrocinador_Multimedia1">
-            <End Role="multimedia" EntitySet="multimedia" />
-            <End Role="patrocinador" EntitySet="patrocinador" />
-          </AssociationSet>
           <AssociationSet Name="fk_Noticia_TipoNoticia1" Association="uniffut.fk_Noticia_TipoNoticia1">
             <End Role="tiponoticia" EntitySet="tiponoticia" />
             <End Role="noticia" EntitySet="noticia" />
@@ -806,39 +580,26 @@
             <End Role="rol" EntitySet="rol" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
-          <AssociationSet Name="campeonato_has_multimedia" Association="uniffut.campeonato_has_multimedia">
-            <End Role="campeonato" EntitySet="campeonato" />
-            <End Role="multimedia" EntitySet="multimedia" />
-          </AssociationSet>
-          <AssociationSet Name="divisiones_has_multimedia" Association="uniffut.divisiones_has_multimedia">
-            <End Role="division" EntitySet="division" />
-            <End Role="multimedia" EntitySet="multimedia" />
-          </AssociationSet>
-          <AssociationSet Name="equipo_has_logro" Association="uniffut.equipo_has_logro">
+          <EntitySet Name="album_equipo" EntityType="uniffut.album_equipo" />
+          <EntitySet Name="album_jugadora" EntityType="uniffut.album_jugadora" />
+          <AssociationSet Name="album_has_equipo" Association="uniffut.album_has_equipo">
             <End Role="equipo" EntitySet="equipo" />
-            <End Role="logro" EntitySet="logro" />
+            <End Role="album_equipo" EntitySet="album_equipo" />
           </AssociationSet>
-          <AssociationSet Name="equipo_has_multimedia" Association="uniffut.equipo_has_multimedia">
-            <End Role="equipo" EntitySet="equipo" />
-            <End Role="multimedia" EntitySet="multimedia" />
-          </AssociationSet>
-          <AssociationSet Name="jugadora_has_logro" Association="uniffut.jugadora_has_logro">
+          <AssociationSet Name="album_Jugadora1" Association="uniffut.album_Jugadora1">
             <End Role="jugadora" EntitySet="jugadora" />
-            <End Role="logro" EntitySet="logro" />
+            <End Role="album_jugadora" EntitySet="album_jugadora" />
           </AssociationSet>
-          <AssociationSet Name="jugadora_has_multimedia" Association="uniffut.jugadora_has_multimedia">
-            <End Role="jugadora" EntitySet="jugadora" />
+          <EntitySet Name="multimedia" EntityType="uniffut.multimedia" />
+          <AssociationSet Name="album_multimedia_equipo" Association="uniffut.album_multimedia_equipo">
+            <End Role="album_equipo" EntitySet="album_equipo" />
             <End Role="multimedia" EntitySet="multimedia" />
           </AssociationSet>
-          <AssociationSet Name="noticia_has_multimedia" Association="uniffut.noticia_has_multimedia">
+          <AssociationSet Name="album_multimedia_jugadora" Association="uniffut.album_multimedia_jugadora">
+            <End Role="album_jugadora" EntitySet="album_jugadora" />
             <End Role="multimedia" EntitySet="multimedia" />
-            <End Role="noticia" EntitySet="noticia" />
           </AssociationSet>
-          <AssociationSet Name="pagina_informativa_has_multimedia" Association="uniffut.pagina_informativa_has_multimedia">
-            <End Role="multimedia" EntitySet="multimedia" />
-            <End Role="pagina_informativa" EntitySet="pagina_informativa" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="bitacora">
           <Key>
             <PropertyRef Name="idbitacora" />
@@ -873,7 +634,6 @@
           <NavigationProperty Name="calendario" Relationship="uniffut.calendario_campeonato" FromRole="campeonato" ToRole="calendario" />
           <NavigationProperty Name="division" Relationship="uniffut.fk_Campeonato_Divisiones1" FromRole="campeonato" ToRole="division" />
           <NavigationProperty Name="equipo_has_campeonato" Relationship="uniffut.fk_Equipo_has_Campeonato_Campeonato1" FromRole="campeonato" ToRole="equipo_has_campeonato" />
-          <NavigationProperty Name="multimedia" Relationship="uniffut.campeonato_has_multimedia" FromRole="campeonato" ToRole="multimedia" />
         </EntityType>
         <EntityType Name="directortecnico">
           <Key>
@@ -900,7 +660,6 @@
           <Property Name="estado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="campeonato" Relationship="uniffut.fk_Campeonato_Divisiones1" FromRole="division" ToRole="campeonato" />
           <NavigationProperty Name="equipo" Relationship="uniffut.fk_Equipo_Divisiones1" FromRole="division" ToRole="equipo" />
-          <NavigationProperty Name="multimedia" Relationship="uniffut.divisiones_has_multimedia" FromRole="division" ToRole="multimedia" />
         </EntityType>
         <EntityType Name="equipo">
           <Key>
@@ -917,8 +676,8 @@
           <NavigationProperty Name="division" Relationship="uniffut.fk_Equipo_Divisiones1" FromRole="equipo" ToRole="division" />
           <NavigationProperty Name="equipo_has_campeonato" Relationship="uniffut.fk_Equipo_has_Campeonato_Equipo1" FromRole="equipo" ToRole="equipo_has_campeonato" />
           <NavigationProperty Name="jugadora" Relationship="uniffut.fk_Jugadora_Equipo1" FromRole="equipo" ToRole="jugadora" />
-          <NavigationProperty Name="logro" Relationship="uniffut.equipo_has_logro" FromRole="equipo" ToRole="logro" />
-          <NavigationProperty Name="multimedia" Relationship="uniffut.equipo_has_multimedia" FromRole="equipo" ToRole="multimedia" />
+          <Property Type="String" Name="escudo" />
+          <NavigationProperty Name="album_equipo" Relationship="uniffut.album_has_equipo" FromRole="equipo" ToRole="album_equipo" />
         </EntityType>
         <EntityType Name="equipo_has_campeonato">
           <Key>
@@ -946,35 +705,7 @@
           <Property Name="identificacion" Type="Int32" Nullable="false" />
           <Property Name="nacionalidad" Type="String" Nullable="false" />
           <NavigationProperty Name="equipo" Relationship="uniffut.fk_Jugadora_Equipo1" FromRole="jugadora" ToRole="equipo" />
-          <NavigationProperty Name="logro" Relationship="uniffut.jugadora_has_logro" FromRole="jugadora" ToRole="logro" />
-          <NavigationProperty Name="multimedia" Relationship="uniffut.jugadora_has_multimedia" FromRole="jugadora" ToRole="multimedia" />
-        </EntityType>
-        <EntityType Name="logro">
-          <Key>
-            <PropertyRef Name="idLogro" />
-          </Key>
-          <Property Name="idLogro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" />
-          <Property Name="descripcion" Type="String" Nullable="false" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" />
-          <Property Name="estado" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="equipo" Relationship="uniffut.equipo_has_logro" FromRole="logro" ToRole="equipo" />
-          <NavigationProperty Name="jugadora" Relationship="uniffut.jugadora_has_logro" FromRole="logro" ToRole="jugadora" />
-        </EntityType>
-        <EntityType Name="multimedia">
-          <Key>
-            <PropertyRef Name="idMultimedia" />
-          </Key>
-          <Property Name="idMultimedia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fuente" Type="String" Nullable="false" />
-          <Property Name="estado" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="patrocinador" Relationship="uniffut.fk_Patrocinador_Multimedia1" FromRole="multimedia" ToRole="patrocinador" />
-          <NavigationProperty Name="campeonato" Relationship="uniffut.campeonato_has_multimedia" FromRole="multimedia" ToRole="campeonato" />
-          <NavigationProperty Name="division" Relationship="uniffut.divisiones_has_multimedia" FromRole="multimedia" ToRole="division" />
-          <NavigationProperty Name="equipo" Relationship="uniffut.equipo_has_multimedia" FromRole="multimedia" ToRole="equipo" />
-          <NavigationProperty Name="jugadora" Relationship="uniffut.jugadora_has_multimedia" FromRole="multimedia" ToRole="jugadora" />
-          <NavigationProperty Name="noticia" Relationship="uniffut.noticia_has_multimedia" FromRole="multimedia" ToRole="noticia" />
-          <NavigationProperty Name="pagina_informativa" Relationship="uniffut.pagina_informativa_has_multimedia" FromRole="multimedia" ToRole="pagina_informativa" />
+          <NavigationProperty Name="album_jugadora" Relationship="uniffut.album_Jugadora1" FromRole="jugadora" ToRole="album_jugadora" />
         </EntityType>
         <EntityType Name="noticia">
           <Key>
@@ -989,7 +720,6 @@
           <Property Name="TipoNoticia_idTipoNoticia" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tiponoticia" Relationship="uniffut.fk_Noticia_TipoNoticia1" FromRole="noticia" ToRole="tiponoticia" />
           <NavigationProperty Name="usuario" Relationship="uniffut.fk_Noticia_Usuario1" FromRole="noticia" ToRole="usuario" />
-          <NavigationProperty Name="multimedia" Relationship="uniffut.noticia_has_multimedia" FromRole="noticia" ToRole="multimedia" />
         </EntityType>
         <EntityType Name="pagina_informativa">
           <Key>
@@ -1002,7 +732,6 @@
           <Property Name="estado" Type="Boolean" Nullable="false" />
           <Property Name="autor" Type="Int32" Nullable="false" />
           <NavigationProperty Name="usuario" Relationship="uniffut.fk_Pagina_Informativa_Usuario1" FromRole="pagina_informativa" ToRole="usuario" />
-          <NavigationProperty Name="multimedia" Relationship="uniffut.pagina_informativa_has_multimedia" FromRole="pagina_informativa" ToRole="multimedia" />
         </EntityType>
         <EntityType Name="patrocinador">
           <Key>
@@ -1013,9 +742,8 @@
           <Property Name="descripcion" Type="String" Nullable="false" />
           <Property Name="fechaIngreso" Type="DateTime" Nullable="false" />
           <Property Name="fechaSalida" Type="DateTime" Nullable="false" />
-          <Property Name="Multimedia_idMultimedia" Type="Int32" Nullable="false" />
           <Property Name="estado" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="multimedia" Relationship="uniffut.fk_Patrocinador_Multimedia1" FromRole="patrocinador" ToRole="multimedia" />
+          <Property Type="String" Name="fuenteGrafica" Nullable="false" />
         </EntityType>
         <EntityType Name="rol">
           <Key>
@@ -1150,18 +878,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Patrocinador_Multimedia1">
-          <End Role="multimedia" Type="uniffut.multimedia" Multiplicity="1" />
-          <End Role="patrocinador" Type="uniffut.patrocinador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="multimedia">
-              <PropertyRef Name="idMultimedia" />
-            </Principal>
-            <Dependent Role="patrocinador">
-              <PropertyRef Name="Multimedia_idMultimedia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_Noticia_TipoNoticia1">
           <End Role="tiponoticia" Type="uniffut.tiponoticia" Multiplicity="1" />
           <End Role="noticia" Type="uniffut.noticia" Multiplicity="*" />
@@ -1210,39 +926,72 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="campeonato_has_multimedia">
-          <End Role="campeonato" Type="uniffut.campeonato" Multiplicity="*" />
-          <End Role="multimedia" Type="uniffut.multimedia" Multiplicity="*" />
+        <EntityType Name="album_equipo">
+          <Key>
+            <PropertyRef Name="idAlbum_Equipo" />
+          </Key>
+          <Property Type="Int32" Name="idAlbum_Equipo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre" Nullable="false" />
+          <Property Type="Int32" Name="idEquipo" Nullable="false" />
+          <NavigationProperty Name="equipo" Relationship="uniffut.album_has_equipo" FromRole="album_equipo" ToRole="equipo" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <NavigationProperty Name="multimedia" Relationship="uniffut.album_multimedia_equipo" FromRole="album_equipo" ToRole="multimedia" />
+        </EntityType>
+        <EntityType Name="album_jugadora">
+          <Key>
+            <PropertyRef Name="idAlbum_Jugadora" />
+          </Key>
+          <Property Type="Int32" Name="idAlbum_Jugadora" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idJugadora" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" />
+          <NavigationProperty Name="jugadora" Relationship="uniffut.album_Jugadora1" FromRole="album_jugadora" ToRole="jugadora" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <NavigationProperty Name="multimedia" Relationship="uniffut.album_multimedia_jugadora" FromRole="album_jugadora" ToRole="multimedia" />
+        </EntityType>
+        <Association Name="album_has_equipo">
+          <End Type="uniffut.equipo" Role="equipo" Multiplicity="1" />
+          <End Type="uniffut.album_equipo" Role="album_equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipo">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="album_equipo">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="divisiones_has_multimedia">
-          <End Role="division" Type="uniffut.division" Multiplicity="*" />
-          <End Role="multimedia" Type="uniffut.multimedia" Multiplicity="*" />
+        <Association Name="album_Jugadora1">
+          <End Type="uniffut.jugadora" Role="jugadora" Multiplicity="1" />
+          <End Type="uniffut.album_jugadora" Role="album_jugadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jugadora">
+              <PropertyRef Name="idJugadora" />
+            </Principal>
+            <Dependent Role="album_jugadora">
+              <PropertyRef Name="idJugadora" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="equipo_has_logro">
-          <End Role="equipo" Type="uniffut.equipo" Multiplicity="*" />
-          <End Role="logro" Type="uniffut.logro" Multiplicity="*" />
+        <EntityType Name="multimedia">
+          <Key>
+            <PropertyRef Name="idMultimedia" />
+          </Key>
+          <Property Type="Int32" Name="idMultimedia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="fuenteGrafica" Nullable="false" />
+          <Property Type="String" Name="comentario" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <NavigationProperty Name="album_equipo" Relationship="uniffut.album_multimedia_equipo" FromRole="multimedia" ToRole="album_equipo" />
+          <NavigationProperty Name="album_jugadora" Relationship="uniffut.album_multimedia_jugadora" FromRole="multimedia" ToRole="album_jugadora" />
+        </EntityType>
+        <Association Name="album_multimedia_equipo">
+          <End Type="uniffut.album_equipo" Role="album_equipo" Multiplicity="*" />
+          <End Type="uniffut.multimedia" Role="multimedia" Multiplicity="*" />
         </Association>
-        <Association Name="equipo_has_multimedia">
-          <End Role="equipo" Type="uniffut.equipo" Multiplicity="*" />
-          <End Role="multimedia" Type="uniffut.multimedia" Multiplicity="*" />
+        <Association Name="album_multimedia_jugadora">
+          <End Type="uniffut.album_jugadora" Role="album_jugadora" Multiplicity="*" />
+          <End Type="uniffut.multimedia" Role="multimedia" Multiplicity="*" />
         </Association>
-        <Association Name="jugadora_has_logro">
-          <End Role="jugadora" Type="uniffut.jugadora" Multiplicity="*" />
-          <End Role="logro" Type="uniffut.logro" Multiplicity="*" />
-        </Association>
-        <Association Name="jugadora_has_multimedia">
-          <End Role="jugadora" Type="uniffut.jugadora" Multiplicity="*" />
-          <End Role="multimedia" Type="uniffut.multimedia" Multiplicity="*" />
-        </Association>
-        <Association Name="noticia_has_multimedia">
-          <End Role="multimedia" Type="uniffut.multimedia" Multiplicity="*" />
-          <End Role="noticia" Type="uniffut.noticia" Multiplicity="*" />
-        </Association>
-        <Association Name="pagina_informativa_has_multimedia">
-          <End Role="multimedia" Type="uniffut.multimedia" Multiplicity="*" />
-          <End Role="pagina_informativa" Type="uniffut.pagina_informativa" Multiplicity="*" />
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1309,6 +1058,7 @@
           <EntitySetMapping Name="equipo">
             <EntityTypeMapping TypeName="uniffut.equipo">
               <MappingFragment StoreEntitySet="equipo">
+                <ScalarProperty Name="escudo" ColumnName="escudo" />
                 <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
                 <ScalarProperty Name="abreviatura" ColumnName="abreviatura" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1344,26 +1094,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="logro">
-            <EntityTypeMapping TypeName="uniffut.logro">
-              <MappingFragment StoreEntitySet="logro">
-                <ScalarProperty Name="idLogro" ColumnName="idLogro" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="multimedia">
-            <EntityTypeMapping TypeName="uniffut.multimedia">
-              <MappingFragment StoreEntitySet="multimedia">
-                <ScalarProperty Name="idMultimedia" ColumnName="idMultimedia" />
-                <ScalarProperty Name="fuente" ColumnName="fuente" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="noticia">
             <EntityTypeMapping TypeName="uniffut.noticia">
               <MappingFragment StoreEntitySet="noticia">
@@ -1392,12 +1122,12 @@
           <EntitySetMapping Name="patrocinador">
             <EntityTypeMapping TypeName="uniffut.patrocinador">
               <MappingFragment StoreEntitySet="patrocinador">
+                <ScalarProperty Name="fuenteGrafica" ColumnName="fuenteGrafica" />
                 <ScalarProperty Name="idPatrocinador" ColumnName="idPatrocinador" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
                 <ScalarProperty Name="fechaSalida" ColumnName="fechaSalida" />
-                <ScalarProperty Name="Multimedia_idMultimedia" ColumnName="Multimedia_idMultimedia" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1436,71 +1166,53 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="campeonato_has_multimedia" TypeName="uniffut.campeonato_has_multimedia" StoreEntitySet="campeonato_has_multimedia">
-            <EndProperty Name="campeonato">
-              <ScalarProperty Name="idCampeonato" ColumnName="Campeonato_idCampeonato" />
-            </EndProperty>
+          <EntitySetMapping Name="album_equipo">
+            <EntityTypeMapping TypeName="uniffut.album_equipo">
+              <MappingFragment StoreEntitySet="album_equipo">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idAlbum_Equipo" ColumnName="idAlbum_Equipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="album_jugadora">
+            <EntityTypeMapping TypeName="uniffut.album_jugadora">
+              <MappingFragment StoreEntitySet="album_jugadora">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idJugadora" ColumnName="idJugadora" />
+                <ScalarProperty Name="idAlbum_Jugadora" ColumnName="idAlbum_Jugadora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="multimedia">
+            <EntityTypeMapping TypeName="uniffut.multimedia">
+              <MappingFragment StoreEntitySet="multimedia">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="fuenteGrafica" ColumnName="fuenteGrafica" />
+                <ScalarProperty Name="idMultimedia" ColumnName="idMultimedia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="album_multimedia_equipo" TypeName="uniffut.album_multimedia_equipo" StoreEntitySet="album_multimedia_equipo">
             <EndProperty Name="multimedia">
-              <ScalarProperty Name="idMultimedia" ColumnName="Multimedia_idMultimedia" />
+              <ScalarProperty Name="idMultimedia" ColumnName="idMultimedia" />
+            </EndProperty>
+            <EndProperty Name="album_equipo">
+              <ScalarProperty Name="idAlbum_Equipo" ColumnName="idAlbum" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="divisiones_has_multimedia" TypeName="uniffut.divisiones_has_multimedia" StoreEntitySet="divisiones_has_multimedia">
-            <EndProperty Name="division">
-              <ScalarProperty Name="idDivisiones" ColumnName="Divisiones_idDivisiones" />
-            </EndProperty>
+          <AssociationSetMapping Name="album_multimedia_jugadora" TypeName="uniffut.album_multimedia_jugadora" StoreEntitySet="album_multimedia_jugadora">
             <EndProperty Name="multimedia">
-              <ScalarProperty Name="idMultimedia" ColumnName="Multimedia_idMultimedia" />
+              <ScalarProperty Name="idMultimedia" ColumnName="idMultimedia" />
+            </EndProperty>
+            <EndProperty Name="album_jugadora">
+              <ScalarProperty Name="idAlbum_Jugadora" ColumnName="idAlbum" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="equipo_has_logro" TypeName="uniffut.equipo_has_logro" StoreEntitySet="equipo_has_logro">
-            <EndProperty Name="equipo">
-              <ScalarProperty Name="idEquipo" ColumnName="Equipo_idEquipo" />
-            </EndProperty>
-            <EndProperty Name="logro">
-              <ScalarProperty Name="idLogro" ColumnName="Logro_idLogro" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="equipo_has_multimedia" TypeName="uniffut.equipo_has_multimedia" StoreEntitySet="equipo_has_multimedia">
-            <EndProperty Name="equipo">
-              <ScalarProperty Name="idEquipo" ColumnName="Equipo_idEquipo" />
-            </EndProperty>
-            <EndProperty Name="multimedia">
-              <ScalarProperty Name="idMultimedia" ColumnName="Multimedia_idMultimedia" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="jugadora_has_logro" TypeName="uniffut.jugadora_has_logro" StoreEntitySet="jugadora_has_logro">
-            <EndProperty Name="jugadora">
-              <ScalarProperty Name="idJugadora" ColumnName="Jugadora_idJugadora" />
-            </EndProperty>
-            <EndProperty Name="logro">
-              <ScalarProperty Name="idLogro" ColumnName="Logro_idLogro" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="jugadora_has_multimedia" TypeName="uniffut.jugadora_has_multimedia" StoreEntitySet="jugadora_has_multimedia">
-            <EndProperty Name="jugadora">
-              <ScalarProperty Name="idJugadora" ColumnName="Jugadora_idJugadora" />
-            </EndProperty>
-            <EndProperty Name="multimedia">
-              <ScalarProperty Name="idMultimedia" ColumnName="Multimedia_idMultimedia" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="noticia_has_multimedia" TypeName="uniffut.noticia_has_multimedia" StoreEntitySet="noticia_has_multimedia">
-            <EndProperty Name="multimedia">
-              <ScalarProperty Name="idMultimedia" ColumnName="Multimedia_idMultimedia" />
-            </EndProperty>
-            <EndProperty Name="noticia">
-              <ScalarProperty Name="idNoticia" ColumnName="Noticia_idNoticia" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="pagina_informativa_has_multimedia" TypeName="uniffut.pagina_informativa_has_multimedia" StoreEntitySet="pagina informativa_has_multimedia">
-            <EndProperty Name="multimedia">
-              <ScalarProperty Name="idMultimedia" ColumnName="Multimedia_idMultimedia" />
-            </EndProperty>
-            <EndProperty Name="pagina_informativa">
-              <ScalarProperty Name="idPagina_Informativa" ColumnName="Pagina Informativa_idPagina Informativa" />
-            </EndProperty>
-          </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -1520,7 +1232,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="uniffutDB">
+      <Diagram Name="uniffutDB" ZoomLevel="60">
         <EntityTypeShape EntityType="uniffut.bitacora" Width="1.5" PointX="12.75" PointY="7.375" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="uniffut.calendario" Width="1.5" PointX="5.25" PointY="8.625" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="uniffut.campeonato" Width="1.5" PointX="3" PointY="8.25" Height="2.7494921874999996" IsExpanded="true" />
@@ -1529,11 +1241,9 @@
         <EntityTypeShape EntityType="uniffut.equipo" Width="1.5" PointX="3" PointY="13.5" Height="3.5186979166666656" IsExpanded="true" />
         <EntityTypeShape EntityType="uniffut.equipo_has_campeonato" Width="1.5" PointX="8.25" PointY="11.5" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="uniffut.jugadora" Width="1.5" PointX="5.25" PointY="15.25" Height="3.3263964843750014" IsExpanded="true" />
-        <EntityTypeShape EntityType="uniffut.logro" Width="1.5" PointX="10.5" PointY="14.875" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="uniffut.multimedia" Width="1.5" PointX="7.5" PointY="15" Height="2.9417936197916674" IsExpanded="true" />
         <EntityTypeShape EntityType="uniffut.noticia" Width="1.5" PointX="9.75" PointY="18" Height="2.9417936197916674" IsExpanded="true" />
         <EntityTypeShape EntityType="uniffut.pagina_informativa" Width="1.5" PointX="12.75" PointY="15.125" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="uniffut.patrocinador" Width="1.5" PointX="9.75" PointY="22.125" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="uniffut.patrocinador" Width="1.5" PointX="9.75" PointY="22.125" Height="2.384889322916667" IsExpanded="true" />
         <EntityTypeShape EntityType="uniffut.rol" Width="1.5" PointX="8.25" PointY="7.5" Height="1.9802864583333388" IsExpanded="true" />
         <EntityTypeShape EntityType="uniffut.tiponoticia" Width="1.5" PointX="7.5" PointY="19.625" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="uniffut.usuario" Width="1.5" PointX="10.5" PointY="6.75" Height="3.5186979166666674" IsExpanded="true" />
@@ -1566,113 +1276,57 @@
           <ConnectorPoint PointX="3" PointY="14.091095377604166" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Equipo_has_Campeonato_Equipo1" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="14.74974609375" />
-          <ConnectorPoint PointX="4.666666666666667" PointY="14.74974609375" />
-          <ConnectorPoint PointX="4.833333333333333" PointY="14.74974609375" />
-          <ConnectorPoint PointX="7.760416666666667" PointY="14.74974609375" />
-          <ConnectorPoint PointX="7.927083333333333" PointY="14.74974609375" />
-          <ConnectorPoint PointX="9.40625" PointY="14.74974609375" />
-          <ConnectorPoint PointX="9.40625" PointY="13.672587890625" />
+          <ConnectorPoint PointX="4.5" PointY="14.874746093750002" />
+          <ConnectorPoint PointX="9" PointY="14.874746093750002" />
+          <ConnectorPoint PointX="9" PointY="13.672587890625" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Jugadora_Equipo1" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="16.134348958333334" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="16.134348958333334" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="16.134348958333334" />
-          <ConnectorPoint PointX="5.25" PointY="16.134348958333334" />
-        </AssociationConnector>
-        <AssociationConnector Association="uniffut.fk_Patrocinador_Multimedia1" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="17.941793619791667" />
-          <ConnectorPoint PointX="9.375" PointY="18.316793619791667" />
-          <ConnectorPoint PointX="9.375" PointY="23.403595377604169" />
-          <ConnectorPoint PointX="9.75" PointY="23.403595377604169" />
+          <ConnectorPoint PointX="4.5" PointY="16.402309947916667" />
+          <ConnectorPoint PointX="5.25" PointY="16.402309947916667" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Noticia_TipoNoticia1" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="20.283396809895834" />
-          <ConnectorPoint PointX="9.2916666666666661" PointY="20.283396809895834" />
-          <ConnectorPoint PointX="9.4583333333333339" PointY="20.283396809895834" />
-          <ConnectorPoint PointX="9.75" PointY="20.283396809895834" />
+          <ConnectorPoint PointX="9" PointY="20.187246093749998" />
+          <ConnectorPoint PointX="9.75" PointY="20.187246093749998" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Noticia_Usuario1" ManuallyRouted="false">
-          <ConnectorPoint PointX="10.5" PointY="8.5093489583333337" />
-          <ConnectorPoint PointX="10.156249500000001" PointY="8.5093489583333337" />
-          <ConnectorPoint PointX="10.156249500000001" PointY="18" />
+          <ConnectorPoint PointX="10.875" PointY="10.268697916666667" />
+          <ConnectorPoint PointX="10.875" PointY="18" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Pagina_Informativa_Usuario1" ManuallyRouted="false">
-          <ConnectorPoint PointX="12" PointY="10.268697916666667" />
-          <ConnectorPoint PointX="12.375" PointY="10.643697916666667" />
-          <ConnectorPoint PointX="12.375" PointY="16.403595377604166" />
-          <ConnectorPoint PointX="12.75" PointY="16.403595377604166" />
+          <ConnectorPoint PointX="11.4687525" PointY="10.268697916666667" />
+          <ConnectorPoint PointX="11.4687525" PointY="16.307444661458334" />
+          <ConnectorPoint PointX="12.75" PointY="16.307444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Usuario_Rol1" ManuallyRouted="false">
           <ConnectorPoint PointX="9.75" PointY="7.9421744791666669" />
           <ConnectorPoint PointX="10.5" PointY="7.9421744791666669" />
         </AssociationConnector>
-        <AssociationConnector Association="uniffut.campeonato_has_multimedia" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="10.898537539062499" />
-          <ConnectorPoint PointX="7.84375" PointY="10.898537539062499" />
-          <ConnectorPoint PointX="7.84375" PointY="15" />
+        <EntityTypeShape EntityType="uniffut.album_equipo" Width="1.5" PointX="5.25" PointY="20.125" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="uniffut.album_jugadora" Width="1.5" PointX="7.5" PointY="23" Height="1.9802864583333388" />
+        <AssociationConnector Association="uniffut.album_has_equipo" >
+          <ConnectorPoint PointX="3.75" PointY="17.018697916666667" />
+          <ConnectorPoint PointX="3.75" PointY="21.211293945312498" />
+          <ConnectorPoint PointX="5.25" PointY="21.211293945312498" />
         </AssociationConnector>
-        <AssociationConnector Association="uniffut.divisiones_has_multimedia" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="14.682190755208332" />
-          <ConnectorPoint PointX="1.5" PointY="17.268697916666667" />
-          <ConnectorPoint PointX="5" PointY="17.268697916666667" />
-          <ConnectorPoint PointX="5" PointY="15" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="15" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="15" />
-          <ConnectorPoint PointX="7.125" PointY="15" />
-          <ConnectorPoint PointX="7.125" PointY="16.470896809895834" />
-          <ConnectorPoint PointX="7.5" PointY="16.470896809895834" />
+        <AssociationConnector Association="uniffut.album_Jugadora1" >
+          <ConnectorPoint PointX="6.75" PointY="18.384095052083335" />
+          <ConnectorPoint PointX="7.125" PointY="18.759095052083335" />
+          <ConnectorPoint PointX="7.125" PointY="24.086293945312498" />
+          <ConnectorPoint PointX="7.5" PointY="24.086293945312498" />
         </AssociationConnector>
-        <AssociationConnector Association="uniffut.equipo_has_logro" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="15.535921979166666" />
-          <ConnectorPoint PointX="4.75" PointY="15.535921979166666" />
-          <ConnectorPoint PointX="4.75" PointY="14.625" />
-          <ConnectorPoint PointX="7.760416666666667" PointY="14.625" />
-          <ConnectorPoint PointX="7.927083333333333" PointY="14.625" />
-          <ConnectorPoint PointX="9.3229166666666661" PointY="14.625" />
-          <ConnectorPoint PointX="9.4895833333333339" PointY="14.625" />
-          <ConnectorPoint PointX="10.072916166666667" PointY="14.625" />
-          <ConnectorPoint PointX="10.239582833333335" PointY="14.625" />
-          <ConnectorPoint PointX="11.25" PointY="14.625" />
-          <ConnectorPoint PointX="11.25" PointY="14.875" />
+        <EntityTypeShape EntityType="uniffut.multimedia" Width="1.5" PointX="12.75" PointY="21.625" Height="2.172587890624996" />
+        <AssociationConnector Association="uniffut.album_multimedia_equipo" >
+          <ConnectorPoint PointX="6.75" PointY="21.84375" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="21.84375" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="21.84375" />
+          <ConnectorPoint PointX="12.75" PointY="21.84375" />
         </AssociationConnector>
-        <AssociationConnector Association="uniffut.equipo_has_multimedia" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="15.15625" />
-          <ConnectorPoint PointX="4.666666666666667" PointY="15.15625" />
-          <ConnectorPoint PointX="4.833333333333333" PointY="15.15625" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="15.15625" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="15.15625" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="15.15625" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="15.15625" />
-          <ConnectorPoint PointX="7.041666666666667" PointY="15.15625" />
-          <ConnectorPoint PointX="7.208333333333333" PointY="15.15625" />
-          <ConnectorPoint PointX="7.5" PointY="15.15625" />
+        <AssociationConnector Association="uniffut.album_multimedia_jugadora" >
+          <ConnectorPoint PointX="9" PointY="24.87248860677083" />
+          <ConnectorPoint PointX="13.5" PointY="24.87248860677083" />
+          <ConnectorPoint PointX="13.5" PointY="23.797587890624996" />
         </AssociationConnector>
-        <AssociationConnector Association="uniffut.jugadora_has_logro" ManuallyRouted="false">
-          <ConnectorPoint PointX="6" PointY="15.25" />
-          <ConnectorPoint PointX="6" PointY="14.90625" />
-          <ConnectorPoint PointX="7.760416666666667" PointY="14.90625" />
-          <ConnectorPoint PointX="7.927083333333333" PointY="14.90625" />
-          <ConnectorPoint PointX="10.072916166666667" PointY="14.90625" />
-          <ConnectorPoint PointX="10.239582833333335" PointY="14.90625" />
-          <ConnectorPoint PointX="10.5" PointY="14.90625" />
-        </AssociationConnector>
-        <AssociationConnector Association="uniffut.jugadora_has_multimedia" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="17.268845214843751" />
-          <ConnectorPoint PointX="7.5" PointY="17.268845214843751" />
-        </AssociationConnector>
-        <AssociationConnector Association="uniffut.noticia_has_multimedia" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="17.590838971354167" />
-          <ConnectorPoint PointX="9.92187225" PointY="17.590838971354167" />
-          <ConnectorPoint PointX="9.92187225" PointY="18" />
-        </AssociationConnector>
-        <AssociationConnector Association="uniffut.pagina_informativa_has_multimedia" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="17.384114147135417" />
-          <ConnectorPoint PointX="10.072916166666667" PointY="17.384114147135417" />
-          <ConnectorPoint PointX="10.239582833333335" PointY="17.384114147135417" />
-          <ConnectorPoint PointX="12.75" PointY="17.384114147135417" />
-        </AssociationConnector>
-      </Diagram>
+        </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

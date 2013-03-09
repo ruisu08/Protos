@@ -146,9 +146,6 @@ namespace UniffutAdmin.Controllers.Divisiones
                         foreach (var c in x.calendario) {
                             c.estado = false;
                         }
-                        foreach (var m in x.multimedia) {
-                            m.estado = false;
-                        }
                         foreach (var e in x.equipo_has_campeonato)
                         {
                             e.estado = false;
@@ -163,11 +160,6 @@ namespace UniffutAdmin.Controllers.Divisiones
                         }
                     }
 
-                    var MultimediaDeDivision = Division.multimedia;
-                    foreach (var x in MultimediaDeDivision)
-                    {
-                        x.estado = false;
-                    }
 
                     Division.estado = false;
                     db.SaveChanges();

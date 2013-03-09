@@ -200,17 +200,9 @@ namespace UniffutAdmin.Controllers
                     var JugadoraEnEquipo = Equipo.jugadora;
                     foreach (var x in JugadoraEnEquipo) {
                         x.estado = false;
-                        foreach (var m in x.multimedia) {
-                            m.estado = false;
-                        }
                     }
                     var EquipoEnCampeonato = Equipo.equipo_has_campeonato;
                     foreach (var x in EquipoEnCampeonato)
-                    {
-                        x.estado = false;
-                    }
-                    var MultimediaDeEquipo = Equipo.multimedia;
-                    foreach (var x in MultimediaDeEquipo)
                     {
                         x.estado = false;
                     }

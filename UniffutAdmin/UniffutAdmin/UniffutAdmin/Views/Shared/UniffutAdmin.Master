@@ -19,20 +19,18 @@
     <div id="pagina">
         <div id="header">
             <div id="contenedorTitulo">
-                <h1 id="titulo"><%: Html.ActionLink("Admin Uniffut", "Index","Home")%></h1>
+                <h1 id="titulo"><%: Html.ActionLink("Admin Uniffut", "Index", "Home")%></h1>
 
             </div>
             <div id="contenedorMenu">
-                <ul id="menu">
-                    <li class="opcionMenu"><%: Html.ActionLink("Jugadoras", "Index", "Jugadora")%></li>
-                    <li class="opcionMenu"><%: Html.ActionLink("Equipos","Index","Equipo")%></li>
-                    <li class="opcionMenu"><%: Html.ActionLink("Patroncinadores","Index","Patrocinador")%></li>
-                    <li class="opcionMenu"><%: Html.ActionLink("Campeonatos","Index","CampeonatoSubMenu")%></li>
-                    <li class="opcionMenu"><%: Html.ActionLink("Noticias/Páginas Informativas","Index","NoticiasSubMenu")%></li>
-                    <li class="opcionMenu"><%: Html.ActionLink("Multimedia","Index","MultimediaSubMenu")%></li>
-                    <li class="opcionMenu"><%: Html.ActionLink("Divisiones","Index","Division")%></li>
-                    <li class="opcionMenu"><%: Html.ActionLink("Administración","Index","Administracion")%></li>
-                </ul>
+                <div class="opcionMenu"><%: Html.ActionLink("Jugadoras", "Index", "Jugadora")%></div>
+                <div class="opcionMenu"><%: Html.ActionLink("Equipos","Index","Equipo")%></div>
+                <div class="opcionMenu"><%: Html.ActionLink("Patroncinadores","Index","Patrocinador")%></div>
+                <div class="opcionMenu"><%: Html.ActionLink("Campeonatos","Index","CampeonatoSubMenu")%></div>
+                <div class="opcionMenu"><%: Html.ActionLink("Noticias/Páginas Informativas","Index","NoticiasSubMenu")%></div>
+                <div class="opcionMenu"><%: Html.ActionLink("Multimedia","Index","MultimediaSubMenu")%></div>
+                <div class="opcionMenu"><%: Html.ActionLink("Divisiones","Index","Division")%></div>
+                <div class="opcionMenu"><%: Html.ActionLink("Administración","Index","Administracion")%></div>
             </div>
         </div>
         <div id="contenido">

@@ -195,10 +195,6 @@ namespace UniffutAdmin.Controllers
                 Jugadora = db.jugadora.FirstOrDefault(p => p.idJugadora.Equals(id) && p.estado == true);
                 if (Jugadora != null)
                 {
-                    var MultimediaDeJugadora = Jugadora.multimedia;
-                    foreach (var x in MultimediaDeJugadora) {
-                        x.estado = false;
-                    }
                     Jugadora.estado = false;
                     db.SaveChanges();
                     return RedirectToAction("Index");
