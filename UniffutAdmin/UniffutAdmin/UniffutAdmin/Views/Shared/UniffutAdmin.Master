@@ -9,10 +9,11 @@
     <link rel="Stylesheet" href="../../Content/Site.css" />
     <script type="text/javascript" src="../../Scripts/JQ1.6.4.js"></script>
     <script type="text/javascript" src="../../Scripts/jquery-ui-1.10.1.custom.min.js"></script>
-    <script type="text/javascript" src="../../Scripts/inputs.js"></script>
     <script type="text/javascript" src="../../Scripts/dpLanguage.js"></script>
     <script type="text/javascript" src="../../Scripts/tiny_mce/tiny_mce.js"></script>
     <script type="text/javascript" src="../../Scripts/editor.js"></script>
+    <script type="text/javascript" src= "../../Scripts/site.js"></script>
+    <script type="text/javascript" src="../../Scripts/inputs.js"></script>
     <link rel="Stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
 </head>
 <body>

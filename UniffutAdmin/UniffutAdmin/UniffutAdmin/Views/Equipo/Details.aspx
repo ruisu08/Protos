@@ -8,8 +8,6 @@
 
     <h2>Detalles</h2>
 
-    <fieldset>
-        <legend>Informacion</legend>
         
         <div class="display-label" style="text-decoration:underline;">ID</div>
         <div class="display-field"><%: Model.idEquipo %></div>
@@ -32,7 +30,6 @@
         <div class="display-label" style="text-decoration:underline;">Estado</div>
         <div class="display-field"><%:(bool)Model.estado ? "Activo":"Inactivo" %></div>
         
-    </fieldset>
     <p>
 
         <%: Html.ActionLink("Actualizar", "Edit", new { id=Model.idEquipo }) %> |

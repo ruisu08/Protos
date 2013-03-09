@@ -69,6 +69,7 @@ namespace UniffutAdmin.Controllers
                         oldJugadora.apellidos = Jugadora.apellidos;
                         oldJugadora.Equipo_idEquipo = Jugadora.Equipo_idEquipo;
                         oldJugadora.fechaNacimiento = Jugadora.fechaNacimiento;
+                        oldJugadora.historia = Jugadora.historia;
                         oldJugadora.estado = true;
                         db.SaveChanges();
                         return RedirectToAction("Index");

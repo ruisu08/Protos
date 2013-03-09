@@ -11,8 +11,6 @@
      <form id="validateForm" action= '<%:Url.Action("Edit","Jugadora")%>' method="post">
         <%: Html.ValidationSummary(true) %>
         
-        <fieldset>
-            <legend>Informacion</legend>
             <div class="editor-label">
                 <h3>Identificacion</h3>
             </div>
@@ -65,15 +63,13 @@
                 <h3>Nacionalidad</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "45" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.nacionalidad, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "45" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.nacionalidad)%>
             </div>
             
             <p>
                 <input type="submit" value="Actualizar" />
             </p>
-        </fieldset>
-
     </form>
 
     <div>

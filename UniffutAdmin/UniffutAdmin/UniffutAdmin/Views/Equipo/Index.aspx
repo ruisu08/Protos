@@ -8,7 +8,7 @@
 
     <h2>Equipos</h2>
 
-    <table>
+    <table  id="indTable">
         <tr>
             <th></th>
             <th >

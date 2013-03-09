@@ -8,7 +8,7 @@
 
     <h2>Jugadoras</h2>
 
-    <table>
+    <table id="indTable">
         <tr>
             <th></th>
             <th>

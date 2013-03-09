@@ -10,10 +10,6 @@
 
     <form id="validateForm" action= '<%:Url.Action("Create","Equipo")%>' method="post">
         <%: Html.ValidationSummary(true) %>
-
-        <fieldset>
-            <legend>Informacion</legend>
-            
             
             <div class="editor-label">
                 <h3>Abreviatura</h3>
@@ -55,9 +51,8 @@
             </div>
             
             <p>
-                <input type="submit" value="Crear" />
+                <input type="submit" value="Crear" id="submitBTN" />
             </p>
-        </fieldset>
 
     </form>
 

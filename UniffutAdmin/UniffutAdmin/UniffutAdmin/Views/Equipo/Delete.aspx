@@ -8,9 +8,6 @@
 
     <h2>Eliminar</h2>
 
-    <h3>El equipo no se eliminara sino que sera inactivo</h3>
-    <fieldset>
-        <legend>Informacion</legend>
         
         <div class="display-label">ID</div>
         <div class="display-field"><%: Model.idEquipo %></div>
@@ -24,12 +21,13 @@
         <div class="display-label">Divisiones</div>
         <div class="display-field"><%: Model.division.abreviatura %></div>
 
-    </fieldset>
     <% using (Html.BeginForm()) { %>
-        <p>
-		    <input type="submit" value="Borrar" data-confirm="Si elimina al equipo se eliminara de todo los campeonatos y sus tablas de posiciones, asi como sus archivos multimedia. Tambien eliminara a todos los jugadores que esten en el equipo y sus archivos multimedia. Esta seguro que desea eliminar el equipo?" /> |
-		    <%: Html.ActionLink("Volver a la lista", "Index") %>
-        </p>
+        <div>
+		    <input id="submitBTN" type="submit" value="Borrar" data-confirm="Si elimina al equipo se eliminara de todo los campeonatos y sus tablas de posiciones, asi como sus archivos multimedia. Tambien eliminara a todos los jugadores que esten en el equipo y sus archivos multimedia. Esta seguro que desea eliminar el equipo?" />
+        </div>
+        <div>
+            <%: Html.ActionLink("Volver a la lista", "Index") %>
+        </div>
     <% } %>
 
 </asp:Content>
