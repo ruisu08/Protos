@@ -16,6 +16,14 @@ namespace UniffutAdmin.Controllers.Administracion
 
         public ActionResult Index()
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var roles = db.rol.Where<rol>(r => r.estado == true);
             return View(roles.ToList());
         }
@@ -25,6 +33,14 @@ namespace UniffutAdmin.Controllers.Administracion
 
         public ActionResult Details(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var rol = db.rol.First(r => r.idRol.Equals(id));
             return View(rol);
         }
@@ -34,6 +50,14 @@ namespace UniffutAdmin.Controllers.Administracion
 
         public ActionResult Create()
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             return View();
         } 
 
@@ -76,6 +100,14 @@ namespace UniffutAdmin.Controllers.Administracion
  
         public ActionResult Edit(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var rol = db.rol.First(r => r.idRol.Equals(id));
             return View(rol);
         }
@@ -119,6 +151,14 @@ namespace UniffutAdmin.Controllers.Administracion
  
         public ActionResult Delete(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var rol = db.rol.First(r => r.idRol.Equals(id));
             if (!rol.estado)
             {

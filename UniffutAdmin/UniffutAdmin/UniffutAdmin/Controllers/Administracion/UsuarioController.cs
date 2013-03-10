@@ -16,6 +16,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Index()
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var usuarios = db.usuario.Where<usuario>(r => r.estado == true);
             return View(usuarios.ToList());
         }
@@ -25,6 +33,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Details(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var u = db.usuario.First(s => s.idUsuario.Equals(id));
             return View(u);
         }
@@ -34,6 +50,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Create(usuario Usuario)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var viewModel = new UsuarioRolViewModel
             {
                 Roles = db.rol.Where<rol>(d => d.estado == true).ToList(),
@@ -98,6 +122,14 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Edit(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var u = db.usuario.First(s => s.idUsuario.Equals(id));
             var viewModel = new UsuarioRolViewModel
             {
@@ -176,6 +208,14 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Delete(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var u = db.usuario.First(s => s.idUsuario.Equals(id));
             if (!u.estado)
             {

@@ -20,7 +20,7 @@
     <div id="pagina">
         <div id="header">
             <div id="contenedorTitulo">
-                <h1 id="titulo"><%: Html.ActionLink("Admin Uniffut", "Index", "Home")%></h1>
+                <h1 id="titulo">Admin Uniffut</h1>
 
             </div>
             <div id="contenedorMenu">
@@ -35,6 +35,9 @@
             </div>
         </div>
         <div id="contenido">
+        <div id="logOut">
+                <%:Html.ActionLink("Cerrar sesión","LogOut","Home") %>
+        </div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
 
             </asp:ContentPlaceHolder>

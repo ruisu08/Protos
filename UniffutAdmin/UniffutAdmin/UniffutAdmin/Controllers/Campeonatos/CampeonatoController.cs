@@ -16,6 +16,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Index()
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var campeonatos = db.campeonato.Where<campeonato>(r => r.estado == true);
             return View(campeonatos.ToList());
         }
@@ -25,6 +33,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Details(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var campeonato = db.campeonato.First(p => p.idCampeonato.Equals(id));
             return View(campeonato);
         }
@@ -34,6 +50,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Create(campeonato Campeonato)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var viewModel = new CampeonatoDivisionViewModel
             {                
                 Divisiones = db.division.ToList(),
@@ -73,6 +97,14 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Edit(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var campeonato = db.campeonato.First(p => p.idCampeonato.Equals(id));
 
             var viewModel = new CampeonatoDivisionViewModel
@@ -121,6 +153,14 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Delete(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var campeonato = db.campeonato.First(p => p.idCampeonato.Equals(id));
 
             return View(campeonato);

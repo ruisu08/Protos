@@ -16,6 +16,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Index()
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var jugadoras = db.jugadora.Where<jugadora>(r => r.estado == true);  
             return View(jugadoras.ToList());
         }
@@ -25,6 +33,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Details(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var jugadora = db.jugadora.First(p => p.idJugadora.Equals(id));
             return View(jugadora);
         }
@@ -34,6 +50,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Create(jugadora Jugadora)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var viewModel = new JugadoraEquipoViewModel
             {
                 Equipos = db.equipo.Where<equipo>(e=>e.estado == true).ToList(),
@@ -103,6 +127,14 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Edit(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var jugadora = db.jugadora.First(p => p.idJugadora.Equals(id));
 
             var viewModel = new JugadoraEquipoViewModel
@@ -177,6 +209,14 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Delete(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var Jugadora = db.jugadora.First(p => p.idJugadora.Equals(id));
             if (!Jugadora.estado) {
                 ErrorModel error = new ErrorModel { mensaje = "La jugadora ya fue eliminada" };

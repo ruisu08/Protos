@@ -15,6 +15,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Index()
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var calendarios = db.calendario.Where<calendario>(r => r.estado == true);
             return View(calendarios.ToList());
         }
@@ -24,6 +32,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Details(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var calendario = db.calendario.First(p => p.idCalendario.Equals(id));
             return View(calendario);
         }
@@ -33,6 +49,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Create(calendario Calendario)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var viewModel = new CalendarioCampeonatoViewModel
             {
                 Calendario = Calendario,
@@ -97,6 +121,14 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Edit(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var calendario = db.calendario.First(p => p.idCalendario.Equals(id));
             var viewModel = new CalendarioCampeonatoViewModel
             {
@@ -164,6 +196,14 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Delete(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var calendario = db.calendario.First(p => p.idCalendario.Equals(id));
             if (!calendario.estado)
             {

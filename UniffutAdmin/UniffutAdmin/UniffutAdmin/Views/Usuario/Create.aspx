@@ -11,8 +11,6 @@
     <form id="validateForm" action= '<%:Url.Action("Create","Usuario")%>' method="post">
         <%: Html.ValidationSummary(true) %>
 
-        <fieldset>
-            <legend>Información</legend>
             
             <div class="editor-label">
                 <h3>ID</h3>
@@ -73,7 +71,6 @@
             <p>
                 <input type="submit" value="Crear nuevo usuario" />
             </p>
-        </fieldset>
 
     </form>
 

@@ -43,7 +43,7 @@
             </div>
             
             <div class="editor-label">
-                <h3>Divisiones</h3>
+                <h3>División</h3>
             </div>
             <div class="editor-field">
                 <%: Html.DropDownListFor(model => model.equipo.idDivision, new SelectList(Model.divisiones, "idDivisiones","nombre", Model.divisiones.First().idDivisiones))%>

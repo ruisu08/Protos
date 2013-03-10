@@ -16,6 +16,14 @@ namespace UniffutAdmin.Controllers.Divisiones
 
         public ActionResult Index()
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var divisiones = db.division.Where<division>(r => r.estado == true);
             return View(divisiones.ToList());
         }
@@ -25,6 +33,14 @@ namespace UniffutAdmin.Controllers.Divisiones
 
         public ActionResult Details(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var division = db.division.First(p => p.idDivisiones.Equals(id));
             return View(division);
         }
@@ -34,6 +50,14 @@ namespace UniffutAdmin.Controllers.Divisiones
 
         public ActionResult Create()
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             return View();
         } 
 
@@ -73,6 +97,14 @@ namespace UniffutAdmin.Controllers.Divisiones
  
         public ActionResult Edit(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var division = db.division.First(p => p.idDivisiones.Equals(id));
             return View(division);
         }
@@ -118,6 +150,14 @@ namespace UniffutAdmin.Controllers.Divisiones
  
         public ActionResult Delete(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var Division = db.division.FirstOrDefault(p => p.idDivisiones.Equals(id));
             if (!Division.estado) {
                 ErrorModel error = new ErrorModel { mensaje = "La division ya fue eliminada" };

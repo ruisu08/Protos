@@ -1,10 +1,10 @@
 ﻿$(document).ready(function () {
-    $(".opcionMenu").hover(
+    $(".opcionMenu a").hover(
         function () {
-            $(this).animate({ backgroundColor: "#9CBCD9"}, "slow");
+            $(this).parent().animate({ backgroundColor: "#9CBCD9"}, "fast");
         },
         function () {
-            $(this).animate({ backgroundColor: "#5F6F83"}, "fast");
+            $(this).parent().animate({ backgroundColor: "#5F6F83"}, "fast");
         }
     );
 

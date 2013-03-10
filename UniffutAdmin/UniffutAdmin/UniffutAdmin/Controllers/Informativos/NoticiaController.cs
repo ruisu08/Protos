@@ -15,6 +15,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Index()
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var noticias = db.noticia.Where<noticia>(r => r.estado == true);
             return View(db.noticia.ToList());
         }
@@ -24,6 +32,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Details(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var noticia = db.noticia.First(p => p.idNoticia.Equals(id));
             return View(noticia);
         }
@@ -33,6 +49,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Create(noticia Noticia)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var viewModel = new NoticiaViewModel { 
                 Noticia = Noticia,
                 Usuarios = db.usuario.ToList(),
@@ -72,6 +96,14 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Edit(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var noticia = db.noticia.First(p => p.idNoticia.Equals(id));
             var VM = new NoticiaViewModel
             {
@@ -121,6 +153,14 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Delete(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var noticia = db.noticia.First(p => p.idNoticia.Equals(id));
             return View(noticia);
         }

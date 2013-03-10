@@ -16,6 +16,14 @@ namespace UniffutAdmin.Controllers.Campeonatos
 
         public ActionResult Index()
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var posisiones = db.equipo_has_campeonato.Where<equipo_has_campeonato>(r => r.estado == true);
             return View(posisiones.ToList());
         }
@@ -25,6 +33,14 @@ namespace UniffutAdmin.Controllers.Campeonatos
 
         public ActionResult Details(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var tabla = db.equipo_has_campeonato.First(r => r.Equipo_idEquipo.Equals(id));
             return View(tabla);
         }
@@ -34,6 +50,14 @@ namespace UniffutAdmin.Controllers.Campeonatos
 
         public ActionResult Create(equipo_has_campeonato tabla)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var viewModel = new TablaPosicionesEquipoViewModel
             {
                 equipos = db.equipo.ToList(),
@@ -76,6 +100,14 @@ namespace UniffutAdmin.Controllers.Campeonatos
  
         public ActionResult Edit(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var tabla = db.equipo_has_campeonato.First(r => r.Equipo_idEquipo.Equals(id));
             var viewModel = new TablaPosicionesEquipoViewModel
             {
@@ -121,6 +153,14 @@ namespace UniffutAdmin.Controllers.Campeonatos
  
         public ActionResult Delete(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var tablaPos = db.equipo_has_campeonato.First(r => r.Equipo_idEquipo.Equals(id));
             return View(tablaPos);
         }

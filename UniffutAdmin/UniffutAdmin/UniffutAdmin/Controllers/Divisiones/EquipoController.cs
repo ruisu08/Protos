@@ -15,6 +15,12 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Index()
         {
+            if (Session["userID"] == null) { 
+                ErrorModel error = new ErrorModel{
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var equipos = db.equipo.Where<equipo>(r => r.estado == true);
             return View(equipos.ToList());
         }
@@ -24,6 +30,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Details(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var equipo = db.equipo.First(p => p.idEquipo.Equals(id));
             return View(equipo);
         }
@@ -33,6 +47,14 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult Create(equipo Equipo)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var viewModel = new EquipoDivisionesViewModel
             {
                 equipo = Equipo,
@@ -97,6 +119,14 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Edit(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var Equipo = db.equipo.First(p => p.idEquipo.Equals(id));
 
             var viewModel = new EquipoDivisionesViewModel
@@ -176,6 +206,14 @@ namespace UniffutAdmin.Controllers
  
         public ActionResult Delete(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var Equipo = db.equipo.First(p => p.idEquipo.Equals(id));
             if (!Equipo.estado)
             {

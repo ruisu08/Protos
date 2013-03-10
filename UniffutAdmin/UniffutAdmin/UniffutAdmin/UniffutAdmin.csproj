@@ -71,7 +71,6 @@
   <ItemGroup>
     <Compile Include="Controllers\Administracion\RolController.cs" />
     <Compile Include="Controllers\Campeonatos\TablaPosicionesController.cs" />
-    <Compile Include="Controllers\Comunes\LogroController.cs" />
     <Compile Include="Controllers\Campeonatos\CalendarioController.cs" />
     <Compile Include="Controllers\Campeonatos\CampeonatoController.cs" />
     <Compile Include="Controllers\Divisiones\DivisionController.cs" />
@@ -91,6 +90,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\uniffutDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

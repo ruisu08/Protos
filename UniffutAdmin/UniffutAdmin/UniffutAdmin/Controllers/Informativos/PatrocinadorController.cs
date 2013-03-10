@@ -15,6 +15,14 @@ namespace UniffutAdmin.Controllers.Informativos
 
         public ActionResult Index()
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             var patrocinadores = db.patrocinador.Where<patrocinador>(r => r.estado == true);
             return View(patrocinadores.ToList());
         }
@@ -24,6 +32,14 @@ namespace UniffutAdmin.Controllers.Informativos
 
         public ActionResult Details(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             return View();
         }
 
@@ -32,6 +48,14 @@ namespace UniffutAdmin.Controllers.Informativos
 
         public ActionResult Create()
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             return View();
         } 
 
@@ -58,6 +82,14 @@ namespace UniffutAdmin.Controllers.Informativos
  
         public ActionResult Edit(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             return View();
         }
 
@@ -84,6 +116,14 @@ namespace UniffutAdmin.Controllers.Informativos
  
         public ActionResult Delete(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
             return View();
         }
 
