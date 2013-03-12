@@ -60,10 +60,15 @@ namespace UniffutAdmin.Controllers
             }
             var viewModel = new CampeonatoDivisionViewModel
             {                
-                Divisiones = db.division.ToList(),
+                Divisiones = db.division.Where<division>(d => d.estado == true).ToList(),
                 Campeonato = Campeonato
             };
-
+            if (viewModel.Divisiones.Count <= 0)
+            {
+                ErrorModel error = new ErrorModel();
+                error.mensaje = "No existen divisiones, debe crear la division antes de crear el campeonato";
+                return View("Error", error);
+            }
             return View(viewModel);
         } 
 
@@ -75,13 +80,30 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                viewModel.Divisiones = db.division.ToList();
-                viewModel.Campeonato = Campeonato;
-                viewModel.Campeonato.estado = true;
-                db.campeonato.AddObject(viewModel.Campeonato);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (db.division.First(d => d.idDivisiones.Equals(Campeonato.idDivision)).estado != false)
+                {
+                    var oldCampeonato = db.campeonato.FirstOrDefault(e => e.nombre == Campeonato.nombre);
+                    if (oldCampeonato != null)
+                    {
+                        oldCampeonato.nombre = Campeonato.nombre;
+                        oldCampeonato.descripcion = Campeonato.descripcion;
+                        oldCampeonato.idDivision = Campeonato.idDivision;
+                        oldCampeonato.estado = true;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    viewModel.Campeonato = Campeonato;
+                    viewModel.Campeonato.estado = true;
+                    db.campeonato.AddObject(viewModel.Campeonato);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ErrorModel error = new ErrorModel();
+                    error.mensaje = "Otro usuario elimino la division durante la operacion";
+                    return View("Error", error);
+                }
             }
             catch (Exception e)
             {
@@ -109,9 +131,17 @@ namespace UniffutAdmin.Controllers
 
             var viewModel = new CampeonatoDivisionViewModel
             {
-                Divisiones = db.division.ToList(),
+                Divisiones = db.division.Where<division>(d => d.estado == true).ToList(),
                 Campeonato = campeonato
             };
+            if (viewModel.Divisiones.Count <= 0)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "No exiten divisiones debe crear alguna."
+                };
+                return View("Error", error);
+            }
             return View(viewModel);
         }
 
@@ -123,19 +153,40 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-                var campeonato = db.campeonato.First(p => p.idCampeonato.Equals(id));
-
-                viewModel = new CampeonatoDivisionViewModel
+                if (db.division.First(d => d.idDivisiones.Equals(Campeonato.idDivision)).estado != false)
                 {
-                    Divisiones = db.division.ToList(),
-                    Campeonato = campeonato
-                };
+                    var campeonato = db.campeonato.FirstOrDefault(r => r.idCampeonato.Equals(id) && r.estado == true);
+                    if (campeonato != null)
+                    {
+                        viewModel = new CampeonatoDivisionViewModel
+                        {
+                            Campeonato = campeonato,
+                            Divisiones = db.division.Where<division>(d => d.estado == true).ToList()
+                        };
 
-                viewModel.Campeonato.descripcion = Campeonato.descripcion;
-                viewModel.Campeonato.idDivision = Campeonato.idDivision;
-                viewModel.Campeonato.nombre = Campeonato.nombre;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                        viewModel.Campeonato.nombre = Campeonato.nombre;
+                        viewModel.Campeonato.descripcion = Campeonato.descripcion;
+                        viewModel.Campeonato.idDivision = Campeonato.idDivision;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ErrorModel error = new ErrorModel
+                        {
+                            mensaje = "Otro usuario elimino el campeonato durante la operacion"
+                        };
+                        return View("Error", error);
+                    }
+                }
+                else
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "Otro usuario elimino la division durante la operacion"
+                    };
+                    return View("Error", error);
+                }                
             }
             catch (Exception e)
             {
@@ -162,6 +213,14 @@ namespace UniffutAdmin.Controllers
                 return View("Error", error);
             }
             var campeonato = db.campeonato.First(p => p.idCampeonato.Equals(id));
+            if (!campeonato.estado)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "No existen campeonatos"
+                };
+                return View("Error", error);
+            }
 
             return View(campeonato);
         }
@@ -174,11 +233,34 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-                var campeonato = db.campeonato.First(p => p.idCampeonato.Equals(id));
+                var campeonato = db.campeonato.FirstOrDefault(p => p.idCampeonato.Equals(id) && p.estado == true);
+                if (campeonato != null)
+                {
+                    var tablaPosiciones = campeonato.equipo_has_campeonato;
+                    foreach (var x in tablaPosiciones)
+                    {
+                        x.estado = false;
+                    }
+
+                    var calendarioEnCampeonato = campeonato.calendario;
+                    foreach (var x in calendarioEnCampeonato)
+                    {
+                        x.estado = false;
+                    }
+
+                    campeonato.estado = false;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ErrorModel error = new ErrorModel { mensaje = "El campeonato ya fue eliminado" };
+                    return View("Error", error);
+                }
                 campeonato.estado = false;
                 db.SaveChanges();
                 // TODO: Add delete logic here
- 
+
                 return RedirectToAction("Index");
             }
             catch (Exception e)
