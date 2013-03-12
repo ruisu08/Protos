@@ -24,14 +24,28 @@
 
             </div>
             <div id="contenedorMenu">
-                <div class="opcionMenu"><%: Html.ActionLink("Jugadoras", "Index", "Jugadora")%></div>
-                <div class="opcionMenu"><%: Html.ActionLink("Equipos","Index","Equipo")%></div>
-                <div class="opcionMenu"><%: Html.ActionLink("Patroncinadores","Index","Patrocinador")%></div>
-                <div class="opcionMenu"><%: Html.ActionLink("Campeonatos","Index","CampeonatoSubMenu")%></div>
-                <div class="opcionMenu"><%: Html.ActionLink("Noticias/Páginas Informativas","Index","NoticiasSubMenu")%></div>
-                <div class="opcionMenu"><%: Html.ActionLink("Multimedia","Index","MultimediaSubMenu")%></div>
-                <div class="opcionMenu"><%: Html.ActionLink("Divisiones","Index","Division")%></div>
-                <div class="opcionMenu"><%: Html.ActionLink("Administración","Index","Administracion")%></div>
+                <div class="opcionMenu"><h4>Información futbolistica</h4></div>
+                <div class="contenidoOpcion">
+                    <div ><%: Html.ActionLink("Jugadoras", "Index", "Jugadora")%></div>
+                    <div ><%: Html.ActionLink("Equipos","Index","Equipo")%></div>
+                    <div ><%: Html.ActionLink("Divisiones","Index","Division")%></div>
+                    <div ><%: Html.ActionLink("Campeonatos","Index","CampeonatoSubMenu")%></div>
+                </div>
+                <div class="opcionMenu"><h4>Noticias y Páginas informativas</h4></div>
+                <div class="contenidoOpcion">
+                    <div><%: Html.ActionLink("Noticias","Index","Noticia")%></div>
+                    <div><%: Html.ActionLink("Páginas informativas","Index","PaginaInformativa")%></div>
+                </div>
+                    
+                <div class="opcionMenu">
+                    <div><%:Html.ActionLink("Administración de patrocinadores","Index","Patrocinador")%></div>
+                </div>
+                <div class="opcionMenu"><h4>Administración de usuarios</h4></div>
+                <div class="contenidoOpcion">
+                    <div><%: Html.ActionLink("Usuarios", "Index", "Usuario")%></div>
+                    <div><%: Html.ActionLink("Roles","Index","Rol")%></div>
+                </div>
+
             </div>
         </div>
         <div id="contenido">
