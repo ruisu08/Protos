@@ -140,5 +140,20 @@ th
     margin:5px 10px 0 0;
 }
 
+.contenidoOpcion
+{
+    background:#9CBCD9;
+}
+
+.contenidoOpcion a
+{
+    color:#5F6F83;
+} 
+
+.desplegado
+{
+    color:#5F6F83;
+    background:#9CBCD9;    
+}
 
 

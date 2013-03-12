@@ -9,7 +9,7 @@ public partial class Controls_ACMSTextBox_JavaScript_tiny_mce_plugins_FileManage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       /* AuthenticateFileManager();*/
+        AuthenticateFileManager();
         Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
         Response.Cache.SetNoStore();
@@ -17,23 +17,15 @@ public partial class Controls_ACMSTextBox_JavaScript_tiny_mce_plugins_FileManage
 
 
 
-    // chnage this funcation if you want to create your Authenticate 
- /*   public void AuthenticateFileManager()
+  public void AuthenticateFileManager()
     {
-     
-        /* Edit this funcation to  AuthenticateFileManager
-        string SessionID = Request["sessionid"].ToString();
 
-        if (Request.Cookies[SessionID] != null)
-        {
-
-        }
-        else
+        if (Session["userID"] == null)
         {
             Response.Clear();
             Response.Write("Access Denied");
             Response.End();
         }
 
-    }*/
+    }
 }

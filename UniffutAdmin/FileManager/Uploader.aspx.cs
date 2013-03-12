@@ -9,32 +9,25 @@ public partial class FileManager_Uploader : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       /* AuthenticateFileManager();*/
+       AuthenticateFileManager();
     }
 
 
 
-    /*public void AuthenticateFileManager()
+    public void AuthenticateFileManager()
     {
-        /* Edit this funcation to  AuthenticateFileManager
-        string SessionID = Request["sessionid"].ToString();
-
-        if (Request.Cookies[SessionID] != null)
-        {
-
-        }
-        else
+        if (Session["userID"] == null)
         {
             Response.Clear();
             Response.Write("Access Denied");
             Response.End();
         }
 
-    }*/
+    }
 
     protected void bntUpload_Click(object sender, EventArgs e)
     {
-        string FilePath = Server.MapPath(txtPath.Text.Replace("//","/") + FileUpload1.FileName.ToString());
+        string FilePath = "../"+Server.MapPath(txtPath.Text.Replace("//","/") + FileUpload1.FileName.ToString());
         FilePath = HttpUtility.UrlDecode(FilePath);
         if(System.IO.File.Exists(FilePath))
         {

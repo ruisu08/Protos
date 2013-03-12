@@ -12,7 +12,7 @@ public partial class FileManager_Funcations : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         
-       // AuthenticateFileManager();
+       AuthenticateFileManager();
         Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
         Response.Cache.SetNoStore();
@@ -20,7 +20,7 @@ public partial class FileManager_Funcations : System.Web.UI.Page
         {
             if (Request["funcation"].ToString() == "LoadFiles")
             {
-                if (string.IsNullOrEmpty(Request["Path"].ToString()) || Request["Path"].ToString() == "/" || Request["Path"].ToString() == "/UserFiles/")
+                if (string.IsNullOrEmpty(Request["Path"].ToString()) || Request["Path"].ToString() == "/" || Request["Path"].ToString() == "../../UserFiles/")
                 {
                     LoadFiles(ConfigurationManager.AppSettings["FileManager"].ToString());
                 }
@@ -33,7 +33,7 @@ public partial class FileManager_Funcations : System.Web.UI.Page
 
             if (Request["funcation"].ToString() == "FilesULLI")
             {
-                if (string.IsNullOrEmpty(Request["Path"].ToString()) || Request["Path"].ToString() == "/" || Request["Path"].ToString() == "/UserFiles/")
+                if (string.IsNullOrEmpty(Request["Path"].ToString()) || Request["Path"].ToString() == "/" || Request["Path"].ToString() == "../../UserFiles/")
                 {
                     FilesULLI(ConfigurationManager.AppSettings["FileManager"].ToString());
                 }
@@ -46,7 +46,7 @@ public partial class FileManager_Funcations : System.Web.UI.Page
 
             if (Request["funcation"].ToString() == "LoadFilesHTML")
             {
-                if (string.IsNullOrEmpty(Request["Path"].ToString()) || Request["Path"].ToString() == "/" || Request["Path"].ToString() == "/UserFiles/")
+                if (string.IsNullOrEmpty(Request["Path"].ToString()) || Request["Path"].ToString() == "/" || Request["Path"].ToString() == "../../UserFiles/")
                 {
                     LoadFilesHTML(ConfigurationManager.AppSettings["FileManager"].ToString());
                 }
@@ -80,25 +80,19 @@ public partial class FileManager_Funcations : System.Web.UI.Page
         }
     }
 
-    // chnage this funcation if you want to create your Authenticate 
-    /*public void AuthenticateFileManager()
+    public void AuthenticateFileManager()
     {
 
-        /* Edit this funcation to  AuthenticateFileManager
-        string SessionID = Request["sessionid"].ToString();
-
-        if (Request.Cookies[SessionID] != null)
-        {
-
-        }
-        else
+        if (Session["userID"] == null)
         {
             Response.Clear();
             Response.Write("Access Denied");
             Response.End();
         }
        
-    }*/
+    }
+         
+         
    private void FilesULLI(string DirPath)
    {
        DirPath = DirPath.Replace("//", "/");
@@ -116,7 +110,7 @@ public partial class FileManager_Funcations : System.Web.UI.Page
            string iconestring = GetIcone(System.IO.Path.GetExtension(File), out FileType);
            HTML += " <input class='btn' style='float:right;' onclick=OpenFile('" + FileType.ToString() + "','" + (DirPath + "/" + System.IO.Path.GetFileName(File)).Replace(" ", "%20").Replace("//", "/") + "') id='Button1' type='button' value='open' /> ";
            HTML += " <input class='btn' style='float:right;' onclick=InsertFile('" + (DirPath + "/" + System.IO.Path.GetFileName(File)).Replace(" ", "%20").Replace("//","/") + "') id='Button2' type='button' value='insert' /> ";
-           HTML += "<li path='" + (DirPath + "/" + System.IO.Path.GetFileName(File)).Replace(" ", "%20") + "' ondblclick=OpenFile('" + FileType.ToString() + "','" + (DirPath + "/" + System.IO.Path.GetFileName(File)).Replace(" ", "%20").Replace("//", "/") + "') class=ui-widget-content>";
+           HTML += "<li path='" + ("../.." + DirPath + "/" + System.IO.Path.GetFileName(File)).Replace(" ", "%20") + "' ondblclick=OpenFile('" + FileType.ToString() + "','" + ("../.." + DirPath + "/" + System.IO.Path.GetFileName(File)).Replace(" ", "%20").Replace("//", "/") + "') class=ui-widget-content>";
            HTML += "<img style='float:left;' width='25px;' src='" + iconestring + "'/>";
            HTML += "<span float:left;padding-right:20px;>" + System.IO.Path.GetFileName(File) + "</span>";
            HTML += "<br><span float:left;padding-right:20px;>" + f.CreationTime + "</span>";
@@ -131,7 +125,7 @@ public partial class FileManager_Funcations : System.Web.UI.Page
            int FileType;
            HTML += " <input class='btn' style='float:right;' onclick=OpenFile('" + "2" + "','" + (DirPath + "/" + System.IO.Path.GetFileName(Dir)).Replace(" ", "%20").Replace("//", "/") + "') id='Button1' type='button' value='open' /> ";
           // HTML += " <input class='btn' style='float:right;' onclick=InsertFile('" + (DirPath + "/" + System.IO.Path.GetFileName(Dir)).Replace(" ", "%20") + "') id='Button2' type='button' value='insert' /> ";
-           HTML += "<li path='" + (DirPath + "/" + System.IO.Path.GetFileName(Dir)).Replace(" ", "%20") + "'" + " ondblclick=OpenFile('" + "2" + "','" + (DirPath + "/" + System.IO.Path.GetFileName(Dir)).Replace(" ", "%20").Replace("//", "/") + "') class=ui-widget-content>";
+           HTML += "<li path='" + ("../.." + DirPath + "/" + System.IO.Path.GetFileName(Dir)).Replace(" ", "%20") + "'" + " ondblclick=OpenFile('" + "2" + "','" + ("../.." + DirPath + "/" + System.IO.Path.GetFileName(Dir)).Replace(" ", "%20").Replace("//", "/") + "') class=ui-widget-content>";
            HTML += "<img style='float:left;' width='25px;' src='icons/folder-32.png' />";
            HTML += "<span float:left;padding-right:20px;>" + System.IO.Path.GetFileName(Dir) + "</span>";
            HTML += "</li>";
@@ -163,7 +157,7 @@ public partial class FileManager_Funcations : System.Web.UI.Page
             
             FileInfo f = new FileInfo(File);
             int FileType;
-            Json += "{\"FilePath\":\"" + (DirPath + System.IO.Path.GetFileName(File)).Replace(" ","%20") + "\",";
+            Json += "{\"FilePath\":\"" + "../.." + (DirPath + System.IO.Path.GetFileName(File)).Replace(" ", "%20") + "\",";
             Json += "\"FileName\":\"" + System.IO.Path.GetFileName(File) + "\",";
             Json += "\"FileSize\":\"" + f.Length.ToString() + " bytes" + "\",";
             Json += "\"Fileicon\":\"" + GetIcone(System.IO.Path.GetExtension(File), out FileType) + "\",";
@@ -175,7 +169,7 @@ public partial class FileManager_Funcations : System.Web.UI.Page
         foreach (string Dir in Directorys)
         {
 
-            Json += "{\"FilePath\":\"" + (DirPath + Path.GetFileName(Dir)).Replace(" ", "%20") + "/" + "\",";
+            Json += "{\"FilePath\":\"" + "../.." + (DirPath + Path.GetFileName(Dir)).Replace(" ", "%20") + "/" + "\",";
             Json += "\"FileName\":\"" + Path.GetFileName(Dir) + "\",";
             Json += "\"FileType\":\"" + "2" + "\",";
             Json += "\"FileSize\":\"" + "" + "\",";
@@ -199,7 +193,7 @@ public partial class FileManager_Funcations : System.Web.UI.Page
         string html = "";
         if (DirPath == "0")
         {
-            html += "<li path='" + ConfigurationManager.AppSettings["FileManager"].ToString() + "' class='jstree-closed' id='root2'><a onclick=LoadFiles('" + ConfigurationManager.AppSettings["FileManager"].ToString() + "') href='#'>" + "Root" + "</a></li>";
+            html +="<li path='" + ConfigurationManager.AppSettings["FileManager"].ToString() + "' class='jstree-closed' id='root2'><a onclick=LoadFiles('" + ConfigurationManager.AppSettings["FileManager"].ToString() + "') href='#'>" + "Root" + "</a></li>";
         }
         else
         {

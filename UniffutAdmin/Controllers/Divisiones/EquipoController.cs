@@ -128,7 +128,7 @@ namespace UniffutAdmin.Controllers
                 return View("Error", error);
             }
             var Equipo = db.equipo.First(p => p.idEquipo.Equals(id));
-
+            Equipo.historia = new HtmlString(HttpUtility.HtmlDecode(Equipo.historia)).ToString(); 
             var viewModel = new EquipoDivisionesViewModel
             {
                 equipo = Equipo,

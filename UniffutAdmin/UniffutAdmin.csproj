@@ -372,6 +372,9 @@
     <Content Include="Scripts\tiny_mce\utils\form_utils.js" />
     <Content Include="Scripts\tiny_mce\utils\mctabs.js" />
     <Content Include="Scripts\tiny_mce\utils\validate.js" />
+    <Content Include="UserFiles\2628376325_68c642a9ee_o.png" />
+    <Content Include="UserFiles\Atrapitis.gif" />
+    <Content Include="UserFiles\Misc-FuckOff.jpg" />
     <Content Include="Views\Administracion\Index.aspx" />
     <Content Include="Views\Calendario\Create.aspx" />
     <Content Include="Views\Calendario\Delete.aspx" />
@@ -453,7 +456,6 @@
   <ItemGroup>
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\classes\utils\" />
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\includes\" />
-    <Folder Include="UserFiles\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
