@@ -27,7 +27,7 @@ public partial class FileManager_Uploader : System.Web.UI.Page
 
     protected void bntUpload_Click(object sender, EventArgs e)
     {
-        string FilePath = "../"+Server.MapPath(txtPath.Text.Replace("//","/") + FileUpload1.FileName.ToString());
+        string FilePath = Server.MapPath(txtPath.Text.Replace("//","/") + FileUpload1.FileName.ToString());
         FilePath = HttpUtility.UrlDecode(FilePath);
         if(System.IO.File.Exists(FilePath))
         {

@@ -86,7 +86,7 @@ namespace UniffutAdmin.Controllers
                         oldEquipo.abreviatura = Equipo.abreviatura;
                         oldEquipo.campeonatosGanados = Equipo.campeonatosGanados;
                         oldEquipo.idDivision = Equipo.idDivision;
-                        oldEquipo.historia = Equipo.historia;
+                        //oldEquipo.historia = Equipo.historia;
                         oldEquipo.estado = true;
                         db.SaveChanges();
                         return RedirectToAction("Index");
@@ -128,7 +128,9 @@ namespace UniffutAdmin.Controllers
                 return View("Error", error);
             }
             var Equipo = db.equipo.First(p => p.idEquipo.Equals(id));
-            Equipo.historia = new HtmlString(HttpUtility.HtmlDecode(Equipo.historia)).ToString(); 
+            if(Equipo.historia != null){
+                Equipo.historia = new HtmlString(HttpUtility.HtmlDecode(Equipo.historia)).ToString(); 
+            }
             var viewModel = new EquipoDivisionesViewModel
             {
                 equipo = Equipo,

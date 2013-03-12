@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
@@ -358,6 +359,7 @@ namespace UniffutAdmin.Models
         private ObjectSet<multimedia> _multimedia;
 
         #endregion
+
         #region Métodos AddTo
     
         /// <summary>
@@ -497,11 +499,11 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entidades
     
     /// <summary>
@@ -532,6 +534,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -634,6 +637,7 @@ namespace UniffutAdmin.Models
         partial void OnestadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -698,6 +702,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -728,6 +733,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -830,6 +836,7 @@ namespace UniffutAdmin.Models
         partial void OnestadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -894,6 +901,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -926,6 +934,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1052,6 +1061,7 @@ namespace UniffutAdmin.Models
         partial void OnestadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1094,6 +1104,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1126,6 +1137,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1252,6 +1264,7 @@ namespace UniffutAdmin.Models
         partial void OnidCampeonatoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1294,6 +1307,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1326,6 +1340,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1452,6 +1467,7 @@ namespace UniffutAdmin.Models
         partial void OnestadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1538,6 +1554,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1576,6 +1593,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1774,6 +1792,7 @@ namespace UniffutAdmin.Models
         partial void OnestadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1816,6 +1835,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1848,6 +1868,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1974,6 +1995,7 @@ namespace UniffutAdmin.Models
         partial void OnestadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2022,6 +2044,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2058,6 +2081,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2138,7 +2162,7 @@ namespace UniffutAdmin.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String historia
         {
@@ -2150,7 +2174,7 @@ namespace UniffutAdmin.Models
             {
                 OnhistoriaChanging(value);
                 ReportPropertyChanging("historia");
-                _historia = StructuralObject.SetValidValue(value, false);
+                _historia = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("historia");
                 OnhistoriaChanged();
             }
@@ -2256,6 +2280,7 @@ namespace UniffutAdmin.Models
         partial void OnescudoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2386,6 +2411,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2412,6 +2438,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2517,6 +2544,7 @@ namespace UniffutAdmin.Models
         partial void OnestadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2597,6 +2625,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2637,6 +2666,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2859,6 +2889,7 @@ namespace UniffutAdmin.Models
         partial void OnnacionalidadChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2923,6 +2954,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2951,6 +2983,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3053,6 +3086,7 @@ namespace UniffutAdmin.Models
         partial void OnestadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3101,6 +3135,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3137,6 +3172,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3311,6 +3347,7 @@ namespace UniffutAdmin.Models
         partial void OnTipoNoticia_idTipoNoticiaChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3391,6 +3428,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3425,6 +3463,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3575,6 +3614,7 @@ namespace UniffutAdmin.Models
         partial void OnautorChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3617,6 +3657,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3653,6 +3694,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3827,6 +3869,7 @@ namespace UniffutAdmin.Models
         partial void OnfuenteGraficaChanged();
 
         #endregion
+
     
     }
     
@@ -3858,6 +3901,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3960,6 +4004,7 @@ namespace UniffutAdmin.Models
         partial void OnnombreChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3986,6 +4031,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4014,6 +4060,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4092,6 +4139,7 @@ namespace UniffutAdmin.Models
         partial void OnnombreChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -4118,6 +4166,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4158,6 +4207,7 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4380,6 +4430,7 @@ namespace UniffutAdmin.Models
         partial void OnidentificacionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -4488,8 +4539,10 @@ namespace UniffutAdmin.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }
