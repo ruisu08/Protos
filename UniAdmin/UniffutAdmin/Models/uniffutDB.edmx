@@ -226,7 +226,7 @@
           <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="apellidos" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="fechaNacimiento" Type="date" Nullable="false" />
-          <Property Name="historia" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="historia" Type="varchar" MaxLength="500" />
           <Property Name="Equipo_idEquipo" Type="int" Nullable="false" />
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="identificacion" Type="int" Nullable="false" />
@@ -255,7 +255,7 @@
           <Property Name="idNoticia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="titulo" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="fecha" Type="date" Nullable="false" />
-          <Property Name="contenido" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="contenido" Type="varchar" MaxLength="2000" />
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="autor" Type="int" Nullable="false" />
           <Property Name="TipoNoticia_idTipoNoticia" Type="int" Nullable="false" />
@@ -267,7 +267,7 @@
           <Property Name="idPagina Informativa" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="titulo" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="fecha" Type="date" Nullable="false" />
-          <Property Name="contenido" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="contenido" Type="varchar" MaxLength="2000" />
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="autor" Type="int" Nullable="false" />
         </EntityType>
@@ -281,7 +281,7 @@
           <Property Name="fechaIngreso" Type="date" Nullable="false" />
           <Property Name="fechaSalida" Type="date" Nullable="false" />
           <Property Name="estado" Type="bool" Nullable="false" />
-          <Property Name="fuenteGrafica" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="fuenteGrafica" Type="varchar" MaxLength="2000" />
         </EntityType>
         <EntityType Name="rol">
           <Key>
