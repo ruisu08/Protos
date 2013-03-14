@@ -1,23 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.rol>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Detalles
+	Detalles de rol
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>Detalles</h2>
-    <div>
-    <ul>
-    <li><h3>ID</h3></li>
-    <li><%: Model.idRol %></li>
-     <li><h3>Nombre</h3></li>
-    <li><%: Model.nombre %></li>
-    <li><h3>Descripción</h3></li>
-    <li><%: Model.descripcion %></li>
-    <li><h3>Estado</h3></li>
-    <li><%: (bool)Model.estado ? "Activo" : "Inactivo"%></li>
-    </ul>
+    <div id="detallesTitulo">
+        <h1>Detalles del Rol:</h1>
+        <h2><%:" "+Model.nombre%></h2>
     </div>
-    <div><%:Html.ActionLink("Volver a la lista de roles", "Index") %></div>
+    <div id="detallesWrapper">
+        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.idRol %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Nombre</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.nombre %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Descripción</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.descripcion %></h4></div>
+        <div  class="nombrePropiedadDetalle"><h3>Modulos</h3></div>
+        <%foreach(var a in Model.modulo.ToList()) {%>
+        <div class="propiedadDetalle"><h4><%:a.nombre%></h4></div>    
+        <% }%>
+    </div>
+    <div id="volverIndex">
+        <h2><%:Html.ActionLink("Volver a la lista de roles", "Index") %></h2>
+     </div>
 </asp:Content>

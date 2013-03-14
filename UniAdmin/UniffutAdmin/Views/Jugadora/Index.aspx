@@ -5,9 +5,24 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>Jugadoras</h2>
-
+<div id="headerContenido">
+    <div id="tituloContenido">
+    <h1>Jugadoras</h1>
+    <h4 id="descripcionController">Aqui es donde puedes ver,editar,agregar y eliminar la información de las jugadoras así con sus fotos y videos</h4>
+    </div>
+    <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Jugadora")%>' method="post">
+            <p>Buscar por identificación</p>
+            <input type="text" name="identificacion" />
+            <input id="botonBusqueda" type=submit value="buscar"/>
+        </form>
+    </div>
+</div>
+<div id="tableWrapper">
+    <div>
+        <h3><%: Html.ActionLink("Añadir jugadora", "Create") %></h3>
+        <h2>Lista de jugadoras:</h2>
+    </div>
     <table id="indTable">
         <tr>
             <th></th>
@@ -35,9 +50,16 @@
     
         <tr>
             <td>
-                <%: Html.ActionLink("Actualizar datos", "Edit", new { id=item.idJugadora }) %> |
-                <%: Html.ActionLink("Datos en detalle", "Details", new { id=item.idJugadora })%> |
-                <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idJugadora })%>
+            <div class="opcionCrud">
+                <h5><%: Html.ActionLink("Actualizar datos", "Edit", new { id=item.idJugadora }) %></h5>
+            </div>
+            <div class="opcionCrud">
+                <h5><%: Html.ActionLink("Datos en detalle", "Details", new { id=item.idJugadora })%></h5>
+            </div>
+            <div class="opcionCrud">
+                <h5><%: Html.ActionLink("Eliminar", "Delete", new { id=item.idJugadora })%></h5>
+            </div>
+
             </td>
             <td>
                 <%: item.identificacion %>
@@ -69,10 +91,8 @@
     <% } %>
 
     </table>
+</div>
 
-    <p>
-        <%: Html.ActionLink("Añadir jugadora a la lista", "Create") %>
-    </p>
-
+ 
 </asp:Content>
 

@@ -35,6 +35,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("uniffut", "album_Jugadora1", "jugadora", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.jugadora), "album_jugadora", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.album_jugadora), true)]
 [assembly: EdmRelationshipAttribute("uniffut", "album_multimedia_equipo", "album_equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.album_equipo), "multimedia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.multimedia))]
 [assembly: EdmRelationshipAttribute("uniffut", "album_multimedia_jugadora", "album_jugadora", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.album_jugadora), "multimedia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.multimedia))]
+[assembly: EdmRelationshipAttribute("uniffut", "rol_tiene_modulo", "modulo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.modulo), "rol", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.rol))]
 
 #endregion
 
@@ -357,6 +358,22 @@ namespace UniffutAdmin.Models
             }
         }
         private ObjectSet<multimedia> _multimedia;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<modulo> modulo
+        {
+            get
+            {
+                if ((_modulo == null))
+                {
+                    _modulo = base.CreateObjectSet<modulo>("modulo");
+                }
+                return _modulo;
+            }
+        }
+        private ObjectSet<modulo> _modulo;
 
         #endregion
 
@@ -496,6 +513,14 @@ namespace UniffutAdmin.Models
         public void AddTomultimedia(multimedia multimedia)
         {
             base.AddObject("multimedia", multimedia);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet modulo. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddTomodulo(modulo modulo)
+        {
+            base.AddObject("modulo", modulo);
         }
 
         #endregion
@@ -2162,7 +2187,7 @@ namespace UniffutAdmin.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String historia
         {
@@ -2174,7 +2199,7 @@ namespace UniffutAdmin.Models
             {
                 OnhistoriaChanging(value);
                 ReportPropertyChanging("historia");
-                _historia = StructuralObject.SetValidValue(value, true);
+                _historia = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("historia");
                 OnhistoriaChanged();
             }
@@ -2949,6 +2974,115 @@ namespace UniffutAdmin.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<album_jugadora>("uniffut.album_Jugadora1", "album_jugadora", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="uniffut", Name="modulo")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class modulo : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto modulo.
+        /// </summary>
+        /// <param name="idModulo">Valor inicial de la propiedad idModulo.</param>
+        /// <param name="nombre">Valor inicial de la propiedad nombre.</param>
+        public static modulo Createmodulo(global::System.Int32 idModulo, global::System.String nombre)
+        {
+            modulo modulo = new modulo();
+            modulo.idModulo = idModulo;
+            modulo.nombre = nombre;
+            return modulo;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idModulo
+        {
+            get
+            {
+                return _idModulo;
+            }
+            set
+            {
+                if (_idModulo != value)
+                {
+                    OnidModuloChanging(value);
+                    ReportPropertyChanging("idModulo");
+                    _idModulo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idModulo");
+                    OnidModuloChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idModulo;
+        partial void OnidModuloChanging(global::System.Int32 value);
+        partial void OnidModuloChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                OnnombreChanging(value);
+                ReportPropertyChanging("nombre");
+                _nombre = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("nombre");
+                OnnombreChanged();
+            }
+        }
+        private global::System.String _nombre;
+        partial void OnnombreChanging(global::System.String value);
+        partial void OnnombreChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "rol_tiene_modulo", "rol")]
+        public EntityCollection<rol> rol
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<rol>("uniffut.rol_tiene_modulo", "rol");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<rol>("uniffut.rol_tiene_modulo", "rol", value);
                 }
             }
         }
@@ -4026,6 +4160,28 @@ namespace UniffutAdmin.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<usuario>("uniffut.fk_Usuario_Rol1", "usuario", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "rol_tiene_modulo", "modulo")]
+        public EntityCollection<modulo> modulo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<modulo>("uniffut.rol_tiene_modulo", "modulo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<modulo>("uniffut.rol_tiene_modulo", "modulo", value);
                 }
             }
         }

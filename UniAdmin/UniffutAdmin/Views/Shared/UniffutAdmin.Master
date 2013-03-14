@@ -7,6 +7,7 @@
 <head runat="server">
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
     <link rel="Stylesheet" href="../../Content/Site.css" />
+    <link rel="Stylesheet" href="../../Content/ContentSS.css"/>
     <script type="text/javascript" src="../../Scripts/JQ1.6.4.js"></script>
     <script type="text/javascript" src="../../Scripts/jquery-ui-1.10.1.custom.min.js"></script>
     <script type="text/javascript" src="../../Scripts/dpLanguage.js"></script>
@@ -26,24 +27,24 @@
             <div id="contenedorMenu">
                 <div class="opcionMenu"><h4>Información futbolistica</h4></div>
                 <div class="contenidoOpcion">
-                    <div ><%: Html.ActionLink("Jugadoras", "Index", "Jugadora")%></div>
-                    <div ><%: Html.ActionLink("Equipos","Index","Equipo")%></div>
-                    <div ><%: Html.ActionLink("Divisiones","Index","Division")%></div>
-                    <div ><%: Html.ActionLink("Campeonatos","Index","CampeonatoSubMenu")%></div>
+                    <h5><%: Html.ActionLink("Jugadoras", "Index", "Jugadora")%></h5>
+                    <h5><%: Html.ActionLink("Equipos","Index","Equipo")%></h5>
+                    <h5><%: Html.ActionLink("Divisiones","Index","Division")%></h5>
+                    <h5><%: Html.ActionLink("Campeonatos","Index","CampeonatoSubMenu")%></h5>
                 </div>
                 <div class="opcionMenu"><h4>Noticias y Páginas informativas</h4></div>
                 <div class="contenidoOpcion">
-                    <div><%: Html.ActionLink("Noticias","Index","Noticia")%></div>
-                    <div><%: Html.ActionLink("Páginas informativas","Index","PaginaInformativa")%></div>
+                    <h5><%: Html.ActionLink("Noticias","Index","Noticia")%></h5>
+                    <h5><%: Html.ActionLink("Páginas informativas","Index","PaginaInformativa")%></h5>
                 </div>
                     
                 <div class="opcionMenu">
-                    <div><%:Html.ActionLink("Administración de patrocinadores","Index","Patrocinador")%></div>
+                    <h4><%:Html.ActionLink("Administración de patrocinadores","Index","Patrocinador")%></h4>
                 </div>
                 <div class="opcionMenu"><h4>Administración de usuarios</h4></div>
                 <div class="contenidoOpcion">
-                    <div><%: Html.ActionLink("Usuarios", "Index", "Usuario")%></div>
-                    <div><%: Html.ActionLink("Roles","Index","Rol")%></div>
+                    <h5><%: Html.ActionLink("Usuario","Index","Usuario")%></h5>
+                    <h5><%: Html.ActionLink("Roles","Index","Rol")%></h5>
                 </div>
 
             </div>
@@ -52,9 +53,10 @@
         <div id="logOut">
                 <%:Html.ActionLink("Cerrar sesión","LogOut","Home") %>
         </div>
+            <div id="contenidoEspecifico">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
-
             </asp:ContentPlaceHolder>
+            </div>
         </div>
     </div>
 </body>

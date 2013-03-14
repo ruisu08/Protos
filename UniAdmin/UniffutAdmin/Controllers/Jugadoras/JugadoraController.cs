@@ -255,5 +255,11 @@ namespace UniffutAdmin.Controllers
                 return View("Error", error);
             }
         }
+
+        public ActionResult Search(int Identificacion) {
+
+            var jugadora = db.jugadora.FirstOrDefault(j => j.identificacion == Identificacion);
+            return View("Index",jugadora);
+        }
     }
 }

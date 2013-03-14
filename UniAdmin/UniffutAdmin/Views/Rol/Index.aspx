@@ -5,15 +5,29 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<div id="headerContenido">
+    <div id="tituloContenido">
+    <h1>Roles</h1>
+    <h6 id="descripcionController">Aquí puedes ver los tipos de usuarios existentes y a que partes del sistema tiene acceso, puedes crear un tipo de usuario nuevo también</h6>
+    </div>
+    <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Jugadora")%>' method="post">
+            <p>Buscar por nombre</p>
+            <input type="text" name="identificacion" />
+            <input id="botonBusqueda" type=submit value="buscar"/>
+        </form>
+    </div>
+</div>
 
-    <h2>Roles</h2>
+<div>
+    <h2>Lista de jugadoras:</h2>
+    <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Rol", "Create") %></h3>
+</div>
 
-    <table>
+<div id="tableWrapper">
+    <table id="indTable">
         <tr>
             <th></th>
-            <th>
-                ID
-            </th>
             <th>
                 Nombre
             </th>
@@ -27,12 +41,20 @@
     
         <tr>
             <td>
-                <%: Html.ActionLink("Editar", "Edit", new { id=item.idRol }) %> |
-                <%: Html.ActionLink("Detalles", "Details", new { id=item.idRol })%> |
-                <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idRol })%>
-            </td>
-            <td>
-                <%: item.idRol %>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Editar Rol", "Edit", new { id=item.idRol}) %>
+            </div>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Detalles del Rol", "Details", new { id=item.idRol })%>
+            </div>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Eliminar este Rol", "Delete", new { id=item.idRol })%>
+            </div>
+
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Asignar permisos a rol", "asignarModulosARol", new { id = item.idRol })%>
+            </div>
+
             </td>
             <td>
                 <%: item.nombre %>
@@ -46,10 +68,8 @@
     <% } %>
 
     </table>
+</div>
 
-    <p>
-        <%: Html.ActionLink("Crear nuevo rol", "Create") %>
-    </p>
 
 </asp:Content>
 

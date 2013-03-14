@@ -75,11 +75,7 @@
     <Compile Include="Controllers\Campeonatos\CampeonatoController.cs" />
     <Compile Include="Controllers\Divisiones\DivisionController.cs" />
     <Compile Include="Controllers\Divisiones\EquipoController.cs" />
-    <Compile Include="Controllers\EstructuraDePagina\AdministracionController.cs" />
-    <Compile Include="Controllers\EstructuraDePagina\CampeonatoSubMenuController.cs" />
     <Compile Include="Controllers\EstructuraDePagina\HomeController.cs" />
-    <Compile Include="Controllers\EstructuraDePagina\MultimediaSubMenuController.cs" />
-    <Compile Include="Controllers\EstructuraDePagina\NoticiasSubMenuController.cs" />
     <Compile Include="Controllers\Informativos\PaginaInformativaController.cs" />
     <Compile Include="Controllers\Informativos\PatrocinadorController.cs" />
     <Compile Include="Controllers\Jugadoras\JugadoraController.cs" />
@@ -101,11 +97,13 @@
     <Compile Include="Models\ViewModels\EquipoDivisionesViewModel.cs" />
     <Compile Include="Models\ViewModels\JugadoraEquipoViewModel.cs" />
     <Compile Include="Models\ViewModels\NoticiaViewModel.cs" />
+    <Compile Include="Models\ViewModels\RolModuloViewModel.cs" />
     <Compile Include="Models\ViewModels\TablaPosicionesEquipoViewModel.cs" />
     <Compile Include="Models\ViewModels\UsuarioRolViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\ContentSS.css" />
     <Content Include="Content\jquery-ui-1.10.1.custom.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -375,13 +373,11 @@
     <Content Include="UserFiles\2628376325_68c642a9ee_o.png" />
     <Content Include="UserFiles\Atrapitis.gif" />
     <Content Include="UserFiles\Misc-FuckOff.jpg" />
-    <Content Include="Views\Administracion\Index.aspx" />
     <Content Include="Views\Calendario\Create.aspx" />
     <Content Include="Views\Calendario\Delete.aspx" />
     <Content Include="Views\Calendario\Details.aspx" />
     <Content Include="Views\Calendario\Edit.aspx" />
     <Content Include="Views\Calendario\Index.aspx" />
-    <Content Include="Views\CampeonatoSubMenu\Index.aspx" />
     <Content Include="Views\Campeonato\Create.aspx" />
     <Content Include="Views\Campeonato\Delete.aspx" />
     <Content Include="Views\Campeonato\Details.aspx" />
@@ -403,9 +399,6 @@
     <Content Include="Views\Jugadora\Details.aspx" />
     <Content Include="Views\Jugadora\Edit.aspx" />
     <Content Include="Views\Jugadora\Index.aspx" />
-    <Content Include="Views\Logro\Index.aspx" />
-    <Content Include="Views\MultimediaSubMenu\Index.aspx" />
-    <Content Include="Views\NoticiasSubMenu\Index.aspx" />
     <Content Include="Views\Noticia\Create.aspx" />
     <Content Include="Views\Noticia\Delete.aspx" />
     <Content Include="Views\Noticia\Details.aspx" />
@@ -413,6 +406,7 @@
     <Content Include="Views\Noticia\Index.aspx" />
     <Content Include="Views\PaginaInformativa\Index.aspx" />
     <Content Include="Views\Patrocinador\Index.aspx" />
+    <Content Include="Views\Rol\asignarModulosARol.aspx" />
     <Content Include="Views\Rol\Create.aspx" />
     <Content Include="Views\Rol\Delete.aspx" />
     <Content Include="Views\Rol\Details.aspx" />

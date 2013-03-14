@@ -18,11 +18,13 @@
           <EntitySet Name="equipo" EntityType="uniffut.Store.equipo" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="equipo_has_campeonato" EntityType="uniffut.Store.equipo_has_campeonato" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="jugadora" EntityType="uniffut.Store.jugadora" store:Type="Tables" Schema="uniffut" />
+          <EntitySet Name="modulo" EntityType="uniffut.Store.modulo" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="multimedia" EntityType="uniffut.Store.multimedia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="noticia" EntityType="uniffut.Store.noticia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="pagina informativa" EntityType="uniffut.Store.pagina informativa" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="patrocinador" EntityType="uniffut.Store.patrocinador" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="rol" EntityType="uniffut.Store.rol" store:Type="Tables" Schema="uniffut" />
+          <EntitySet Name="rol_tiene_modulo" EntityType="uniffut.Store.rol_tiene_modulo" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="tiponoticia" EntityType="uniffut.Store.tiponoticia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="usuario" EntityType="uniffut.Store.usuario" store:Type="Tables" Schema="uniffut" />
           <AssociationSet Name="album_has_equipo" Association="uniffut.Store.album_has_equipo">
@@ -81,6 +83,10 @@
             <End Role="rol" EntitySet="rol" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
+          <AssociationSet Name="modulo_RolTieneModulo" Association="uniffut.Store.modulo_RolTieneModulo">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="rol_tiene_modulo" EntitySet="rol_tiene_modulo" />
+          </AssociationSet>
           <AssociationSet Name="R_album_multimedia" Association="uniffut.Store.R_album_multimedia">
             <End Role="album_jugadora" EntitySet="album_jugadora" />
             <End Role="album_multimedia_jugadora" EntitySet="album_multimedia_jugadora" />
@@ -96,6 +102,10 @@
           <AssociationSet Name="R_multimedia_albumEquipo" Association="uniffut.Store.R_multimedia_albumEquipo">
             <End Role="multimedia" EntitySet="multimedia" />
             <End Role="album_multimedia_equipo" EntitySet="album_multimedia_equipo" />
+          </AssociationSet>
+          <AssociationSet Name="rol_RolTieneModulo" Association="uniffut.Store.rol_RolTieneModulo">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rol_tiene_modulo" EntitySet="rol_tiene_modulo" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="album_equipo">
@@ -222,6 +232,13 @@
           <Property Name="identificacion" Type="int" Nullable="false" />
           <Property Name="nacionalidad" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="idModulo" />
+          </Key>
+          <Property Name="idModulo" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
         <EntityType Name="multimedia">
           <Key>
             <PropertyRef Name="idMultimedia" />
@@ -274,6 +291,14 @@
           <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="rol_tiene_modulo">
+          <Key>
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="idModulo" />
+          </Key>
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="idModulo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tiponoticia">
           <Key>
@@ -465,6 +490,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="modulo_RolTieneModulo">
+          <End Role="modulo" Type="uniffut.Store.modulo" Multiplicity="1" />
+          <End Role="rol_tiene_modulo" Type="uniffut.Store.rol_tiene_modulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="idModulo" />
+            </Principal>
+            <Dependent Role="rol_tiene_modulo">
+              <PropertyRef Name="idModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="R_album_multimedia">
           <End Role="album_jugadora" Type="uniffut.Store.album_jugadora" Multiplicity="1" />
           <End Role="album_multimedia_jugadora" Type="uniffut.Store.album_multimedia_jugadora" Multiplicity="*" />
@@ -510,6 +547,18 @@
             </Principal>
             <Dependent Role="album_multimedia_equipo">
               <PropertyRef Name="idMultimedia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rol_RolTieneModulo">
+          <End Role="rol" Type="uniffut.Store.rol" Multiplicity="1" />
+          <End Role="rol_tiene_modulo" Type="uniffut.Store.rol_tiene_modulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="rol_tiene_modulo">
+              <PropertyRef Name="idRol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -598,6 +647,11 @@
           <AssociationSet Name="album_multimedia_jugadora" Association="uniffut.album_multimedia_jugadora">
             <End Role="album_jugadora" EntitySet="album_jugadora" />
             <End Role="multimedia" EntitySet="multimedia" />
+          </AssociationSet>
+          <EntitySet Name="modulo" EntityType="uniffut.modulo" />
+          <AssociationSet Name="rol_tiene_modulo" Association="uniffut.rol_tiene_modulo">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="rol" EntitySet="rol" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="bitacora">
@@ -754,6 +808,7 @@
           <Property Name="estado" Type="Boolean" Nullable="false" />
           <Property Name="nombre" Type="String" Nullable="false" />
           <NavigationProperty Name="usuario" Relationship="uniffut.fk_Usuario_Rol1" FromRole="rol" ToRole="usuario" />
+          <NavigationProperty Name="modulo" Relationship="uniffut.rol_tiene_modulo" FromRole="rol" ToRole="modulo" />
         </EntityType>
         <EntityType Name="tiponoticia">
           <Key>
@@ -991,6 +1046,18 @@
           <End Type="uniffut.album_jugadora" Role="album_jugadora" Multiplicity="*" />
           <End Type="uniffut.multimedia" Role="multimedia" Multiplicity="*" />
         </Association>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="idModulo" />
+          </Key>
+          <Property Type="Int32" Name="idModulo" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" />
+          <NavigationProperty Name="rol" Relationship="uniffut.rol_tiene_modulo" FromRole="modulo" ToRole="rol" />
+        </EntityType>
+        <Association Name="rol_tiene_modulo">
+          <End Type="uniffut.modulo" Role="modulo" Multiplicity="*" />
+          <End Type="uniffut.rol" Role="rol" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1212,6 +1279,22 @@
               <ScalarProperty Name="idAlbum_Jugadora" ColumnName="idAlbum" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="modulo">
+            <EntityTypeMapping TypeName="uniffut.modulo">
+              <MappingFragment StoreEntitySet="modulo">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="rol_tiene_modulo" TypeName="uniffut.rol_tiene_modulo" StoreEntitySet="rol_tiene_modulo">
+            <EndProperty Name="rol">
+              <ScalarProperty Name="idRol" ColumnName="idRol" />
+            </EndProperty>
+            <EndProperty Name="modulo">
+              <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+            </EndProperty>
+          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1298,8 +1381,8 @@
           <ConnectorPoint PointX="12.75" PointY="16.307444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Usuario_Rol1" ManuallyRouted="false">
-          <ConnectorPoint PointX="9.75" PointY="7.9421744791666669" />
-          <ConnectorPoint PointX="10.5" PointY="7.9421744791666669" />
+          <ConnectorPoint PointX="9.75" PointY="8.5862939453125" />
+          <ConnectorPoint PointX="10.5" PointY="8.5862939453125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="uniffut.album_equipo" Width="1.5" PointX="5.25" PointY="20.125" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="uniffut.album_jugadora" Width="1.5" PointX="7.5" PointY="23" Height="1.9802864583333388" />
@@ -1325,6 +1408,12 @@
           <ConnectorPoint PointX="9" PointY="24.87248860677083" />
           <ConnectorPoint PointX="13.5" PointY="24.87248860677083" />
           <ConnectorPoint PointX="13.5" PointY="23.797587890624996" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="uniffut.modulo" Width="1.5" PointX="6" PointY="5.75" Height="1.5956835937500031" />
+        <AssociationConnector Association="uniffut.rol_tiene_modulo" >
+          <ConnectorPoint PointX="7.5" PointY="6.5478417968750016" />
+          <ConnectorPoint PointX="9" PointY="6.5478417968750016" />
+          <ConnectorPoint PointX="9" PointY="7.5" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>
