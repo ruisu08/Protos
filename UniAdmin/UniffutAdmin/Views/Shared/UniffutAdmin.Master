@@ -31,7 +31,7 @@
                     <h5><%: Html.ActionLink("Jugadoras", "Index", "Jugadora")%></h5>
                     <h5><%: Html.ActionLink("Equipos","Index","Equipo")%></h5>
                     <h5><%: Html.ActionLink("Divisiones","Index","Division")%></h5>
-                    <h5><%: Html.ActionLink("Campeonatos","Index","CampeonatoSubMenu")%></h5>
+                    <h5><%: Html.ActionLink("Campeonatos","Index","Campeonato")%></h5>
                 </div>
                 <div class="opcionMenu"><h4>Noticias y Páginas informativas</h4></div>
                 <div class="contenidoOpcion">
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div id="contenido">
-        <div id="logOut">
+        <div id="logOut" class="opcionCrud">
                 <%:Html.ActionLink("Cerrar sesión","LogOut","Home") %>
         </div>
             <div id="contenidoEspecifico">
