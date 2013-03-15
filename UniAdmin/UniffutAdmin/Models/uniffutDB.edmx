@@ -203,7 +203,7 @@
           <Property Name="abreviatura" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="historia" Type="varchar" MaxLength="500" />
-          <Property Name="campeonatosGanados" Type="int" Nullable="false" />
+          <Property Name="campeonatosGanados" Type="int" />
           <Property Name="idDivision" Type="int" Nullable="false" />
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="escudo" Type="varchar" MaxLength="100" />

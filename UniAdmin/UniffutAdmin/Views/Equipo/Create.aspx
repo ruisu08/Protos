@@ -27,16 +27,6 @@
                 <%: Html.ValidationMessageFor(model => model.equipo.nombre) %>
             </div>
             
-
-            
-            <div class="editor-label">
-                <h3>Campeonatos Ganados</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.equipo.campeonatosGanados, new { @required = "required", @size = "4" })%>
-                <%: Html.ValidationMessageFor(model => model.equipo.campeonatosGanados) %>
-            </div>
-            
             <div class="editor-label">
                 <h3>División</h3>
             </div>

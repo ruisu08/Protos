@@ -17,7 +17,17 @@
          theme_advanced_resizing: true,
          height : '300',
          width : '450',
-         file_browser_callback : "filebrowser"
+         file_browser_callback : "filebrowser",
+         max_chars: "1998",
+         setup: function (ed) {
+             ed.onKeyDown.add(function (ed, evt) {
+                 if ($(ed.getBody()).text().length + 1 > ed.getParam('max_chars')) {
+                     evt.preventDefault();
+                     evt.stopPropagation();
+                     return false;
+                 }
+             });
+         }
      });
 
 function filebrowser(field_name, url, type, win) {

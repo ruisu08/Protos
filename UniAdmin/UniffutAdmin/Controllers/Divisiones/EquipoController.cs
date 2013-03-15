@@ -155,6 +155,10 @@ namespace UniffutAdmin.Controllers
                     }
                     viewModel.equipo = Equipo;
                     viewModel.equipo.estado = true;
+                    var album = new album_equipo();
+                    album.equipo = viewModel.equipo;
+                    album.estado = true;
+                    album.nombre = "Sin título";
                     /*viewModel.divisiones = db.division.ToList();*/
                     db.equipo.AddObject(viewModel.equipo);
                     db.SaveChanges();
@@ -210,9 +214,6 @@ namespace UniffutAdmin.Controllers
                 }
             }
             var Equipo = db.equipo.First(p => p.idEquipo.Equals(id));
-            if(Equipo.historia != null){
-                Equipo.historia = new HtmlString(HttpUtility.HtmlDecode(Equipo.historia)).ToString(); 
-            }
             var viewModel = new EquipoDivisionesViewModel
             {
                 equipo = Equipo,
@@ -250,9 +251,7 @@ namespace UniffutAdmin.Controllers
 
                         viewModel.equipo.abreviatura = equipo.abreviatura.ToUpper();
                         viewModel.equipo.nombre = equipo.nombre;
-                        viewModel.equipo.historia = equipo.historia;
                         viewModel.equipo.idDivision = equipo.idDivision;
-                        viewModel.equipo.campeonatosGanados = equipo.campeonatosGanados;
                         db.SaveChanges();
                         return RedirectToAction("Index");
                     }
@@ -369,5 +368,59 @@ namespace UniffutAdmin.Controllers
                 return View("Error", error);
             }
         }
+
+        public ActionResult agregarHistoria(int id) {
+
+            var Equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(id));
+
+            return View(Equipo);
+        }
+
+        [HttpPost]
+        public ActionResult agregarHistoria(int id, equipo Equipo) {
+            var equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(id));
+            if (equipo != null)
+            {
+                equipo.historia = Equipo.historia;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Otro usuario elimino la division durante la operacion"
+                };
+                return View("Error", error);
+            }
+        }
+
+        public ActionResult agregarMultimedia(int id) {
+            var equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(id));
+            var viewModel = new EquipoAlbumMultimedia
+            {
+                Equipo = equipo,
+                Albumes= equipo.album_equipo.ToList()
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult agregarMultimedia(int id, EquipoAlbumMultimedia viewModel) {
+            var equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(id));
+            var m = new multimedia();
+            m.estado = true;
+            m.comentario = viewModel.Multimedia.comentario;
+            m.fuenteGrafica = viewModel.Multimedia.fuenteGrafica;
+            var album = db.album_equipo.FirstOrDefault(a=>a.idAlbum_Equipo.Equals(viewModel.Album.idAlbum_Equipo));
+            if (album != null) {
+                album.multimedia.Add(m);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            
+            return RedirectToAction("Index");
+        }
+
     }
 }

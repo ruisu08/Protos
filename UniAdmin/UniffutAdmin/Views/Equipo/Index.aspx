@@ -18,9 +18,6 @@
                 Nombre
             </th>
             <th >
-                Campeonatos Ganados
-            </th>
-            <th >
                 Division
             </th>
         </tr>
@@ -32,16 +29,14 @@
                 <%: Html.ActionLink("Actualizar", "Edit", new { id=item.idEquipo }) %> |
                 <%: Html.ActionLink("Detalles", "Details", new { id=item.idEquipo })%> |
                 <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idEquipo })%>
+                <%: Html.ActionLink("Redactar historia", "agregarHistoria", new { id = item.idEquipo })%>
+                <%: Html.ActionLink("Agregar multimedia", "agregarMultimedia", new { id = item.idEquipo })%>
             </td>
             <td >
                 <%: item.abreviatura %>
             </td>
             <td >
                 <%: item.nombre %>
-            </td>
-       
-            <td >
-                <%: item.campeonatosGanados %>
             </td>
             <td >
                 <%: item.division.nombre %>

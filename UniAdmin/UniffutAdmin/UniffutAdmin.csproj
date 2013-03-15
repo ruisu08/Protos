@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Models\ViewModels\CalendarioCampeonatoViewModel.cs" />
     <Compile Include="Models\ViewModels\CampeonatoDivisionViewModel.cs" />
+    <Compile Include="Models\ViewModels\EquipoAlbumMultimedia.cs" />
     <Compile Include="Models\ViewModels\EquipoDivisionesViewModel.cs" />
     <Compile Include="Models\ViewModels\JugadoraEquipoViewModel.cs" />
     <Compile Include="Models\ViewModels\NoticiaViewModel.cs" />
@@ -109,6 +110,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\dpLanguage.js" />
     <Content Include="Scripts\editor.js" />
+    <Content Include="Scripts\imageAdder.js" />
     <Content Include="Scripts\inputs.js" />
     <Content Include="Scripts\JQ1.6.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.1.custom.min.js" />
@@ -388,6 +390,8 @@
     <Content Include="Views\Division\Details.aspx" />
     <Content Include="Views\Division\Edit.aspx" />
     <Content Include="Views\Division\Index.aspx" />
+    <Content Include="Views\Equipo\agregarHistoria.aspx" />
+    <Content Include="Views\Equipo\agregarMultimedia.aspx" />
     <Content Include="Views\Equipo\Create.aspx" />
     <Content Include="Views\Equipo\Delete.aspx" />
     <Content Include="Views\Equipo\Details.aspx" />

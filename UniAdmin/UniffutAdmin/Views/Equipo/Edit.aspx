@@ -29,22 +29,6 @@
             </div>
             
             <div class="editor-label">
-                 <h3>Historia</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextAreaFor(model => model.equipo.historia, new {@encoding="xml"}) %>
-                <%: Html.ValidationMessageFor(model => model.equipo.historia) %>
-            </div>
-            
-            <div class="editor-label">
-                 <h3>Campeonatos Ganados</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.equipo.campeonatosGanados, new { @required = "required", @name = "champs", @size = "4" })%>
-                <%: Html.ValidationMessageFor(model => model.equipo.campeonatosGanados) %>
-            </div>
-            
-            <div class="editor-label">
                  <h3>Divisiones</h3>
             </div>
             <div class="editor-field">
