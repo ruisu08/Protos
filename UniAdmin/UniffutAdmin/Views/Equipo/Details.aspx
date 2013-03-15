@@ -6,35 +6,21 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Detalles</h2>
-
-        
-        <div class="display-label" style="text-decoration:underline;">ID</div>
-        <div class="display-field"><%: Model.idEquipo %></div>
-        
-        <div class="display-label" style="text-decoration:underline;">Abreviatura</div>
-        <div class="display-field"><%: Model.abreviatura %></div>
-        
-        <div class="display-label" style="text-decoration:underline;">Nombre</div>
-        <div class="display-field"><%: Model.nombre %></div>
-        
-        <div class="display-label" style="text-decoration:underline;">Historia</div>
-        <div class="display-field"><%: new HtmlString(HttpUtility.HtmlDecode(Model.historia)) %></div>
-        
-        <div class="display-label" style="text-decoration:underline;">Campeonatos Ganados</div>
-        <div class="display-field"><%: Model.campeonatosGanados %></div>
-        
-        <div class="display-label" style="text-decoration:underline;">Divisiones</div>
-        <div class="display-field"><%: Model.division.nombre %></div>
-        
-        <div class="display-label" style="text-decoration:underline;">Estado</div>
-        <div class="display-field"><%:(bool)Model.estado ? "Activo":"Inactivo" %></div>
-        
-    <p>
-
-        <%: Html.ActionLink("Actualizar", "Edit", new { id=Model.idEquipo }) %> |
-        <%: Html.ActionLink("Volver a la Lista", "Index") %>
-    </p>
+    <div id="detallesTitulo">
+        <h1>Detalles del equipo:</h1>
+        <h2><%:" "+Model.nombre%></h2>
+    </div>
+    <div id="detallesWrapper">
+        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.idEquipo %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Abreviatura</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.abreviatura %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>División</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.division.nombre %></h4></div>
+    </div>
+    <div id="volverIndex">
+        <h3><%:Html.ActionLink("Volver a la lista de roles", "Index") %></h3>
+     </div>
 
 </asp:Content>
 

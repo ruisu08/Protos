@@ -6,32 +6,21 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Detalles de los datos</h2>
-
-    <fieldset>
-        <legend>Informacion</legend>
-        
-        <div class="display-label">ID</div>
-        <div class="display-field"><%: Model.idDivisiones %></div>
-        
-        <div class="display-label">Abreviatura</div>
-        <div class="display-field"><%: Model.abreviatura %></div>
-        
-        <div class="display-label">Nombre</div>
-        <div class="display-field"><%: Model.nombre %></div>
-        
-        <div class="display-label">Descripcion</div>
-        <div class="display-field"><%: Model.descripcion %></div>
-        
-        <div class="display-label">Estado</div>
-        <div class="display-field"><%: (bool)Model.estado ? "Activo":"Inactivo" %></div>
-        
-    </fieldset>
-    <p>
-
-        <%: Html.ActionLink("Actualizar", "Edit", new { id=Model.idDivisiones }) %> |
-        <%: Html.ActionLink("Regresar a la lista", "Index") %>
-    </p>
+       <div id="detallesTitulo">
+        <h1>Detalles de la división:</h1>
+        <h2><%:" "+Model.nombre%></h2>
+    </div>
+    <div id="detallesWrapper">
+        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.idDivisiones %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Abreviatura</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.abreviatura %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Descripción</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.descripcion %></h4></div>
+    </div>
+    <div id="volverIndex">
+        <h3><%:Html.ActionLink("Volver a la lista de roles", "Index") %></h3>
+     </div>
 
 </asp:Content>
 

@@ -6,32 +6,21 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Detalles de los campeonatos</h2>
-
-    <fieldset>
-        <legend>Campos</legend>
-        
-        <div class="display-label">ID</div>
-        <div class="display-field"><%: Model.idCampeonato %></div>
-        
-        <div class="display-label">Nombre</div>
-        <div class="display-field"><%: Model.nombre %></div>
-        
-        <div class="display-label">Descripcion</div>
-        <div class="display-field"><%: Model.descripcion %></div>
-        
-        <div class="display-label">Divisiones</div>
-        <div class="display-field"><%: Model.Divisiones_idDivisiones %></div>
-        
-        <div class="display-label">Estado</div>
-        <div class="display-field"><%: (bool)Model.estado ? "Activo":"Inactivo" %></div>
-        
-    </fieldset>
-    <p>
-
-        <%: Html.ActionLink("Actualizar datos", "Edit", new { id=Model.idCampeonato }) %> |
-        <%: Html.ActionLink("Regresar a la lista", "Index") %>
-    </p>
+    <div id="detallesTitulo">
+        <h1>Detalles del campeonato:</h1>
+        <h2><%:" "+Model.nombre%></h2>
+    </div>
+    <div id="detallesWrapper">
+        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.idCampeonato %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Descripción</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.descripcion %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>División a la que pertenece</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.division.nombre %></h4></div>
+    </div>
+    <div id="volverIndex">
+        <h3><%:Html.ActionLink("Volver a la lista de roles", "Index") %></h3>
+     </div>
 
 </asp:Content>
 

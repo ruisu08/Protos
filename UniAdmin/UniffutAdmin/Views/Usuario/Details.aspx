@@ -1,44 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.usuario>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Detalles
+	Detalles de usuario
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Detalles</h2>
-
-    <fieldset>
-        <legend>Información</legend>
-        
-        <div class="display-label">ID</div>
-        <div class="display-field"><%: Model.idUsuario %></div>
-        
-        <div class="display-label">Nombre</div>
-        <div class="display-field"><%: Model.nombre %></div>
-        
-        <div class="display-label">Apellidos</div>
-        <div class="display-field"><%: Model.apellido %></div>
-        
-        <div class="display-label">Telefono</div>
-        <div class="display-field"><%: Model.telefono %></div>
-        
-        <div class="display-label">Correo</div>
-        <div class="display-field"><%: Model.correo %></div>
-        
-        
-        <div class="display-label">Estado</div>
-        <div class="display-field"><%: (bool)Model.estado ? "Activo":"Inactivo" %></div>
-        
-        <div class="display-label">Rol</div>
-        <div class="display-field"><%: Model.rol.descripcion %></div>
-        
-    </fieldset>
-    <p>
-
-        <%: Html.ActionLink("Actualizar datos", "Edit", new { id=Model.idUsuario }) %> |
-        <%: Html.ActionLink("Volver a la lista", "Index") %>
-    </p>
+    <div id="detallesTitulo">
+        <h1>Detalles del usuario:</h1>
+        <h2><%:" "+Model.identificacion%></h2>
+    </div>
+    <div id="detallesWrapper">
+        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.idUsuario %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Nombre</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.nombre %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Apellidos</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.apellido %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Teléfono</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.telefono %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Correo</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.correo %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Rol</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.rol.nombre %></h4></div>
+    </div>
+    <div id="volverIndex">
+        <h3><%:Html.ActionLink("Volver a la lista de roles", "Index") %></h3>
+     </div>
 
 </asp:Content>
 

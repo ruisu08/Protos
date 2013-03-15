@@ -1,46 +1,29 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.jugadora>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Detalles
+	Detalles de jugadora
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Datos en Detalle</h2>
-
-    <fieldset>
-        <legend>Campos</legend>
-        
-        <div class="display-label">ID</div>
-        <div class="display-field"><%: Model.idJugadora %></div>
-
-        <div class="display-label">Identificacion</div>
-        <div class="display-field"><%: Model.identificacion %></div>
-        
-        <div class="display-label">Nombre</div>
-        <div class="display-field"><%: Model.nombre %></div>
-        
-        <div class="display-label">Apellidos</div>
-        <div class="display-field"><%: Model.apellidos %></div>
-        
-        <div class="display-label">Fecha de nacimiento</div>
-        <div class="display-field"><%: String.Format("{0:g}", Model.fechaNacimiento) %></div>
-        
-        <div class="display-label">Historia</div>
-        <div class="display-field"><%:Html.TextAreaFor(model=> model.historia) %></div>
-        
-        <div class="display-label">Equipo</div>
-        <div class="display-field"><%: Model.Equipo_idEquipo %></div>
-        
-        <div class="display-label">Nacionalidad</div>
-        <div class="display-field"><%: Model.nacionalidad %></div>
-        
-    </fieldset>
-    <p>
-
-        <%: Html.ActionLink("Actualizar datos", "Edit", new { id=Model.idJugadora }) %> |
-        <%: Html.ActionLink("Volver a lista", "Index") %>
-    </p>
-
+        <div id="detallesTitulo">
+        <h1>Detalles de la jugadora:</h1>
+        <h2><%:" "+Model.nombre +" "+Model.apellidos%></h2>
+    </div>
+    <div id="detallesWrapper">
+        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.idJugadora %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Fecha de nacimiento</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.fechaNacimiento %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Identificación</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.identificacion %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Equipo al que pertenece</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.equipo.nombre %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Nacionalidad</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.nacionalidad %></h4></div>
+    </div>
+    <div id="volverIndex">
+        <h3><%:Html.ActionLink("Volver a la lista de roles", "Index") %></h3>
+     </div>
 </asp:Content>
 
