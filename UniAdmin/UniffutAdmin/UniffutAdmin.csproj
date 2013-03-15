@@ -380,6 +380,9 @@
     <Content Include="UserFiles\2628376325_68c642a9ee_o.png" />
     <Content Include="UserFiles\Atrapitis.gif" />
     <Content Include="UserFiles\Misc-FuckOff.jpg" />
+    <Content Include="Views\AlbumEquipo\agregarMultimedia.aspx" />
+    <Content Include="Views\AlbumEquipo\Create.aspx" />
+    <Content Include="Views\AlbumEquipo\Index.aspx" />
     <Content Include="Views\Calendario\Create.aspx" />
     <Content Include="Views\Calendario\Delete.aspx" />
     <Content Include="Views\Calendario\Details.aspx" />
@@ -396,7 +399,6 @@
     <Content Include="Views\Division\Edit.aspx" />
     <Content Include="Views\Division\Index.aspx" />
     <Content Include="Views\Equipo\agregarHistoria.aspx" />
-    <Content Include="Views\Equipo\agregarMultimedia.aspx" />
     <Content Include="Views\Equipo\Create.aspx" />
     <Content Include="Views\Equipo\Delete.aspx" />
     <Content Include="Views\Equipo\Details.aspx" />
@@ -408,6 +410,7 @@
     <Content Include="Views\Jugadora\Details.aspx" />
     <Content Include="Views\Jugadora\Edit.aspx" />
     <Content Include="Views\Jugadora\Index.aspx" />
+    <Content Include="Views\MultimediaEquipo\Index.aspx" />
     <Content Include="Views\Noticia\Create.aspx" />
     <Content Include="Views\Noticia\Delete.aspx" />
     <Content Include="Views\Noticia\Details.aspx" />

@@ -1,15 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<UniffutAdmin.Models.equipo>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<UniffutAdmin.Models.album_equipo>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Equipos
+	Albumes de equipo
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div id="headerContenido">
         <div id="tituloContenido">
-        <h1>Equipos</h1>
-        <h6 id="descripcionController">Aquí se pueden ver los equipos creados hasta el momento, además de editarlos, eliminarlos o crearlos</h6>
+        <h1>Albumes</h1>
+        <h6 id="descripcionController">Aquí se pueden ver los albumes creados hasta el momento, además de editarlos, eliminarlos o crearlos</h6>
         </div>
 
         <div id="busqueda">
@@ -22,8 +22,14 @@
     </div>
 
      <div>
-    <h2>Lista de Equipos:</h2>
-    <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Equipo", "Create") %></h3>
+    <h2>Lista de Albumes:</h2>
+    <% for (int i = 0; i < 1; i++)
+       {
+           var item = Model.ToList();
+           var itemOne = item[i];%>
+
+    <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Album", "Create", new { id = itemOne.idEquipo})%></h3>
+    <% } %>
     </div>
 
     <div id="indexWrapper">
@@ -34,31 +40,23 @@
                     <h3>Nombre:</h3>
                     <h4><%:item.nombre %></h4>
                 </div>
-                <div class="indexData">
-                    <h3>Abreviatura:</h3>
-                    <h4><%:item.abreviatura%></h4>
-                </div>
                 <div id="opcionWrapper">
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar Equipo", "Edit", new { id=item.idEquipo}) %>
+                    <%: Html.ActionLink("Editar Album", "Edit", new { id=item.idAlbum_Equipo}) %>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Detalles del Equipo", "Details", new { id=item.idEquipo })%>
+                    <%: Html.ActionLink("Eliminar este Album", "Delete", new { id=item.idAlbum_Equipo })%>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar este Equipo", "Delete", new { id=item.idEquipo })%>
+                    <%: Html.ActionLink("Agregar multimedia", "agregarMultimedia", new { id = item.idAlbum_Equipo })%>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Redactar Historia", "agregarHistoria", new { id=item.idEquipo })%>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Albumes Multimedia", "albumesMultimedia", new { id = item.idEquipo })%>
+                    <%: Html.ActionLink("Ver multimedia", "verMultimedia", new { id = item.idAlbum_Equipo })%>
                     </div>
                 </div>
             </div>
     <% } %>
 
     </div>
-
 </asp:Content>
 

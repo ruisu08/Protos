@@ -7,7 +7,7 @@ using UniffutAdmin.Models;
 using UniffutAdmin.Models.ViewModels;
 namespace UniffutAdmin.Controllers
 {
-    public class MultimediaController : Controller
+    public class MultimediaEquipoController : Controller
     {
         private static uniffutData db = new uniffutData();
         //
@@ -43,8 +43,7 @@ namespace UniffutAdmin.Controllers
                     return View("Error", error);
                 }
             }
-
-            var multimedia = db.album_equipo.Where<album_equipo>(r=>r.idAlbum_Equipo.Equals(id));
+            var multimedia = db.album_equipo.First(a => a.idAlbum_Equipo.Equals(id)).multimedia;
             return View(multimedia.ToList());
         }
          //

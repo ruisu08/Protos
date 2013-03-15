@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using UniffutAdmin.Models;
 using UniffutAdmin.Models.ViewModels;
+using System.Web.Routing;
 namespace UniffutAdmin.Controllers
 {
     public class EquipoController : Controller
@@ -394,17 +395,19 @@ namespace UniffutAdmin.Controllers
             }
         }
 
-        public ActionResult agregarMultimedia(int id) {
-            var equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(id));
+        public ActionResult albumesMultimedia(int id) {
+
+           /* var equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(id));
             var viewModel = new EquipoAlbumMultimedia
             {
                 Equipo = equipo,
                 Albumes= equipo.album_equipo.ToList()
             };
-            return View(viewModel);
-        }
+            return View(viewModel);*/
+            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "AlbumEquipo", action = "Index", id= id }));
+       }
 
-        [HttpPost]
+        /*[HttpPost]
         public ActionResult agregarMultimedia(int id, EquipoAlbumMultimedia viewModel) {
             var equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(id));
             var m = new multimedia();
@@ -420,7 +423,7 @@ namespace UniffutAdmin.Controllers
 
             
             return RedirectToAction("Index");
-        }
+        }*/
 
     }
 }

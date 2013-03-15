@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using UniffutAdmin.Models;
 using UniffutAdmin.Models.ViewModels;
+using System.Web.Routing;
 
 namespace UniffutAdmin.Controllers.Multimedia
 {
@@ -46,11 +47,11 @@ namespace UniffutAdmin.Controllers.Multimedia
                 }
             }
 
-            var album = db.album_equipo.Where<album_equipo>(r => r.idEquipo == id);
+            var album = db.album_equipo.Where<album_equipo>(r => r.idEquipo.Equals(id));
             return View(album.ToList());
         }
 
-        public ActionResult Create(equipo equipo)
+        public ActionResult Create(int id, album_equipo Album)
         {
             if (Session["userID"] == null)
             {
@@ -81,11 +82,10 @@ namespace UniffutAdmin.Controllers.Multimedia
                     return View("Error", error);
                 }
             }
-
             var viewModel = new EquipoAlbumMultimedia
             {
-                Equipo = equipo,
-                Albumes = db.album_equipo.Where<album_equipo>(d=>d.estado == true).ToList(),
+                Equipo = db.equipo.FirstOrDefault(e=>e.idEquipo.Equals(id)),
+                Album = Album
 
             };
             return View(viewModel);
@@ -95,21 +95,25 @@ namespace UniffutAdmin.Controllers.Multimedia
         // POST: /AlbumEquipo/Create
 
         [HttpPost]
-        public ActionResult Create(equipo equipo ,album_equipo album, EquipoAlbumMultimedia viewModel)
+        public ActionResult Create(int id , EquipoAlbumMultimedia viewModel)
         {
             try
             {
-                if (db.equipo.First(d => d.idEquipo == equipo.idEquipo).estado != false)
+                var equipo = db.equipo.First(d => d.idEquipo.Equals(id));
+                if (equipo.estado != false)
                 {
-                    var oldAlbum = db.album_equipo.FirstOrDefault(r => r.nombre == album.nombre);
-                    if (oldAlbum != null) {
-
-                        oldAlbum.nombre = album.nombre;
-                        oldAlbum.idEquipo = album.idEquipo;
-                    }
+                    viewModel.Album.idEquipo = equipo.idEquipo;
+                    viewModel.Album.equipo = equipo;
+                    viewModel.Album.estado = true;
+                    db.album_equipo.AddObject(viewModel.Album);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", new RouteValueDictionary(new { controller = "AlbumEquipo", action = "Index", id = id }));
                 }
-
-                return RedirectToAction("Index");
+                else {
+                    ErrorModel error = new ErrorModel();
+                    error.mensaje = "Otro usuario elimino el equipo durante la operación";
+                    return View("Error", error);
+                }
             }
             catch
             {
@@ -142,6 +146,43 @@ namespace UniffutAdmin.Controllers.Multimedia
             {
                 return View();
             }
+        }
+
+
+        public ActionResult agregarMultimedia(int id)
+        {
+            /*var album = db.album_equipo.First(a => a.idAlbum_Equipo.Equals(id));
+            var equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(album.idEquipo));*/
+             var viewModel = new EquipoAlbumMultimedia
+             {
+                 /*Equipo = equipo,
+                 Albumes= equipo.album_equipo.ToList()*/
+             };
+             return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult agregarMultimedia(int id, EquipoAlbumMultimedia viewModel) {
+            var album = db.album_equipo.First(a => a.idAlbum_Equipo.Equals(id));
+            var equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(album.idEquipo));
+            var m = new multimedia();
+            m.estado = true;
+            m.comentario = viewModel.Multimedia.comentario;
+            m.fuenteGrafica = viewModel.Multimedia.fuenteGrafica;
+            if (album != null) {
+                album.multimedia.Add(m);
+                db.SaveChanges();
+                return RedirectToAction("Index", new RouteValueDictionary(new { controller = "AlbumEquipo", action = "Index", id = equipo.idEquipo }));
+            }
+
+
+            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "AlbumEquipo", action = "Index", id = equipo.idEquipo }));
+        }
+
+        public ActionResult verMultimedia(int id) {
+
+            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "MultimediaEquipo", action = "Index", id = id }));
+        
         }
     }
 }
