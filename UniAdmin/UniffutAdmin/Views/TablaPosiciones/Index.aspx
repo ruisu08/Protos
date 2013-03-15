@@ -26,45 +26,26 @@
     <h2>Lista de Tablas de Posiciones:</h2>
     </div>
 
-    <div id="tableWrapper">
-    <table id="indTable">
-        <tr>
-            <th></th>
-            <th >
-                Equipo
-            </th>
-            <th >
-                Campeonato
-            </th>
-            <th >
-                Puntos
-            </th>
-        </tr>
+        <div id="indexWrapper">
 
     <% foreach (var item in Model) { %>
-    
-        <tr >
-            <td>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Editar Tabla de Posiciones", "Edit", new { id=item.Equipo_idEquipo}) %>
+            <div class="itemWrapper">
+                <div class="indexData">
+                    <h3>Nombre:</h3>
+                    <h4><%:item.equipo.nombre %></h4>
+                </div>
+                <div class="indexData">
+                    <h3>Puntos:</h3>
+                    <h4><%:item.puntos %></h4>
+                </div>
+                <div id="opcionWrapper">
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Actualizar puntaje", "Edit", new { id=item.Equipo_idEquipo}) %>
+                    </div>
+                </div>
             </div>
-
-            </td>
-            <td >
-                <%: item.equipo.nombre %>
-            </td>
-            <td >
-                <%: item.campeonato.nombre %>
-            </td>
-            <td >
-                <%: item.puntos %>
-            </td>
-           
-        </tr>
-    
     <% } %>
 
-    </table>
     </div>
 
 </asp:Content>

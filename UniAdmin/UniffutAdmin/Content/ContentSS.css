@@ -14,25 +14,6 @@
     float:right;    
 }
 
-#indTable
-{
-    border-collapse:separate; border-spacing:15px 30px;   
-    margin:0;
-    padding:0;
-}
-td
-{
-    margin:0;
-    padding:0;
-    text-align:center;
-}
-th
-{
-   margin:0;
-    padding:0; 
-    font-size:110%
-}
-
 
 #contenido
 {
@@ -57,34 +38,8 @@ th
 }
 
 
-.opcionCrud
-{
-    background-color:#DC3D24;
-    text-align:center;
-    border-radius:2px;
-    margin:0 0 0 0.5%;
-    display:inline;
-    text-align:center;
-    padding:10px;
-    color:#E3AE57;    
-    font-family:Century Gothic;
-    text-decoration:none;
-    
-}
 
-.opcionCrud a
-{
-    color:#E3AE57;    
-    text-decoration:none;
-    font-size:90%;
-}
 
-#tableWrapper
-{
-       border-radius:5px; 
-       border:2px solid #E3AE57;
-
-}
 
 
 #contenidoEspecifico
@@ -170,7 +125,69 @@ th
     
 }
 
-.datosIndex
+.itemWrapper
 {
-   margin:0 0.5% 0 0; 
+    width:90%;
+    height:auto;
+    margin-bottom:2%;
+    border-radius:5px; 
+    border:2px solid #E3AE57;
+    padding:1%;
+    
+}
+.indexData
+{
+    width:100%;
+    height:auto;
+    margin:0;
+    padding:0;
+}
+.indexData h3
+{
+    padding: 0 0 0 0;
+    font-size: 150%;
+    margin-bottom:2%;
+}
+.indexData h4
+{
+    padding: 0 0 0 0;
+    font-size: 100%;
+    margin-bottom: 1%;
+    margin-left:2%;
+}
+
+.opcionCrud
+{
+    background-color:#DC3D24;
+    text-align:center;
+    border-radius:2px;
+    display:inline;
+    text-align:center;
+    color:#E3AE57; 
+    padding:1%;   
+    font-family:Century Gothic;
+    text-decoration:none;
+    margin-left:1%;
+    margin-bottom:2%;
+    margin-top:2%;
+    width:20%;
+}
+
+.opcionCrud a
+{
+    color:#E3AE57;    
+    text-decoration:none;
+    font-size:100%;
+}
+#opcionWrapper
+{
+   width:100%;
+   height:auto;
+   margin:2% 0 2% 0;    
+}
+#indexWrapper
+{
+        
+    margin:0;
+    padding: 0;
 }

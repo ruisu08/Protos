@@ -19,81 +19,60 @@
     </div>
 </div>
 
-<div id="tableWrapper">
     <div>
-        <h3><%: Html.ActionLink("Añadir jugadora", "Create") %></h3>
-        <h2>Lista de jugadoras:</h2>
+    <h2>Lista de Jugadoras:</h2>
+    <h3 id="crearLink"><%:Html.ActionLink("Crear nueva Jugadora", "Create") %></h3>
     </div>
-    <table id="indTable">
-        <tr>
-            <th></th>
-            <th>
-                Identificacion
-            </th>
-            <th>
-                Nombre
-            </th>
-            <th>
-                Apellidos
-            </th>
-            <th>
-                Edad
-            </th>
-            <th>
-                Equipo
-            </th>
-            <th>
-                Nacionalidad
-            </th>
-        </tr>
+
+ <div id="indexWrapper">
 
     <% foreach (var item in Model) { %>
-    
-        <tr>
-            <td>
-            <div class="opcionCrud">
-                <h5><%: Html.ActionLink("Actualizar datos", "Edit", new { id=item.idJugadora }) %></h5>
+            <div class="itemWrapper">
+                <div class="indexData">
+                    <h3>Identificación:</h3>
+                    <h4><%:item.identificacion %></h4>
+                </div>
+                <div class="indexData">
+                    <h3>Nombre:</h3>
+                    <h4><%:item.nombre%></h4>
+                </div>
+                <div class="indexData">
+                    <h3>Apellidos:</h3>
+                    <h4><%:item.apellidos%></h4>
+                </div>
+                <div class="indexData">
+                    <h3>Edad:</h3>
+                    <h4><%:item.fechaNacimiento%></h4>
+                </div>
+               <div class="indexData">
+                    <h3>Nacionalidad:</h3>
+                    <h4><%:item.nacionalidad%></h4>
+                </div>
+                <div class="indexData">
+                    <h3>Equipo:</h3>
+                    <h4><%:item.equipo.nombre%></h4>
+                </div>
+                <div id="opcionWrapper">
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Editar Jugadora", "Edit", new { id=item.idJugadora}) %>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Detalles de la Jugadora", "Details", new { id=item.idJugadora })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Eliminar esta Jugadora", "Delete", new { id=item.idJugadora })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Redactar historia", "agregarHistoria", new { id = item.idJugadora })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Agregar multimedia", "agregarMultimedia", new { id=item.idJugadora })%>
+                    </div>
+                </div>
             </div>
-            <div class="opcionCrud">
-                <h5><%: Html.ActionLink("Datos en detalle", "Details", new { id=item.idJugadora })%></h5>
-            </div>
-            <div class="opcionCrud">
-                <h5><%: Html.ActionLink("Eliminar", "Delete", new { id=item.idJugadora })%></h5>
-            </div>
-
-            </td>
-            <td>
-                <%: item.identificacion %>
-            </td>
-            <td>
-                <%: item.nombre %>
-            </td>
-            <td>
-                <%: item.apellidos %>
-            </td>
-
-            <td>
-            <!---String.Format("{0:g}", item.fechaNacimiento)-->
-                <% DateTime dob = Convert.ToDateTime(item.fechaNacimiento);
-                   DateTime hoy = DateTime.Now;
-                   int edad = hoy.Year - dob.Year;
-                   if (hoy.Month < dob.Month || (hoy.Month == dob.Month && hoy.Day < dob.Day)) { edad--; };
-                   Response.Write(edad);
-                   %>
-            </td>
-            <td>
-                <%:item.equipo.nombre%>
-            </td>
-            <td>
-                <%:item.nacionalidad%>
-            </td>
-        </tr>
-    
     <% } %>
 
-    </table>
-</div>
-
+    </div>
  
 </asp:Content>
 

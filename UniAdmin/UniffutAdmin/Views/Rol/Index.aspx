@@ -22,55 +22,36 @@
 </div>
 
 <div>
-    <h2>Lista de jugadoras:</h2>
+    <h2>Lista de roles:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Rol", "Create") %></h3>
 </div>
 
-<div id="tableWrapper">
-    <table id="indTable">
-        <tr>
-            <th></th>
-            <th>
-                Nombre
-            </th>
-            <th>
-                Descripcion
-            </th>
-
-        </tr>
+    <div id="indexWrapper">
 
     <% foreach (var item in Model) { %>
-    
-        <tr>
-            <td>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Editar Rol", "Edit", new { id=item.idRol}) %>
+            <div class="itemWrapper">
+                <div class="indexData">
+                    <h3>Nombre:</h3>
+                    <h4><%:item.nombre %></h4>
+                </div>
+                <div id="opcionWrapper">
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Editar Rol", "Edit", new { id=item.idRol}) %>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Detalles del Rol", "Details", new { id=item.idRol })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Eliminar este Rol", "Delete", new { id=item.idRol })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Asignar permisos a Rol", "asignarModulosARol", new { id = item.idRol })%>
+                    </div>
+                </div>
             </div>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Detalles del Rol", "Details", new { id=item.idRol })%>
-            </div>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Eliminar este Rol", "Delete", new { id=item.idRol })%>
-            </div>
-
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Asignar permisos a Rol", "asignarModulosARol", new { id = item.idRol })%>
-            </div>
-
-            </td>
-            <td>
-                <%: item.nombre %>
-            </td>
-            <td>
-                <%: item.descripcion %>
-            </td>
-
-        </tr>
-    
     <% } %>
 
-    </table>
-</div>
+    </div>
 
 
 </asp:Content>

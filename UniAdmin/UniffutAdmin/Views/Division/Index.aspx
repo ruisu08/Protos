@@ -26,51 +26,34 @@
     <h3 id="crearLink"><%:Html.ActionLink("Crear nueva Division", "Create") %></h3>
     </div>
 
-    <div id="tableWrapper">
-    <table  id="indTable">
-        <tr>
-            <th></th>
-            <th>
-                Abreviatura
-            </th>
-            <th>
-                Nombre
-            </th>
-             <th>
-                Descripcion
-            </th>
-        </tr>
+    <div id="indexWrapper">
 
     <% foreach (var item in Model) { %>
-    
-        <tr>
-            <td>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Editar Division", "Edit", new { id=item.idDivisiones}) %>
+            <div class="itemWrapper">
+                <div class="indexData">
+                    <h3>Nombre:</h3>
+                    <h4><%:item.nombre %></h4>
+                </div>
+                <div class="indexData">
+                    <h3>Abreviatura:</h3>
+                    <h4><%:item.abreviatura %></h4>
+                </div>
+                <div id="opcionWrapper">
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Editar División", "Edit", new { id=item.idDivisiones}) %>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Detalles de la División", "Details", new { id = item.idDivisiones })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Eliminar esta División", "Delete", new { id = item.idDivisiones })%>
+                    </div>
+                </div>
             </div>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Detalles de la Division", "Details", new { id=item.idDivisiones })%>
-            </div>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Eliminar la Division", "Delete", new { id=item.idDivisiones })%>
-            </div>
-
-            </td>
-            <td>
-                <%: item.abreviatura %>
-            </td>
-            <td>
-                <%: item.nombre %>
-            </td>
-            <td>
-                <%: item.descripcion %>
-            </td>
-        </tr>
-    
     <% } %>
 
-    </table>
     </div>
+
 
 </asp:Content>
 

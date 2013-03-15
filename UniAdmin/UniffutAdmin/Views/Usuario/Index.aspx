@@ -26,50 +26,36 @@
     <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Usuario", "Create") %></h3>
     </div>
 
-    <div id="tableWrapper">
-    <table id="indTable">
-        <tr>
-            <th></th>
-            <th>
-                Identificación
-            </th>
-            <th>
-                Nombre
-            </th>
-            <th>
-                Rol
-            </th>
-        </tr>
+    <div id="indexWrapper">
 
     <% foreach (var item in Model) { %>
-    
-        <tr>
-            <td>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Editar Usuario", "Edit", new { id=item.idUsuario}) %>
+            <div class="itemWrapper">
+                <div class="indexData">
+                    <h3>Nombre:</h3>
+                    <h4><%:item.nombre %></h4>
+                </div>
+                <div class="indexData">
+                    <h3>Apellido:</h3>
+                    <h4><%:item.apellido %></h4>
+                </div>
+                <div class="indexData">
+                    <h3>Identificación:</h3>
+                    <h4><%:item.identificacion %></h4>
+                </div>
+                <div id="opcionWrapper">
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Editar Usuario", "Edit", new { id=item.idUsuario}) %>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Detalles del Usuario", "Details", new { id=item.idUsuario })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Eliminar este Usuario", "Delete", new { id=item.idUsuario })%>
+                    </div>
+                </div>
             </div>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Detalles del Usuario", "Details", new { id=item.idUsuario })%>
-            </div>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Eliminar este Usuario", "Delete", new { id=item.idUsuario })%>
-            </div>
-
-            </td>
-            <td>
-                <%: item.identificacion %>
-            </td>
-            <td>
-                <%: item.nombre %>
-            </td>
-            <td>
-                <%: item.rol.descripcion %>
-            </td>
-        </tr>
-    
     <% } %>
 
-    </table>
     </div>
 
 </asp:Content>

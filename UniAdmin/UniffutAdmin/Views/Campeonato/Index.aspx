@@ -24,43 +24,32 @@
     <h2>Lista de Campeonatos:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Campeonato", "Create") %></h3>
 
-    <div id="tableWrapper">
-    <table id="indTable">
-        <tr>
-            <th></th>
-            <th>
-                Nombre
-            </th>
-            <th>
-                Division
-            </th>
-        </tr>
+        <div id="indexWrapper">
 
     <% foreach (var item in Model) { %>
-    
-        <tr>
-            <td>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Editar Campeonato", "Edit", new { id=item.idCampeonato}) %>
+            <div class="itemWrapper">
+                <div class="indexData">
+                    <h3>Nombre:</h3>
+                    <h4><%:item.nombre %></h4>
+                </div>
+                <div class="indexData">
+                    <h3>División:</h3>
+                    <h4><%:item.division.nombre %></h4>
+                </div>
+                <div id="opcionWrapper">
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Editar Campeonato", "Edit", new { id=item.idCampeonato}) %>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Detalles del Campeonato", "Details", new { id=item.idCampeonato })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Eliminar este Campeonato", "Delete", new { id=item.idCampeonato })%>
+                    </div>
+                </div>
             </div>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Detalles del Campeonato", "Details", new { id=item.idCampeonato })%>
-            </div>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Eliminar este Campeonato", "Delete", new { id=item.idCampeonato })%>
-            </div>
-            </td>
-            <td>
-                <%: item.nombre %>
-            </td>
-            <td>
-                <%: item.division.nombre %>
-            </td>
-        </tr>
-    
     <% } %>
 
-    </table>
     </div>
 
 </asp:Content>

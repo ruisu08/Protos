@@ -26,54 +26,38 @@
     <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Equipo", "Create") %></h3>
     </div>
 
-    <div id="tableWrapper">
-    <table  id="indTable">
-        <tr>
-            <th></th>
-            <th >
-                Abreviatura
-            </th>
-            <th >
-                Nombre
-            </th>
-        </tr>
+    <div id="indexWrapper">
 
     <% foreach (var item in Model) { %>
-    
-        <tr>
-            <td>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Editar Equipo", "Edit", new { id=item.idEquipo}) %>
+            <div class="itemWrapper">
+                <div class="indexData">
+                    <h3>Nombre:</h3>
+                    <h4><%:item.nombre %></h4>
+                </div>
+                <div class="indexData">
+                    <h3>Abreviatura:</h3>
+                    <h4><%:item.abreviatura%></h4>
+                </div>
+                <div id="opcionWrapper">
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Editar Equipo", "Edit", new { id=item.idEquipo}) %>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Detalles del Equipo", "Details", new { id=item.idEquipo })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Eliminar este Equipo", "Delete", new { id=item.idEquipo })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Redactar Historia", "agregarHistoria", new { id=item.idEquipo })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Agregar multimedia", "agregarMultimedia", new { id = item.idEquipo })%>
+                    </div>
+                </div>
             </div>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Detalles del Equipo", "Details", new { id=item.idEquipo })%>
-            </div>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Eliminar este Equipo", "Delete", new { id=item.idEquipo })%>
-            </div>
-
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Redactar Historia", "agregarHistoria", new { id=item.idEquipo })%>
-            </div>
-
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Agregar multimedia", "agregarMultimedia", new { id = item.idEquipo })%>
-            </div>
-
-            </td>
-
-            <td  class= "datosIndex">
-                <%: item.abreviatura %>
-            </td>
-            <td class= "datosIndex">
-                <%: item.nombre %>
-            </td>
-         
-        </tr>
-    
     <% } %>
 
-    </table>
     </div>
 
 </asp:Content>

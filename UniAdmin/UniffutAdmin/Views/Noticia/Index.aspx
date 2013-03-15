@@ -26,59 +26,40 @@
     <h3 id="crearLink"><%:Html.ActionLink("Crear nueva Noticia", "Create") %></h3>
     </div>
 
-    <div id="tableWrapper">
-    <table id="indTable">
-        <tr>
-            <th></th>
-            <th>
-                Titulo
-            </th>
-            <th>
-                Fecha
-            </th>
-            <th>
-                Autor
-            </th>
-            <th>
-                Tipo de Noticia
-            </th>
-        </tr>
+ <div id="indexWrapper">
 
     <% foreach (var item in Model) { %>
-    
-        <tr>
-            <td>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Editar Noticia", "Edit", new { id=item.idNoticia}) %>
+            <div class="itemWrapper">
+                <div class="indexData">
+                    <h3>Título:</h3>
+                    <h4><%:item.titulo %></h4>
+                </div>
+                <div class="indexData">
+                    <h3>Autor:</h3>
+                    <h4><%:item.usuario.identificacion%></h4>
+                </div>
+                <div class="indexData">
+                    <h3>Fecha:</h3>
+                    <h4><%:item.fecha%></h4>
+                </div>
+                <div id="opcionWrapper">
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Editar Noticia", "Edit", new { id=item.idNoticia}) %>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Detalles de la Noticia", "Details", new { id=item.idNoticia })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Eliminar este Noticia", "Delete", new { id=item.idNoticia })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Redactar noticia", "agregarContenido", new { id=item.idNoticia })%>
+                    </div>
+                </div>
             </div>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Detalles del Noticia", "Details", new { id=item.idNoticia })%>
-            </div>
-            <div class="opcionCrud">
-                <%: Html.ActionLink("Eliminar este Noticia", "Delete", new { id=item.idNoticia })%>
-            </div>
-
-            </td>
-           
-            <td>
-                <%: item.titulo %>
-            </td>
-            <td>
-                <%: String.Format("{0:g}", item.fecha) %>
-            </td>
-            <td>
-                <%: item.usuario.nombre + " " + item.usuario.apellido %>
-            </td>
-            <td>
-                <%: item.tiponoticia.nombre%>
-            </td>
-        </tr>
-    
     <% } %>
 
-    </table>
     </div>
-
 
 </asp:Content>
 
