@@ -6,21 +6,13 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Crear nuevo Campeonato</h2>
+    <div id="headerContenido">
+        <h1>Crea un nuevo campeonato</h1>
+    </div>
 
     <form id="validateForm" action= '<%:Url.Action("Create","Campeonato")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-
-        <fieldset>
-            <legend>Informacion</legend>
-            
-            <div class="editor-label">
-                <h3>ID del Campeonato</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Campeonato.idCampeonato, new { @required = "required", @size = "4", @class = "infofield" })%>
-                <%: Html.ValidationMessageFor(model => model.Campeonato.idCampeonato)%>
-            </div>
+        
+        <div id="createWrapper">            
             
             <div class="editor-label">
                 <h3>Nombre del Campeonato</h3>
@@ -46,15 +38,15 @@
                 <%: Html.ValidationMessageFor(model => model.Campeonato.idDivision)%>
             </div>
             
-            <p>
-                <input type="submit" value="Añadir Campeonato" id="opcionCrud"/>
-            </p>
-        </fieldset>
+        </div>
+            <div>
+                <input type="submit" value="Crear nuevo campeonato" class="opcionCrud" />
+            </div>
 
     </form>
 
-    <div>
-        <%: Html.ActionLink("Regresar a la lista", "Index") %>
+    <div id="volverIndex">
+        <h3><%: Html.ActionLink("Volver a la Lista", "Index") %></h3>
     </div>
 
 </asp:Content>

@@ -6,13 +6,14 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Crear Division</h2>
-    <form action= '<%:Url.Action("Create","Division")%>' method="post">
-   
-        <%: Html.ValidationSummary(true) %>
+    <div id="headerContenido">
+        <h1>Crea una nueva Division</h1>
+    </div>
 
-        <fieldset>
-            <legend>Informacion</legend>
+    <form id="validateForm" action= '<%:Url.Action("Create","Division")%>' method="post">
+   
+          <div id="createWrapper">
+
             <div class="editor-label">
                 <h3>Abreviatura</h3>
             </div>
@@ -36,16 +37,16 @@
                 <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "140", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.descripcion) %>
             </div>
-            
-            <p>
-                <input type="submit" value="Crear" id="opcionCrud" />
-            </p>
-        </fieldset>
+           </div>
+
+            <div>
+                <input type="submit" value="Crear nueva Division" class="opcionCrud" />
+            </div>
     </form>
     
 
-    <div>
-        <%: Html.ActionLink("Regresar a la lista", "Index") %>
+    <div id="volverIndex">
+        <h3><%: Html.ActionLink("Volver a la Lista", "Index") %></h3>
     </div>
 
 </asp:Content>

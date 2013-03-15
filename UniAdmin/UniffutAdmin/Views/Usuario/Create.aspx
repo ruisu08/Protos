@@ -6,11 +6,13 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Crear usuario</h2>
+    <div id="headerContenido">
+        <h1>Crea un nuevo usuario</h1>
+    </div>
 
     <form id="validateForm" action= '<%:Url.Action("Create","Usuario")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-
+       
+       <div id="createWrapper">
             
             <div class="editor-label">
                 <h3>Identificacion</h3>
@@ -68,14 +70,15 @@
                 <%: Html.ValidationMessageFor(model => model.Usuario.Rol_idRol)%>
             </div>
             
-            <p>
-                <input type="submit" value="Crear nuevo usuario" id="opcionCrud"/>
-            </p>
+            </div>
+            <div>
+                <input type="submit" value="Crear nuevo usuario" class="opcionCrud" />
+            </div>
 
     </form>
 
-    <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
+    <div id="volverIndex">
+        <h3><%: Html.ActionLink("Volver a la Lista", "Index") %></h3>
     </div>
 
 </asp:Content>

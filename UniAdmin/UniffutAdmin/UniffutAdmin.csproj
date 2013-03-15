@@ -102,6 +102,7 @@
     <Compile Include="Models\ViewModels\EquipoDivisionesViewModel.cs" />
     <Compile Include="Models\ViewModels\JugadoraEquipoViewModel.cs" />
     <Compile Include="Models\ViewModels\NoticiaViewModel.cs" />
+    <Compile Include="Models\ViewModels\PaginaInformativaUsuarioViewModel.cs" />
     <Compile Include="Models\ViewModels\RolModuloViewModel.cs" />
     <Compile Include="Models\ViewModels\TablaPosicionesEquipoViewModel.cs" />
     <Compile Include="Models\ViewModels\UsuarioRolViewModel.cs" />

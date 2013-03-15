@@ -26,9 +26,9 @@
                 </div>
             </div>
 
-            <p>
-                <input type="submit" value="Crear rol" id="opcionCrud"/>
-            </p>
+            <div>
+                <input type="submit" value="Crear nuevo rol" class="opcionCrud" />
+            </div>
         </form>
 
     <div id="volverIndex">

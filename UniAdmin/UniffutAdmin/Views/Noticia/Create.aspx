@@ -6,22 +6,14 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Crear nueva noticia</h2>
+    <div id="headerContenido">
+        <h1>Crea una nueva noticia</h1>
+    </div>
 
     <form id="validateForm" action= '<%:Url.Action("Create","Noticia")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-
-        <fieldset>
-            <legend>Informacion</legend>
+        <div id="createWrapper">
             
-            <div class="editor-label">
-                <h3>ID</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Noticia.idNoticia, new { @required = "required", @size = "4", @class = "infofield" })%>
-                <%: Html.ValidationMessageFor(model => model.Noticia.idNoticia)%>
-            </div>
-            
+          
             <div class="editor-label">
                 <h3>Titulo</h3>
             </div>
@@ -39,14 +31,6 @@
             </div>
             
             <div class="editor-label">
-                <h3>Contenido</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextAreaFor(model => model.Noticia.contenido)%>
-                <%: Html.ValidationMessageFor(model => model.Noticia.contenido)%>
-            </div>
-            
-            <div class="editor-label">
                 <h3>Autor</h3>
             </div>
             <div class="editor-field">
@@ -61,16 +45,16 @@
                 <%: Html.DropDownListFor(model => model.Noticia.TipoNoticia_idTipoNoticia, new SelectList(Model.Tipos, "idTipoNoticia", "nombre", Model.Tipos.First().idTipoNoticia), new { @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Noticia.TipoNoticia_idTipoNoticia)%>
             </div>
+            </div>
             
-            <p>
-                <input type="submit" value="Crear" id="opcionCrud"/>
-            </p>
-        </fieldset>
+            <div>
+                <input type="submit" value="Crear nueva noticia" class="opcionCrud" />
+            </div>
 
     </form>
 
-    <div>
-        <%: Html.ActionLink("Volver a lista", "Index") %>
+    <div id="volverIndex">
+        <h3><%: Html.ActionLink("Volver a la Lista", "Index") %></h3>
     </div>
 
 </asp:Content>

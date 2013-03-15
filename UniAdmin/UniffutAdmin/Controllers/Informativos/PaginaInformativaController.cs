@@ -88,7 +88,7 @@ namespace UniffutAdmin.Controllers.Informativos
         //
         // GET: /PaginaInformativa/Create
 
-        public ActionResult Create()
+        public ActionResult Create(pagina_informativa pagina)
         {
             if (Session["userID"] == null)
             {
@@ -119,14 +119,18 @@ namespace UniffutAdmin.Controllers.Informativos
                     return View("Error", error);
                 }
             }
-            return View();
+            var viewModel = new PaginaInformativaUsuarioViewModel { 
+            Usuario = db.usuario.Where<usuario>(d=>d.estado == true).ToList(),
+            Pagina = pagina
+            };
+            return View(viewModel);
         } 
 
         //
         // POST: /PaginaInformativa/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(pagina_informativa pagina, PaginaInformativaUsuarioViewModel viewModel)
         {
             try
             {

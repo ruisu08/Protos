@@ -1,57 +1,59 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.pagina_informativa>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.patrocinador>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Create
+	Patrocinador
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Create</h2>
+    <div id="headerContenido">
+        <h1>Crea un nuevo patrocinador</h1>
+    </div>
 
-    <form id="validateForm" action= '<%:Url.Action("Create","Usuario")%>' method="post">
+     <form id="validateForm" action= '<%:Url.Action("Create","Patrocinador")%>' method="post">
+
+        <div id="createWrapper">
+            
+            <div class="editor-label">
+                <h2>Nombre</h2>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "10", @class = "infofield" })%>
+            </div>
+            
+            <div class="editor-label">
+                <h2>Descripcion</h2>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "150", @class = "infofield" })%>
+            </div>
+            
+            <div class="editor-label">
+                <h2>Fecha Ingreso</h2>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.fechaIngreso, new { @class = "datepicker infofield" })%>
+                <%: Html.ValidationMessageFor(model => model.fechaIngreso) %>
+            </div>
+            
+            <div class="editor-label">
+                <h2>Fecha Salida</h2>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.fechaSalida, new { @class = "datepicker infofield" })%>
+                <%: Html.ValidationMessageFor(model => model.fechaSalida) %>
+            </div>
+        </div>
+            
+           <div>
+                <input type="submit" value="Crear nuevo patrocinador" class="opcionCrud" />
+            </div>
         
-        <%: Html.ValidationSummary(true) %>
 
-            
-            <div class="editor-label">
-                <h3>Titulo</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.titulo, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "30", @class = "infofield" })%>
-                <%: Html.ValidationMessageFor(model => model.titulo) %>
-            </div>
-            
-            <div class="editor-label">
-                <h3>Fecha</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.fecha, new { @required = "required", @maxlength = "30", @class = "infofield" })%>
-                <%: Html.ValidationMessageFor(model => model.fecha) %>
-            </div>
-            
-            <div class="editor-label">
-                <h3>Contenido</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.contenido, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "30", @class = "infofield" })%>
-                <%: Html.ValidationMessageFor(model => model.contenido) %>
-            </div>
-            
-            <div class="editor-label">
-                <h3>Autor</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.autor, new { @required = "required", @maxlength = "30", @class = "infofield" })%>
-                <%: Html.ValidationMessageFor(model => model.autor) %>
-            </div>
-            
-            <p>
-                <input type="submit" value="Crear nuevo Patrocinador" id="opcionCrud"/>
-            </p>
-        </form>
+    </form>
 
-    <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
+    <div id="volverIndex">
+        <h3><%: Html.ActionLink("Volver a la Lista", "Index") %></h3>
     </div>
 
 </asp:Content>

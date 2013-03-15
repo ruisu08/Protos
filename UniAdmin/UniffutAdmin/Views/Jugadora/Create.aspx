@@ -6,13 +6,13 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Nueva Jugadora</h2>
+    <div id="headerContenido">
+        <h1>Crea un nueva jugadora</h1>
+    </div>
 
     <form id="validateForm" action= '<%:Url.Action("Create","Jugadora")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-
-        <fieldset>
-            <legend>Información</legend>
+        
+        <div id="createWrapper">
             
             <div class="editor-label">
                 <h3>Identificacion</h3>
@@ -45,15 +45,7 @@
                 <%: Html.TextBoxFor(model => model.Jugadora.fechaNacimiento, new { @class = "datepicker" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.fechaNacimiento)%>
             </div>
-            
-            <div class="editor-label">
-                <h3>Historia</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextAreaFor(model => model.Jugadora.historia, new { @maxlength = "500" })%>
-                <%: Html.ValidationMessageFor(model => model.Jugadora.historia)%>
-            </div>
-            
+
             <div class="editor-label">
                 <h3>Equipo</h3>
             </div>
@@ -70,15 +62,16 @@
                 <%: Html.ValidationMessageFor(model => model.Jugadora.nacionalidad)%>
             </div>
             
-            <p>
-                <input type="submit" value="Añadir Jugadora" />
-            </p>
-        </fieldset>
+        </div>
+
+            <div>
+                <input type="submit" value="Crear nueva jugadora" class="opcionCrud" />
+            </div>
 
     </form>
 
-    <div>
-        <%: Html.ActionLink("Volver a la lista", "Index") %>
+    <div id="volverIndex">
+        <h3><%: Html.ActionLink("Volver a la Lista", "Index") %></h3>
     </div>
 
 </asp:Content>

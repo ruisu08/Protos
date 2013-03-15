@@ -22,7 +22,7 @@
 </div>
 
     <div>
-    <h2>Lista de Páginas informativas:</h2>
+    <h2>Lista de Patrocinadores:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Patrocinador", "Create") %></h3>
     </div>
 
