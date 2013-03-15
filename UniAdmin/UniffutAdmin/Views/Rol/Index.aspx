@@ -14,7 +14,7 @@
         <form id="validateForm" action= '<%:Url.Action("Search","Jugadora")%>' method="post">
             <p>Buscar por nombre</p>
             <input type="text" name="identificacion" />
-            <input id="botonBusqueda" type=submit value="buscar"/>
+            <input id="botonBusqueda" type="submit" value="buscar"/>
         </form>
     </div>
 </div>

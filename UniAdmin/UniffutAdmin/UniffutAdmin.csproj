@@ -416,6 +416,7 @@
     <Content Include="Views\Rol\Details.aspx" />
     <Content Include="Views\Rol\Edit.aspx" />
     <Content Include="Views\Rol\Index.aspx" />
+    <Content Include="Views\Rol\Search.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\TablaPosiciones\Create.aspx" />
     <Content Include="Views\TablaPosiciones\Delete.aspx" />
