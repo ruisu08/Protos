@@ -62,10 +62,10 @@
 
             </td>
 
-            <td >
+            <td  class= "datosIndex">
                 <%: item.abreviatura %>
             </td>
-            <td >
+            <td class= "datosIndex">
                 <%: item.nombre %>
             </td>
          

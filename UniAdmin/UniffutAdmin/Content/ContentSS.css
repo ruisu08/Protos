@@ -30,7 +30,7 @@ th
 {
    margin:0;
     padding:0; 
-    font-size:large;
+    font-size:110%
 }
 
 
@@ -40,8 +40,9 @@ th
     float:right;
     height:1024px; 
     font-size:100%;
-   background-color:#FFFFFF; 
+   background-color:#ffffff; 
    color:#232B2B;
+   font-size:90%;
 }
 
 #botonBusqueda
@@ -61,14 +62,13 @@ th
     background-color:#DC3D24;
     text-align:center;
     border-radius:2px;
-    margin:10px 0 0 10px;
+    margin:0 0 0 0.5%;
     display:inline;
     text-align:center;
     padding:10px;
     color:#E3AE57;    
     font-family:Century Gothic;
     text-decoration:none;
-    font-size:100%;
     
 }
 
@@ -76,7 +76,7 @@ th
 {
     color:#E3AE57;    
     text-decoration:none;
-    font-size:100%;
+    font-size:90%;
 }
 
 #tableWrapper
@@ -168,4 +168,9 @@ th
     border:1px solid #DC3D24;
     padding:10px;
     
+}
+
+.datosIndex
+{
+   margin:0 0.5% 0 0; 
 }
