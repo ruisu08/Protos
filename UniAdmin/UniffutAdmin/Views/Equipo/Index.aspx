@@ -36,9 +36,6 @@
             <th >
                 Nombre
             </th>
-            <th >
-                Division
-            </th>
         </tr>
 
     <% foreach (var item in Model) { %>
@@ -70,9 +67,6 @@
             </td>
             <td >
                 <%: item.nombre %>
-            </td>
-            <td >
-                <%: item.division.nombre %>
             </td>
          
         </tr>
