@@ -1,48 +1,37 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.rol>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Nuevo Rol
+	Crear Rol
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Nuevo Rol</h2>
+     <div id="headerContenido">
+        <h1>Crea un nuevo rol</h1>
+    </div>
         <form id="validateForm" action= '<%:Url.Action("Create","Rol")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-
-        <fieldset>
-
-   <div class="editor-label">
-                <h3>ID</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.idRol, new { @required = "required", @size = "4", @class = "infofield" })%>
-                <%: Html.ValidationMessageFor(model => model.idRol)%>
-            </div>
-
-            <div class="editor-label">
-                <h3>Nombre</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "45", @class = "infofield" })%>
-                <%: Html.ValidationMessageFor(model => model.nombre)%>
-            </div>
-
-            <div class="editor-label">
-                <h3>Descripción</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "100", @class = "infofield" })%>
-                <%: Html.ValidationMessageFor(model => model.descripcion)%>
+              <div id="createWrapper">
+                <div class="editor-label">
+                    <h2>Nombre</h2>
+                </div>
+                <div class="editor-field">
+                    <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "25", @class = "infofield" })%>
+                </div>
+            
+                <div class="editor-label">
+                    <h2>Descripción</h2>
+                </div>
+                <div class="editor-field">
+                    <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "45", @class = "infofield" })%>
+                </div>
             </div>
 
             <p>
                 <input type="submit" value="Crear rol" id="opcionCrud"/>
             </p>
-      </fieldset>
         </form>
 
-        <div>
-        <%: Html.ActionLink("Volver a la lista de roles", "Index") %>
+    <div id="volverIndex">
+        <h3><%: Html.ActionLink("Volver a la Lista", "Index") %></h3>
     </div>
 </asp:Content>
