@@ -8,7 +8,7 @@
 
     <div id="headerContenido">
         <div id="tituloContenido">
-        <h1>Roles</h1>
+        <h1>Equipos</h1>
         <h6 id="descripcionController">Aquí se pueden ver los equipos creados hasta el momento, además de editarlos, eliminarlos o crearlos</h6>
         </div>
 
@@ -43,13 +43,13 @@
         <tr>
             <td>
             <div class="opcionCrud">
-                <%: Html.ActionLink("Editar Usuario", "Edit", new { id=item.idEquipo}) %>
+                <%: Html.ActionLink("Editar Equipo", "Edit", new { id=item.idEquipo}) %>
             </div>
             <div class="opcionCrud">
-                <%: Html.ActionLink("Detalles del Usuario", "Details", new { id=item.idEquipo })%>
+                <%: Html.ActionLink("Detalles del Equipo", "Details", new { id=item.idEquipo })%>
             </div>
             <div class="opcionCrud">
-                <%: Html.ActionLink("Eliminar este Usuario", "Delete", new { id=item.idEquipo })%>
+                <%: Html.ActionLink("Eliminar este Equipo", "Delete", new { id=item.idEquipo })%>
             </div>
 
             <div class="opcionCrud">
