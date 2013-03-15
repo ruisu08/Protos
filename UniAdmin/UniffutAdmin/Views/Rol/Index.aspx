@@ -5,13 +5,15 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
 <div id="headerContenido">
     <div id="tituloContenido">
     <h1>Roles</h1>
     <h6 id="descripcionController">Aquí puedes ver los tipos de usuarios existentes y a que partes del sistema tiene acceso, puedes crear un tipo de usuario nuevo también</h6>
     </div>
+
     <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","Jugadora")%>' method="post">
+        <form id="validateForm" action= '<%:Url.Action("Search","Rol")%>' method="post">
             <p>Buscar por nombre</p>
             <input type="text" name="identificacion" />
             <input type="submit" value="buscar" id="opcionCrud"/>
@@ -52,7 +54,7 @@
             </div>
 
             <div class="opcionCrud">
-                <%: Html.ActionLink("Asignar permisos a rol", "asignarModulosARol", new { id = item.idRol })%>
+                <%: Html.ActionLink("Asignar permisos a Rol", "asignarModulosARol", new { id = item.idRol })%>
             </div>
 
             </td>

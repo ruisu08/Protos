@@ -6,19 +6,38 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Divisiones</h2>
+    <div id="headerContenido">
+    <div id="tituloContenido">
+    <h1>Divisiones</h1>
+    <h6 id="descripcionController">Aquí se pueden ver todas las divisiones existentes, además de poder crearlas, eliminarlas o editarlas</h6>
+    </div>
 
+    <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Division")%>' method="post">
+            <p>Buscar por nombre</p>
+            <input type="text" name="identificacion" />
+            <input type="submit" value="buscar" id="opcionCrud"/>
+        </form>
+    </div>
+</div>
+
+    <div>
+    <h2>Lista de Divisiones:</h2>
+    <h3 id="crearLink"><%:Html.ActionLink("Crear nueva Division", "Create") %></h3>
+    </div>
+
+    <div id="tableWrapper">
     <table  id="indTable">
         <tr>
             <th></th>
             <th>
-                Nombre
+                Abreviatura
             </th>
             <th>
-                Descripcion
+                Nombre
             </th>
              <th>
-                Abreviatura
+                Descripcion
             </th>
         </tr>
 
@@ -26,9 +45,19 @@
     
         <tr>
             <td>
-                <%: Html.ActionLink("Actualizar datos", "Edit", new { id=item.idDivisiones }) %> |
-                <%: Html.ActionLink("Detalles", "Details", new { id=item.idDivisiones })%> |
-                <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idDivisiones })%>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Editar Division", "Edit", new { id=item.idDivisiones}) %>
+            </div>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Detalles de la Division", "Details", new { id=item.idDivisiones })%>
+            </div>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Eliminar la Division", "Delete", new { id=item.idDivisiones })%>
+            </div>
+
+            </td>
+            <td>
+                <%: item.abreviatura %>
             </td>
             <td>
                 <%: item.nombre %>
@@ -36,18 +65,12 @@
             <td>
                 <%: item.descripcion %>
             </td>
-            <td>
-                <%: item.abreviatura %>
-            </td>
         </tr>
     
     <% } %>
 
     </table>
-
-    <p>
-        <%: Html.ActionLink("Crear nueva", "Create") %>
-    </p>
+    </div>
 
 </asp:Content>
 

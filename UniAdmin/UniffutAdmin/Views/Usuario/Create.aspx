@@ -13,11 +13,11 @@
 
             
             <div class="editor-label">
-                <h3>ID</h3>
+                <h3>Identificacion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.idUsuario)%>
-                <%: Html.ValidationMessageFor(model => model.Usuario.idUsuario)%>
+                <%: Html.TextBoxFor(model => model.Usuario.identificacion, new { @required = "required", @maxlength = "30" })%>
+                <%: Html.ValidationMessageFor(model => model.Usuario.identificacion)%>
             </div>
             
             <div class="editor-label">

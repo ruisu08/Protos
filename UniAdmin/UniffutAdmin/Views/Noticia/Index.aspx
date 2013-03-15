@@ -6,14 +6,30 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Noticias</h2>
+    <div id="headerContenido">
+    <div id="tituloContenido">
+    <h1>Noticias</h1>
+    <h6 id="descripcionController">Aquí puedes ver todas las noticias creadas hasta el momento</h6>
+    </div>
 
-    <table>
+    <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Noticia")%>' method="post">
+            <p>Buscar por nombre</p>
+            <input type="text" name="identificacion" />
+            <input type="submit" value="buscar" id="opcionCrud"/>
+        </form>
+    </div>
+</div>
+
+    <div>
+    <h2>Lista de Noticias:</h2>
+    <h3 id="crearLink"><%:Html.ActionLink("Crear nueva Noticia", "Create") %></h3>
+    </div>
+
+    <div id="tableWrapper">
+    <table id="indTable">
         <tr>
             <th></th>
-            <th>
-                ID
-            </th>
             <th>
                 Titulo
             </th>
@@ -21,7 +37,7 @@
                 Fecha
             </th>
             <th>
-                autor
+                Autor
             </th>
             <th>
                 Tipo de Noticia
@@ -32,13 +48,18 @@
     
         <tr>
             <td>
-                <%: Html.ActionLink("Editar noticia", "Edit", new { id=item.idNoticia }) %> |
-                <%: Html.ActionLink("Detalles de noticias", "Details", new { id=item.idNoticia })%> |
-                <%: Html.ActionLink("Eliminar noticia", "Delete", new { id=item.idNoticia })%>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Editar Noticia", "Edit", new { id=item.idNoticia}) %>
+            </div>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Detalles del Noticia", "Details", new { id=item.idNoticia })%>
+            </div>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Eliminar este Noticia", "Delete", new { id=item.idNoticia })%>
+            </div>
+
             </td>
-            <td>
-                <%: item.idNoticia %>
-            </td>
+           
             <td>
                 <%: item.titulo %>
             </td>
@@ -56,10 +77,8 @@
     <% } %>
 
     </table>
+    </div>
 
-    <p>
-        <%: Html.ActionLink("Crear nueva noticia", "Create") %>
-    </p>
 
 </asp:Content>
 

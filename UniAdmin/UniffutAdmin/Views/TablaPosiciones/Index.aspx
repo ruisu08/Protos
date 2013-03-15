@@ -6,9 +6,28 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Index</h2>
+    
+    <div id="headerContenido">
+    <div id="tituloContenido">
+    <h1>Tabla de Posiciones</h1>
+    <h6 id="descripcionController">Aquí puedes ver las tablas de posiciones de los actuales campeonatos</h6>
+    </div>
 
-    <table >
+    <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","TablaPosiciones")%>' method="post">
+            <p>Buscar por nombre</p>
+            <input type="text" name="identificacion" />
+            <input type="submit" value="buscar" id="opcionCrud"/>
+        </form>
+    </div>
+</div>
+
+    <div>
+    <h2>Lista de Tablas de Posiciones:</h2>
+    </div>
+
+    <div id="tableWrapper">
+    <table id="indTable">
         <tr>
             <th></th>
             <th >
@@ -25,10 +44,11 @@
     <% foreach (var item in Model) { %>
     
         <tr >
-            <td >
-                <%: Html.ActionLink("Actualizar", "Edit", new { id=item.Equipo_idEquipo }) %> |
-                <%: Html.ActionLink("Detalles", "Details", new { id=item.Equipo_idEquipo })%> |
-                <%: Html.ActionLink("Eliminar", "Delete", new { id=item.Equipo_idEquipo })%>
+            <td>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Editar Tabla de Posiciones", "Edit", new { id=item.Equipo_idEquipo}) %>
+            </div>
+
             </td>
             <td >
                 <%: item.equipo.nombre %>
@@ -45,10 +65,7 @@
     <% } %>
 
     </table>
-
-    <p>
-        <%: Html.ActionLink("Crear nueva tabla", "Create") %>
-    </p>
+    </div>
 
 </asp:Content>
 

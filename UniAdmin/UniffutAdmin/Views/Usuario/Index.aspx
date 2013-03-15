@@ -6,6 +6,21 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<div id="headerContenido">
+    <div id="tituloContenido">
+    <h1>Usuarios</h1>
+    <h6 id="descripcionController">Aquí puedes ver los usuarios existentes, además de crear, editar o eliminar los existentes</h6>
+    </div>
+
+    <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Usuario")%>' method="post">
+            <p>Buscar por nombre</p>
+            <input type="text" name="identificacion" />
+            <input type="submit" value="buscar" id="opcionCrud"/>
+        </form>
+    </div>
+</div>
+
     <div>
     <h2>Lista de Usuarios:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Usuario", "Create") %></h3>
@@ -41,6 +56,7 @@
             </div>
 
             </td>
+            <td>
                 <%: item.identificacion %>
             </td>
             <td>

@@ -14,10 +14,11 @@
         <form id="validateForm" action= '<%:Url.Action("Search","Jugadora")%>' method="post">
             <p>Buscar por identificación</p>
             <input type="text" name="identificacion" />
-            <input id="botonBusqueda" type=submit value="buscar"/>
+            <input id="botonBusqueda" type="submit" value="buscar"/>
         </form>
     </div>
 </div>
+
 <div id="tableWrapper">
     <div>
         <h3><%: Html.ActionLink("Añadir jugadora", "Create") %></h3>

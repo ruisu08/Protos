@@ -6,6 +6,21 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<div id="headerContenido">
+    <div id="tituloContenido">
+    <h1>Campeonatos</h1>
+    <h6 id="descripcionController">Aquí puedes los campeonatos creados, además de poder editarlos, eliminarlos o crearlos</h6>
+    </div>
+
+    <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Campeonato")%>' method="post">
+            <p>Buscar por nombre</p>
+            <input type="text" name="identificacion" />
+            <input type="submit" value="buscar" id="opcionCrud"/>
+        </form>
+    </div>
+</div>
+
     <h2>Lista de Campeonatos:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Campeonato", "Create") %></h3>
 

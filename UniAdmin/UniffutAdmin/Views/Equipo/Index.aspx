@@ -6,8 +6,27 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Equipos</h2>
+    <div id="headerContenido">
+        <div id="tituloContenido">
+        <h1>Roles</h1>
+        <h6 id="descripcionController">Aquí se pueden ver los equipos creados hasta el momento, además de editarlos, eliminarlos o crearlos</h6>
+        </div>
 
+        <div id="busqueda">
+            <form id="validateForm" action= '<%:Url.Action("Search","Equipo")%>' method="post">
+                <p>Buscar por nombre</p>
+                <input type="text" name="identificacion" />
+                <input type="submit" value="buscar" id="opcionCrud"/>
+            </form>
+        </div>
+    </div>
+
+     <div>
+    <h2>Lista de Equipos:</h2>
+    <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Equipo", "Create") %></h3>
+    </div>
+
+    <div id="tableWrapper">
     <table  id="indTable">
         <tr>
             <th></th>
@@ -25,13 +44,27 @@
     <% foreach (var item in Model) { %>
     
         <tr>
-            <td >
-                <%: Html.ActionLink("Actualizar", "Edit", new { id=item.idEquipo }) %> |
-                <%: Html.ActionLink("Detalles", "Details", new { id=item.idEquipo })%> |
-                <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idEquipo })%>
-                <%: Html.ActionLink("Redactar historia", "agregarHistoria", new { id = item.idEquipo })%>
+            <td>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Editar Usuario", "Edit", new { id=item.idEquipo}) %>
+            </div>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Detalles del Usuario", "Details", new { id=item.idEquipo })%>
+            </div>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Eliminar este Usuario", "Delete", new { id=item.idEquipo })%>
+            </div>
+
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Redactar Historia", "agregarHistoria", new { id=item.idEquipo })%>
+            </div>
+
+            <div class="opcionCrud">
                 <%: Html.ActionLink("Agregar multimedia", "agregarMultimedia", new { id = item.idEquipo })%>
+            </div>
+
             </td>
+
             <td >
                 <%: item.abreviatura %>
             </td>
@@ -47,10 +80,7 @@
     <% } %>
 
     </table>
-
-    <p>
-        <%: Html.ActionLink("Crear nuevo equipo", "Create") %>
-    </p>
+    </div>
 
 </asp:Content>
 
