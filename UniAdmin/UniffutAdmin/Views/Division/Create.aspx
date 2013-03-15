@@ -17,7 +17,7 @@
                 <h3>Abreviatura</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.abreviatura, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "10" })%>
+                <%: Html.TextBoxFor(model => model.abreviatura, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "10", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.abreviatura) %>
             </div>
 
@@ -25,7 +25,7 @@
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "40" })%>
+                <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "40", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.nombre) %>
             </div>
             
@@ -33,12 +33,12 @@
                 <h3>Descripcion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "140" })%>
+                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "140", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.descripcion) %>
             </div>
             
             <p>
-                <input type="submit" value="Crear" />
+                <input type="submit" value="Crear" id="opcionCrud" />
             </p>
         </fieldset>
     </form>

@@ -18,7 +18,7 @@
                 <h3>ID</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Noticia.idNoticia, new { @required = "required", @size = "4" })%>
+                <%: Html.TextBoxFor(model => model.Noticia.idNoticia, new { @required = "required", @size = "4", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Noticia.idNoticia)%>
             </div>
             
@@ -26,7 +26,7 @@
                 <h3>Titulo</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Noticia.titulo, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "50" })%>
+                <%: Html.TextBoxFor(model => model.Noticia.titulo, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "50", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Noticia.titulo)%>
             </div>
             
@@ -50,7 +50,7 @@
                 <h3>Autor</h3>
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Noticia.autor, new SelectList(Model.Usuarios, "idUsuario", "idUsuario", Model.Usuarios.First().idUsuario))%>
+                <%: Html.DropDownListFor(model => model.Noticia.autor, new SelectList(Model.Usuarios, "idUsuario", "idUsuario", Model.Usuarios.First().idUsuario), new { @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Noticia.autor)%>
             </div>
             
@@ -58,12 +58,12 @@
                 <h3>Tipo de noticia</h3>
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Noticia.TipoNoticia_idTipoNoticia, new SelectList(Model.Tipos, "idTipoNoticia", "nombre", Model.Tipos.First().idTipoNoticia))%>
+                <%: Html.DropDownListFor(model => model.Noticia.TipoNoticia_idTipoNoticia, new SelectList(Model.Tipos, "idTipoNoticia", "nombre", Model.Tipos.First().idTipoNoticia), new { @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Noticia.TipoNoticia_idTipoNoticia)%>
             </div>
             
             <p>
-                <input type="submit" value="Crear" />
+                <input type="submit" value="Crear" id="opcionCrud"/>
             </p>
         </fieldset>
 

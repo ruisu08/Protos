@@ -18,7 +18,7 @@
                 <h3>Identificacion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.identificacion, new { @required = "required", @type="number", @size = "20" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.identificacion, new { @required = "required", @type = "number", @size = "20", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.identificacion)%>
             </div>
             
@@ -26,7 +26,7 @@
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{5,}", @maxlength = "45" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{5,}", @maxlength = "45", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.nombre)%>
             </div>
             
@@ -34,7 +34,7 @@
                 <h3>Apellidos</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.apellidos, new { @required = "required", @pattern = "[a-zA-Z ]{5,}", @maxlength = "45" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.apellidos, new { @required = "required", @pattern = "[a-zA-Z ]{5,}", @maxlength = "45", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.apellidos)%>
             </div>
             
@@ -58,7 +58,7 @@
                 <h3>Equipo</h3>
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Jugadora.Equipo_idEquipo, new SelectList(Model.Equipos, "idEquipo", "nombre", Model.Equipos.First().idEquipo))%>
+                <%: Html.DropDownListFor(model => model.Jugadora.Equipo_idEquipo, new SelectList(Model.Equipos, "idEquipo", "nombre", Model.Equipos.First().idEquipo), new { @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.Equipo_idEquipo)%>
             </div>
 
@@ -66,7 +66,7 @@
                 <h3>Nacionalidad</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.nacionalidad, new { @required = "required", @pattern = "[a-zA-Z ]{5,}", @maxlength = "45" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.nacionalidad, new { @required = "required", @pattern = "[a-zA-Z ]{5,}", @maxlength = "45", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.nacionalidad)%>
             </div>
             

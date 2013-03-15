@@ -18,7 +18,7 @@
                 <h3>ID</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Calendario.idCalendario, new { @required = "required", @size = "4" })%>
+                <%: Html.TextBoxFor(model => model.Calendario.idCalendario, new { @required = "required", @size = "4"})%>
                 <%: Html.ValidationMessageFor(model => model.Calendario.idCalendario) %>
             </div>
             

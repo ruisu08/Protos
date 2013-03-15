@@ -18,7 +18,7 @@
                 <h3>ID del Campeonato</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Campeonato.idCampeonato, new { @required = "required", @size = "4" })%>
+                <%: Html.TextBoxFor(model => model.Campeonato.idCampeonato, new { @required = "required", @size = "4", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Campeonato.idCampeonato)%>
             </div>
             
@@ -26,7 +26,7 @@
                 <h3>Nombre del Campeonato</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Campeonato.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "40" })%>
+                <%: Html.TextBoxFor(model => model.Campeonato.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "40", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Campeonato.nombre)%>
             </div>
             
@@ -34,7 +34,7 @@
                 <h3>Descripcion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Campeonato.descripcion, new { @required = "required", @pattern = "[a-zA-Z]{2,}", @maxlength = "140" })%>
+                <%: Html.TextBoxFor(model => model.Campeonato.descripcion, new { @required = "required", @pattern = "[a-zA-Z]{2,}", @maxlength = "140", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Campeonato.descripcion)%>
             </div>
             
@@ -42,12 +42,12 @@
                 <h3>Division en la que se encuentra</h3>
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Campeonato.idDivision, new SelectList(Model.Divisiones, "idDivisiones", "nombre", Model.Divisiones.First().idDivisiones))%>
+                <%: Html.DropDownListFor(model => model.Campeonato.idDivision, new SelectList(Model.Divisiones, "idDivisiones", "nombre", Model.Divisiones.First().idDivisiones), new { @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Campeonato.idDivision)%>
             </div>
             
             <p>
-                <input type="submit" value="Añadir Campeonato" />
+                <input type="submit" value="Añadir Campeonato" id="opcionCrud"/>
             </p>
         </fieldset>
 

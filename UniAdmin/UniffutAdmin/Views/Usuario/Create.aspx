@@ -16,7 +16,7 @@
                 <h3>Identificacion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.identificacion, new { @required = "required", @maxlength = "30" })%>
+                <%: Html.TextBoxFor(model => model.Usuario.identificacion, new { @required = "required", @maxlength = "30", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.identificacion)%>
             </div>
             
@@ -24,7 +24,7 @@
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.nombre,  new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "30" })%>
+                <%: Html.TextBoxFor(model => model.Usuario.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "30", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.nombre)%>
             </div>
             
@@ -32,7 +32,7 @@
                 <h3>Apellido</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.apellido, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "50" })%>
+                <%: Html.TextBoxFor(model => model.Usuario.apellido, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "50", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.apellido)%>
             </div>
             
@@ -40,7 +40,7 @@
                <h3>Teléfono</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.telefono, new { @required = "required", @size = "15" })%>
+                <%: Html.TextBoxFor(model => model.Usuario.telefono, new { @required = "required", @size = "15", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.telefono)%>
             </div>
             
@@ -48,7 +48,7 @@
                 <h3>Correo</h3>
             </div>
             <div class="editor-field">
-                <%:Html.TextBoxFor(model => model.Usuario.correo, new { @required = "required", @maxlength="50", @type="email", @name="email" })%>
+                <%:Html.TextBoxFor(model => model.Usuario.correo, new { @required = "required", @maxlength = "50", @type = "email", @name = "email", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.correo)%>
             </div>
             
@@ -56,7 +56,7 @@
                 <h3>Password</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.password, new { @required = "required", @pattern="[a-zA-Z0-9]{2,}" , @maxlength="50" })%>
+                <%: Html.TextBoxFor(model => model.Usuario.password, new { @required = "required", @pattern = "[a-zA-Z0-9]{2,}", @maxlength = "50", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.password)%>
             </div>
 
@@ -64,12 +64,12 @@
                <h3>Rol</h3>
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Usuario.Rol_idRol, new SelectList(Model.Roles, "idRol","descripcion",Model.Roles.First().idRol))%>
+                <%: Html.DropDownListFor(model => model.Usuario.Rol_idRol, new SelectList(Model.Roles, "idRol", "descripcion", Model.Roles.First().idRol), new { @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.Rol_idRol)%>
             </div>
             
             <p>
-                <input type="submit" value="Crear nuevo usuario" />
+                <input type="submit" value="Crear nuevo usuario" id="opcionCrud"/>
             </p>
 
     </form>
