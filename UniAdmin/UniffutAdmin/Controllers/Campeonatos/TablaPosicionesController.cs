@@ -14,7 +14,7 @@ namespace UniffutAdmin.Controllers.Campeonatos
         // GET: /TablaPosiciones/
         private static uniffutData db = new uniffutData();
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
             if (Session["userID"] == null)
             {
@@ -24,77 +24,31 @@ namespace UniffutAdmin.Controllers.Campeonatos
                 };
                 return View("Error", error);
             }
-            var posisiones = db.equipo_has_campeonato.Where<equipo_has_campeonato>(r => r.estado == true);
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
+                {
+                    if (m.idModulo == 2)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
+            var posisiones = db.equipo_has_campeonato.Where<equipo_has_campeonato>(r => r.estado == true && r.Campeonato_idCampeonato.Equals(id));
             return View(posisiones.ToList());
         }
 
-        //
-        // GET: /TablaPosiciones/Details/5
-
-        public ActionResult Details(int id)
-        {
-            if (Session["userID"] == null)
-            {
-                ErrorModel error = new ErrorModel
-                {
-                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
-                };
-                return View("Error", error);
-            }
-            var tabla = db.equipo_has_campeonato.First(r => r.Equipo_idEquipo.Equals(id));
-            return View(tabla);
-        }
-
-        //
-        // GET: /TablaPosiciones/Create
-
-        public ActionResult Create(equipo_has_campeonato tabla)
-        {
-            if (Session["userID"] == null)
-            {
-                ErrorModel error = new ErrorModel
-                {
-                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
-                };
-                return View("Error", error);
-            }
-            var viewModel = new TablaPosicionesEquipoViewModel
-            {
-                equipos = db.equipo.ToList(),
-                campeonatos = db.campeonato.ToList(),
-                tablaPosiciones = tabla
-            };
-            
-            return View(viewModel);
-        } 
-
-        //
-        // POST: /TablaPosiciones/Create
-
-        [HttpPost]
-        public ActionResult Create(equipo_has_campeonato tablaPosiciones, TablaPosicionesEquipoViewModel viewModel)
-        {
-            try
-            {
-                viewModel.tablaPosiciones = tablaPosiciones;
-                viewModel.tablaPosiciones.estado = true;
-                viewModel.equipos = db.equipo.ToList();
-                viewModel.campeonatos = db.campeonato.ToList();
-
-                db.equipo_has_campeonato.AddObject(viewModel.tablaPosiciones);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch(Exception e)
-            {
-                ErrorModel error = new ErrorModel
-                {
-                    mensaje = e.InnerException.ToString()
-                };
-                return View("Error", error);
-            }
-        }
-        
         //
         // GET: /TablaPosiciones/Edit/5
  
@@ -107,6 +61,27 @@ namespace UniffutAdmin.Controllers.Campeonatos
                     mensaje = "Debes iniciar sesion para acceder a esta pagina"
                 };
                 return View("Error", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
+                {
+                    if (m.idModulo == 2)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
             }
             var tabla = db.equipo_has_campeonato.First(r => r.Equipo_idEquipo.Equals(id));
             var viewModel = new TablaPosicionesEquipoViewModel
@@ -144,46 +119,6 @@ namespace UniffutAdmin.Controllers.Campeonatos
             {
                 ErrorModel error = new ErrorModel();
                 error.mensaje = e.Message;
-                return View("Error", error);
-            }
-        }
-
-        //
-        // GET: /TablaPosiciones/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            if (Session["userID"] == null)
-            {
-                ErrorModel error = new ErrorModel
-                {
-                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
-                };
-                return View("Error", error);
-            }
-            var tablaPos = db.equipo_has_campeonato.First(r => r.Equipo_idEquipo.Equals(id));
-            return View(tablaPos);
-        }
-
-        //
-        // POST: /TablaPosiciones/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                var tablaPos = db.equipo_has_campeonato.First(r => r.Campeonato_idCampeonato.Equals(id));
-                tablaPos.estado = false;
-                db.SaveChanges(); 
-                return RedirectToAction("Index");
-            }
-            catch(Exception e)
-            {
-                ErrorModel error = new ErrorModel
-                {
-                    mensaje = e.InnerException.ToString()
-                };
                 return View("Error", error);
             }
         }

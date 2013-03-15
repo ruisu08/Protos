@@ -65,7 +65,7 @@ namespace UniffutAdmin.Controllers.Administracion
                 bool autorizado = false;
                 int idUser = (int)Session["userID"];
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo)
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
                 {
                     if (m.idModulo == 1)
                     {
@@ -101,10 +101,11 @@ namespace UniffutAdmin.Controllers.Administracion
             }
             else
             {
+
                 bool autorizado = false;
                 int idUser = (int)Session["userID"];
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo)
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
                 {
                     if (m.idModulo == 1)
                     {
@@ -176,7 +177,7 @@ namespace UniffutAdmin.Controllers.Administracion
                 bool autorizado = false;
                 int idUser = (int)Session["userID"];
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo)
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
                 {
                     if (m.idModulo == 1)
                     {
@@ -249,7 +250,7 @@ namespace UniffutAdmin.Controllers.Administracion
                 bool autorizado = false;
                 int idUser = (int)Session["userID"];
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo)
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
                 {
                     if (m.idModulo == 1)
                     {
@@ -320,7 +321,7 @@ namespace UniffutAdmin.Controllers.Administracion
                 bool autorizado = false;
                 int idUser = (int)Session["userID"];
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo)
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
                 {
                     if (m.idModulo == 1)
                     {

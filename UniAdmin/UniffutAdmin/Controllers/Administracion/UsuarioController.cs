@@ -24,6 +24,29 @@ namespace UniffutAdmin.Controllers
                 };
                 return View("Error", error);
             }
+            else {
+
+
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
+                {
+                    if (m.idModulo == 1)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            
+            }
             var usuarios = db.usuario.Where<usuario>(r => r.estado == true);
             return View(usuarios.ToList());
         }
@@ -41,8 +64,30 @@ namespace UniffutAdmin.Controllers
                 };
                 return View("Error", error);
             }
-            var u = db.usuario.First(s => s.idUsuario.Equals(id));
-            return View(u);
+            else {
+
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
+                {
+                    if (m.idModulo == 1)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            
+            }
+            var usu = db.usuario.First(s => s.idUsuario.Equals(id));
+            return View(usu);
         }
 
         //
@@ -57,6 +102,27 @@ namespace UniffutAdmin.Controllers
                     mensaje = "Debes iniciar sesion para acceder a esta pagina"
                 };
                 return View("Error", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
+                {
+                    if (m.idModulo == 1)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
             }
             var viewModel = new UsuarioRolViewModel
             {
@@ -130,11 +196,32 @@ namespace UniffutAdmin.Controllers
                 };
                 return View("Error", error);
             }
-            var u = db.usuario.First(s => s.idUsuario.Equals(id));
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
+                {
+                    if (m.idModulo == 1)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
+            var usu = db.usuario.First(s => s.idUsuario.Equals(id));
             var viewModel = new UsuarioRolViewModel
             {
                 Roles = db.rol.Where<rol>(d => d.estado == true).ToList(),
-                Usuario = u
+                Usuario = usu
             };
             if (viewModel.Roles.Count <= 0)
             {
@@ -216,13 +303,35 @@ namespace UniffutAdmin.Controllers
                 };
                 return View("Error", error);
             }
-            var u = db.usuario.First(s => s.idUsuario.Equals(id));
-            if (!u.estado)
+            else
+            {
+
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
+                {
+                    if (m.idModulo == 1)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
+            var usu = db.usuario.First(s => s.idUsuario.Equals(id));
+            if (!usu.estado)
             {
                 ErrorModel error = new ErrorModel { mensaje = "El usuario ya fue eliminado" };
                 return View("Error", error);
             }
-            return View(u);
+            return View(usu);
         }
 
         //
