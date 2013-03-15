@@ -79,9 +79,12 @@
     <Compile Include="Controllers\Informativos\PaginaInformativaController.cs" />
     <Compile Include="Controllers\Informativos\PatrocinadorController.cs" />
     <Compile Include="Controllers\Jugadoras\JugadoraController.cs" />
-    <Compile Include="Controllers\Multimedia\MultimediaController.cs" />
+    <Compile Include="Controllers\Multimedia\AlbumEquipoController.cs" />
+    <Compile Include="Controllers\Multimedia\AlbumJugadoraController.cs" />
+    <Compile Include="Controllers\Multimedia\MultimediaEquipoController.cs" />
     <Compile Include="Controllers\Informativos\NoticiaController.cs" />
     <Compile Include="Controllers\Administracion\UsuarioController.cs" />
+    <Compile Include="Controllers\Multimedia\MultimediaJugadoraController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -92,6 +95,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>uniffutDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\JugadoraAlbumMultimedia.cs" />
     <Compile Include="Models\ViewModels\CalendarioCampeonatoViewModel.cs" />
     <Compile Include="Models\ViewModels\CampeonatoDivisionViewModel.cs" />
     <Compile Include="Models\ViewModels\EquipoAlbumMultimedia.cs" />

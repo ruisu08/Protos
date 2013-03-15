@@ -13,7 +13,7 @@ namespace UniffutAdmin.Controllers
         //
         // GET: /Multimedia/
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
             if (Session["userID"] == null)
             {
@@ -43,47 +43,11 @@ namespace UniffutAdmin.Controllers
                     return View("Error", error);
                 }
             }
-            return View();
+
+            var multimedia = db.album_equipo.Where<album_equipo>(r=>r.idAlbum_Equipo.Equals(id));
+            return View(multimedia.ToList());
         }
-
-        //
-        // GET: /Multimedia/Details/5
-
-        public ActionResult Details(int id)
-        {
-            if (Session["userID"] == null)
-            {
-                ErrorModel error = new ErrorModel
-                {
-                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
-                };
-                return View("Error", error);
-            }
-            else
-            {
-                bool autorizado = false;
-                int idUser = (int)Session["userID"];
-                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(3)))
-                {
-                    if (m.idModulo == 3)
-                    {
-                        autorizado = true;
-                    }
-                }
-                if (!autorizado)
-                {
-                    ErrorModel error = new ErrorModel
-                    {
-                        mensaje = "No tienes permisos para acceder a esta página"
-                    };
-                    return View("Error", error);
-                }
-            }
-            return View();
-        }
-
-        //
+         //
         // GET: /Multimedia/Create
 
         public ActionResult Create()
@@ -124,74 +88,25 @@ namespace UniffutAdmin.Controllers
         // POST: /Multimedia/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(multimedia multimedia)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                multimedia.estado = true;
+                db.multimedia.AddObject(multimedia);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
-        }
-        
-        //
-        // GET: /Multimedia/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
-            if (Session["userID"] == null)
+            catch (Exception e)
             {
                 ErrorModel error = new ErrorModel
                 {
-                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                    mensaje = e.InnerException.ToString()
                 };
                 return View("Error", error);
             }
-            else
-            {
-                bool autorizado = false;
-                int idUser = (int)Session["userID"];
-                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(3)))
-                {
-                    if (m.idModulo == 3)
-                    {
-                        autorizado = true;
-                    }
-                }
-                if (!autorizado)
-                {
-                    ErrorModel error = new ErrorModel
-                    {
-                        mensaje = "No tienes permisos para acceder a esta página"
-                    };
-                    return View("Error", error);
-                }
-            }
-            return View();
         }
-
-        //
-        // POST: /Multimedia/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
 
         //
         // GET: /Multimedia/Delete/5
