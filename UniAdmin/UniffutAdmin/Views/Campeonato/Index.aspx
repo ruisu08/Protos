@@ -6,25 +6,18 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Campeonato</h2>
+    <h2>Lista de Campeonatos:</h2>
+    <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Campeonato", "Create") %></h3>
 
-    <table>
+    <div id="tableWrapper">
+    <table id="indTable">
         <tr>
             <th></th>
-            <th>
-                ID
-            </th>
             <th>
                 Nombre
             </th>
             <th>
-                Descripcion
-            </th>
-            <th>
                 Division
-            </th>
-            <th>
-                Estado
             </th>
         </tr>
 
@@ -32,34 +25,28 @@
     
         <tr>
             <td>
-                <%: Html.ActionLink("Actualizar datos", "Edit", new { id=item.idCampeonato }) %> |
-                <%: Html.ActionLink("Datos en detalle", "Details", new { id = item.idCampeonato })%> |
-                <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idCampeonato })%>
-            </td>
-            <td>
-                <%: item.idCampeonato %>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Editar Campeonato", "Edit", new { id=item.idCampeonato}) %>
+            </div>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Detalles del Campeonato", "Details", new { id=item.idCampeonato })%>
+            </div>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Eliminar este Campeonato", "Delete", new { id=item.idCampeonato })%>
+            </div>
             </td>
             <td>
                 <%: item.nombre %>
             </td>
             <td>
-                <%: item.descripcion %>
-            </td>
-            <td>
                 <%: item.division.nombre %>
-            </td>
-            <td>
-                <%: item.estado %>
             </td>
         </tr>
     
     <% } %>
 
     </table>
-
-    <p>
-        <%: Html.ActionLink("Create New", "Create") %>
-    </p>
+    </div>
 
 </asp:Content>
 

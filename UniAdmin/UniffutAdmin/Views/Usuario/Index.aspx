@@ -6,25 +6,20 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Usuarios</h2>
+    <div>
+    <h2>Lista de Usuarios:</h2>
+    <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Usuario", "Create") %></h3>
+    </div>
 
-    <table>
+    <div id="tableWrapper">
+    <table id="indTable">
         <tr>
             <th></th>
             <th>
-                ID
+                Identificación
             </th>
             <th>
                 Nombre
-            </th>
-            <th>
-                Apellido
-            </th>
-            <th>
-                Telefono
-            </th>
-            <th>
-                Correo
             </th>
             <th>
                 Rol
@@ -35,24 +30,21 @@
     
         <tr>
             <td>
-                <%: Html.ActionLink("Actualizar Datos", "Edit", new { id=item.idUsuario }) %> |
-                <%: Html.ActionLink("Datos en detalle", "Details", new { id=item.idUsuario })%> |
-                <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idUsuario })%>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Editar Usuario", "Edit", new { id=item.idUsuario}) %>
+            </div>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Detalles del Usuario", "Details", new { id=item.idUsuario })%>
+            </div>
+            <div class="opcionCrud">
+                <%: Html.ActionLink("Eliminar este Usuario", "Delete", new { id=item.idUsuario })%>
+            </div>
+
             </td>
-            <td>
-                <%: item.idUsuario %>
+                <%: item.identificacion %>
             </td>
             <td>
                 <%: item.nombre %>
-            </td>
-            <td>
-                <%: item.apellido %>
-            </td>
-            <td>
-                <%: item.telefono %>
-            </td>
-            <td>
-                <%: item.correo %>
             </td>
             <td>
                 <%: item.rol.descripcion %>
@@ -62,10 +54,7 @@
     <% } %>
 
     </table>
-
-    <p>
-        <%: Html.ActionLink("Crear nuevo usuario", "Create") %>
-    </p>
+    </div>
 
 </asp:Content>
 

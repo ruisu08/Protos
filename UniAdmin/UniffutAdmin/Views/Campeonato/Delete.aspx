@@ -22,7 +22,7 @@
         <div class="display-field"><%: Model.descripcion %></div>
         
         <div class="display-label">Divisiones</div>
-        <div class="display-field"><%: Model.Divisiones_idDivisiones %></div>
+        <div class="display-field"><%: Model.division.nombre %></div>
         
         <div class="display-label">Estado</div>
         <div class="display-field"><%: (bool)Model.estado ? "Activo":"Inactivo" %></div>
