@@ -24,7 +24,7 @@
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "30", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.Usuario.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "30", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.nombre)%>
             </div>
             
@@ -32,7 +32,7 @@
                 <h3>Apellido</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.apellido, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "50", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.Usuario.apellido, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "50", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.apellido)%>
             </div>
             
@@ -56,7 +56,7 @@
                 <h3>Password</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Usuario.password, new { @required = "required", @pattern = "[a-zA-Z0-9]{2,}", @maxlength = "50", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.Usuario.password, new { @required = "required", @pattern = "[a-zA-Z]{1,}", @maxlength = "50", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Usuario.password)%>
             </div>
 

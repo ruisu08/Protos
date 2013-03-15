@@ -17,7 +17,7 @@
                     <h2>Abreviatura</h2>
                 </div>
                 <div class="editor-field">
-                    <%: Html.TextBoxFor(model => model.equipo.abreviatura, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "10", @class = "infofield" })%>
+                    <%: Html.TextBoxFor(model => model.equipo.abreviatura, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "10", @class = "infofield" })%>
                     <%: Html.ValidationMessageFor(model => model.equipo.abreviatura) %>
                 </div>
             
@@ -25,7 +25,7 @@
                     <h2>Nombre</h2>
                 </div>
                 <div class="editor-field">
-                    <%: Html.TextBoxFor(model => model.equipo.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{5,}", @maxlength = "40", @class = "infofield" })%>
+                    <%: Html.TextBoxFor(model => model.equipo.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "40", @class = "infofield" })%>
                     <%: Html.ValidationMessageFor(model => model.equipo.nombre) %>
                 </div>
             

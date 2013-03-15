@@ -26,7 +26,7 @@
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.nombre, new { @required = "required", @maxlength = "45", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.nombre, new { @required = "required", @pattern = "[a-zA-Z]{1,}", @maxlength = "45", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.nombre)%>
             </div>
             
@@ -34,7 +34,7 @@
                 <h3>Apellidos</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.apellidos, new { @required = "required", @pattern = "[a-zA-Z ]{5,}", @maxlength = "45", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.apellidos, new { @required = "required", @pattern = "[a-zA-Z]{1,}", @maxlength = "45", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.apellidos)%>
             </div>
             
@@ -66,7 +66,7 @@
                 <h3>Nacionalidad</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.nacionalidad, new { @required = "required", @pattern = "[a-zA-Z ]{5,}", @maxlength = "45", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.nacionalidad, new { @required = "required", @pattern = "[a-zA-Z]{1,}", @maxlength = "45", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Jugadora.nacionalidad)%>
             </div>
             

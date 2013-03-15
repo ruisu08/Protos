@@ -17,7 +17,7 @@
                 <h3>Titulo</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.titulo, new { @required = "required", @maxlength = "30", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.titulo, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "30", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.titulo) %>
             </div>
             
@@ -33,7 +33,7 @@
                 <h3>Contenido</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.contenido, new { @required = "required", @maxlength = "30", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.contenido, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "30", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.contenido) %>
             </div>
             
