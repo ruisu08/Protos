@@ -7,13 +7,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Index</h2>
-
+    <div class="thumbnails yoxview">
+    
     <%foreach (var m in Model)
       { %>
-           <div class="multiPreview">
+           <a>
             <%:new HtmlString (HttpUtility.HtmlDecode(m.fuenteGrafica))%>
-           </div>
+           </a>
 
     <%} %>
-
+    </div>
 </asp:Content>
