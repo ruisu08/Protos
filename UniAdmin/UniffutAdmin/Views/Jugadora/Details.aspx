@@ -23,7 +23,7 @@
         <div class="propiedadDetalle"><h4><%: Model.nacionalidad %></h4></div>
     </div>
     <div id="volverIndex">
-        <h3><%:Html.ActionLink("Volver a la lista de roles", "Index") %></h3>
+        <h3><%:Html.ActionLink("Volver a la Lista", "Index") %></h3>
      </div>
 </asp:Content>
 

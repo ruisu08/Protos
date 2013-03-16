@@ -6,44 +6,43 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Actualizar Datos</h2>
+    <div id="headerContenido">
+        <h1>Editar equipo</h1>
+    </div>
 
     <form id="validateForm" action= '<%:Url.Action("Edit","Equipo")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-        
+       <div id="createWrapper">
             
             <div class="editor-label">
                  <h3>Abreviatura</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.equipo.abreviatura, new { @required = "required", @name = "Abrev", @pattern = "[a-zA-Z ]{2,}", @maxlength = "10" })%>
-                <%: Html.ValidationMessageFor(model => model.equipo.abreviatura) %>
+                <%: Html.TextBoxFor(model => model.equipo.abreviatura, new { @required = "required", @name = "Abrev", @pattern = "[a-zA-Z ]{2,}", @maxlength = "10", @class = "infofield" })%>
             </div>
             
             <div class="editor-label">
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.equipo.nombre, new { @required = "required", @name = "name", @pattern = "[a-zA-Z ]{5,}", @maxlength = "40" })%>
-                <%: Html.ValidationMessageFor(model => model.equipo.nombre) %>
+                <%: Html.TextBoxFor(model => model.equipo.nombre, new { @required = "required", @name = "name", @pattern = "[a-zA-Z ]{5,}", @maxlength = "40", @class = "infofield" })%>
             </div>
             
             <div class="editor-label">
                  <h3>Divisiones</h3>
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.equipo.idDivision, new SelectList(Model.divisiones, "idDivisiones","nombre", Model.divisiones.First().idDivisiones)) %>
-                <%: Html.ValidationMessageFor(model => model.equipo.idDivision) %>
+                <%: Html.DropDownListFor(model => model.equipo.idDivision, new SelectList(Model.divisiones, "idDivisiones", "nombre", Model.divisiones.First().idDivisiones), new { @class = "infofield" })%>
             </div>
-            
-            <p>
-                <input type="submit" value="Guardar" id="submitBTN" />
-            </p>
+
+        </div>
+            <div>
+                <input type="submit" value="Guardar Cambios" class="opcionCrud" />
+            </div>
 
     </form>
 
-    <div>
-        <%: Html.ActionLink("Volver a la lista", "Index") %>
+    <div id="volverIndex">
+        <h3><%: Html.ActionLink("Volver a la Lista", "Index") %></h3>
     </div>
 
 </asp:Content>
