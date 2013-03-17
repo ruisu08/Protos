@@ -1,0 +1,33 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.patrocinador>" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+	agregarMultimedia
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <div id="headerContenido">
+        <h1>Agregar multimedia</h1>
+    </div>
+
+    <form id="validateForm" action= '<%:Url.Action("agregarMultimedia","Patrocinador")%>' method="post">
+          
+          <div id="createWrapper">  
+            
+            <div class="editor-label">
+                <h2>Imagen</h2>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.fuenteGrafica, new { @id = "multimediaAdder", @class = "infofield" })%>
+            </div>
+        </div>
+            <div>
+                <input type="submit" value="Guardar" class="opcionCrud" />
+            </div>
+     </form>
+
+    <div>
+        <%: Html.ActionLink("Volver a la lista", "Index") %>
+    </div>
+
+</asp:Content>

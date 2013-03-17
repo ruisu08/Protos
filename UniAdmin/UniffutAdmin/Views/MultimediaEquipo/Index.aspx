@@ -32,12 +32,14 @@
     
     <%foreach (var m in Model)
       { %>
+      <div class="OrdenAlbum">
            <a class="imagenAlbum">
             <%:new HtmlString (HttpUtility.HtmlDecode(m.fuenteGrafica))%>
            </a>
-           <div class="opcionCrud">
+           <div class="opcionBorrarMult">
               <%: Html.ActionLink("Eliminar multimedia", "Delete", new { id=m.idMultimedia}) %>
            </div>
+        </div>
     <%} %>
     </div>
 </asp:Content>

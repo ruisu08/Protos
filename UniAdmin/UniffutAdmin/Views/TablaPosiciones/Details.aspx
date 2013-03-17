@@ -22,18 +22,18 @@
                var t = list[i];%>
                <% if (i % 2 == 0)
                   {%>
-                        <div class="nombrePropiedadDetalle"><h3>Equipo:<%:" " + t.equipo.nombre%> </h3><h3>Puntos:<%:" " + t.puntos%> </h3>
-                        <div class="opcionCrud">
-                            <%: Html.ActionLink("Modificar Puntaje", "Edit", new { idEquipo=t.idEquipo, idTabla = t.idTabla}) %>
+                        <div class="nombrePropiedadDetalle"><h3>Equipo:<%:" " + t.equipo.nombre%> </h3><h3>Puntos:<%:" " + t.puntos%> </h3>                   
                         </div>
+                        <div class="opcionTabla">
+                            <%: Html.ActionLink("Modificar Puntaje", "Edit", new { idEquipo=t.idEquipo, idTabla = t.idTabla}) %>
                         </div>
                <% } %>
                <% else
                   { %>
-                        <div class="propiedadDetalle"><h3>Equipo:<%:" " + t.equipo.nombre%> </h3><h3>Puntos:<%:" " + t.puntos%> </h3>
-                        <div class="opcionCrud">
-                            <%: Html.ActionLink("Modificar Puntaje", "Edit", new { idEquipo = t.idEquipo, idTabla = t.idTabla })%>
+                        <div class="propiedadDetalle"><h3>Equipo:<%:" " + t.equipo.nombre%> </h3><h3>Puntos:<%:" " + t.puntos%> </h3>                        
                         </div>
+                        <div class="opcionTabla">
+                            <%: Html.ActionLink("Modificar Puntaje", "Edit", new { idEquipo = t.idEquipo, idTabla = t.idTabla })%>
                         </div>
 
                <% } %>

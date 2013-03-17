@@ -82,7 +82,8 @@ namespace UniffutAdmin.Controllers.Informativos
                     return View("Error", error);
                 }
             }
-            return View();
+            var patrocinadores = db.patrocinador.First(p=> p.idPatrocinador.Equals(id));
+            return View(patrocinadores);
         }
 
         //
@@ -126,17 +127,33 @@ namespace UniffutAdmin.Controllers.Informativos
         // POST: /Patrocinador/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(patrocinador Patrocinador)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                var oldPatrocinador = db.patrocinador.FirstOrDefault(e => e.nombre == Patrocinador.nombre);
+                if (oldPatrocinador != null)
+                {
+                    oldPatrocinador.nombre = Patrocinador.nombre;
+                    oldPatrocinador.descripcion = Patrocinador.descripcion;
+                    oldPatrocinador.fechaIngreso = Patrocinador.fechaIngreso;
+                    oldPatrocinador.fechaSalida = Patrocinador.fechaSalida;
+                    oldPatrocinador.estado = true;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                Patrocinador.estado = true;
+                db.patrocinador.AddObject(Patrocinador);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = e.InnerException.ToString()
+                };
+                return View("Error", error);
             }
         }
         
@@ -174,24 +191,35 @@ namespace UniffutAdmin.Controllers.Informativos
                     return View("Error", error);
                 }
             }
-            return View();
+            var patrocinadores = db.patrocinador.First(p => p.idPatrocinador.Equals(id));
+            return View(patrocinadores);
         }
 
         //
         // POST: /Patrocinador/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, patrocinador Patrocinador)
         {
             try
             {
-                // TODO: Add update logic here
- 
+                var patrocinador = db.patrocinador.FirstOrDefault(p => p.idPatrocinador.Equals(id) && p.estado == true);
+                patrocinador.nombre = Patrocinador.nombre;
+                patrocinador.descripcion = Patrocinador.descripcion;
+                patrocinador.fechaIngreso = Patrocinador.fechaIngreso;
+                patrocinador.fechaSalida = Patrocinador.fechaSalida;
+                patrocinador.estado = true;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = e.InnerException.ToString()
+                };
+
+                return View("Error", error);
             }
         }
 
@@ -229,7 +257,8 @@ namespace UniffutAdmin.Controllers.Informativos
                     return View("Error", error);
                 }
             }
-            return View();
+            var patrocinadores = db.patrocinador.First(p => p.idPatrocinador.Equals(id));
+            return View(patrocinadores);
         }
 
         //
@@ -240,14 +269,55 @@ namespace UniffutAdmin.Controllers.Informativos
         {
             try
             {
-                // TODO: Add delete logic here
- 
+                var patrocinador = db.patrocinador.FirstOrDefault(p => p.idPatrocinador.Equals(id) && p.estado == true);
+                patrocinador.estado = false;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = e.InnerException.ToString()
+                };
+                return View("Error", error);
             }
         }
+
+        public ActionResult agregarMultimedia(int id)
+        {
+
+            var Patrocinador = db.patrocinador.FirstOrDefault(e => e.idPatrocinador.Equals(id));
+            var h = new HtmlString(HttpUtility.HtmlDecode(Patrocinador.fuenteGrafica));
+            Patrocinador.fuenteGrafica = h.ToString();
+            return View(Patrocinador);
+        }
+
+        [HttpPost]
+        public ActionResult agregarMultimedia(int id, patrocinador Patrocinador)
+        {
+            var patrocinador = db.patrocinador.FirstOrDefault(e => e.idPatrocinador.Equals(id));
+            if (patrocinador != null)
+            {
+                patrocinador.fuenteGrafica = Patrocinador.fuenteGrafica;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Otro usuario elimino la division durante la operacion"
+                };
+                return View("Error", error);
+            }
+        }
+
+        public ActionResult verMultimedia(int id)
+        {
+            var patrocinadores = db.patrocinador.First(p => p.idPatrocinador.Equals(id));
+            return View(patrocinadores);
+        }
+
     }
 }

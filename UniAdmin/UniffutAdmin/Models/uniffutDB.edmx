@@ -1432,7 +1432,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="uniffutDB" ZoomLevel="50">
+      <Diagram Name="uniffutDB" ZoomLevel="65">
         <EntityTypeShape EntityType="uniffut.album_equipo" Width="1.5" PointX="5.25" PointY="7.25" Height="2.172587890624996" />
         <EntityTypeShape EntityType="uniffut.album_jugadora" Width="1.5" PointX="7.5" PointY="14.125" Height="2.1725878906250031" />
         <EntityTypeShape EntityType="uniffut.bitacora" Width="1.5" PointX="18.5" PointY="3" Height="2.172587890624996" />

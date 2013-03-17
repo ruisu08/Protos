@@ -55,6 +55,9 @@
                     <div class="opcionCrud">
                     <%: Html.ActionLink("Asignar multimedia", "agregarMultimedia", new { id=item.idPatrocinador })%>
                     </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Ver multimedia", "verMultimedia", new { id=item.idPatrocinador })%>
+                    </div>
                 </div>
             </div>
     <% } %>
