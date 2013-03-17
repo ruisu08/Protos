@@ -57,7 +57,7 @@
         </div>
         <div id="contenido">
         <div id="logOut" class="opcionCrud">
-                <%:Html.ActionLink("Cerrar sesión","LogOut","Home") %>
+                <%:Html.ActionLink("Cerrar sesión","LogOut","Login") %>
         </div>
             <div id="contenidoEspecifico">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">

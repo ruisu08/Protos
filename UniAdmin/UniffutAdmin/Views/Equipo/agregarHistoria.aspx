@@ -6,47 +6,26 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>agregarHistoria</h2>
+    <h2>Agregar Historia</h2>
 
-    <% using (Html.BeginForm()) {%>
-        <%: Html.ValidationSummary(true) %>
-        
-        <fieldset>
-            <legend>Fields</legend>
-            
+    <form id="validateForm" action= '<%:Url.Action("agregarHistoria","Equipo")%>' method="post">
 
+        <div id="createWrapper">
             
             <div class="editor-label">
-                <%: Html.LabelFor(model => model.nombre) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.nombre) %>
-                <%: Html.ValidationMessageFor(model => model.nombre) %>
-            </div>
-
-            <div class="editor-label">
-                <%: Html.LabelFor(model => model.historia) %>
+                <h2>Historia</h2>
             </div>
             <div class="editor-field">
                 <%: Html.TextAreaFor(model => model.historia) %>
                 <%: Html.ValidationMessageFor(model => model.historia) %>
             </div>
+           </div>
+           <div>
+           <input type="submit" value="Crear nuevo equipo" class="opcionCrud" />
+        </div>
 
-            
-            
-
-            
-
-            
-            <p>
-                <input type="submit" value="Save" />
-            </p>
-        </fieldset>
-
-    <% } %>
-
-    <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
+    <div id="volverIndex">
+        <h3><%: Html.ActionLink("Volver a la Lista", "Index") %></h3>
     </div>
 
 </asp:Content>

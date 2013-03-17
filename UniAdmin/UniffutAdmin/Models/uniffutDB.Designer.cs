@@ -3399,7 +3399,7 @@ namespace UniffutAdmin.Models
             {
                 OncontenidoChanging(value);
                 ReportPropertyChanging("contenido");
-                _contenido = StructuralObject.SetValidValue(value, false);
+                _contenido = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("contenido");
                 OncontenidoChanged();
             }

@@ -292,5 +292,33 @@ namespace UniffutAdmin.Controllers
                 return View("Error", error);
             }
         }
+
+        public ActionResult agregarContenido(int id)
+        {
+
+            var Noticia = db.noticia.FirstOrDefault(e => e.idNoticia.Equals(id));
+
+            return View(Noticia);
+        }
+
+        [HttpPost]
+        public ActionResult agregarContenido(int id, noticia Noticia)
+        {
+            var noticia = db.noticia.FirstOrDefault(e => e.idNoticia.Equals(id));
+            if (noticia != null)
+            {
+                noticia.contenido = Noticia.contenido;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Otro usuario elimino la division durante la operacion"
+                };
+                return View("Error", error);
+            }
+        }
     }
 }
