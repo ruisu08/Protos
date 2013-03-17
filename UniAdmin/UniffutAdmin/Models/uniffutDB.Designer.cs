@@ -2187,7 +2187,7 @@ namespace UniffutAdmin.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String historia
         {
@@ -2199,7 +2199,7 @@ namespace UniffutAdmin.Models
             {
                 OnhistoriaChanging(value);
                 ReportPropertyChanging("historia");
-                _historia = StructuralObject.SetValidValue(value, true);
+                _historia = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("historia");
                 OnhistoriaChanged();
             }
@@ -2211,7 +2211,7 @@ namespace UniffutAdmin.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 campeonatosGanados
         {

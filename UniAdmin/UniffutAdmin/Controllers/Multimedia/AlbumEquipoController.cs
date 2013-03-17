@@ -46,8 +46,10 @@ namespace UniffutAdmin.Controllers.Multimedia
                     return View("Error", error);
                 }
             }
-
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
             var album = db.album_equipo.Where<album_equipo>(r => r.idEquipo.Equals(id));
+
             return View(album.ToList());
         }
 
@@ -172,6 +174,7 @@ namespace UniffutAdmin.Controllers.Multimedia
             if (album != null) {
                 album.multimedia.Add(m);
                 db.SaveChanges();
+               
                 return RedirectToAction("Index", new RouteValueDictionary(new { controller = "AlbumEquipo", action = "Index", id = equipo.idEquipo }));
             }
 

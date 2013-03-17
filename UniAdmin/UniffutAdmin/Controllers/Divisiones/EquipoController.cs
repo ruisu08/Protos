@@ -396,14 +396,6 @@ namespace UniffutAdmin.Controllers
         }
 
         public ActionResult albumesMultimedia(int id) {
-
-           /* var equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(id));
-            var viewModel = new EquipoAlbumMultimedia
-            {
-                Equipo = equipo,
-                Albumes= equipo.album_equipo.ToList()
-            };
-            return View(viewModel);*/
             return RedirectToAction("Index", new RouteValueDictionary(new { controller = "AlbumEquipo", action = "Index", id= id }));
        }
 

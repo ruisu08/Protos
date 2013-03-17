@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using UniffutAdmin.Models;
 using UniffutAdmin.Models.ViewModels;
+using System.Web.Routing;
 namespace UniffutAdmin.Controllers
 {
     public class MultimediaEquipoController : Controller
@@ -43,57 +44,28 @@ namespace UniffutAdmin.Controllers
                     return View("Error", error);
                 }
             }
-            var multimedia = db.album_equipo.First(a => a.idAlbum_Equipo.Equals(id)).multimedia;
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
+            var multimedia = db.album_equipo.First(a => a.idAlbum_Equipo.Equals(id)).multimedia.Where<multimedia>(multi=>multi.estado == true);
             return View(multimedia.ToList());
         }
          //
         // GET: /Multimedia/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            if (Session["userID"] == null)
-            {
-                ErrorModel error = new ErrorModel
-                {
-                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
-                };
-                return View("Error", error);
-            }
-            else
-            {
-                bool autorizado = false;
-                int idUser = (int)Session["userID"];
-                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(3)))
-                {
-                    if (m.idModulo == 3)
-                    {
-                        autorizado = true;
-                    }
-                }
-                if (!autorizado)
-                {
-                    ErrorModel error = new ErrorModel
-                    {
-                        mensaje = "No tienes permisos para acceder a esta página"
-                    };
-                    return View("Error", error);
-                }
-            }
-            return View();
+            return RedirectToAction("agregarMultimedia", new RouteValueDictionary(new { controller = "AlbumEquipo", action = "agregarMultimedia", id = id }));
         } 
 
         //
         // POST: /Multimedia/Create
 
-        [HttpPost]
-        public ActionResult Create(multimedia multimedia)
+      /*  [HttpPost]
+        public ActionResult Create(int id)
         {
             try
             {
-                multimedia.estado = true;
-                db.multimedia.AddObject(multimedia);
-                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             catch (Exception e)
@@ -104,7 +76,7 @@ namespace UniffutAdmin.Controllers
                 };
                 return View("Error", error);
             }
-        }
+        }*/
         
 
         //
@@ -141,7 +113,8 @@ namespace UniffutAdmin.Controllers
                     return View("Error", error);
                 }
             }
-            return View();
+            var mult = db.multimedia.First(mu => mu.idMultimedia.Equals(id));
+            return View(mult);
         }
 
         //
@@ -152,6 +125,9 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
+                var mult = db.multimedia.First(mu => mu.idMultimedia.Equals(id));
+                mult.estado = false;
+                db.SaveChanges();
                 // TODO: Add delete logic here
  
                 return RedirectToAction("Index");

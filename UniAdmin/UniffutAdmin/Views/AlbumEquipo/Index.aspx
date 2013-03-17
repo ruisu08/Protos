@@ -23,13 +23,10 @@
 
      <div>
     <h2>Lista de Albumes:</h2>
-    <% for (int i = 0; i < 1; i++)
-       {
-           var item = Model.ToList();
-           var itemOne = item[i];%>
+  
+    
+    <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Album", "Create", new { id = Model.First().idEquipo})%></h3>
 
-    <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Album", "Create", new { id = itemOne.idEquipo})%></h3>
-    <% } %>
     </div>
 
     <div id="indexWrapper">

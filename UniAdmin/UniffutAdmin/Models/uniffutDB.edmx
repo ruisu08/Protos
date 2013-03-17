@@ -202,7 +202,7 @@
           <Property Name="idEquipo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="abreviatura" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="historia" Type="varchar" MaxLength="500" />
+          <Property Name="historia" Type="varchar" MaxLength="2000" />
           <Property Name="campeonatosGanados" Type="int" />
           <Property Name="idDivision" Type="int" Nullable="false" />
           <Property Name="estado" Type="bool" Nullable="false" />
@@ -226,7 +226,7 @@
           <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="apellidos" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="fechaNacimiento" Type="date" Nullable="false" />
-          <Property Name="historia" Type="varchar" MaxLength="500" />
+          <Property Name="historia" Type="varchar" MaxLength="2000" />
           <Property Name="Equipo_idEquipo" Type="int" Nullable="false" />
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="identificacion" Type="int" Nullable="false" />

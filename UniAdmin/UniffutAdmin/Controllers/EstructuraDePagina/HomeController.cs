@@ -14,6 +14,8 @@ namespace UniffutAdmin.Controllers
         private static uniffutData db = new uniffutData();
         public ActionResult Index()
         {
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.modulo);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.rol);
             return View();
         }
 

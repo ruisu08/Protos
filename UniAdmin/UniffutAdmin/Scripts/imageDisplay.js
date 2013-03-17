@@ -1,6 +1,6 @@
 ﻿$(window).load(function () {
     var img = $(".yoxview img");
-    var a = $(".yoxview a");
+    var a = $(".yoxview .imagenAlbum");
     $(".yoxview p").remove();
     var largo = a.length;
     for (var i = 0; i < largo; i++) {
