@@ -70,9 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Administracion\RolController.cs" />
-    <Compile Include="Controllers\Campeonatos\TablaPosicionesController.cs" />
     <Compile Include="Controllers\Campeonatos\CalendarioController.cs" />
     <Compile Include="Controllers\Campeonatos\CampeonatoController.cs" />
+    <Compile Include="Controllers\Campeonatos\TablaPosicionesController.cs" />
     <Compile Include="Controllers\Divisiones\DivisionController.cs" />
     <Compile Include="Controllers\Divisiones\EquipoController.cs" />
     <Compile Include="Controllers\EstructuraDePagina\HomeController.cs" />
@@ -105,7 +105,6 @@
     <Compile Include="Models\ViewModels\NoticiaViewModel.cs" />
     <Compile Include="Models\ViewModels\PaginaInformativaUsuarioViewModel.cs" />
     <Compile Include="Models\ViewModels\RolModuloViewModel.cs" />
-    <Compile Include="Models\ViewModels\TablaPosicionesEquipoViewModel.cs" />
     <Compile Include="Models\ViewModels\UsuarioRolViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Shared\LoginMaster.Master.cs">
@@ -458,6 +457,7 @@
     <Content Include="Views\Calendario\Details.aspx" />
     <Content Include="Views\Calendario\Edit.aspx" />
     <Content Include="Views\Calendario\Index.aspx" />
+    <Content Include="Views\Campeonato\agregarEquipo.aspx" />
     <Content Include="Views\Campeonato\Create.aspx" />
     <Content Include="Views\Campeonato\Delete.aspx" />
     <Content Include="Views\Campeonato\Details.aspx" />
@@ -505,11 +505,8 @@
     <Content Include="Views\Rol\Index.aspx" />
     <Content Include="Views\Rol\Search.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
-    <Content Include="Views\TablaPosiciones\Create.aspx" />
-    <Content Include="Views\TablaPosiciones\Delete.aspx" />
     <Content Include="Views\TablaPosiciones\Details.aspx" />
     <Content Include="Views\TablaPosiciones\Edit.aspx" />
-    <Content Include="Views\TablaPosiciones\Index.aspx" />
     <Content Include="Views\Usuario\Create.aspx" />
     <Content Include="Views\Usuario\Delete.aspx" />
     <Content Include="Views\Usuario\Details.aspx" />

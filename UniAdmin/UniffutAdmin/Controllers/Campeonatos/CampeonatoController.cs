@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using UniffutAdmin.Models;
 using UniffutAdmin.Models.ViewModels;
+using System.Web.Routing;
 
 namespace UniffutAdmin.Controllers
 {
@@ -45,6 +46,7 @@ namespace UniffutAdmin.Controllers
                     return View("Error", error);
                 }
             }
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
             var campeonatos = db.campeonato.Where<campeonato>(r => r.estado == true);
             return View(campeonatos.ToList());
         }
@@ -155,9 +157,28 @@ namespace UniffutAdmin.Controllers
                         db.SaveChanges();
                         return RedirectToAction("Index");
                     }
+                    Campeonato.division = db.division.First(d => d.idDivisiones.Equals(Campeonato.idDivision));
                     viewModel.Campeonato = Campeonato;
                     viewModel.Campeonato.estado = true;
+                    foreach (var e in viewModel.Campeonato.division.equipo) {
+                        viewModel.Campeonato.equipo.Add(e);
+                        e.campeonato.Add(viewModel.Campeonato);
+                    }
                     db.campeonato.AddObject(viewModel.Campeonato);
+                    var tabla = new tabla_posiciones();
+                    tabla.estado = true;
+                    tabla.idCampeonato = viewModel.Campeonato.idCampeonato;
+                    tabla.campeonato = viewModel.Campeonato;
+                    db.tabla_posiciones.AddObject(tabla);
+                    foreach (var e in viewModel.Campeonato.equipo) {
+                        var tE = new tabla_equipo();
+                        tE.idTabla = tabla.idTabla;
+                        tE.tabla_posiciones = tabla;
+                        tE.idEquipo = e.idEquipo;
+                        tE.equipo = e;
+                        tE.puntos = 0;
+                        db.tabla_equipo.AddObject(tE);
+                    }
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -341,11 +362,7 @@ namespace UniffutAdmin.Controllers
                 var campeonato = db.campeonato.FirstOrDefault(p => p.idCampeonato.Equals(id) && p.estado == true);
                 if (campeonato != null)
                 {
-                    var tablaPosiciones = campeonato.equipo_has_campeonato;
-                    foreach (var x in tablaPosiciones)
-                    {
-                        x.estado = false;
-                    }
+
 
                     var calendarioEnCampeonato = campeonato.calendario;
                     foreach (var x in calendarioEnCampeonato)
@@ -362,11 +379,6 @@ namespace UniffutAdmin.Controllers
                     ErrorModel error = new ErrorModel { mensaje = "El campeonato ya fue eliminado" };
                     return View("Error", error);
                 }
-                campeonato.estado = false;
-                db.SaveChanges();
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
             }
             catch (Exception e)
             {
@@ -376,6 +388,48 @@ namespace UniffutAdmin.Controllers
                 };
                 return View("Error", error);
             }
+        }
+
+        public ActionResult verTabla(int id) {
+            return RedirectToAction("Details", new RouteValueDictionary(new { controller = "TablaPosiciones", action = "Details", id = id }));
+        
+        }
+
+        public ActionResult agregarEquipo(int id) {
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_posiciones);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_equipo);
+
+            var Campeonato = db.campeonato.FirstOrDefault(cam => cam.idCampeonato.Equals(id));
+            if (Campeonato.division.equipo.Count <= 0) { 
+                ErrorModel error = new ErrorModel{
+                    mensaje="La division a la que pertenece el campeonato no tiene equipos"
+                };
+                return View("Error", error);
+            }
+            var viewModel = new CampeonatoDivisionViewModel
+            {
+                Campeonato = Campeonato
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult agregarEquipo(int id, CampeonatoDivisionViewModel viewModel)
+        {
+            var campeonato = db.campeonato.FirstOrDefault(cam => cam.idCampeonato.Equals(id));
+            var equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(viewModel.EquipoEspecifico.idEquipo));
+            campeonato.equipo.Add(equipo);
+            equipo.campeonato.Add(campeonato);
+            var tabla = db.tabla_posiciones.FirstOrDefault(t => t.idCampeonato.Equals(campeonato.idCampeonato));
+            var tablaEquipo = new tabla_equipo();
+            tablaEquipo.equipo = campeonato.equipo.First(e => e.idEquipo.Equals(equipo.idEquipo));
+            tablaEquipo.tabla_posiciones = tabla;
+            tablaEquipo.puntos = 0;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

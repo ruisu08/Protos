@@ -5,122 +5,68 @@ using System.Web;
 using System.Web.Mvc;
 using UniffutAdmin.Models;
 using UniffutAdmin.Models.ViewModels;
+using System.Web.Routing;
 
 namespace UniffutAdmin.Controllers.Campeonatos
 {
     public class TablaPosicionesController : Controller
     {
+        private static uniffutData db = new uniffutData();
         //
         // GET: /TablaPosiciones/
-        private static uniffutData db = new uniffutData();
 
-        public ActionResult Index(int id)
+
+
+        //
+        // GET: /TablaPosiciones/Details/5
+
+        public ActionResult Details(int id)
         {
-            if (Session["userID"] == null)
-            {
-                ErrorModel error = new ErrorModel
-                {
-                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
-                };
-                return View("Error", error);
-            }
-            else
-            {
-                bool autorizado = false;
-                int idUser = (int)Session["userID"];
-                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
-                {
-                    if (m.idModulo == 2)
-                    {
-                        autorizado = true;
-                    }
-                }
-                if (!autorizado)
-                {
-                    ErrorModel error = new ErrorModel
-                    {
-                        mensaje = "No tienes permisos para acceder a esta página"
-                    };
-                    return View("Error", error);
-                }
-            }
-            var posisiones = db.equipo_has_campeonato.Where<equipo_has_campeonato>(r => r.estado == true && r.Campeonato_idCampeonato.Equals(id));
-            return View(posisiones.ToList());
+            var tabla = db.tabla_posiciones.First(t=>t.idCampeonato.Equals(id) && t.estado == true);
+            return View(tabla);
         }
 
+
+
+
+        
         //
         // GET: /TablaPosiciones/Edit/5
  
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int idEquipo, int idTabla)
         {
-            if (Session["userID"] == null)
-            {
-                ErrorModel error = new ErrorModel
-                {
-                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
-                };
-                return View("Error", error);
-            }
-            else
-            {
-                bool autorizado = false;
-                int idUser = (int)Session["userID"];
-                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
-                {
-                    if (m.idModulo == 2)
-                    {
-                        autorizado = true;
-                    }
-                }
-                if (!autorizado)
-                {
-                    ErrorModel error = new ErrorModel
-                    {
-                        mensaje = "No tienes permisos para acceder a esta página"
-                    };
-                    return View("Error", error);
-                }
-            }
-            var tabla = db.equipo_has_campeonato.First(r => r.Equipo_idEquipo.Equals(id));
-            var viewModel = new TablaPosicionesEquipoViewModel
-            {
-                equipos = db.equipo.ToList(),
-                campeonatos = db.campeonato.ToList(),
-                tablaPosiciones = tabla
-            };
-            return View(viewModel);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_posiciones);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_equipo);
+
+            var tablaE = db.tabla_equipo.FirstOrDefault(t => t.idEquipo.Equals(idEquipo) && t.idTabla.Equals(idTabla));
+            return View(tablaE);
         }
 
         //
         // POST: /TablaPosiciones/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, equipo_has_campeonato tablaPosiciones, TablaPosicionesEquipoViewModel viewModel)
+        public ActionResult Edit(int idEquipo, int idTabla, tabla_equipo Tabla)
         {
-            
             try
             {
-                var tablaPos = db.equipo_has_campeonato.First(r => r.Equipo_idEquipo.Equals(id));
-                viewModel = new TablaPosicionesEquipoViewModel 
-                {
-                
-                    tablaPosiciones = tablaPos,
-                    campeonatos = db.campeonato.ToList(),
-                    equipos = db.equipo.ToList()
-                };
-
-                viewModel.tablaPosiciones.puntos = tablaPosiciones.puntos;                            
+                // TODO: Add update logic here
+                var tablaE = db.tabla_equipo.FirstOrDefault(t => t.idEquipo.Equals(idEquipo) && t.idTabla.Equals(idTabla));
+                tablaE.puntos = Tabla.puntos;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new RouteValueDictionary(new { controller = "TablaPosiciones", action = "Details", id = idTabla }));
             }
-            catch(Exception e)
+            catch
             {
-                ErrorModel error = new ErrorModel();
-                error.mensaje = e.Message;
-                return View("Error", error);
+                return View();
             }
         }
+
+
+
+      
     }
 }

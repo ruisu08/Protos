@@ -1,45 +1,48 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.equipo_has_campeonato>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.tabla_posiciones>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Details
+	Tabla de posiciones
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Details</h2>
+    <div id="detallesTitulo">
+        <h1>Tabla de posiciones de campeonato:</h1>
+        <h2><%:" "+Model.campeonato.nombre%></h2>
+    </div>
+    <div id="detallesWrapper">
+        <%  
+            
+            var ordered = Model.tabla_equipo.OrderBy(ta => ta.puntos);
+            var reversed = ordered.Reverse();
+            for (int i = 0; i < Model.tabla_equipo.Count;i++)
+           {
+                
+               var list = reversed.ToList();
+               var t = list[i];%>
+               <% if (i % 2 == 0)
+                  {%>
+                        <div class="nombrePropiedadDetalle"><h3>Equipo:<%:" " + t.equipo.nombre%> </h3><h3>Puntos:<%:" " + t.puntos%> </h3>
+                        <div class="opcionCrud">
+                            <%: Html.ActionLink("Modificar Puntaje", "Edit", new { idEquipo=t.idEquipo, idTabla = t.idTabla}) %>
+                        </div>
+                        </div>
+               <% } %>
+               <% else
+                  { %>
+                        <div class="propiedadDetalle"><h3>Equipo:<%:" " + t.equipo.nombre%> </h3><h3>Puntos:<%:" " + t.puntos%> </h3>
+                        <div class="opcionCrud">
+                            <%: Html.ActionLink("Modificar Puntaje", "Edit", new { idEquipo = t.idEquipo, idTabla = t.idTabla })%>
+                        </div>
+                        </div>
 
-    <fieldset>
-        <legend>Fields</legend>
-        
-        <div class="display-label" style="text-decoration:underline;">Equipo</div>
-        <div class="display-field"><%: Model.equipo.nombre %></div>
-        
-        <div class="display-label" style="text-decoration:underline;">Campeonato</div>
-        <div class="display-field"><%: Model.campeonato.nombre %></div>
-        
-        <div class="display-label" style="text-decoration:underline;">Puntos</div>
-        <div class="display-field"><%: Model.puntos %></div>
-        
-        <div class="display-label" style="text-decoration:underline;">Estado</div>
-        <div class="display-field"><%if (Model.estado == true)
-                                          Response.Write("Activa");
-                                      else
-                                      {
-                                          if (Model.estado == null)
-                                          {
-                                              Response.Write("Inactiva");
-                                              Model.estado = false;
-                                              return;
-                                          }
-                                          Response.Write("Inactiva");
-                                      } %></div>
-        
-    </fieldset>
-    <p>
-
-        <%: Html.ActionLink("Actualizar Datos", "Edit", new { id=Model.Equipo_idEquipo }) %> |
-        <%: Html.ActionLink("Volver a la lista", "Index") %>
-    </p>
+               <% } %>
+          
+        <%} %>
+    </div>
+    <div id="volverIndex">
+        <h3><%:Html.ActionLink("Volver a la lista", "Index") %></h3>
+     </div>
 
 </asp:Content>
 

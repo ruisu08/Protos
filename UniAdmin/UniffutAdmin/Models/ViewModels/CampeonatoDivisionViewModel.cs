@@ -9,5 +9,6 @@ namespace UniffutAdmin.Models.ViewModels
     {
         public campeonato Campeonato { get; set; }
         public List<division> Divisiones { get; set; }
+        public equipo EquipoEspecifico { get; set; }
     }
 }

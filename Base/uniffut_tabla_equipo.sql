@@ -18,32 +18,32 @@ USE `uniffut`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `equipo_has_campeonato`
+-- Table structure for table `tabla_equipo`
 --
 
-DROP TABLE IF EXISTS `equipo_has_campeonato`;
+DROP TABLE IF EXISTS `tabla_equipo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `equipo_has_campeonato` (
-  `Equipo_idEquipo` int(11) NOT NULL,
-  `Campeonato_idCampeonato` int(11) NOT NULL,
-  `puntos` int(11) DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`Equipo_idEquipo`,`Campeonato_idCampeonato`),
-  KEY `fk_Equipo_has_Campeonato_Campeonato1_idx` (`Campeonato_idCampeonato`),
-  KEY `fk_Equipo_has_Campeonato_Equipo1_idx` (`Equipo_idEquipo`),
-  CONSTRAINT `fk_Equipo_has_Campeonato_Campeonato1` FOREIGN KEY (`Campeonato_idCampeonato`) REFERENCES `campeonato` (`idCampeonato`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Equipo_has_Campeonato_Equipo1` FOREIGN KEY (`Equipo_idEquipo`) REFERENCES `equipo` (`idEquipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `tabla_equipo` (
+  `idTabla` int(11) NOT NULL,
+  `idEquipo` int(11) NOT NULL,
+  `puntos` int(3) NOT NULL,
+  PRIMARY KEY (`idTabla`,`idEquipo`),
+  KEY `equipo_tabla_idx` (`idEquipo`),
+  KEY `tabla_tabla_idx` (`idTabla`),
+  CONSTRAINT `equipo_tabla` FOREIGN KEY (`idEquipo`) REFERENCES `equipo` (`idEquipo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `tabla_tabla` FOREIGN KEY (`idTabla`) REFERENCES `tabla_posiciones` (`idTabla`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `equipo_has_campeonato`
+-- Dumping data for table `tabla_equipo`
 --
 
-LOCK TABLES `equipo_has_campeonato` WRITE;
-/*!40000 ALTER TABLE `equipo_has_campeonato` DISABLE KEYS */;
-/*!40000 ALTER TABLE `equipo_has_campeonato` ENABLE KEYS */;
+LOCK TABLES `tabla_equipo` WRITE;
+/*!40000 ALTER TABLE `tabla_equipo` DISABLE KEYS */;
+INSERT INTO `tabla_equipo` VALUES (6,16,0),(6,17,0),(6,18,0),(6,22,0),(6,23,0),(6,25,0),(6,27,0),(7,19,0),(7,20,0),(7,21,0),(7,24,0),(7,26,0),(7,28,0);
+/*!40000 ALTER TABLE `tabla_equipo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-15  1:47:33
+-- Dump completed on 2013-03-18 12:11:21

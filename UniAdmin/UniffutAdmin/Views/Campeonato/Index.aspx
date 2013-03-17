@@ -46,6 +46,12 @@
                     <div class="opcionCrud">
                     <%: Html.ActionLink("Eliminar este Campeonato", "Delete", new { id=item.idCampeonato })%>
                     </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Tabla de posiciones", "verTabla", new { id = item.idCampeonato })%>
+                    </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Agregar equipo", "agregarEquipo", new { id = item.idCampeonato })%>
+                    </div>
                 </div>
             </div>
     <% } %>

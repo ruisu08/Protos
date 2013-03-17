@@ -344,11 +344,7 @@ namespace UniffutAdmin.Controllers
                     foreach (var x in JugadoraEnEquipo) {
                         x.estado = false;
                     }
-                    var EquipoEnCampeonato = Equipo.equipo_has_campeonato;
-                    foreach (var x in EquipoEnCampeonato)
-                    {
-                        x.estado = false;
-                    }
+
 
                     Equipo.estado = false;
                     db.SaveChanges();

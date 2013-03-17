@@ -18,31 +18,30 @@ USE `uniffut`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `calendario`
+-- Table structure for table `tabla_posiciones`
 --
 
-DROP TABLE IF EXISTS `calendario`;
+DROP TABLE IF EXISTS `tabla_posiciones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `calendario` (
-  `idCalendario` int(11) NOT NULL AUTO_INCREMENT,
-  `fechaInicio` date NOT NULL,
-  `fechaFinal` date NOT NULL,
-  `estado` tinyint(1) NOT NULL,
+CREATE TABLE `tabla_posiciones` (
+  `idTabla` int(11) NOT NULL AUTO_INCREMENT,
   `idCampeonato` int(11) NOT NULL,
-  PRIMARY KEY (`idCalendario`),
-  KEY `calendario_campeonato_idx` (`idCampeonato`),
-  CONSTRAINT `calendario_campeonato` FOREIGN KEY (`idCampeonato`) REFERENCES `campeonato` (`idCampeonato`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `estado` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idTabla`),
+  KEY `tabla_campeonato_idx` (`idCampeonato`),
+  CONSTRAINT `tabla_campeonato` FOREIGN KEY (`idCampeonato`) REFERENCES `campeonato` (`idCampeonato`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `calendario`
+-- Dumping data for table `tabla_posiciones`
 --
 
-LOCK TABLES `calendario` WRITE;
-/*!40000 ALTER TABLE `calendario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `calendario` ENABLE KEYS */;
+LOCK TABLES `tabla_posiciones` WRITE;
+/*!40000 ALTER TABLE `tabla_posiciones` DISABLE KEYS */;
+INSERT INTO `tabla_posiciones` VALUES (6,7,1),(7,8,1);
+/*!40000 ALTER TABLE `tabla_posiciones` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-18 12:11:29
+-- Dump completed on 2013-03-18 12:11:12

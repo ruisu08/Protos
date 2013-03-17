@@ -288,10 +288,7 @@ namespace UniffutAdmin.Controllers.Divisiones
                         foreach (var c in x.calendario) {
                             c.estado = false;
                         }
-                        foreach (var e in x.equipo_has_campeonato)
-                        {
-                            e.estado = false;
-                        }
+
                     }
                     var EquiposEnDivision = Division.equipo;
                     foreach (var x in EquiposEnDivision)

@@ -37,7 +37,7 @@ CREATE TABLE `jugadora` (
   PRIMARY KEY (`idJugadora`),
   KEY `fk_Jugadora_Equipo1_idx` (`Equipo_idEquipo`),
   CONSTRAINT `fk_Jugadora_Equipo1` FOREIGN KEY (`Equipo_idEquipo`) REFERENCES `equipo` (`idEquipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,6 @@ CREATE TABLE `jugadora` (
 
 LOCK TABLES `jugadora` WRITE;
 /*!40000 ALTER TABLE `jugadora` DISABLE KEYS */;
-INSERT INTO `jugadora` VALUES (4,'Daniela','Sibaja','1995-02-09','&lt;p&gt;&amp;lt;p&amp;gt;&amp;amp;lt;p&amp;amp;gt;No hay mucho que decir, es de cartago&amp;amp;lt;/p&amp;amp;gt;&amp;lt;/p&amp;gt;&lt;/p&gt;',11,0,1133320344,'Costarricense');
 /*!40000 ALTER TABLE `jugadora` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-15  1:47:24
+-- Dump completed on 2013-03-18 12:11:23

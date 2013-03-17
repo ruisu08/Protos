@@ -19,23 +19,25 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
 
+[assembly: EdmRelationshipAttribute("uniffut", "album_has_equipo", "equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.equipo), "album_equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.album_equipo), true)]
+[assembly: EdmRelationshipAttribute("uniffut", "album_Jugadora1", "jugadora", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.jugadora), "album_jugadora", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.album_jugadora), true)]
 [assembly: EdmRelationshipAttribute("uniffut", "fk_bitacora_Usuario1", "usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.usuario), "bitacora", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.bitacora), true)]
 [assembly: EdmRelationshipAttribute("uniffut", "calendario_campeonato", "campeonato", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.campeonato), "calendario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.calendario), true)]
 [assembly: EdmRelationshipAttribute("uniffut", "fk_Campeonato_Divisiones1", "division", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.division), "campeonato", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.campeonato), true)]
-[assembly: EdmRelationshipAttribute("uniffut", "fk_Equipo_has_Campeonato_Campeonato1", "campeonato", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.campeonato), "equipo_has_campeonato", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.equipo_has_campeonato), true)]
+[assembly: EdmRelationshipAttribute("uniffut", "tabla_campeonato", "campeonato", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.campeonato), "tabla_posiciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.tabla_posiciones), true)]
 [assembly: EdmRelationshipAttribute("uniffut", "fk_DirectorTecnico_Equipo1", "equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.equipo), "directortecnico", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.directortecnico), true)]
 [assembly: EdmRelationshipAttribute("uniffut", "fk_Equipo_Divisiones1", "division", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.division), "equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.equipo), true)]
-[assembly: EdmRelationshipAttribute("uniffut", "fk_Equipo_has_Campeonato_Equipo1", "equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.equipo), "equipo_has_campeonato", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.equipo_has_campeonato), true)]
+[assembly: EdmRelationshipAttribute("uniffut", "equipo_tabla", "equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.equipo), "tabla_equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.tabla_equipo), true)]
 [assembly: EdmRelationshipAttribute("uniffut", "fk_Jugadora_Equipo1", "equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.equipo), "jugadora", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.jugadora), true)]
 [assembly: EdmRelationshipAttribute("uniffut", "fk_Noticia_TipoNoticia1", "tiponoticia", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.tiponoticia), "noticia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.noticia), true)]
 [assembly: EdmRelationshipAttribute("uniffut", "fk_Noticia_Usuario1", "usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.usuario), "noticia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.noticia), true)]
 [assembly: EdmRelationshipAttribute("uniffut", "fk_Pagina_Informativa_Usuario1", "usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.usuario), "pagina_informativa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.pagina_informativa), true)]
 [assembly: EdmRelationshipAttribute("uniffut", "fk_Usuario_Rol1", "rol", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.rol), "usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.usuario), true)]
-[assembly: EdmRelationshipAttribute("uniffut", "album_has_equipo", "equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.equipo), "album_equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.album_equipo), true)]
-[assembly: EdmRelationshipAttribute("uniffut", "album_Jugadora1", "jugadora", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.jugadora), "album_jugadora", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.album_jugadora), true)]
+[assembly: EdmRelationshipAttribute("uniffut", "tabla_tabla", "tabla_posiciones", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.tabla_posiciones), "tabla_equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.tabla_equipo), true)]
 [assembly: EdmRelationshipAttribute("uniffut", "album_multimedia_equipo", "album_equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.album_equipo), "multimedia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.multimedia))]
 [assembly: EdmRelationshipAttribute("uniffut", "album_multimedia_jugadora", "album_jugadora", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.album_jugadora), "multimedia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.multimedia))]
 [assembly: EdmRelationshipAttribute("uniffut", "rol_tiene_modulo", "modulo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.modulo), "rol", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.rol))]
+[assembly: EdmRelationshipAttribute("uniffut", "campeonato_equipo", "campeonato", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.campeonato), "equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.equipo))]
 
 #endregion
 
@@ -86,6 +88,38 @@ namespace UniffutAdmin.Models
         #endregion
     
         #region Propiedades de ObjectSet
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<album_equipo> album_equipo
+        {
+            get
+            {
+                if ((_album_equipo == null))
+                {
+                    _album_equipo = base.CreateObjectSet<album_equipo>("album_equipo");
+                }
+                return _album_equipo;
+            }
+        }
+        private ObjectSet<album_equipo> _album_equipo;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<album_jugadora> album_jugadora
+        {
+            get
+            {
+                if ((_album_jugadora == null))
+                {
+                    _album_jugadora = base.CreateObjectSet<album_jugadora>("album_jugadora");
+                }
+                return _album_jugadora;
+            }
+        }
+        private ObjectSet<album_jugadora> _album_jugadora;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -186,22 +220,6 @@ namespace UniffutAdmin.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<equipo_has_campeonato> equipo_has_campeonato
-        {
-            get
-            {
-                if ((_equipo_has_campeonato == null))
-                {
-                    _equipo_has_campeonato = base.CreateObjectSet<equipo_has_campeonato>("equipo_has_campeonato");
-                }
-                return _equipo_has_campeonato;
-            }
-        }
-        private ObjectSet<equipo_has_campeonato> _equipo_has_campeonato;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<jugadora> jugadora
         {
             get
@@ -214,6 +232,38 @@ namespace UniffutAdmin.Models
             }
         }
         private ObjectSet<jugadora> _jugadora;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<modulo> modulo
+        {
+            get
+            {
+                if ((_modulo == null))
+                {
+                    _modulo = base.CreateObjectSet<modulo>("modulo");
+                }
+                return _modulo;
+            }
+        }
+        private ObjectSet<modulo> _modulo;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<multimedia> multimedia
+        {
+            get
+            {
+                if ((_multimedia == null))
+                {
+                    _multimedia = base.CreateObjectSet<multimedia>("multimedia");
+                }
+                return _multimedia;
+            }
+        }
+        private ObjectSet<multimedia> _multimedia;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -282,6 +332,38 @@ namespace UniffutAdmin.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
+        public ObjectSet<tabla_equipo> tabla_equipo
+        {
+            get
+            {
+                if ((_tabla_equipo == null))
+                {
+                    _tabla_equipo = base.CreateObjectSet<tabla_equipo>("tabla_equipo");
+                }
+                return _tabla_equipo;
+            }
+        }
+        private ObjectSet<tabla_equipo> _tabla_equipo;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<tabla_posiciones> tabla_posiciones
+        {
+            get
+            {
+                if ((_tabla_posiciones == null))
+                {
+                    _tabla_posiciones = base.CreateObjectSet<tabla_posiciones>("tabla_posiciones");
+                }
+                return _tabla_posiciones;
+            }
+        }
+        private ObjectSet<tabla_posiciones> _tabla_posiciones;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
         public ObjectSet<tiponoticia> tiponoticia
         {
             get
@@ -310,74 +392,26 @@ namespace UniffutAdmin.Models
             }
         }
         private ObjectSet<usuario> _usuario;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<album_equipo> album_equipo
-        {
-            get
-            {
-                if ((_album_equipo == null))
-                {
-                    _album_equipo = base.CreateObjectSet<album_equipo>("album_equipo");
-                }
-                return _album_equipo;
-            }
-        }
-        private ObjectSet<album_equipo> _album_equipo;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<album_jugadora> album_jugadora
-        {
-            get
-            {
-                if ((_album_jugadora == null))
-                {
-                    _album_jugadora = base.CreateObjectSet<album_jugadora>("album_jugadora");
-                }
-                return _album_jugadora;
-            }
-        }
-        private ObjectSet<album_jugadora> _album_jugadora;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<multimedia> multimedia
-        {
-            get
-            {
-                if ((_multimedia == null))
-                {
-                    _multimedia = base.CreateObjectSet<multimedia>("multimedia");
-                }
-                return _multimedia;
-            }
-        }
-        private ObjectSet<multimedia> _multimedia;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<modulo> modulo
-        {
-            get
-            {
-                if ((_modulo == null))
-                {
-                    _modulo = base.CreateObjectSet<modulo>("modulo");
-                }
-                return _modulo;
-            }
-        }
-        private ObjectSet<modulo> _modulo;
 
         #endregion
 
         #region Métodos AddTo
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet album_equipo. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToalbum_equipo(album_equipo album_equipo)
+        {
+            base.AddObject("album_equipo", album_equipo);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet album_jugadora. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToalbum_jugadora(album_jugadora album_jugadora)
+        {
+            base.AddObject("album_jugadora", album_jugadora);
+        }
     
         /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet bitacora. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
@@ -428,19 +462,27 @@ namespace UniffutAdmin.Models
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet equipo_has_campeonato. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToequipo_has_campeonato(equipo_has_campeonato equipo_has_campeonato)
-        {
-            base.AddObject("equipo_has_campeonato", equipo_has_campeonato);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet jugadora. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddTojugadora(jugadora jugadora)
         {
             base.AddObject("jugadora", jugadora);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet modulo. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddTomodulo(modulo modulo)
+        {
+            base.AddObject("modulo", modulo);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet multimedia. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddTomultimedia(multimedia multimedia)
+        {
+            base.AddObject("multimedia", multimedia);
         }
     
         /// <summary>
@@ -476,6 +518,22 @@ namespace UniffutAdmin.Models
         }
     
         /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet tabla_equipo. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddTotabla_equipo(tabla_equipo tabla_equipo)
+        {
+            base.AddObject("tabla_equipo", tabla_equipo);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet tabla_posiciones. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddTotabla_posiciones(tabla_posiciones tabla_posiciones)
+        {
+            base.AddObject("tabla_posiciones", tabla_posiciones);
+        }
+    
+        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet tiponoticia. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddTotiponoticia(tiponoticia tiponoticia)
@@ -489,38 +547,6 @@ namespace UniffutAdmin.Models
         public void AddTousuario(usuario usuario)
         {
             base.AddObject("usuario", usuario);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet album_equipo. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToalbum_equipo(album_equipo album_equipo)
-        {
-            base.AddObject("album_equipo", album_equipo);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet album_jugadora. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToalbum_jugadora(album_jugadora album_jugadora)
-        {
-            base.AddObject("album_jugadora", album_jugadora);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet multimedia. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddTomultimedia(multimedia multimedia)
-        {
-            base.AddObject("multimedia", multimedia);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet modulo. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddTomodulo(modulo modulo)
-        {
-            base.AddObject("modulo", modulo);
         }
 
         #endregion
@@ -1562,18 +1588,40 @@ namespace UniffutAdmin.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("uniffut", "fk_Equipo_has_Campeonato_Campeonato1", "equipo_has_campeonato")]
-        public EntityCollection<equipo_has_campeonato> equipo_has_campeonato
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "tabla_campeonato", "tabla_posiciones")]
+        public EntityCollection<tabla_posiciones> tabla_posiciones
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<equipo_has_campeonato>("uniffut.fk_Equipo_has_Campeonato_Campeonato1", "equipo_has_campeonato");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tabla_posiciones>("uniffut.tabla_campeonato", "tabla_posiciones");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<equipo_has_campeonato>("uniffut.fk_Equipo_has_Campeonato_Campeonato1", "equipo_has_campeonato", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tabla_posiciones>("uniffut.tabla_campeonato", "tabla_posiciones", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "campeonato_equipo", "equipo")]
+        public EntityCollection<equipo> equipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<equipo>("uniffut.campeonato_equipo", "equipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<equipo>("uniffut.campeonato_equipo", "equipo", value);
                 }
             }
         }
@@ -2088,18 +2136,14 @@ namespace UniffutAdmin.Models
         /// <param name="idEquipo">Valor inicial de la propiedad idEquipo.</param>
         /// <param name="abreviatura">Valor inicial de la propiedad abreviatura.</param>
         /// <param name="nombre">Valor inicial de la propiedad nombre.</param>
-        /// <param name="historia">Valor inicial de la propiedad historia.</param>
-        /// <param name="campeonatosGanados">Valor inicial de la propiedad campeonatosGanados.</param>
         /// <param name="idDivision">Valor inicial de la propiedad idDivision.</param>
         /// <param name="estado">Valor inicial de la propiedad estado.</param>
-        public static equipo Createequipo(global::System.Int32 idEquipo, global::System.String abreviatura, global::System.String nombre, global::System.String historia, global::System.Int32 campeonatosGanados, global::System.Int32 idDivision, global::System.Boolean estado)
+        public static equipo Createequipo(global::System.Int32 idEquipo, global::System.String abreviatura, global::System.String nombre, global::System.Int32 idDivision, global::System.Boolean estado)
         {
             equipo equipo = new equipo();
             equipo.idEquipo = idEquipo;
             equipo.abreviatura = abreviatura;
             equipo.nombre = nombre;
-            equipo.historia = historia;
-            equipo.campeonatosGanados = campeonatosGanados;
             equipo.idDivision = idDivision;
             equipo.estado = estado;
             return equipo;
@@ -2187,7 +2231,7 @@ namespace UniffutAdmin.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String historia
         {
@@ -2211,9 +2255,9 @@ namespace UniffutAdmin.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 campeonatosGanados
+        public Nullable<global::System.Int32> campeonatosGanados
         {
             get
             {
@@ -2228,8 +2272,8 @@ namespace UniffutAdmin.Models
                 OncampeonatosGanadosChanged();
             }
         }
-        private global::System.Int32 _campeonatosGanados;
-        partial void OncampeonatosGanadosChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _campeonatosGanados;
+        partial void OncampeonatosGanadosChanging(Nullable<global::System.Int32> value);
         partial void OncampeonatosGanadosChanged();
     
         /// <summary>
@@ -2315,6 +2359,28 @@ namespace UniffutAdmin.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "album_has_equipo", "album_equipo")]
+        public EntityCollection<album_equipo> album_equipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<album_equipo>("uniffut.album_has_equipo", "album_equipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<album_equipo>("uniffut.album_has_equipo", "album_equipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("uniffut", "fk_DirectorTecnico_Equipo1", "directortecnico")]
         public EntityCollection<directortecnico> directortecnico
         {
@@ -2375,18 +2441,18 @@ namespace UniffutAdmin.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("uniffut", "fk_Equipo_has_Campeonato_Equipo1", "equipo_has_campeonato")]
-        public EntityCollection<equipo_has_campeonato> equipo_has_campeonato
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "equipo_tabla", "tabla_equipo")]
+        public EntityCollection<tabla_equipo> tabla_equipo
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<equipo_has_campeonato>("uniffut.fk_Equipo_has_Campeonato_Equipo1", "equipo_has_campeonato");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tabla_equipo>("uniffut.equipo_tabla", "tabla_equipo");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<equipo_has_campeonato>("uniffut.fk_Equipo_has_Campeonato_Equipo1", "equipo_has_campeonato", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tabla_equipo>("uniffut.equipo_tabla", "tabla_equipo", value);
                 }
             }
         }
@@ -2419,232 +2485,18 @@ namespace UniffutAdmin.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("uniffut", "album_has_equipo", "album_equipo")]
-        public EntityCollection<album_equipo> album_equipo
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "campeonato_equipo", "campeonato")]
+        public EntityCollection<campeonato> campeonato
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<album_equipo>("uniffut.album_has_equipo", "album_equipo");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<campeonato>("uniffut.campeonato_equipo", "campeonato");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<album_equipo>("uniffut.album_has_equipo", "album_equipo", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No hay documentación de metadatos disponible.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="uniffut", Name="equipo_has_campeonato")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class equipo_has_campeonato : EntityObject
-    {
-        #region Método de generador
-    
-        /// <summary>
-        /// Crear un nuevo objeto equipo_has_campeonato.
-        /// </summary>
-        /// <param name="equipo_idEquipo">Valor inicial de la propiedad Equipo_idEquipo.</param>
-        /// <param name="campeonato_idCampeonato">Valor inicial de la propiedad Campeonato_idCampeonato.</param>
-        public static equipo_has_campeonato Createequipo_has_campeonato(global::System.Int32 equipo_idEquipo, global::System.Int32 campeonato_idCampeonato)
-        {
-            equipo_has_campeonato equipo_has_campeonato = new equipo_has_campeonato();
-            equipo_has_campeonato.Equipo_idEquipo = equipo_idEquipo;
-            equipo_has_campeonato.Campeonato_idCampeonato = campeonato_idCampeonato;
-            return equipo_has_campeonato;
-        }
-
-        #endregion
-
-        #region Propiedades primitivas
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Equipo_idEquipo
-        {
-            get
-            {
-                return _Equipo_idEquipo;
-            }
-            set
-            {
-                if (_Equipo_idEquipo != value)
-                {
-                    OnEquipo_idEquipoChanging(value);
-                    ReportPropertyChanging("Equipo_idEquipo");
-                    _Equipo_idEquipo = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Equipo_idEquipo");
-                    OnEquipo_idEquipoChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Equipo_idEquipo;
-        partial void OnEquipo_idEquipoChanging(global::System.Int32 value);
-        partial void OnEquipo_idEquipoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Campeonato_idCampeonato
-        {
-            get
-            {
-                return _Campeonato_idCampeonato;
-            }
-            set
-            {
-                if (_Campeonato_idCampeonato != value)
-                {
-                    OnCampeonato_idCampeonatoChanging(value);
-                    ReportPropertyChanging("Campeonato_idCampeonato");
-                    _Campeonato_idCampeonato = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Campeonato_idCampeonato");
-                    OnCampeonato_idCampeonatoChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Campeonato_idCampeonato;
-        partial void OnCampeonato_idCampeonatoChanging(global::System.Int32 value);
-        partial void OnCampeonato_idCampeonatoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> puntos
-        {
-            get
-            {
-                return _puntos;
-            }
-            set
-            {
-                OnpuntosChanging(value);
-                ReportPropertyChanging("puntos");
-                _puntos = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("puntos");
-                OnpuntosChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _puntos;
-        partial void OnpuntosChanging(Nullable<global::System.Int32> value);
-        partial void OnpuntosChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> estado
-        {
-            get
-            {
-                return _estado;
-            }
-            set
-            {
-                OnestadoChanging(value);
-                ReportPropertyChanging("estado");
-                _estado = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("estado");
-                OnestadoChanged();
-            }
-        }
-        private Nullable<global::System.Boolean> _estado;
-        partial void OnestadoChanging(Nullable<global::System.Boolean> value);
-        partial void OnestadoChanged();
-
-        #endregion
-
-    
-        #region Propiedades de navegación
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("uniffut", "fk_Equipo_has_Campeonato_Campeonato1", "campeonato")]
-        public campeonato campeonato
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<campeonato>("uniffut.fk_Equipo_has_Campeonato_Campeonato1", "campeonato").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<campeonato>("uniffut.fk_Equipo_has_Campeonato_Campeonato1", "campeonato").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<campeonato> campeonatoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<campeonato>("uniffut.fk_Equipo_has_Campeonato_Campeonato1", "campeonato");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<campeonato>("uniffut.fk_Equipo_has_Campeonato_Campeonato1", "campeonato", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("uniffut", "fk_Equipo_has_Campeonato_Equipo1", "equipo")]
-        public equipo equipo
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<equipo>("uniffut.fk_Equipo_has_Campeonato_Equipo1", "equipo").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<equipo>("uniffut.fk_Equipo_has_Campeonato_Equipo1", "equipo").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<equipo> equipoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<equipo>("uniffut.fk_Equipo_has_Campeonato_Equipo1", "equipo");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<equipo>("uniffut.fk_Equipo_has_Campeonato_Equipo1", "equipo", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<campeonato>("uniffut.campeonato_equipo", "campeonato", value);
                 }
             }
         }
@@ -2670,19 +2522,17 @@ namespace UniffutAdmin.Models
         /// <param name="nombre">Valor inicial de la propiedad nombre.</param>
         /// <param name="apellidos">Valor inicial de la propiedad apellidos.</param>
         /// <param name="fechaNacimiento">Valor inicial de la propiedad fechaNacimiento.</param>
-        /// <param name="historia">Valor inicial de la propiedad historia.</param>
         /// <param name="equipo_idEquipo">Valor inicial de la propiedad Equipo_idEquipo.</param>
         /// <param name="estado">Valor inicial de la propiedad estado.</param>
         /// <param name="identificacion">Valor inicial de la propiedad identificacion.</param>
         /// <param name="nacionalidad">Valor inicial de la propiedad nacionalidad.</param>
-        public static jugadora Createjugadora(global::System.Int32 idJugadora, global::System.String nombre, global::System.String apellidos, global::System.DateTime fechaNacimiento, global::System.String historia, global::System.Int32 equipo_idEquipo, global::System.Boolean estado, global::System.Int32 identificacion, global::System.String nacionalidad)
+        public static jugadora Createjugadora(global::System.Int32 idJugadora, global::System.String nombre, global::System.String apellidos, global::System.DateTime fechaNacimiento, global::System.Int32 equipo_idEquipo, global::System.Boolean estado, global::System.Int32 identificacion, global::System.String nacionalidad)
         {
             jugadora jugadora = new jugadora();
             jugadora.idJugadora = idJugadora;
             jugadora.nombre = nombre;
             jugadora.apellidos = apellidos;
             jugadora.fechaNacimiento = fechaNacimiento;
-            jugadora.historia = historia;
             jugadora.Equipo_idEquipo = equipo_idEquipo;
             jugadora.estado = estado;
             jugadora.identificacion = identificacion;
@@ -2796,7 +2646,7 @@ namespace UniffutAdmin.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String historia
         {
@@ -2924,6 +2774,28 @@ namespace UniffutAdmin.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "album_Jugadora1", "album_jugadora")]
+        public EntityCollection<album_jugadora> album_jugadora
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<album_jugadora>("uniffut.album_Jugadora1", "album_jugadora");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<album_jugadora>("uniffut.album_Jugadora1", "album_jugadora", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("uniffut", "fk_Jugadora_Equipo1", "equipo")]
         public equipo equipo
         {
@@ -2952,28 +2824,6 @@ namespace UniffutAdmin.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<equipo>("uniffut.fk_Jugadora_Equipo1", "equipo", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("uniffut", "album_Jugadora1", "album_jugadora")]
-        public EntityCollection<album_jugadora> album_jugadora
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<album_jugadora>("uniffut.album_Jugadora1", "album_jugadora");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<album_jugadora>("uniffut.album_Jugadora1", "album_jugadora", value);
                 }
             }
         }
@@ -3288,17 +3138,15 @@ namespace UniffutAdmin.Models
         /// <param name="idNoticia">Valor inicial de la propiedad idNoticia.</param>
         /// <param name="titulo">Valor inicial de la propiedad titulo.</param>
         /// <param name="fecha">Valor inicial de la propiedad fecha.</param>
-        /// <param name="contenido">Valor inicial de la propiedad contenido.</param>
         /// <param name="estado">Valor inicial de la propiedad estado.</param>
         /// <param name="autor">Valor inicial de la propiedad autor.</param>
         /// <param name="tipoNoticia_idTipoNoticia">Valor inicial de la propiedad TipoNoticia_idTipoNoticia.</param>
-        public static noticia Createnoticia(global::System.Int32 idNoticia, global::System.String titulo, global::System.DateTime fecha, global::System.String contenido, global::System.Boolean estado, global::System.Int32 autor, global::System.Int32 tipoNoticia_idTipoNoticia)
+        public static noticia Createnoticia(global::System.Int32 idNoticia, global::System.String titulo, global::System.DateTime fecha, global::System.Boolean estado, global::System.Int32 autor, global::System.Int32 tipoNoticia_idTipoNoticia)
         {
             noticia noticia = new noticia();
             noticia.idNoticia = idNoticia;
             noticia.titulo = titulo;
             noticia.fecha = fecha;
-            noticia.contenido = contenido;
             noticia.estado = estado;
             noticia.autor = autor;
             noticia.TipoNoticia_idTipoNoticia = tipoNoticia_idTipoNoticia;
@@ -3387,7 +3235,7 @@ namespace UniffutAdmin.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String contenido
         {
@@ -3581,16 +3429,14 @@ namespace UniffutAdmin.Models
         /// <param name="idPagina_Informativa">Valor inicial de la propiedad idPagina_Informativa.</param>
         /// <param name="titulo">Valor inicial de la propiedad titulo.</param>
         /// <param name="fecha">Valor inicial de la propiedad fecha.</param>
-        /// <param name="contenido">Valor inicial de la propiedad contenido.</param>
         /// <param name="estado">Valor inicial de la propiedad estado.</param>
         /// <param name="autor">Valor inicial de la propiedad autor.</param>
-        public static pagina_informativa Createpagina_informativa(global::System.Int32 idPagina_Informativa, global::System.String titulo, global::System.DateTime fecha, global::System.String contenido, global::System.Boolean estado, global::System.Int32 autor)
+        public static pagina_informativa Createpagina_informativa(global::System.Int32 idPagina_Informativa, global::System.String titulo, global::System.DateTime fecha, global::System.Boolean estado, global::System.Int32 autor)
         {
             pagina_informativa pagina_informativa = new pagina_informativa();
             pagina_informativa.idPagina_Informativa = idPagina_Informativa;
             pagina_informativa.titulo = titulo;
             pagina_informativa.fecha = fecha;
-            pagina_informativa.contenido = contenido;
             pagina_informativa.estado = estado;
             pagina_informativa.autor = autor;
             return pagina_informativa;
@@ -3678,7 +3524,7 @@ namespace UniffutAdmin.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String contenido
         {
@@ -3813,8 +3659,7 @@ namespace UniffutAdmin.Models
         /// <param name="fechaIngreso">Valor inicial de la propiedad fechaIngreso.</param>
         /// <param name="fechaSalida">Valor inicial de la propiedad fechaSalida.</param>
         /// <param name="estado">Valor inicial de la propiedad estado.</param>
-        /// <param name="fuenteGrafica">Valor inicial de la propiedad fuenteGrafica.</param>
-        public static patrocinador Createpatrocinador(global::System.Int32 idPatrocinador, global::System.String nombre, global::System.String descripcion, global::System.DateTime fechaIngreso, global::System.DateTime fechaSalida, global::System.Boolean estado, global::System.String fuenteGrafica)
+        public static patrocinador Createpatrocinador(global::System.Int32 idPatrocinador, global::System.String nombre, global::System.String descripcion, global::System.DateTime fechaIngreso, global::System.DateTime fechaSalida, global::System.Boolean estado)
         {
             patrocinador patrocinador = new patrocinador();
             patrocinador.idPatrocinador = idPatrocinador;
@@ -3823,7 +3668,6 @@ namespace UniffutAdmin.Models
             patrocinador.fechaIngreso = fechaIngreso;
             patrocinador.fechaSalida = fechaSalida;
             patrocinador.estado = estado;
-            patrocinador.fuenteGrafica = fuenteGrafica;
             return patrocinador;
         }
 
@@ -3981,7 +3825,7 @@ namespace UniffutAdmin.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String fuenteGrafica
         {
@@ -3993,7 +3837,7 @@ namespace UniffutAdmin.Models
             {
                 OnfuenteGraficaChanging(value);
                 ReportPropertyChanging("fuenteGrafica");
-                _fuenteGrafica = StructuralObject.SetValidValue(value, false);
+                _fuenteGrafica = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("fuenteGrafica");
                 OnfuenteGraficaChanged();
             }
@@ -4182,6 +4026,371 @@ namespace UniffutAdmin.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<modulo>("uniffut.rol_tiene_modulo", "modulo", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="uniffut", Name="tabla_equipo")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tabla_equipo : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto tabla_equipo.
+        /// </summary>
+        /// <param name="idTabla">Valor inicial de la propiedad idTabla.</param>
+        /// <param name="idEquipo">Valor inicial de la propiedad idEquipo.</param>
+        /// <param name="puntos">Valor inicial de la propiedad puntos.</param>
+        public static tabla_equipo Createtabla_equipo(global::System.Int32 idTabla, global::System.Int32 idEquipo, global::System.Int32 puntos)
+        {
+            tabla_equipo tabla_equipo = new tabla_equipo();
+            tabla_equipo.idTabla = idTabla;
+            tabla_equipo.idEquipo = idEquipo;
+            tabla_equipo.puntos = puntos;
+            return tabla_equipo;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idTabla
+        {
+            get
+            {
+                return _idTabla;
+            }
+            set
+            {
+                if (_idTabla != value)
+                {
+                    OnidTablaChanging(value);
+                    ReportPropertyChanging("idTabla");
+                    _idTabla = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idTabla");
+                    OnidTablaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idTabla;
+        partial void OnidTablaChanging(global::System.Int32 value);
+        partial void OnidTablaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idEquipo
+        {
+            get
+            {
+                return _idEquipo;
+            }
+            set
+            {
+                if (_idEquipo != value)
+                {
+                    OnidEquipoChanging(value);
+                    ReportPropertyChanging("idEquipo");
+                    _idEquipo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idEquipo");
+                    OnidEquipoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idEquipo;
+        partial void OnidEquipoChanging(global::System.Int32 value);
+        partial void OnidEquipoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 puntos
+        {
+            get
+            {
+                return _puntos;
+            }
+            set
+            {
+                OnpuntosChanging(value);
+                ReportPropertyChanging("puntos");
+                _puntos = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("puntos");
+                OnpuntosChanged();
+            }
+        }
+        private global::System.Int32 _puntos;
+        partial void OnpuntosChanging(global::System.Int32 value);
+        partial void OnpuntosChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "equipo_tabla", "equipo")]
+        public equipo equipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<equipo>("uniffut.equipo_tabla", "equipo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<equipo>("uniffut.equipo_tabla", "equipo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<equipo> equipoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<equipo>("uniffut.equipo_tabla", "equipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<equipo>("uniffut.equipo_tabla", "equipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "tabla_tabla", "tabla_posiciones")]
+        public tabla_posiciones tabla_posiciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tabla_posiciones>("uniffut.tabla_tabla", "tabla_posiciones").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tabla_posiciones>("uniffut.tabla_tabla", "tabla_posiciones").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<tabla_posiciones> tabla_posicionesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tabla_posiciones>("uniffut.tabla_tabla", "tabla_posiciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tabla_posiciones>("uniffut.tabla_tabla", "tabla_posiciones", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="uniffut", Name="tabla_posiciones")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tabla_posiciones : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto tabla_posiciones.
+        /// </summary>
+        /// <param name="idTabla">Valor inicial de la propiedad idTabla.</param>
+        /// <param name="idCampeonato">Valor inicial de la propiedad idCampeonato.</param>
+        /// <param name="estado">Valor inicial de la propiedad estado.</param>
+        public static tabla_posiciones Createtabla_posiciones(global::System.Int32 idTabla, global::System.Int32 idCampeonato, global::System.Boolean estado)
+        {
+            tabla_posiciones tabla_posiciones = new tabla_posiciones();
+            tabla_posiciones.idTabla = idTabla;
+            tabla_posiciones.idCampeonato = idCampeonato;
+            tabla_posiciones.estado = estado;
+            return tabla_posiciones;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idTabla
+        {
+            get
+            {
+                return _idTabla;
+            }
+            set
+            {
+                if (_idTabla != value)
+                {
+                    OnidTablaChanging(value);
+                    ReportPropertyChanging("idTabla");
+                    _idTabla = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idTabla");
+                    OnidTablaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idTabla;
+        partial void OnidTablaChanging(global::System.Int32 value);
+        partial void OnidTablaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idCampeonato
+        {
+            get
+            {
+                return _idCampeonato;
+            }
+            set
+            {
+                OnidCampeonatoChanging(value);
+                ReportPropertyChanging("idCampeonato");
+                _idCampeonato = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idCampeonato");
+                OnidCampeonatoChanged();
+            }
+        }
+        private global::System.Int32 _idCampeonato;
+        partial void OnidCampeonatoChanging(global::System.Int32 value);
+        partial void OnidCampeonatoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean estado
+        {
+            get
+            {
+                return _estado;
+            }
+            set
+            {
+                OnestadoChanging(value);
+                ReportPropertyChanging("estado");
+                _estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("estado");
+                OnestadoChanged();
+            }
+        }
+        private global::System.Boolean _estado;
+        partial void OnestadoChanging(global::System.Boolean value);
+        partial void OnestadoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "tabla_campeonato", "campeonato")]
+        public campeonato campeonato
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<campeonato>("uniffut.tabla_campeonato", "campeonato").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<campeonato>("uniffut.tabla_campeonato", "campeonato").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<campeonato> campeonatoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<campeonato>("uniffut.tabla_campeonato", "campeonato");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<campeonato>("uniffut.tabla_campeonato", "campeonato", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "tabla_tabla", "tabla_equipo")]
+        public EntityCollection<tabla_equipo> tabla_equipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tabla_equipo>("uniffut.tabla_tabla", "tabla_equipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tabla_equipo>("uniffut.tabla_tabla", "tabla_equipo", value);
                 }
             }
         }
