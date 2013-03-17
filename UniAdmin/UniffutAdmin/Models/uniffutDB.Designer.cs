@@ -2808,7 +2808,7 @@ namespace UniffutAdmin.Models
             {
                 OnhistoriaChanging(value);
                 ReportPropertyChanging("historia");
-                _historia = StructuralObject.SetValidValue(value, false);
+                _historia = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("historia");
                 OnhistoriaChanged();
             }

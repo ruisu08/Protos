@@ -6,20 +6,18 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Editar noticia</h2>
+    <div id="headerContenido">
+        <h1>Editar Noticia</h1>
+    </div>
 
     <form id="validateForm" action= '<%:Url.Action("Edit","Noticia")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-        
-        <fieldset>
-            <legend>Informacion</legend>
-            
+        <div id="createWrapper">            
             
             <div class="editor-label">
                <h3>Titulo</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Noticia.titulo, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "30" })%>
+                <%: Html.TextBoxFor(model => model.Noticia.titulo, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "30", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Noticia.titulo)%>
             </div>
             
@@ -27,43 +25,36 @@
                 <h3>Fecha</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Noticia.fecha, new { @class = "datepicker" })%>
-                <%: Html.ValidationMessageFor(model => model.Noticia.fecha) %>
-            </div>
-            
-            <div class="editor-label">
-               <h3>Contenido</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextAreaFor(model => model.Noticia.contenido)%>
-                <%: Html.ValidationMessageFor(model => model.Noticia.contenido)%>
+                <%: Html.TextBoxFor(model => model.Noticia.fecha, new { @class = "datepicker infofield" })%>
+                
             </div>
             
             <div class="editor-label">
                 <h3>Autor</h3>
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Noticia.autor, new SelectList(Model.Usuarios, "idUsuario", "idUsuario", Model.Usuarios.First().idUsuario))%>
-                <%: Html.ValidationMessageFor(model => model.Noticia.autor)%>
+                <%: Html.DropDownListFor(model => model.Noticia.autor, new SelectList(Model.Usuarios, "idUsuario", "idUsuario", Model.Usuarios.First().idUsuario), new { @class="infofield" })%>
+                
             </div>
             
             <div class="editor-label">
                 <h3>Tipo de noticia</h3>
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Noticia.TipoNoticia_idTipoNoticia, new SelectList(Model.Tipos, "idTipoNoticia", "nombre", Model.Tipos.First().idTipoNoticia))%>
-                <%: Html.ValidationMessageFor(model => model.Noticia.TipoNoticia_idTipoNoticia)%>
+                <%: Html.DropDownListFor(model => model.Noticia.TipoNoticia_idTipoNoticia, new SelectList(Model.Tipos, "idTipoNoticia", "nombre", Model.Tipos.First().idTipoNoticia), new { @class="infofield"})%>
+                
             </div>
+
+        </div>
             
-            <p>
-                <input type="submit" value="Salvar cambios" />
-            </p>
-        </fieldset>
+            <div>
+                <input type="submit" value="Guardar" class="opcionCrud" />
+            </div>
 
     </form>
 
     <div>
-        <%: Html.ActionLink("Volver a lista", "Index") %>
+        <%: Html.ActionLink("Volver a la lista", "Index") %>
     </div>
 
 </asp:Content>

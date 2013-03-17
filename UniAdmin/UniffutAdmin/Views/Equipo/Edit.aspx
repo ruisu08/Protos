@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div id="headerContenido">
-        <h1>Editar equipo</h1>
+        <h1>Editar Equipo</h1>
     </div>
 
     <form id="validateForm" action= '<%:Url.Action("Edit","Equipo")%>' method="post">
@@ -36,7 +36,7 @@
 
         </div>
             <div>
-                <input type="submit" value="Guardar Cambios" class="opcionCrud" />
+                <input type="submit" value="Guardar" class="opcionCrud" />
             </div>
 
     </form>

@@ -6,37 +6,34 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Agregar multimedia al album</h2>
+    <div id="headerContenido">
+        <h1>Agregar multimedia al album</h1>
+    </div>
 
-    <% using (Html.BeginForm()) {%>
-        <%: Html.ValidationSummary(true) %>
-        
-        <fieldset>
-            <legend>Fields</legend>
-           
-            
+    <form id="validateForm" action= '<%:Url.Action("agregarMultimedia","AlbumEquipo")%>' method="post">
+          
+          <div id="createWrapper">  
             <div class="editor-label">
                 <%: Html.LabelFor(model => model.Multimedia.comentario) %>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Multimedia.comentario)%>
+                <%: Html.TextBoxFor(model => model.Multimedia.comentario, new { @class="infofield"})%>
             </div>
             
             <div class="editor-label">
                 <%: Html.LabelFor(model => model.Multimedia.fuenteGrafica) %>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Multimedia.fuenteGrafica, new {@id="multimediaAdder"})%>
+                <%: Html.TextBoxFor(model => model.Multimedia.fuenteGrafica, new { @id = "multimediaAdder", @class = "infofield" })%>
             </div>
-            <p>
-                <input type="submit" value="Save" />
-            </p>
-        </fieldset>
-
-    <% } %>
+        </div>
+            <div>
+                <input type="submit" value="Guardar" class="opcionCrud" />
+            </div>
+     </form>
 
     <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
+        <%: Html.ActionLink("Volver a la lista", "Index") %>
     </div>
 
 </asp:Content>

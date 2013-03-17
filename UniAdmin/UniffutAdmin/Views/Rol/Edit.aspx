@@ -6,17 +6,17 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Editar rol</h2>
+    <div id="headerContenido">
+        <h1>Editar Roles</h1>
+    </div>
    <form id="validateForm" action= '<%:Url.Action("Edit","Rol")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-        
-        <fieldset>
+        <div id="createWrapper">
             
             <div class="editor-label">
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "100" })%>
+                <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "100", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.nombre)%>
             </div>
 
@@ -24,19 +24,20 @@
                 <h3>Descripción</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "100" })%>
+                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "100", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.descripcion)%>
             </div>
 
-            <p>
-                <input type="submit" value="Actualizar" />
-            </p>
-        </fieldset>
+        </div>
+
+            <div>
+                <input type="submit" value="Guardar" class="opcionCrud" />
+            </div>
 
          </form>
 
     <div>
-        <%: Html.ActionLink("Volver a lista de roles", "Index") %>
+        <%: Html.ActionLink("Volver a lista", "Index") %>
     </div>
 
 </asp:Content>

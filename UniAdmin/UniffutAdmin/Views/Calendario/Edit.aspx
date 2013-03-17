@@ -6,42 +6,41 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Editar</h2>
+    <div id="headerContenido">
+        <h1>Editar Calendario</h1>
+    </div>
 
     <form id="validateForm" action= '<%:Url.Action("Edit","Calendario")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-        
-        <fieldset>
-            <legend>Fields</legend>
+        <div id="createWrapper">
             
             <div class="editor-label">
                 <h3>Fecha de Inicio</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Calendario.fechaInicio, new { @class = "datepicker" })%>
-                <%: Html.ValidationMessageFor(model => model.Calendario.fechaInicio)%>
+                <%: Html.TextBoxFor(model => model.Calendario.fechaInicio, new { @class = "datepicker infofield" })%>
+               
             </div>
             
             <div class="editor-label">
                 <h3>Fecha Final</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Calendario.fechaFinal, new { @class = "datepicker" })%>
-                <%: Html.ValidationMessageFor(model => model.Calendario.fechaFinal)%>
+                <%: Html.TextBoxFor(model => model.Calendario.fechaFinal, new { @class = "datepicker infofield" })%>
+                
             </div>
             
             <div class="editor-label">
                 <h3>Campeonato</h3>
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Calendario.idCampeonato, new SelectList(Model.Campeonato, "idCampeonato", "nombre", Model.Campeonato.First().idCampeonato))%>
-                <%: Html.ValidationMessageFor(model => model.Calendario.idCampeonato)%>
+                <%: Html.DropDownListFor(model => model.Calendario.idCampeonato, new SelectList(Model.Campeonato, "idCampeonato", "nombre", Model.Campeonato.First().idCampeonato), new { @class="infofield"})%>
+                
             </div>
             
-            <p>
-                <input type="submit" value="Save" />
-            </p>
-        </fieldset>
+        </div>
+            <div>
+                <input type="submit" value="Guardar" class="opcionCrud" />
+            </div>
 
     </form>
 

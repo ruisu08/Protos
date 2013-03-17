@@ -6,47 +6,46 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Edit</h2>
+    <div id="headerContenido">
+        <h1>Editar Campeonato</h1>
+    </div>
 
    <form id="validateForm" action= '<%:Url.Action("Edit","Campeonato")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-        
-        <fieldset>
-            <legend>Fields</legend>
+        <div id="createWrapper">
               
             <div class="editor-label">
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Campeonato.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "40" }) %>
-                <%: Html.ValidationMessageFor(model => model.Campeonato.nombre) %>
+                <%: Html.TextBoxFor(model => model.Campeonato.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "40", @class = "infofield" })%>
+                
             </div>
             
             <div class="editor-label">
                 <h3>Descripcion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Campeonato.descripcion, new { @required = "required", @pattern = "[a-zA-Z]{2,}", @maxlength = "140" }) %>
-                <%: Html.ValidationMessageFor(model => model.Campeonato.descripcion)%>
+                <%: Html.TextBoxFor(model => model.Campeonato.descripcion, new { @required = "required", @pattern = "[a-zA-Z]{2,}", @maxlength = "140", @class = "infofield" })%>
+                
             </div>
             
             <div class="editor-label">
                 Division
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Campeonato.idDivision, new SelectList(Model.Divisiones, "idDivisiones", "nombre", Model.Divisiones.First().idDivisiones))%>
-                <%: Html.ValidationMessageFor(model => model.Campeonato.idDivision)%>
+                <%: Html.DropDownListFor(model => model.Campeonato.idDivision, new SelectList(Model.Divisiones, "idDivisiones", "nombre", Model.Divisiones.First().idDivisiones), new { @class="infofield"})%>
+                
             </div>
+           </div>
             
-            <p>
-                <input type="submit" value="Actualizar" />
-            </p>
-        </fieldset>
+            <div>
+                <input type="submit" value="Guardar" class="opcionCrud" />
+            </div>
 
     </form>
 
     <div>
-        <%: Html.ActionLink("Regresar a la lista", "Index") %>
+        <%: Html.ActionLink("Volver a la lista", "Index") %>
     </div>
 
 </asp:Content>

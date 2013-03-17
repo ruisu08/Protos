@@ -6,46 +6,45 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Editar Division</h2>
+    <div id="headerContenido">
+        <h1>Editar Division</h1>
+    </div>
 
     <form id="validateForm" action= '<%:Url.Action("Edit","Division")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-        
-        <fieldset>
-            <legend>Información</legend>
+        <div id="createWrapper">
              <div class="editor-label">
                 <h3>Abreviatura</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.abreviatura,new { @required = "required", @name = "abrev", @pattern = "[a-zA-Z ]{2,}", @maxlength = "10" })%>
-                <%: Html.ValidationMessageFor(model => model.abreviatura) %>
+                <%: Html.TextBoxFor(model => model.abreviatura, new { @required = "required", @name = "abrev", @pattern = "[a-zA-Z ]{2,}", @maxlength = "10", @class = "infofield" })%>
+                
             </div>
 
             <div class="editor-label">
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "30" }) %>
-                <%: Html.ValidationMessageFor(model => model.nombre) %>
+                <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "30", @class = "infofield" })%>
+                
             </div>
             
             <div class="editor-label">
                 <h3>Descripcion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z]{2,}", @maxlength = "150" }) %>
-                <%: Html.ValidationMessageFor(model => model.descripcion) %>
+                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z]{2,}", @maxlength = "150", @class = "infofield" })%>
+                
             </div>
+        </div>
 
-            <p>
-                <input type="submit" value="Actualizar" />
-            </p>
-        </fieldset>
+            <div>
+                <input type="submit" value="Guardar" class="opcionCrud" />
+            </div>
 
     </form>
 
     <div>
-        <%: Html.ActionLink("Regresar a la lista", "Index") %>
+        <%: Html.ActionLink("Volver a la lista", "Index") %>
     </div>
 
 </asp:Content>

@@ -6,74 +6,70 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Edit</h2>
+    <div id="headerContenido">
+        <h1>Editar Jugadora</h1>
+    </div>
 
      <form id="validateForm" action= '<%:Url.Action("Edit","Jugadora")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-        
+       
+        <div id="createWrapper">
             <div class="editor-label">
                 <h3>Identificacion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.identificacion, new { @required = "required", @type="number", @size = "20" })%>
-                <%: Html.ValidationMessageFor(model => model.Jugadora.identificacion)%>
+                <%: Html.TextBoxFor(model => model.Jugadora.identificacion, new { @required = "required", @type = "number", @size = "20", @class = "infofield" })%>
+                
             </div>
 
             <div class="editor-label">
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "45" })%>
-                <%: Html.ValidationMessageFor(model => model.Jugadora.nombre)%>
+                <%: Html.TextBoxFor(model => model.Jugadora.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "45", @class = "infofield" })%>
+                
             </div>
             
             <div class="editor-label">
                 <h3>Apellidos</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.apellidos, new { @required = "required",  @pattern = "[a-zA-Z ]{2,}", @maxlength = "45" })%>
-                <%: Html.ValidationMessageFor(model => model.Jugadora.apellidos)%>
+                <%: Html.TextBoxFor(model => model.Jugadora.apellidos, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "45", @class = "infofield" })%>
+                
             </div>
             
             <div class="editor-label">
                 <h3>Fecha de nacimiento</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.fechaNacimiento, new { @class = "datepicker" })%>
-                <%: Html.ValidationMessageFor(model => model.Jugadora.fechaNacimiento)%>
+                <%: Html.TextBoxFor(model => model.Jugadora.fechaNacimiento, new { @class = "datepicker infofield" })%>
+               
             </div>
-            
-            <div class="editor-label">
-                <h3>Historia</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextAreaFor(model => model.Jugadora.historia, new { @maxlength = "500" })%>
-                <%: Html.ValidationMessageFor(model => model.Jugadora.historia)%>
-            </div>
-            
+
             <div class="editor-label">
                 <h3>Equipo</h3>
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Jugadora.Equipo_idEquipo, new SelectList(Model.Equipos,"idEquipo","nombre",Model.Equipos.First().idEquipo))%>
-                <%: Html.ValidationMessageFor(model => model.Jugadora.Equipo_idEquipo)%>
+                <%: Html.DropDownListFor(model => model.Jugadora.Equipo_idEquipo, new SelectList(Model.Equipos, "idEquipo", "nombre", Model.Equipos.First().idEquipo), new { @class="infofield"})%>
+               
             </div>
 
             <div class="editor-label">
                 <h3>Nacionalidad</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.nacionalidad, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "45" })%>
-                <%: Html.ValidationMessageFor(model => model.Jugadora.nacionalidad)%>
+                <%: Html.TextBoxFor(model => model.Jugadora.nacionalidad, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "45", @class = "infofield" })%>
+                
             </div>
+
+        </div>
             
-            <p>
-                <input type="submit" value="Actualizar" />
-            </p>
+            <div>
+                <input type="submit" value="Guardar" class="opcionCrud" />
+            </div>
     </form>
 
     <div>
-        <%: Html.ActionLink("Volver a lista", "Index") %>
+        <%: Html.ActionLink("Volver a la lista", "Index") %>
     </div>
 
 </asp:Content>

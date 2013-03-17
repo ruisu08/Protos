@@ -6,28 +6,26 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Actualizar Datos</h2>
+    <div id="headerContenido">
+        <h1>Editar Tabla de Posiciones</h1>
+    </div>
 
     <form id="validateForm" action= '<%:Url.Action("Edit","TablaPosiciones")%>' method="post">
-        <%: Html.ValidationSummary(true) %>
-        
-        <fieldset>
-            <legend>Informacion</legend>
+        <div id="createWrapper">
 
             <div class="editor-label">
                 <h3>Puntos</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.tablaPosiciones.puntos, new { @required = "required", @size = "10" })%>
-                <%: Html.ValidationMessageFor(model => model.tablaPosiciones.puntos) %>
-                
+                <%: Html.TextBoxFor(model => model.tablaPosiciones.puntos, new { @required = "required", @size = "10", @class = "infofield" })%>
+                                
             </div>
-            
 
-            <p>
-                <input type="submit" value="Guardar" />
-            </p>
-        </fieldset>
+          </div>
+            
+            <div>
+                <input type="submit" value="Guardar" class="opcionCrud" />
+            </div>
 
     </form>
 
