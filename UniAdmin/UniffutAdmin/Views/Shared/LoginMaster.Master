@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LoginMaster.master.cs" Inherits="UniffutAdmin.Views.Shared.LoginMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" id="masterLogin">
+<head runat="server">
+    
+
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server"></asp:ContentPlaceHolder></title>
+
+    <link rel="Stylesheet" href="../../Content/Site.css" />
+    <link rel="Stylesheet" href="../../Content/ContentSS.css"/>
+    <link  rel="Stylesheet" href="../../Scripts/myThumbNail/MyThumbnail.css"/> 
+    <script type="text/javascript" src="../../Scripts/JQ1.6.4.js"></script>
+    <script type="text/javascript" src="../../Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/dpLanguage.js"></script>
+    <script type="text/javascript" src="../../Scripts/tiny_mce/tiny_mce.js"></script>
+    <script type="text/javascript" src="../../Scripts/editor.js"></script>
+    <script type="text/javascript" src="../../Scripts/imageAdder.js"></script>
+    <script type="text/javascript" src= "../../Scripts/site.js"></script>
+    <script type="text/javascript" src="../../Scripts/inputs.js"></script>
+    <script type="text/javascript" src="../../Scripts/myThumbNail/jquery.MyThumbnail.js"></script>
+    <script type="text/javascript" src="../../Scripts/yoxview/yoxview-init.js"></script>
+    <script type="text/javascript" src="../../Scripts/imageDisplay.js"></script>
+    <link rel="Stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+
+</head>
+<body>
+    <div id="masterLogin">
+        <div id="loginContainer">
+
+
+        </div>
+        <div id="contenidoEspecifico">
+            <asp:ContentPlaceHolder ID="LoginContent" runat="server">
+        
+            </asp:ContentPlaceHolder>
+        </div>
+
+
+    </div>
+</body>
+</html>

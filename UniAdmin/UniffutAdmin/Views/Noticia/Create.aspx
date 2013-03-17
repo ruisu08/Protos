@@ -18,7 +18,7 @@
                 <h3>Titulo</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Noticia.titulo, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "50", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.Noticia.titulo, new { @required = "required", @maxlength = "45", @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Noticia.titulo)%>
             </div>
             

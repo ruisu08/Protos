@@ -15,14 +15,6 @@
             <legend>Información</legend>
             
             <div class="editor-label">
-                <h3>ID</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Calendario.idCalendario, new { @required = "required", @size = "4"})%>
-                <%: Html.ValidationMessageFor(model => model.Calendario.idCalendario) %>
-            </div>
-            
-            <div class="editor-label">
                 <h3>Fecha de Inicio</h3>
             </div>
             <div class="editor-field">

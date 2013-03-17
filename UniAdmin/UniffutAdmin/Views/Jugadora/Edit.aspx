@@ -17,7 +17,7 @@
                 <h3>Identificacion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Jugadora.identificacion, new { @required = "required", @type = "number", @size = "20", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.Jugadora.identificacion, new { @required = "required", @type = "number", @size = "11", @class = "infofield" })%>
                 
             </div>
 

@@ -18,14 +18,14 @@
                 <h2>Nombre</h2>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "10", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.nombre, new { @required = "required", @maxlength = "45", @class = "infofield" })%>
             </div>
             
             <div class="editor-label">
                 <h2>Descripcion</h2>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "150", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.descripcion, new { @required = "required", @maxlength = "45", @class = "infofield" })%>
             </div>
             
             <div class="editor-label">

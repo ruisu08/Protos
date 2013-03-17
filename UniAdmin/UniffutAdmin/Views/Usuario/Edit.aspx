@@ -15,11 +15,11 @@
     <div id="createWrapper">
         <div>
         <h3>Nombre</h3>
-        <%: Html.TextBoxFor(model => model.Usuario.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "30", @class = "infofield" })%>
+        <%: Html.TextBoxFor(model => model.Usuario.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "45", @class = "infofield" })%>
         </div>
         <div>
         <h3>Apellidos</h3>
-        <%: Html.TextBoxFor(model => model.Usuario.apellido, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "50", @class = "infofield" })%>
+        <%: Html.TextBoxFor(model => model.Usuario.apellido, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "45", @class = "infofield" })%>
         </div>
         <div>
         <h3>Teléfono</h3>

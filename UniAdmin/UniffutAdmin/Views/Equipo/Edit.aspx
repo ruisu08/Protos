@@ -17,14 +17,14 @@
                  <h3>Abreviatura</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.equipo.abreviatura, new { @required = "required", @name = "Abrev", @pattern = "[a-zA-Z ]{2,}", @maxlength = "10", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.equipo.abreviatura, new { @required = "required", @maxlength = "10", @class = "infofield" })%>
             </div>
             
             <div class="editor-label">
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.equipo.nombre, new { @required = "required", @name = "name", @pattern = "[a-zA-Z ]{5,}", @maxlength = "40", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.equipo.nombre, new { @required = "required", @maxlength = "45", @class = "infofield" })%>
             </div>
             
             <div class="editor-label">

@@ -17,7 +17,7 @@
                     <h2>Nombre</h2>
                 </div>
                 <div class="editor-field">
-                    <%: Html.TextBoxFor(model=>model.Album.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{1,}", @maxlength = "10", @class = "infofield" })%>
+                    <%: Html.TextBoxFor(model=>model.Album.nombre, new { @required = "required", @maxlength = "100", @class = "infofield" })%>
                 </div>
            
             </div>

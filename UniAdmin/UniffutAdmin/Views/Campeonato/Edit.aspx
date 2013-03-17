@@ -17,7 +17,7 @@
                 <h3>Nombre</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Campeonato.nombre, new { @required = "required", @pattern = "[a-zA-Z ]{2,}", @maxlength = "40", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.Campeonato.nombre, new { @required = "required", @maxlength = "45", @class = "infofield" })%>
                 
             </div>
             
@@ -25,7 +25,7 @@
                 <h3>Descripcion</h3>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Campeonato.descripcion, new { @required = "required", @pattern = "[a-zA-Z]{2,}", @maxlength = "140", @class = "infofield" })%>
+                <%: Html.TextBoxFor(model => model.Campeonato.descripcion, new { @required = "required", @maxlength = "45", @class = "infofield" })%>
                 
             </div>
             
