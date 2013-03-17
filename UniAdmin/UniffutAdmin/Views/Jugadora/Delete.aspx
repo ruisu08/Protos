@@ -6,40 +6,37 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Eliminar</h2>
+    <div id="headerContenido">
+        <h1>Eliminar Jugadora</h1>
+        <h3>Solo pasara a inactivo</h3>
+    </div>
 
-    <h3>Esto pasara el estado de la jugadora a inactiva, no la eliminara realmente</h3>
-    <fieldset>
-        <legend>Informacion</legend>
+    <form id="validateForm" action= '<%:Url.Action("Delete","Jugadora")%>' method="post">
         
-        <div class="display-label">ID</div>
-        <div class="display-field"><%: Model.idJugadora %></div>
+        <div id="detallesWrapper">
 
-        <div class="display-label">Identificacion</div>
-        <div class="display-field"><%: Model.identificacion %></div>
-        
-        <div class="display-label">Nombre</div>
-        <div class="display-field"><%: Model.nombre %></div>
-        
-        <div class="display-label">Apellidos</div>
-        <div class="display-field"><%: Model.apellidos %></div>
+        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.idJugadora %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Identificacion</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.identificacion %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Nombre</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.nombre %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Apellidos</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.apellidos %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Fecha de Nacimiento</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.fechaNacimiento %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Nacionalidad</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.nacionalidad %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Equipo al que pertenece</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.equipo.nombre %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Estado</h3></div>
+        <div class="propiedadDetalle"><h4><%: (bool)Model.estado ? "Activo":"Inactivo" %></h4></div>
+        </div>
 
-        <div class="display-label">Fecha de Nacimiento</div>
-        <div class="display-field"><%: Model.fechaNacimiento %></div>
-        
-        <div class="display-label">Equipo</div>
-        <div class="display-field"><%: Model.equipo.nombre %></div>
-        
-        <div class="display-label">Nacionalidad</div>
-        <div class="display-field"><%: Model.nacionalidad%></div>
-        
-    </fieldset>
-    <% using (Html.BeginForm()) { %>
-        <p>
-		    <input type="submit" value="Eliminar" data-confirm="Si elimina a esta jugadora se eliminara toda la multimedia asociada a ella. Esta seguro que desea eliminar a la jugadora?" /> |
-		    <%: Html.ActionLink("Volver a la lista", "Index") %>
-        </p>
-    <% } %>
+        <div>
+              <input type="submit" value="Eliminar Datos" class="opcionCrud" />
+        </div>
+    </form>
 
 </asp:Content>
 

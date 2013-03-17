@@ -82,7 +82,8 @@ namespace UniffutAdmin.Controllers.Informativos
                     return View("Error", error);
                 }
             }
-            return View();
+            var pagina = db.pagina_informativa.First(p => p.idPagina_Informativa.Equals(id));
+            return View(pagina);
         }
 
         //
@@ -119,7 +120,8 @@ namespace UniffutAdmin.Controllers.Informativos
                     return View("Error", error);
                 }
             }
-            var viewModel = new PaginaInformativaUsuarioViewModel { 
+            var viewModel = new PaginaInformativaUsuarioViewModel
+            { 
             Usuario = db.usuario.Where<usuario>(d=>d.estado == true).ToList(),
             Pagina = pagina
             };
@@ -134,13 +136,31 @@ namespace UniffutAdmin.Controllers.Informativos
         {
             try
             {
-                // TODO: Add insert logic here
-
+                var oldPagina = db.pagina_informativa.FirstOrDefault(e => e.titulo == pagina.titulo);
+                if (oldPagina != null)
+                {
+                    oldPagina.titulo = pagina.titulo;
+                    oldPagina.fecha = pagina.fecha;
+                    oldPagina.autor = pagina.autor;
+                    //oldEquipo.historia = Equipo.historia;
+                    oldPagina.estado = true;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                viewModel.Usuario = db.usuario.ToList();
+                viewModel.Pagina = pagina;
+                viewModel.Pagina.estado = true;
+                db.pagina_informativa.AddObject(viewModel.Pagina);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = e.InnerException.ToString()
+                };
+                return View("Error", error);
             }
         }
         
@@ -178,24 +198,46 @@ namespace UniffutAdmin.Controllers.Informativos
                     return View("Error", error);
                 }
             }
-            return View();
+            var pagina = db.pagina_informativa.First(p => p.idPagina_Informativa.Equals(id));
+            var viewModel = new PaginaInformativaUsuarioViewModel 
+            {
+            
+                Usuario = db.usuario.Where(d=>d.estado == true).ToList(),
+                Pagina = pagina
+            };
+
+            return View(viewModel);
         }
 
         //
         // POST: /PaginaInformativa/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id,pagina_informativa Pagina, PaginaInformativaUsuarioViewModel viewModel)
         {
             try
             {
-                // TODO: Add update logic here
- 
+                var pagina = db.pagina_informativa.First(p => p.idPagina_Informativa.Equals(id) && p.estado == true);
+                viewModel = new PaginaInformativaUsuarioViewModel
+                {
+                    Pagina = pagina,
+                    Usuario = db.usuario.Where(d=>d.estado == true).ToList()
+                };
+                viewModel.Pagina.autor = Pagina.autor;
+                viewModel.Pagina.fecha = Pagina.fecha;
+                viewModel.Pagina.titulo = Pagina.titulo;
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = e.InnerException.ToString()
+                };
+
+                return View("Error", error);
             }
         }
 
@@ -233,7 +275,13 @@ namespace UniffutAdmin.Controllers.Informativos
                     return View("Error", error);
                 }
             }
-            return View();
+            var pagina = db.pagina_informativa.First(p => p.idPagina_Informativa.Equals(id));
+            if (!pagina.estado)
+            {
+                ErrorModel error = new ErrorModel { mensaje = "La Pagina Informativa ya fue eliminada" };
+                return View("Error", error);
+            }
+            return View(pagina);
         }
 
         //
@@ -244,13 +292,18 @@ namespace UniffutAdmin.Controllers.Informativos
         {
             try
             {
-                // TODO: Add delete logic here
- 
+                var pagina = db.pagina_informativa.First(p => p.idPagina_Informativa.Equals(id));
+                pagina.estado = false;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = e.InnerException.ToString()
+                };
+                return View("Error", error);
             }
         }
 
@@ -258,7 +311,8 @@ namespace UniffutAdmin.Controllers.Informativos
         {
 
             var Pagina = db.pagina_informativa.FirstOrDefault(e => e.idPagina_Informativa.Equals(id));
-
+            var h = new HtmlString(HttpUtility.HtmlDecode(Pagina.contenido));
+            Pagina.contenido = h.ToString();
             return View(Pagina);
         }
 

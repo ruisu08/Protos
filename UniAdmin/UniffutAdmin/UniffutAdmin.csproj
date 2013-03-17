@@ -475,6 +475,7 @@
     <Content Include="Views\Equipo\Edit.aspx" />
     <Content Include="Views\Equipo\Index.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Jugadora\agregarHistoria.aspx" />
     <Content Include="Views\Jugadora\Create.aspx" />
     <Content Include="Views\Jugadora\Delete.aspx" />
     <Content Include="Views\Jugadora\Details.aspx" />
@@ -488,7 +489,9 @@
     <Content Include="Views\Noticia\Details.aspx" />
     <Content Include="Views\Noticia\Edit.aspx" />
     <Content Include="Views\Noticia\Index.aspx" />
+    <Content Include="Views\PaginaInformativa\agregarContenido.aspx" />
     <Content Include="Views\PaginaInformativa\Create.aspx" />
+    <Content Include="Views\PaginaInformativa\Delete.aspx" />
     <Content Include="Views\PaginaInformativa\Details.aspx" />
     <Content Include="Views\PaginaInformativa\Index.aspx" />
     <Content Include="Views\Patrocinador\Create.aspx" />

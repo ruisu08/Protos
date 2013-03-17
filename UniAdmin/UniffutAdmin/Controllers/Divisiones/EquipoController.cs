@@ -247,7 +247,7 @@ namespace UniffutAdmin.Controllers
                         viewModel = new EquipoDivisionesViewModel
                         {
                             equipo = Equipo,
-                            divisiones = db.division.ToList()
+                            divisiones = db.division.Where(d=>d.estado == true).ToList()
                         };
 
                         viewModel.equipo.abreviatura = equipo.abreviatura.ToUpper();
@@ -373,7 +373,8 @@ namespace UniffutAdmin.Controllers
         public ActionResult agregarHistoria(int id) {
 
             var Equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(id));
-
+            var h = new HtmlString(HttpUtility.HtmlDecode(Equipo.historia));
+            Equipo.historia = h.ToString();
             return View(Equipo);
         }
 

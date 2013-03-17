@@ -360,6 +360,35 @@ namespace UniffutAdmin.Controllers
             }
         }
 
+        public ActionResult agregarHistoria(int id)
+        {
+
+            var Jugadora = db.jugadora.FirstOrDefault(e => e.idJugadora.Equals(id));
+            var h = new HtmlString(HttpUtility.HtmlDecode(Jugadora.historia));
+            Jugadora.historia = h.ToString();
+            return View(Jugadora);
+        }
+
+        [HttpPost]
+        public ActionResult agregarHistoria(int id, jugadora Jugadora)
+        {
+            var jugadora = db.jugadora.FirstOrDefault(e => e.idJugadora.Equals(id));
+            if (jugadora != null)
+            {
+                jugadora.historia = Jugadora.historia;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Otro usuario elimino la division durante la operacion"
+                };
+                return View("Error", error);
+            }
+        }
+
         public ActionResult Search(int Identificacion) {
 
             var jugadora = db.jugadora.FirstOrDefault(j => j.identificacion == Identificacion);

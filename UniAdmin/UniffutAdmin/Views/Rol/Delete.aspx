@@ -6,20 +6,27 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Eliminar rol</h2>
+    <div id="headerContenido">
+        <h1>Eliminar Rol</h1>
+        <h3>Solo pasara a inactivo</h3>
+    </div>
 
-    <fieldset>
-    <div class="display-label">ID</div>
-    <div class="display-field"><%: Model.idRol %></div>
-                
-        <div class="display-label">Estado</div>
-        <div class="display-field"><%: (bool)Model.estado ? "Activo" : "Inactivo"%></div>
-    </fieldset>
+    <form id="validateForm" action= '<%:Url.Action("Delete","Jugadora")%>' method="post">
+        
+        <div id="detallesWrapper">
 
-    <% using (Html.BeginForm()) { %>
-        <p>
-		    <input type="submit" value="Eliminar" /> |
-		    <%: Html.ActionLink("Volver a la lista", "Index") %>
-        </p>
-    <% } %>
+        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.idRol %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Nombre</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.nombre %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Descripcion</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.descripcion %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Estado</h3></div>
+        <div class="propiedadDetalle"><h4><%: (bool)Model.estado ? "Activo":"Inactivo" %></h4></div>
+        </div>
+
+        <div>
+              <input type="submit" value="Eliminar Datos" class="opcionCrud" />
+        </div>
+    </form>
 </asp:Content>

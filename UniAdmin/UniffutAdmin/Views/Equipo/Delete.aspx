@@ -6,29 +6,31 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Eliminar</h2>
+    <div id="headerContenido">
+        <h1>Eliminar Equipo</h1>
+        <h3>Solo pasara a inactivo</h3>
+    </div>
 
+    <form id="validateForm" action= '<%:Url.Action("Delete","Equipo")%>' method="post">
         
-        <div class="display-label">ID</div>
-        <div class="display-field"><%: Model.idEquipo %></div>
-        
-        <div class="display-label">Abreviatura</div>
-        <div class="display-field"><%: Model.abreviatura %></div>
-        
-        <div class="display-label">Nombre</div>
-        <div class="display-field"><%: Model.nombre %></div>
-        
-        <div class="display-label">Divisiones</div>
-        <div class="display-field"><%: Model.division.abreviatura %></div>
+        <div id="detallesWrapper">
 
-    <% using (Html.BeginForm()) { %>
-        <div>
-		    <input id="submitBTN" type="submit" value="Borrar" data-confirm="Si elimina al equipo se eliminara de todo los campeonatos y sus tablas de posiciones, asi como sus archivos multimedia. Tambien eliminara a todos los jugadores que esten en el equipo y sus archivos multimedia. Esta seguro que desea eliminar el equipo?" />
+        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.idEquipo %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Abreviatura</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.abreviatura %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Nombre</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.nombre %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>División a la que pertenece</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.division.nombre %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Estado</h3></div>
+        <div class="propiedadDetalle"><h4><%: (bool)Model.estado ? "Activo":"Inactivo" %></h4></div>
         </div>
+
         <div>
-            <%: Html.ActionLink("Volver a la lista", "Index") %>
+              <input type="submit" value="Eliminar Datos" class="opcionCrud" />
         </div>
-    <% } %>
+    </form>
 
 </asp:Content>
 

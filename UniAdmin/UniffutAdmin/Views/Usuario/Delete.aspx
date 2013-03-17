@@ -6,40 +6,35 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Eliminar</h2>
+    <div id="headerContenido">
+        <h1>Eliminar Usuario</h1>
+        <h3>Solo pasara a inactivo</h3>
+    </div>
 
-    <h3>Eliminar (esto pasara el estado a Inactivo)</h3>
-    <fieldset>
-        <legend>Información</legend>
+    <form id="validateForm" action= '<%:Url.Action("Delete","Jugadora")%>' method="post">
         
-        <div class="display-label">ID</div>
-        <div class="display-field"><%: Model.idUsuario %></div>
-        
-        <div class="display-label">Nombre</div>
-        <div class="display-field"><%: Model.nombre %></div>
-        
-        <div class="display-label">Apellidos</div>
-        <div class="display-field"><%: Model.apellido %></div>
-        
-        <div class="display-label">Telefono</div>
-        <div class="display-field"><%: Model.telefono %></div>
-        
-        <div class="display-label">Correo</div>
-        <div class="display-field"><%: Model.correo %></div>
-        
-        <div class="display-label">Estado</div>
-        <div class="display-field"><%: (bool)Model.estado ? "Activo":"Inactivo" %></div>
-        
-        <div class="display-label">Rol</div>
-        <div class="display-field"><%: Model.rol.descripcion %></div>
-        
-    </fieldset>
-    <% using (Html.BeginForm()) { %>
-        <p>
-		    <input type="submit" value="Eliminar" /> |
-		    <%: Html.ActionLink("Volver a la lista", "Index") %>
-        </p>
-    <% } %>
+        <div id="detallesWrapper">
+
+        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.idUsuario %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Identificacion</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.identificacion %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Nombre</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.nombre %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Apellidos</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.apellido %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Teléfono</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.telefono %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Correo</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.correo %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Estado</h3></div>
+        <div class="propiedadDetalle"><h4><%: (bool)Model.estado ? "Activo":"Inactivo" %></h4></div>
+        </div>
+
+        <div>
+              <input type="submit" value="Eliminar Datos" class="opcionCrud" />
+        </div>
+    </form>
 
 </asp:Content>
 

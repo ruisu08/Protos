@@ -6,34 +6,31 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Eliminar Campeonatos</h2>
+    <div id="headerContenido">
+        <h1>Eliminar Campeonato</h1>
+        <h3>Solo pasara a inactivo</h3>
+    </div>
 
-    <h3>Solo pasara a inactivo</h3>
-    <fieldset>
-        <legend>Informacion</legend>
+    <form id="validateForm" action= '<%:Url.Action("Delete","Campeonato")%>' method="post">
         
-        <div class="display-label">ID</div>
-        <div class="display-field"><%: Model.idCampeonato %></div>
-        
-        <div class="display-label">Nombre</div>
-        <div class="display-field"><%: Model.nombre %></div>
-        
-        <div class="display-label">Descripcion</div>
-        <div class="display-field"><%: Model.descripcion %></div>
-        
-        <div class="display-label">Divisiones</div>
-        <div class="display-field"><%: Model.division.nombre %></div>
-        
-        <div class="display-label">Estado</div>
-        <div class="display-field"><%: (bool)Model.estado ? "Activo":"Inactivo" %></div>
-        
-    </fieldset>
-    <% using (Html.BeginForm()) { %>
-        <p>
-		    <input type="submit" value="Eliminar" /> |
-		    <%: Html.ActionLink("Regresar a lista", "Index") %>
-        </p>
-    <% } %>
+        <div id="detallesWrapper">
+
+        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.idCampeonato %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Nombre</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.nombre %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Descripción</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.descripcion %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>División a la que pertenece</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.division.nombre %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Estado</h3></div>
+        <div class="propiedadDetalle"><h4><%: (bool)Model.estado ? "Activo":"Inactivo" %></h4></div>
+        </div>
+
+        <div>
+              <input type="submit" value="Eliminar Datos" class="opcionCrud" />
+        </div>
+    </form>
 
 </asp:Content>
 

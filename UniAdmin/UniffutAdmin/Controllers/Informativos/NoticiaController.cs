@@ -120,11 +120,18 @@ namespace UniffutAdmin.Controllers
                     return View("Error", error);
                 }
             }
-            var viewModel = new NoticiaViewModel { 
+            var viewModel = new NoticiaViewModel 
+            { 
                 Noticia = Noticia,
                 Usuarios = db.usuario.ToList(),
                 Tipos = db.tiponoticia.ToList()  
             };
+            if (viewModel.Usuarios.Count <= 0)
+            {
+                ErrorModel error = new ErrorModel();
+                error.mensaje = "No existen usuarios, debe crear algun usuario para editar estar seccion";
+                return View("Error", error);
+            }
             return View(viewModel);
         } 
 
@@ -136,13 +143,27 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-                viewModel.Usuarios = db.usuario.ToList();
-                viewModel.Noticia = Noticia;
-                viewModel.Noticia.estado = true;
-                viewModel.Tipos = db.tiponoticia.ToList();
-                db.noticia.AddObject(viewModel.Noticia);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+               
+                    var oldNoticia = db.noticia.FirstOrDefault(e => e.titulo == Noticia.titulo);
+                    if (oldNoticia != null)
+                    {
+                        oldNoticia.titulo = Noticia.titulo;
+                        oldNoticia.fecha = Noticia.fecha;
+                        oldNoticia.autor = Noticia.autor;
+                        //oldEquipo.historia = Equipo.historia;
+                        oldNoticia.estado = true;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+
+                    viewModel.Usuarios = db.usuario.ToList();
+                    viewModel.Noticia = Noticia;
+                    viewModel.Noticia.estado = true;
+                    viewModel.Tipos = db.tiponoticia.ToList();
+                    db.noticia.AddObject(viewModel.Noticia);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                
             }
             catch (Exception e)
             {
@@ -152,8 +173,8 @@ namespace UniffutAdmin.Controllers
                 };
                 return View("Error", error);
             }
+    
         }
-        
         //
         // GET: /Noticia/Edit/5
  
@@ -192,9 +213,15 @@ namespace UniffutAdmin.Controllers
             var VM = new NoticiaViewModel
             {
                 Noticia = noticia,
-                Usuarios = db.usuario.ToList(),
+                Usuarios = db.usuario.Where(d => d.estado == true).ToList(),
                 Tipos = db.tiponoticia.ToList()
             };
+            if (VM.Usuarios.Count <= 0)
+            {
+                ErrorModel error = new ErrorModel();
+                error.mensaje = "No existen usuarios, debe crear algun usuario para editar estar seccion";
+                return View("Error", error);
+            }
 
             return View(VM);
         }
@@ -207,13 +234,12 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-                var noticia = db.noticia.First(p => p.idNoticia.Equals(id));
+                var noticia = db.noticia.FirstOrDefault(p => p.idNoticia.Equals(id) && p.estado == true);
                 VM = new NoticiaViewModel
                 {   Noticia = noticia,
                     Usuarios = db.usuario.ToList()
                 };
                 VM.Noticia.autor = Noticia.autor;
-                VM.Noticia.contenido = Noticia.contenido;
                 VM.Noticia.fecha = Noticia.fecha;
                 VM.Noticia.TipoNoticia_idTipoNoticia = Noticia.TipoNoticia_idTipoNoticia;
                 VM.Noticia.titulo = Noticia.titulo;
@@ -267,6 +293,11 @@ namespace UniffutAdmin.Controllers
                 }
             }
             var noticia = db.noticia.First(p => p.idNoticia.Equals(id));
+            if (!noticia.estado)
+            {
+                ErrorModel error = new ErrorModel { mensaje = "La noticia ya fue eliminada" };
+                return View("Error", error);
+            }
             return View(noticia);
         }
 
@@ -297,7 +328,8 @@ namespace UniffutAdmin.Controllers
         {
 
             var Noticia = db.noticia.FirstOrDefault(e => e.idNoticia.Equals(id));
-
+            var h = new HtmlString(HttpUtility.HtmlDecode(Noticia.contenido));
+            Noticia.contenido = h.ToString();
             return View(Noticia);
         }
 
