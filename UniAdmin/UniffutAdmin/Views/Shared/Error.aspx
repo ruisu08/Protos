@@ -8,5 +8,5 @@
 
     <h2>La operacion no pudo ser realizada!!</h2>
     <p><%: Model.mensaje %></p>
-    <%:Html.ActionLink("Login","Index","Home")%>
+    <%:Html.ActionLink("Volver al Home","Index","Home")%>
 </asp:Content>

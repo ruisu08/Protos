@@ -68,8 +68,8 @@
             </div>
     </form>
 
-    <div>
-        <%: Html.ActionLink("Volver a la lista", "Index") %>
+   <div id="volverIndex">
+        <h3><%: Html.ActionLink("Volver a la Lista", "Index") %></h3>
     </div>
 
 </asp:Content>
