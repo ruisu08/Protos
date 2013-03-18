@@ -223,9 +223,10 @@ namespace UniffutAdmin.Controllers.Multimedia
 
         public ActionResult verMultimedia(int id)
         {
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora);
             db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora); 
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
+                       
             return RedirectToAction("Index", new RouteValueDictionary(new { controller = "MultimediaJugadora", action = "Index", id = id }));
 
         }
