@@ -469,8 +469,6 @@ namespace UniffutAdmin.Controllers
         [HttpPost]
         public ActionResult eliminarEquipo(int id, CampeonatoDivisionViewModel viewModel)
         {
-
-
             var campeonato = db.campeonato.FirstOrDefault(cam => cam.idCampeonato.Equals(id));
             var equipo = db.equipo.First(e=>e.idEquipo.Equals(viewModel.EquipoEspecifico.idEquipo));
             campeonato.equipo.Remove(equipo);

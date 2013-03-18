@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UniffutAdmin.Models;
+using UniffutAdmin.Models.ViewModels;
+using System.Web.Routing;
 
 namespace UniffutAdmin.Controllers.Multimedia
 {
@@ -10,10 +13,44 @@ namespace UniffutAdmin.Controllers.Multimedia
     {
         //
         // GET: /MultimediaJugadora/
+        private static uniffutData db = new uniffutData();
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(3)))
+                {
+                    if (m.idModulo == 3)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
+            var multimedia = db.album_jugadora.First(a => a.idAlbum_Jugadora.Equals(id)).multimedia.Where<multimedia>(multi => multi.estado == true);
+            return View(multimedia.ToList());
         }
 
         //

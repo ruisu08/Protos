@@ -66,7 +66,7 @@
                     <%: Html.ActionLink("Redactar historia", "agregarHistoria", new { id = item.idJugadora })%>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Agregar multimedia", "agregarMultimedia", new { id=item.idJugadora })%>
+                    <%: Html.ActionLink("Albumes Multimedia", "albumesMultimedia", new { id = item.idJugadora })%>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using UniffutAdmin.Models;
 using UniffutAdmin.Models.ViewModels;
+using System.Web.Routing;
 
 namespace UniffutAdmin.Controllers
 {
@@ -163,6 +164,10 @@ namespace UniffutAdmin.Controllers
                     }
                     viewModel.Jugadora = Jugadora;
                     viewModel.Jugadora.estado = true;
+                    var album = new album_jugadora();
+                    album.jugadora = viewModel.Jugadora;
+                    album.estado = true;
+                    album.nombre = "Sin título";
                     db.jugadora.AddObject(viewModel.Jugadora);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -393,6 +398,11 @@ namespace UniffutAdmin.Controllers
 
             var jugadora = db.jugadora.FirstOrDefault(j => j.identificacion == Identificacion);
             return View("Index",jugadora);
+        }
+
+        public ActionResult albumesMultimedia(int id)
+        {
+            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "AlbumJugadora", action = "Index", id = id }));
         }
     }
 }

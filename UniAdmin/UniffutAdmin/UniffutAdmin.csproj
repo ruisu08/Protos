@@ -452,6 +452,9 @@
     <Content Include="Views\AlbumEquipo\agregarMultimedia.aspx" />
     <Content Include="Views\AlbumEquipo\Create.aspx" />
     <Content Include="Views\AlbumEquipo\Index.aspx" />
+    <Content Include="Views\AlbumJugadora\agregarMultimedia.aspx" />
+    <Content Include="Views\AlbumJugadora\Create.aspx" />
+    <Content Include="Views\AlbumJugadora\Index.aspx" />
     <Content Include="Views\Calendario\Create.aspx" />
     <Content Include="Views\Calendario\Delete.aspx" />
     <Content Include="Views\Calendario\Details.aspx" />
@@ -484,6 +487,7 @@
     <Content Include="Views\Jugadora\Index.aspx" />
     <Content Include="Views\Login\Index.aspx" />
     <Content Include="Views\MultimediaEquipo\Index.aspx" />
+    <Content Include="Views\MultimediaJugadora\Index.aspx" />
     <Content Include="Views\Noticia\agregarContenido.aspx" />
     <Content Include="Views\Noticia\Create.aspx" />
     <Content Include="Views\Noticia\Delete.aspx" />
