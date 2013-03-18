@@ -142,6 +142,25 @@ body
     
 }
 
+.opcionLogOut
+{
+    background-color:#DC3D24;
+    text-align:center;
+    border-radius:2px;
+    display:inline;     
+    padding:1%;   
+    font-family:Century Gothic;    
+    margin-left:1%;
+    margin-bottom:2%;
+    margin-top:2%;
+    width:8%;
+}
+
+.opcionLogOut a 
+{
+    text-decoration:none;
+    color:#E3AE57;
+    }
 #titulo
 {
     margin:10px 10px 0 40px; 

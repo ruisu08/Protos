@@ -22,7 +22,7 @@ namespace UniffutAdmin.Controllers.Divisiones
                 {
                     mensaje = "Debes iniciar sesion para acceder a esta pagina"
                 };
-                return View("Error", error);
+                return View("ErrorSesion", error);
             }
             else {
                 bool autorizado = false;
@@ -59,7 +59,7 @@ namespace UniffutAdmin.Controllers.Divisiones
                 {
                     mensaje = "Debes iniciar sesion para acceder a esta pagina"
                 };
-                return View("Error", error);
+                return View("ErrorSesion", error);
             }
             else {
                 bool autorizado = false;
@@ -96,7 +96,7 @@ namespace UniffutAdmin.Controllers.Divisiones
                 {
                     mensaje = "Debes iniciar sesion para acceder a esta pagina"
                 };
-                return View("Error", error);
+                return View("ErrorSesion", error);
             }
             else
             { 
@@ -164,7 +164,7 @@ namespace UniffutAdmin.Controllers.Divisiones
                 {
                     mensaje = "Debes iniciar sesion para acceder a esta pagina"
                 };
-                return View("Error", error);
+                return View("ErrorSesion", error);
             }
             else
             {
@@ -238,7 +238,7 @@ namespace UniffutAdmin.Controllers.Divisiones
                 {
                     mensaje = "Debes iniciar sesion para acceder a esta pagina"
                 };
-                return View("Error", error);
+                return View("ErrorSesion", error);
             }
             else {
                 bool autorizado = false;
@@ -376,7 +376,7 @@ namespace UniffutAdmin.Controllers.Divisiones
                 {
                     mensaje = "Debes iniciar sesion para acceder a esta pagina"
                 };
-                return View("Error", error);
+                return View("ErrorSesion", error);
             }
             else
             {

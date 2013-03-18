@@ -56,7 +56,7 @@
             </div>
         </div>
         <div id="contenido">
-        <div id="logOut" class="opcionCrud">
+        <div id="logOut" class="opcionLogOut">
                 <%:Html.ActionLink("Cerrar sesión","LogOut","Login") %>
         </div>
             <div id="contenidoEspecifico">
