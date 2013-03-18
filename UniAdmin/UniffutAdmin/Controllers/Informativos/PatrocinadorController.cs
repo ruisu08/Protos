@@ -315,21 +315,12 @@ namespace UniffutAdmin.Controllers.Informativos
 
         public ActionResult verMultimedia(int id)
         {
-            var patrocinadores = db.patrocinador.First(p => p.idPatrocinador.Equals(id));
+            var patrocinadores = db.patrocinador.First(p => p.idPatrocinador.Equals(id) && p.fuenteGrafica != null);
             return View(patrocinadores);
         }
 
-        public ActionResult eliminarMultimedia(int id)
-        {
-
-            var Patrocinador = db.patrocinador.FirstOrDefault(e => e.idPatrocinador.Equals(id));
-            var h = new HtmlString(HttpUtility.HtmlDecode(Patrocinador.fuenteGrafica));
-            Patrocinador.fuenteGrafica = h.ToString();
-            return View(Patrocinador);
-        }
-
         [HttpPost]
-        public ActionResult eliminarMultimedia(int id, patrocinador Patrocinador)
+        public ActionResult eliminarMultimedia(int id)
         {
             var patrocinador = db.patrocinador.FirstOrDefault(e => e.idPatrocinador.Equals(id));
             if (patrocinador != null)
@@ -348,7 +339,6 @@ namespace UniffutAdmin.Controllers.Informativos
             }
         }
 
-        [HttpPost]
         public ActionResult Search(String nombre)
         {
 

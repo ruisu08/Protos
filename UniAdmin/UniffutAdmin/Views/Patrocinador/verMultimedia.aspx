@@ -15,11 +15,7 @@
             <%:new HtmlString (HttpUtility.HtmlDecode(Model.fuenteGrafica))%>
            </a>            
            <div class="opcionBorrarMult">
-              <% if (Model.fuenteGrafica != null)
-                 {
-                     Html.ActionLink("Eliminar", "eliminarMultimedia", new { id = Model.idPatrocinador });
-                 }
-               %>
+              <%:Html.ActionLink("Eliminar", "eliminarMultimedia", new { id = Model.idPatrocinador })%>
            </div>
         </div>
     </div>
