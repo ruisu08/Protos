@@ -8,11 +8,20 @@
 
     <div id="detallesTitulo">
         <h1>Multimedia del patrocinador:</h1>
-        <h2><%:" "+Model.nombre%></h2>
     </div>
-    <div id="detallesWrapper">
-        <div class="nombrePropiedadDetalle"><h3>Imagen</h3></div>
-        <div class="propiedadDetalle"><h4><%:new HtmlString (HttpUtility.HtmlDecode(Model.fuenteGrafica))%></h4></div>        
+    <div class="thumbnails yoxview">
+      <div class="OrdenAlbum">
+           <a class="imagenAlbum">
+            <%:new HtmlString (HttpUtility.HtmlDecode(Model.fuenteGrafica))%>
+           </a>            
+           <div class="opcionBorrarMult">
+              <% if (Model.fuenteGrafica != null)
+                 {
+                     Html.ActionLink("Eliminar", "eliminarMultimedia", new { id = Model.idPatrocinador });
+                 }
+               %>
+           </div>
+        </div>
     </div>
     <div id="volverIndex">
         <h3><%:Html.ActionLink("Volver a la Lista", "Index") %></h3>

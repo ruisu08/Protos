@@ -501,6 +501,8 @@
     <Content Include="Views\Patrocinador\Create.aspx" />
     <Content Include="Views\Patrocinador\Delete.aspx" />
     <Content Include="Views\Patrocinador\Details.aspx" />
+    <Content Include="Views\Patrocinador\Edit.aspx" />
+    <Content Include="Views\Patrocinador\eliminarMultimedia.aspx" />
     <Content Include="Views\Patrocinador\Index.aspx" />
     <Content Include="Views\Patrocinador\verMultimedia.aspx" />
     <Content Include="Views\Rol\asignarModulosARol.aspx" />

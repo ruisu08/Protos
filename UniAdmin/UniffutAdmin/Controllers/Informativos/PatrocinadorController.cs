@@ -307,7 +307,7 @@ namespace UniffutAdmin.Controllers.Informativos
             {
                 ErrorModel error = new ErrorModel
                 {
-                    mensaje = "Otro usuario elimino la division durante la operacion"
+                    mensaje = "Otro usuario elimino al patrocinador durante la operacion"
                 };
                 return View("Error", error);
             }
@@ -319,5 +319,33 @@ namespace UniffutAdmin.Controllers.Informativos
             return View(patrocinadores);
         }
 
+        public ActionResult eliminarMultimedia(int id)
+        {
+
+            var Patrocinador = db.patrocinador.FirstOrDefault(e => e.idPatrocinador.Equals(id));
+            var h = new HtmlString(HttpUtility.HtmlDecode(Patrocinador.fuenteGrafica));
+            Patrocinador.fuenteGrafica = h.ToString();
+            return View(Patrocinador);
+        }
+
+        [HttpPost]
+        public ActionResult eliminarMultimedia(int id, patrocinador Patrocinador)
+        {
+            var patrocinador = db.patrocinador.FirstOrDefault(e => e.idPatrocinador.Equals(id));
+            if (patrocinador != null)
+            {
+                patrocinador.fuenteGrafica = null;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Otro usuario elimino el patrocinador durante la operacion"
+                };
+                return View("Error", error);
+            }
+        }
     }
 }
