@@ -80,14 +80,13 @@ body
     border:solid 1px #3E454C;
     background-color:#DC3024;
     color:#FFFFFF;
+    font-size:90%;
 }
 
 .opcionMenu a
 {
     color:#FFFFFF;
-    text-decoration:none;  
-
-      
+    text-decoration:none;    
 }
 
 .contenidoOpcion
