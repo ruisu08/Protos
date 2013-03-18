@@ -45,7 +45,7 @@ namespace UniffutAdmin.Controllers
                 }
             }
             var noticias = db.noticia.Where<noticia>(r => r.estado == true);
-            return View(db.noticia.ToList());
+            return View(noticias.ToList());
         }
 
         //
@@ -235,17 +235,30 @@ namespace UniffutAdmin.Controllers
             try
             {
                 var noticia = db.noticia.FirstOrDefault(p => p.idNoticia.Equals(id) && p.estado == true);
-                VM = new NoticiaViewModel
-                {   Noticia = noticia,
-                    Usuarios = db.usuario.ToList()
-                };
-                VM.Noticia.autor = Noticia.autor;
-                VM.Noticia.fecha = Noticia.fecha;
-                VM.Noticia.TipoNoticia_idTipoNoticia = Noticia.TipoNoticia_idTipoNoticia;
-                VM.Noticia.titulo = Noticia.titulo;
-                db.SaveChanges();
+                if (noticia != null)
+                {
+                    VM = new NoticiaViewModel
+                    {
+                        Noticia = noticia,
+                        Usuarios = db.usuario.ToList()
+                    };
+                    VM.Noticia.autor = Noticia.autor;
+                    VM.Noticia.fecha = Noticia.fecha;
+                    VM.Noticia.TipoNoticia_idTipoNoticia = Noticia.TipoNoticia_idTipoNoticia;
+                    VM.Noticia.titulo = Noticia.titulo;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "La noticia se encuentra eliminada actualmente o no existe"
+                    };
+
+                    return View("Error", error);
+                }
  
-                return RedirectToAction("Index");
             }
             catch (Exception e)
             {

@@ -11,7 +11,7 @@
         <h3>Solo pasara a inactivo</h3>
     </div>
 
-    <form id="validateForm" action= '<%:Url.Action("Delete","Jugadora")%>' method="post">
+    <form id="validateForm" action= '<%:Url.Action("Delete","PaginaInformativa")%>' method="post">
         
         <div id="detallesWrapper">
 

@@ -34,7 +34,7 @@
                 <h3>Autor</h3>
             </div>
             <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Noticia.autor, new SelectList(Model.Usuarios, "idUsuario", "idUsuario", Model.Usuarios.First().idUsuario), new { @class = "infofield" })%>
+                <%: Html.DropDownListFor(model => model.Noticia.autor, new SelectList(Model.Usuarios, "idUsuario", "nombre", Model.Usuarios.First().idUsuario), new { @class = "infofield" })%>
                 <%: Html.ValidationMessageFor(model => model.Noticia.autor)%>
             </div>
             
