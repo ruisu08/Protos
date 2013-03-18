@@ -52,6 +52,9 @@
                     <div class="opcionCrud">
                     <%: Html.ActionLink("Agregar equipo", "agregarEquipo", new { id = item.idCampeonato })%>
                     </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Eliminar equipo", "eliminarEquipo", new { id = item.idCampeonato })%>
+                    </div>
                 </div>
             </div>
     <% } %>

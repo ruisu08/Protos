@@ -462,6 +462,7 @@
     <Content Include="Views\Campeonato\Delete.aspx" />
     <Content Include="Views\Campeonato\Details.aspx" />
     <Content Include="Views\Campeonato\Edit.aspx" />
+    <Content Include="Views\Campeonato\eliminarEquipo.aspx" />
     <Content Include="Views\Campeonato\Index.aspx" />
     <Content Include="Views\Division\Create.aspx" />
     <Content Include="Views\Division\Delete.aspx" />

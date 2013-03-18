@@ -413,6 +413,16 @@ namespace UniffutAdmin.Controllers
             {
                 Campeonato = Campeonato
             };
+            List<equipo> listaReal = viewModel.Campeonato.division.equipo.Where<equipo>(e=>e.campeonato.Contains(viewModel.Campeonato) == false && e.estado == true).ToList();
+            for (int i = 0; i < viewModel.Campeonato.division.equipo.Count;)
+            {
+                var list = viewModel.Campeonato.division.equipo.ToList();
+                var e = list[i];
+                viewModel.Campeonato.division.equipo.Remove(e);
+            }
+            foreach (var e in listaReal) {
+               viewModel.Campeonato.division.equipo.Add(e);
+            }
             return View(viewModel);
         }
 
@@ -423,6 +433,12 @@ namespace UniffutAdmin.Controllers
             var equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(viewModel.EquipoEspecifico.idEquipo));
             campeonato.equipo.Add(equipo);
             equipo.campeonato.Add(campeonato);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_posiciones);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_equipo);
+            db.SaveChanges();
             var tabla = db.tabla_posiciones.FirstOrDefault(t => t.idCampeonato.Equals(campeonato.idCampeonato));
             var tablaEquipo = new tabla_equipo();
             tablaEquipo.equipo = campeonato.equipo.First(e => e.idEquipo.Equals(equipo.idEquipo));
@@ -431,5 +447,46 @@ namespace UniffutAdmin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        public ActionResult eliminarEquipo(int id) {
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_posiciones);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_equipo);
+
+            var Campeonato = db.campeonato.FirstOrDefault(cam => cam.idCampeonato.Equals(id));
+           
+            var viewModel = new CampeonatoDivisionViewModel
+            {
+                Campeonato = Campeonato
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult eliminarEquipo(int id, CampeonatoDivisionViewModel viewModel)
+        {
+
+
+            var campeonato = db.campeonato.FirstOrDefault(cam => cam.idCampeonato.Equals(id));
+            var equipo = db.equipo.First(e=>e.idEquipo.Equals(viewModel.EquipoEspecifico.idEquipo));
+            campeonato.equipo.Remove(equipo);
+            equipo.campeonato.Remove(campeonato);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_posiciones);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_equipo);
+            //db.SaveChanges();
+            var tabla = db.tabla_posiciones.First(t => t.idCampeonato.Equals(campeonato.idCampeonato));
+            var tablaEquipo = tabla.tabla_equipo.First(te => te.idEquipo.Equals(equipo.idEquipo) && te.idTabla.Equals(tabla.idTabla));
+            tabla.tabla_equipo.Remove(tablaEquipo);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }

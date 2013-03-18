@@ -1,38 +1,37 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.ViewModels.CampeonatoDivisionViewModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	agregarEquipo
+	eliminarEquipo
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-     <div id="headerContenido">
-        <h1>Agrega un equipo al campeonato</h1>
+         <div id="headerContenido">
+        <h1>Elimina un equipo del campeonato</h1>
     </div>
 
-    <form id="validateForm" action= '<%:Url.Action("agregarEquipo","Campeonato")%>' method="post">
+    <form id="validateForm" action= '<%:Url.Action("eliminarEquipo","Campeonato")%>' method="post">
         <div id="createWrapper">            
             
             <div class="editor-label">
-                <h3>Selecciona el equipo</h3>
-                <h6>Solo se permiten equipos de una misma división</h6>
+                <h3>Selecciona el equipo que deseas eliminar</h3>
             </div>
             <div class="editor-field">
-            <%if (Model.Campeonato.division.equipo.Count > 0)
+            <%if (Model.Campeonato.equipo.Count > 0)
               { %>
-                <%: Html.DropDownListFor(model => model.EquipoEspecifico.idEquipo, new SelectList(Model.Campeonato.division.equipo, "idEquipo", "nombre", Model.Campeonato.division.equipo.First().idEquipo), new { @class = "infofield" })%>
+                <%: Html.DropDownListFor(model => model.EquipoEspecifico.idEquipo, new SelectList(Model.Campeonato.equipo, "idEquipo", "nombre", Model.Campeonato.equipo.First().idEquipo), new { @class = "infofield" })%>
             <% } %>
             <% else
               {%>
-                <h4>Todos los equipos de la división estan en el campeonato</h4>
+                <h4>El campeonato no tiene equipos</h4>
             <% } %>
             </div>
             
         </div>
-        <%if (Model.Campeonato.division.equipo.Count > 0)
+        <%if (Model.Campeonato.equipo.Count > 0)
               { %>
             <div>
-                <input type="submit" value="Agregar equipo" class="opcionCrud" />
+                <input type="submit" value="Eliminar equipo" class="opcionCrud" />
             </div>
             <% } %>
     </form>
