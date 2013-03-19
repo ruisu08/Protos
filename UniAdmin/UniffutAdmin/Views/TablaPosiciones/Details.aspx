@@ -43,7 +43,7 @@
         <%} %>
     </div>
     <div id="volverIndex">
-        <h3><%:Html.ActionLink("Volver a la lista", "Index") %></h3>
+        <h3><%:Html.ActionLink("Volver a la lista", "Index", "Campeonato") %></h3>
      </div>
 
 </asp:Content>
