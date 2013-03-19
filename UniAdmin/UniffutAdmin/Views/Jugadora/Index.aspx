@@ -46,7 +46,12 @@
                 </div>
                 <div class="indexData">
                     <h3>Edad:</h3>
-                    <h4><%:item.fechaNacimiento%></h4>
+                    <h4><%
+                        DateTime today = DateTime.Today;
+                        int age = today.Year - item.fechaNacimiento.Year;
+                        if (item.fechaNacimiento > today.AddYears(-age)) age--;
+
+                        Response.Write(age); %></h4>
                 </div>
                <div class="indexData">
                     <h3>Nacionalidad:</h3>
