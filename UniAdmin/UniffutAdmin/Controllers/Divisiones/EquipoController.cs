@@ -340,6 +340,13 @@ namespace UniffutAdmin.Controllers
                 Equipo = db.equipo.FirstOrDefault(p => p.idEquipo.Equals(id) && p.estado == true);
                 if (Equipo != null)
                 {
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
 
                     for (int i = 0; i < Equipo.campeonato.Count; )
                     {
@@ -357,36 +364,41 @@ namespace UniffutAdmin.Controllers
                         e.equipo.Remove(Equipo);
                         e.estado = false;
                     }
-                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
-                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
-                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
-                    for (int i = 0; i < Equipo.album_equipo.Count; ){
-                        var l = Equipo.album_equipo.ToList();
-                        var e = l[i];
 
-                        for (int j = 0; j < e.multimedia.Count; )
-                        {
-                            var lm = e.multimedia.ToList();
-                            var m = lm[j];
-                            e.multimedia.Remove(m);
-                        }
-                        db.album_equipo.DeleteObject(e);
-                    }
 
-                    var JugadoraEnEquipo = Equipo.jugadora;
-                    foreach (var x in JugadoraEnEquipo) {
-                        for (int i = 0; i < x.album_jugadora.Count; )
-                        {
-                            var l = x.album_jugadora.ToList();
+
+                    for (int i = 0; i < Equipo.album_equipo.Where<album_equipo>(juga => juga.estado == true).Count(); )
+                    {
+                            var l = Equipo.album_equipo.Where<album_equipo>(juga => juga.estado == true).ToList();
                             var e = l[i];
 
                             for (int j = 0; j < e.multimedia.Count; )
                             {
                                 var lm = e.multimedia.ToList();
                                 var m = lm[j];
+                                m.estado = false;
                                 e.multimedia.Remove(m);
                             }
+                            e.estado = false;
+                    }
+
+                    var JugadoraEnEquipo = Equipo.jugadora.Where<jugadora>(j=>j.estado == true);
+                    foreach (var x in JugadoraEnEquipo) {
+                        for (int i = 0; i < x.album_jugadora.Where<album_jugadora>(juga => juga.estado == true).Count(); )
+                        {
+                            var l = x.album_jugadora.Where<album_jugadora>(juga => juga.estado == true).ToList();
+                            var e = l[i];
+
+                            for (int j = 0; j < e.multimedia.Count; )
+                            {
+                                var lm = e.multimedia.ToList();
+                                var m = lm[j];
+                                m.estado = false;
+                                e.multimedia.Remove(m);
+                            }
+                            e.estado = false;
                         }
+
                         x.estado = false;
                     }
 
