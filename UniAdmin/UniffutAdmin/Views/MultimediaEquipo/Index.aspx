@@ -29,7 +29,7 @@
             <%:new HtmlString (HttpUtility.HtmlDecode(m.fuenteGrafica))%>
            </a>
            <div class="opcionBorrarMult">
-              <%: Html.ActionLink("Eliminar", "Delete", new { id = m.idMultimedia })%>
+              <%: Html.ActionLink("Eliminar", "Delete", new { id = m.idMultimedia, idAlbum = Model.First().album_equipo.First().idAlbum_Equipo})%>
            </div>
         </div>
     <%} %>

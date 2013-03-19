@@ -113,25 +113,20 @@ namespace UniffutAdmin.Controllers.Multimedia
             }
         }
 
-        //
-        // GET: /MultimediaJugadora/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+
 
         //
         // POST: /MultimediaJugadora/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, int idAlbum)
         {
             try
             {
+                var mult = db.multimedia.First(mu => mu.idMultimedia.Equals(id));
+                mult.estado = false;
+                db.SaveChanges();
                 // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Index", new RouteValueDictionary(new { controller = "MultimediaEquipo", action = "Index", id = idAlbum }));
             }
             catch
             {

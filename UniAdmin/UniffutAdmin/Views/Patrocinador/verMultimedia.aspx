@@ -14,9 +14,6 @@
            <a class="imagenAlbum">
             <%:new HtmlString (HttpUtility.HtmlDecode(Model.fuenteGrafica))%>
            </a>            
-           <div class="opcionBorrarMult">
-              <%:Html.ActionLink("Eliminar", "eliminarMultimedia", new { id = Model.idPatrocinador })%>
-           </div>
         </div>
     </div>
     <div id="volverIndex">

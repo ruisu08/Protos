@@ -45,8 +45,8 @@ namespace UniffutAdmin.Controllers
                 }
             }
             db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
             var multimedia = db.album_equipo.First(a => a.idAlbum_Equipo.Equals(id)).multimedia.Where<multimedia>(multi=>multi.estado == true);
             return View(multimedia.ToList());
         }
@@ -83,7 +83,7 @@ namespace UniffutAdmin.Controllers
         //
         // GET: /Multimedia/Delete/5
  
-        public ActionResult Delete(int id)
+        /*public ActionResult Delete(int id)
         {
             if (Session["userID"] == null)
             {
@@ -116,13 +116,12 @@ namespace UniffutAdmin.Controllers
             }
             var mult = db.multimedia.First(mu => mu.idMultimedia.Equals(id));
             return View(mult);
-        }
+        }*/
 
         //
         // POST: /Multimedia/Delete/5
 
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, int idAlbum)
         {
             try
             {
@@ -130,8 +129,8 @@ namespace UniffutAdmin.Controllers
                 mult.estado = false;
                 db.SaveChanges();
                 // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Index", new RouteValueDictionary(new { controller = "MultimediaEquipo", action = "Index", id = idAlbum }));
             }
             catch
             {

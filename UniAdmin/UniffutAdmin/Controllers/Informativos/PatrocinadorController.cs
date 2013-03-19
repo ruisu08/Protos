@@ -320,24 +320,7 @@ namespace UniffutAdmin.Controllers.Informativos
         }
 
 
-        public ActionResult eliminarMultimedia(int id)
-        {
-            var patrocinador = db.patrocinador.FirstOrDefault(e => e.idPatrocinador.Equals(id));
-            if (patrocinador != null)
-            {
-                patrocinador.fuenteGrafica = null;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ErrorModel error = new ErrorModel
-                {
-                    mensaje = "Otro usuario elimino el patrocinador durante la operacion"
-                };
-                return View("Error", error);
-            }
-        }
+
 
         public ActionResult Search(String nombre)
         {
