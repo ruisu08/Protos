@@ -32,7 +32,7 @@ namespace UniffutAdmin.Controllers.Multimedia
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
                 foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(3)))
                 {
-                    if (m.idModulo == 3)
+                    if (m.idModulo == 2 && usuario.rol.estado == true)
                     {
                         autorizado = true;
                     }

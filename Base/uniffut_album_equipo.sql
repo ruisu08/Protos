@@ -32,7 +32,7 @@ CREATE TABLE `album_equipo` (
   PRIMARY KEY (`idAlbum_Equipo`),
   KEY `album_equipo_idx` (`idEquipo`),
   CONSTRAINT `album_has_equipo` FOREIGN KEY (`idEquipo`) REFERENCES `equipo` (`idEquipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,6 @@ CREATE TABLE `album_equipo` (
 
 LOCK TABLES `album_equipo` WRITE;
 /*!40000 ALTER TABLE `album_equipo` DISABLE KEYS */;
-INSERT INTO `album_equipo` VALUES (1,'Sin título',16,1),(2,'Nuevo',16,1),(3,'NuevoDos',16,1),(4,'nuevoTres',16,1),(5,'Sin título',17,1),(6,'Sin título',18,1),(7,'Sin título',19,1),(8,'Sin título',20,1),(9,'Sin título',21,1),(10,'Sin título',22,1),(11,'Sin título',23,1),(12,'Sin título',24,1),(13,'Sin título',25,1),(14,'Sin título',26,1),(15,'Sin título',27,1),(16,'Sin título',28,1);
 /*!40000 ALTER TABLE `album_equipo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-18 12:11:30
+-- Dump completed on 2013-03-19  6:56:29

@@ -31,7 +31,7 @@ CREATE TABLE `tabla_posiciones` (
   PRIMARY KEY (`idTabla`),
   KEY `tabla_campeonato_idx` (`idCampeonato`),
   CONSTRAINT `tabla_campeonato` FOREIGN KEY (`idCampeonato`) REFERENCES `campeonato` (`idCampeonato`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,6 @@ CREATE TABLE `tabla_posiciones` (
 
 LOCK TABLES `tabla_posiciones` WRITE;
 /*!40000 ALTER TABLE `tabla_posiciones` DISABLE KEYS */;
-INSERT INTO `tabla_posiciones` VALUES (6,7,1),(7,8,1);
 /*!40000 ALTER TABLE `tabla_posiciones` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-18 12:11:12
+-- Dump completed on 2013-03-19  6:56:11

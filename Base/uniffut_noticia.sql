@@ -37,7 +37,7 @@ CREATE TABLE `noticia` (
   KEY `fk_Noticia_TipoNoticia1` (`TipoNoticia_idTipoNoticia`),
   CONSTRAINT `fk_Noticia_TipoNoticia1` FOREIGN KEY (`TipoNoticia_idTipoNoticia`) REFERENCES `tiponoticia` (`idTipoNoticia`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Noticia_Usuario1` FOREIGN KEY (`autor`) REFERENCES `usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,6 @@ CREATE TABLE `noticia` (
 
 LOCK TABLES `noticia` WRITE;
 /*!40000 ALTER TABLE `noticia` DISABLE KEYS */;
-INSERT INTO `noticia` VALUES (1,'Vapulean','2001-01-11',NULL,1,2,1);
 /*!40000 ALTER TABLE `noticia` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-18 12:11:34
+-- Dump completed on 2013-03-19  6:56:33

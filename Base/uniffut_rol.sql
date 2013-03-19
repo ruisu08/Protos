@@ -30,7 +30,7 @@ CREATE TABLE `rol` (
   `estado` tinyint(1) NOT NULL,
   `nombre` varchar(25) NOT NULL,
   PRIMARY KEY (`idRol`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `rol` (
 
 LOCK TABLES `rol` WRITE;
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
-INSERT INTO `rol` VALUES (1,'Admin',1,'ADMIN'),(2,'Publicista',1,'PUBLICISTA');
+INSERT INTO `rol` VALUES (1,'Admin',1,'ADMIN'),(2,'Publicista',0,'PUBLICISTA'),(3,'Noticias y eso',1,'EDITOR');
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-18 12:11:20
+-- Dump completed on 2013-03-19  6:56:19

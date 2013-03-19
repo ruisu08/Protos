@@ -29,7 +29,7 @@ CREATE TABLE `tiponoticia` (
   `descripcion` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`idTipoNoticia`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `tiponoticia` (
 
 LOCK TABLES `tiponoticia` WRITE;
 /*!40000 ALTER TABLE `tiponoticia` DISABLE KEYS */;
-INSERT INTO `tiponoticia` VALUES (1,'noticias de las jugadortas','Jugadoras'),(2,'noticias globales','Globales');
+INSERT INTO `tiponoticia` VALUES (1,'noticias de las jugadortas','Jugadoras'),(2,'noticias globales','Globales'),(3,'noticias de campeonatos','Campeonatos'),(4,'noticas de equipos','Equipos');
 /*!40000 ALTER TABLE `tiponoticia` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-18 12:11:18
+-- Dump completed on 2013-03-19  6:56:16

@@ -70,20 +70,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Administracion\RolController.cs" />
+    <Compile Include="Controllers\Administracion\UsuarioController.cs" />
     <Compile Include="Controllers\Campeonatos\CampeonatoController.cs" />
     <Compile Include="Controllers\Campeonatos\TablaPosicionesController.cs" />
     <Compile Include="Controllers\Divisiones\DivisionController.cs" />
     <Compile Include="Controllers\Divisiones\EquipoController.cs" />
     <Compile Include="Controllers\EstructuraDePagina\HomeController.cs" />
     <Compile Include="Controllers\EstructuraDePagina\LoginController.cs" />
+    <Compile Include="Controllers\Informativos\NoticiaController.cs" />
     <Compile Include="Controllers\Informativos\PaginaInformativaController.cs" />
     <Compile Include="Controllers\Informativos\PatrocinadorController.cs" />
     <Compile Include="Controllers\Jugadoras\JugadoraController.cs" />
     <Compile Include="Controllers\Multimedia\AlbumEquipoController.cs" />
     <Compile Include="Controllers\Multimedia\AlbumJugadoraController.cs" />
     <Compile Include="Controllers\Multimedia\MultimediaEquipoController.cs" />
-    <Compile Include="Controllers\Informativos\NoticiaController.cs" />
-    <Compile Include="Controllers\Administracion\UsuarioController.cs" />
     <Compile Include="Controllers\Multimedia\MultimediaJugadoraController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -445,9 +445,6 @@
     <Content Include="Scripts\yoxview\yoxview-init.js" />
     <Content Include="Scripts\yoxview\yoxview-nojquery.js" />
     <Content Include="Scripts\yoxview\yoxview.css" />
-    <Content Include="UserFiles\2628376325_68c642a9ee_o.png" />
-    <Content Include="UserFiles\Atrapitis.gif" />
-    <Content Include="UserFiles\Misc-FuckOff.jpg" />
     <Content Include="Views\AlbumEquipo\agregarMultimedia.aspx" />
     <Content Include="Views\AlbumEquipo\Create.aspx" />
     <Content Include="Views\AlbumEquipo\Delete.aspx" />
@@ -558,6 +555,7 @@
   <ItemGroup>
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\classes\utils\" />
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\includes\" />
+    <Folder Include="UserFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\LoginMaster.Master" />

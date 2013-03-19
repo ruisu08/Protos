@@ -36,7 +36,7 @@ CREATE TABLE `equipo` (
   PRIMARY KEY (`idEquipo`),
   KEY `fk_Equipo_Divisiones1_idx` (`idDivision`),
   CONSTRAINT `fk_Equipo_Divisiones1` FOREIGN KEY (`idDivision`) REFERENCES `division` (`idDivisiones`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,6 @@ CREATE TABLE `equipo` (
 
 LOCK TABLES `equipo` WRITE;
 /*!40000 ALTER TABLE `equipo` DISABLE KEYS */;
-INSERT INTO `equipo` VALUES (16,'URU','Uruguay','&lt;p&gt;kljklfjlkdsslkfjsldkfjsdfkladfadfs&lt;/p&gt;',0,3,1,NULL),(17,'DS','Deportivo Saprissa',NULL,0,3,1,NULL),(18,'LDA','Liga Deportiva Alajuelense',NULL,0,3,1,NULL),(19,'CAR','Carmelita',NULL,0,5,1,NULL),(20,'SNT','Santos',NULL,0,5,1,NULL),(21,'CA','cruz azul',NULL,NULL,5,1,NULL),(22,'CSH','Club Sport Herediano',NULL,NULL,3,1,NULL),(23,'CSC','Club Sport Cartagines',NULL,NULL,3,1,NULL),(24,'BM','Barrio Mexico',NULL,NULL,5,1,NULL),(25,'BRU','Brujas',NULL,NULL,3,1,NULL),(26,'TURRI','Turrialba',NULL,NULL,5,1,NULL),(27,'LIM','Limon',NULL,NULL,3,1,NULL),(28,'BAN','Bananitos',NULL,NULL,5,1,NULL);
 /*!40000 ALTER TABLE `equipo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-18 12:11:33
+-- Dump completed on 2013-03-19  6:56:32

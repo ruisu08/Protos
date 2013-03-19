@@ -20,7 +20,7 @@ namespace UniffutAdmin.Controllers.EstructuraDePagina
 
         public ActionResult Login(Login login)
         {
-            var user = db.usuario.FirstOrDefault(u => u.correo == login.Usuario.correo && u.password == login.Usuario.password);
+            var user = db.usuario.FirstOrDefault(u => (u.correo == login.Usuario.correo && u.password == login.Usuario.password) && u.estado == true);
             if (user != null)
             {
                 Session["userID"] = user.idUsuario;

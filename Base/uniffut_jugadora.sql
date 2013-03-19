@@ -37,7 +37,7 @@ CREATE TABLE `jugadora` (
   PRIMARY KEY (`idJugadora`),
   KEY `fk_Jugadora_Equipo1_idx` (`Equipo_idEquipo`),
   CONSTRAINT `fk_Jugadora_Equipo1` FOREIGN KEY (`Equipo_idEquipo`) REFERENCES `equipo` (`idEquipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-18 12:11:23
+-- Dump completed on 2013-03-19  6:56:22

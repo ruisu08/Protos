@@ -42,7 +42,6 @@ CREATE TABLE `tabla_equipo` (
 
 LOCK TABLES `tabla_equipo` WRITE;
 /*!40000 ALTER TABLE `tabla_equipo` DISABLE KEYS */;
-INSERT INTO `tabla_equipo` VALUES (6,16,0),(6,17,0),(6,18,0),(6,22,0),(6,23,0),(6,25,0),(6,27,0),(7,19,0),(7,20,0),(7,21,0),(7,24,0),(7,26,0),(7,28,0);
 /*!40000 ALTER TABLE `tabla_equipo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-18 12:11:21
+-- Dump completed on 2013-03-19  6:56:20

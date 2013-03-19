@@ -30,7 +30,7 @@ namespace UniffutAdmin.Controllers.Informativos
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
                 foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(4)))
                 {
-                    if (m.idModulo == 4)
+                    if (m.idModulo == 4 && usuario.rol.estado == true)
                     {
                         autorizado = true;
                     }
@@ -68,7 +68,7 @@ namespace UniffutAdmin.Controllers.Informativos
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
                 foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(4)))
                 {
-                    if (m.idModulo == 4)
+                    if (m.idModulo == 4 && usuario.rol.estado == true)
                     {
                         autorizado = true;
                     }
@@ -106,7 +106,7 @@ namespace UniffutAdmin.Controllers.Informativos
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
                 foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(4)))
                 {
-                    if (m.idModulo == 4)
+                    if (m.idModulo == 4 && usuario.rol.estado == true)
                     {
                         autorizado = true;
                     }
@@ -166,7 +166,7 @@ namespace UniffutAdmin.Controllers.Informativos
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
                 foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(4)))
                 {
-                    if (m.idModulo == 4)
+                    if (m.idModulo == 4 && usuario.rol.estado == true)
                     {
                         autorizado = true;
                     }
@@ -232,7 +232,7 @@ namespace UniffutAdmin.Controllers.Informativos
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
                 foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(4)))
                 {
-                    if (m.idModulo == 4)
+                    if (m.idModulo == 4 && usuario.rol.estado == true)
                     {
                         autorizado = true;
                     }
@@ -337,7 +337,7 @@ namespace UniffutAdmin.Controllers.Informativos
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
                 foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
                 {
-                    if (m.idModulo == 1)
+                    if (m.idModulo == 4 && usuario.rol.estado == true)
                     {
                         autorizado = true;
                     }

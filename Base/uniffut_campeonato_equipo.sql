@@ -41,7 +41,6 @@ CREATE TABLE `campeonato_equipo` (
 
 LOCK TABLES `campeonato_equipo` WRITE;
 /*!40000 ALTER TABLE `campeonato_equipo` DISABLE KEYS */;
-INSERT INTO `campeonato_equipo` VALUES (7,16),(7,17),(7,18),(7,22),(7,23),(7,25),(7,27),(8,19),(8,20),(8,21),(8,24),(8,26),(8,28);
 /*!40000 ALTER TABLE `campeonato_equipo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-18 12:11:25
+-- Dump completed on 2013-03-19  6:56:23

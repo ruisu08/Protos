@@ -41,7 +41,6 @@ CREATE TABLE `album_multimedia_equipo` (
 
 LOCK TABLES `album_multimedia_equipo` WRITE;
 /*!40000 ALTER TABLE `album_multimedia_equipo` DISABLE KEYS */;
-INSERT INTO `album_multimedia_equipo` VALUES (1,1),(1,2),(1,9),(1,13),(1,14),(2,3),(2,5),(2,15),(2,16),(3,4),(3,6),(3,11),(3,12),(4,7),(4,8);
 /*!40000 ALTER TABLE `album_multimedia_equipo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-18 12:11:13
+-- Dump completed on 2013-03-19  6:56:12

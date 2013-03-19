@@ -35,6 +35,36 @@ namespace UniffutAdmin.Controllers.Campeonatos
  
         public ActionResult Edit(int idEquipo, int idTabla)
         {
+            if (Session["userID"] == null)
+            {
+
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("ErrorSesion", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
+                {
+                    if (m.idModulo == 2 && usuario.rol.estado == true)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
             db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
             db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
             db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);

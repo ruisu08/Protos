@@ -33,7 +33,7 @@ CREATE TABLE `campeonato` (
   PRIMARY KEY (`idCampeonato`),
   KEY `fk_Campeonato_Divisiones1_idx` (`idDivision`),
   CONSTRAINT `fk_Campeonato_Divisiones1` FOREIGN KEY (`idDivision`) REFERENCES `division` (`idDivisiones`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,6 @@ CREATE TABLE `campeonato` (
 
 LOCK TABLES `campeonato` WRITE;
 /*!40000 ALTER TABLE `campeonato` DISABLE KEYS */;
-INSERT INTO `campeonato` VALUES (7,'Verano','fdfd',3,1),(8,'VeranoSegunda','dfdfdf',5,1);
 /*!40000 ALTER TABLE `campeonato` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-18 12:11:19
+-- Dump completed on 2013-03-19  6:56:18
