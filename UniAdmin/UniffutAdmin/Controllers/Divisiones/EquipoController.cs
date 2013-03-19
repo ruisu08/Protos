@@ -340,13 +340,55 @@ namespace UniffutAdmin.Controllers
                 Equipo = db.equipo.FirstOrDefault(p => p.idEquipo.Equals(id) && p.estado == true);
                 if (Equipo != null)
                 {
+
+                    for (int i = 0; i < Equipo.campeonato.Count; )
+                    {
+                        var l = Equipo.campeonato.ToList();
+                        var e = l[i];
+                        var tabla = db.tabla_posiciones.First(t => t.idCampeonato.Equals(e.idCampeonato));
+                        for (int j = 0; j < tabla.tabla_equipo.Count; )
+                        {
+                            var a = tabla.tabla_equipo.ToList();
+                            var t = a[j];
+                            tabla.tabla_equipo.Remove(t);
+                        }
+                        db.DeleteObject(tabla);
+                        Equipo.campeonato.Remove(e);
+                        e.equipo.Remove(Equipo);
+                        e.estado = false;
+                    }
+
+                    for (int i = 0; i < Equipo.album_equipo.Count; ){
+                        var l = Equipo.album_equipo.ToList();
+                        var e = l[i];
+
+                        for (int j = 0; j < e.multimedia.Count; )
+                        {
+                            var lm = e.multimedia.ToList();
+                            var m = lm[j];
+                            e.multimedia.Remove(m);
+                        }
+                    }
                     var JugadoraEnEquipo = Equipo.jugadora;
                     foreach (var x in JugadoraEnEquipo) {
+                        for (int i = 0; i < x.album_jugadora.Count; )
+                        {
+                            var l = x.album_jugadora.ToList();
+                            var e = l[i];
+
+                            for (int j = 0; j < e.multimedia.Count; )
+                            {
+                                var lm = e.multimedia.ToList();
+                                var m = lm[j];
+                                e.multimedia.Remove(m);
+                            }
+                        }
                         x.estado = false;
                     }
 
-
                     Equipo.estado = false;
+
+
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }

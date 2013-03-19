@@ -28,7 +28,7 @@
         </div>
 
         <div>
-              <input type="submit" value="Eliminar Datos" class="opcionCrud" />
+              <input type="submit" value="Eliminar Datos" class="opcionCrud" data-confirm= "Si elimina este equipo sus jugadoras tambien serán eliminadas, si no desea eliminarlas cambielas de equipo" />
         </div>
     </form>
 

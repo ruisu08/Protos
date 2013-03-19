@@ -284,19 +284,61 @@ namespace UniffutAdmin.Controllers.Divisiones
                 {
                     var CampeonatosEnDivision = Division.campeonato;
                     foreach (var x in CampeonatosEnDivision) {
-                        x.estado = false;
-                        foreach (var c in x.calendario) {
-                            c.estado = false;
+                        
+                        for (int i = 0; i < x.equipo.Count; )
+                        {
+                            var l = x.equipo.ToList();
+                            var e = l[i];
+                            x.equipo.Remove(e);
+                            e.campeonato.Remove(x);
                         }
-
+                        var tabla = db.tabla_posiciones.First(t => t.idCampeonato.Equals(x.idCampeonato));
+                        for (int i = 0; i < tabla.tabla_equipo.Count; )
+                        {
+                            var l = tabla.tabla_equipo.ToList();
+                            var t = l[i];
+                            tabla.tabla_equipo.Remove(t);
+                        }
+                        db.DeleteObject(tabla);
+                        x.estado = false;
                     }
+
+
                     var EquiposEnDivision = Division.equipo;
                     foreach (var x in EquiposEnDivision)
                     {
-                        x.estado = false;
-                        foreach (var j in x.jugadora) {
+
+                        for (int i = 0; i < x.album_equipo.Count; )
+                        {
+                            var l = x.album_equipo.ToList();
+                            var e = l[i];
+
+                            for (int j = 0; j < e.multimedia.Count; )
+                            {
+                                var lm = e.multimedia.ToList();
+                                var m = lm[j];
+                                e.multimedia.Remove(m);
+                            }
+                        }
+                        var JugadoraEnEquipo = x.jugadora;
+                        foreach (var j in JugadoraEnEquipo)
+                        {
+                            for (int i = 0; i < j.album_jugadora.Count; )
+                            {
+                                var l = j.album_jugadora.ToList();
+                                var e = l[i];
+
+                                for (int k = 0; k < e.multimedia.Count; )
+                                {
+                                    var lm = e.multimedia.ToList();
+                                    var m = lm[k];
+                                    e.multimedia.Remove(m);
+                                }
+                            }
                             j.estado = false;
                         }
+
+                        x.estado = false;
                     }
 
 
