@@ -474,6 +474,7 @@
     <Content Include="Views\Equipo\Details.aspx" />
     <Content Include="Views\Equipo\Edit.aspx" />
     <Content Include="Views\Equipo\Index.aspx" />
+    <Content Include="Views\Equipo\SearchIndex.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Jugadora\agregarHistoria.aspx" />
     <Content Include="Views\Jugadora\Create.aspx" />
