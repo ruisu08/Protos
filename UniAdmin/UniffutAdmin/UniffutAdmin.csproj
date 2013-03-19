@@ -467,6 +467,7 @@
     <Content Include="Views\Division\Details.aspx" />
     <Content Include="Views\Division\Edit.aspx" />
     <Content Include="Views\Division\Index.aspx" />
+    <Content Include="Views\Division\SearchIndex.aspx" />
     <Content Include="Views\Equipo\agregarHistoria.aspx" />
     <Content Include="Views\Equipo\Create.aspx" />
     <Content Include="Views\Equipo\Delete.aspx" />

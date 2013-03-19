@@ -316,5 +316,49 @@ namespace UniffutAdmin.Controllers.Divisiones
                 return View("Error", error);
             }
         }
+
+        [HttpPost]
+        public ActionResult Search(String nombre)
+        {
+            var divisiones = db.division.Where<division>(r => r.nombre.Equals(nombre) && r.estado == true);
+            return View("SearchIndex", divisiones.ToList());
+        }
+
+
+        public ActionResult SearchIndex(List<division> list)
+        {
+            if (Session["userID"] == null)
+            {
+
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
+                {
+                    if (m.idModulo == 1)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
+
+            return View(list);
+        }
     }
 }
