@@ -47,6 +47,9 @@
                     <div class="opcionCrud">
                     <%: Html.ActionLink("Asignar permisos", "asignarModulosARol", new { id = item.idRol })%>
                     </div>
+                    <div class="opcionCrud">
+                    <%: Html.ActionLink("Eliminar permisos", "eliminarModulos", new { id = item.idRol })%>
+                    </div>
                 </div>
             </div>
     <% } %>

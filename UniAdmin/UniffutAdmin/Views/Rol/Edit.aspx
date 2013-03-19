@@ -36,8 +36,8 @@
 
          </form>
 
-    <div>
-        <%: Html.ActionLink("Volver a lista", "Index") %>
+    <div id="volverIndex">
+        <h3><%: Html.ActionLink("Volver a la Lista", "Index") %></h3>
     </div>
 
 </asp:Content>

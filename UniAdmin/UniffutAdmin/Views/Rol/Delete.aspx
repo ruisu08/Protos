@@ -8,10 +8,9 @@
 
     <div id="headerContenido">
         <h1>Eliminar Rol</h1>
-        <h3>Solo pasara a inactivo</h3>
     </div>
 
-    <form id="validateForm" action= '<%:Url.Action("Delete","Jugadora")%>' method="post">
+    <form id="validateForm" action= '<%:Url.Action("Delete","Rol")%>' method="post">
         
         <div id="detallesWrapper">
 
@@ -22,7 +21,7 @@
         </div>
 
         <div>
-              <input type="submit" value="Eliminar Datos" class="opcionCrud" data-confirm= "Si elimina este rol se eliminaran todos los usuarios con el"  />
+              <input type="submit" value="Eliminar Datos" class="opcionCrud" data-confirm= "Si elimina este rol sus usuarios perderan el acceso respectivo"  />
         </div>
     </form>
 </asp:Content>

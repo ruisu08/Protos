@@ -11,8 +11,6 @@
     </div>
     <div id="detallesWrapper">
         <div>
-        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
-        <div class="propiedadDetalle"><h4><%: Model.idRol %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Nombre</h3></div>
         <div class="propiedadDetalle"><h4><%: Model.nombre %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Descripción</h3></div>
