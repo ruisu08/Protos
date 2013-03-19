@@ -11,14 +11,6 @@
         <h1>Multimedia</h1>
         <h6 id="descripcionController">Aqui veras las fotos y videos que estan en el album</h6>
         </div>
-
-        <div id="busqueda">
-            <form id="validateForm" action= '<%:Url.Action("Search","Equipo")%>' method="post">
-                <p>Buscar por nombre</p>
-                <input type="text" name="identificacion" />
-                <input type="submit" value="buscar" id="opcionCrud"/>
-            </form>
-        </div>
     </div>
 
      <div>
@@ -37,7 +29,7 @@
             <%:new HtmlString (HttpUtility.HtmlDecode(m.fuenteGrafica))%>
            </a>
            <div class="opcionBorrarMult">
-              <%: Html.ActionLink("Eliminar", "eliminarMultimedia", new { id = m.idMultimedia })%>
+              <%: Html.ActionLink("Eliminar", "Delete", new { id = m.idMultimedia })%>
            </div>
         </div>
     <%} %>

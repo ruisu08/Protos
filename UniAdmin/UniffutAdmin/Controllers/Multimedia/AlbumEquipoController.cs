@@ -187,5 +187,8 @@ namespace UniffutAdmin.Controllers.Multimedia
             return RedirectToAction("Index", new RouteValueDictionary(new { controller = "MultimediaEquipo", action = "Index", id = id }));
         
         }
+
+
+       
     }
 }

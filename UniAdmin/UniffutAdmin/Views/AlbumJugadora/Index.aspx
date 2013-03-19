@@ -12,13 +12,6 @@
         <h6 id="descripcionController">Aquí se pueden ver los albumes creados hasta el momento, además de editarlos, eliminarlos o crearlos</h6>
         </div>
 
-        <div id="busqueda">
-            <form id="validateForm" action= '<%:Url.Action("Search","Jugadora")%>' method="post">
-                <p>Buscar por nombre</p>
-                <input type="text" name="identificacion" />
-                <input type="submit" value="buscar" id="opcionCrud"/>
-            </form>
-        </div>
     </div>
 
      <div>
