@@ -450,9 +450,13 @@
     <Content Include="UserFiles\Misc-FuckOff.jpg" />
     <Content Include="Views\AlbumEquipo\agregarMultimedia.aspx" />
     <Content Include="Views\AlbumEquipo\Create.aspx" />
+    <Content Include="Views\AlbumEquipo\Delete.aspx" />
+    <Content Include="Views\AlbumEquipo\Edit.aspx" />
     <Content Include="Views\AlbumEquipo\Index.aspx" />
     <Content Include="Views\AlbumJugadora\agregarMultimedia.aspx" />
     <Content Include="Views\AlbumJugadora\Create.aspx" />
+    <Content Include="Views\AlbumJugadora\Delete.aspx" />
+    <Content Include="Views\AlbumJugadora\Edit.aspx" />
     <Content Include="Views\AlbumJugadora\Index.aspx" />
     <Content Include="Views\Campeonato\agregarEquipo.aspx" />
     <Content Include="Views\Campeonato\Create.aspx" />

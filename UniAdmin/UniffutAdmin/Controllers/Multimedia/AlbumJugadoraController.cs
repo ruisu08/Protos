@@ -141,50 +141,147 @@ namespace UniffutAdmin.Controllers.Multimedia
  
         public ActionResult Edit(int id)
         {
-            return View();
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("ErrorSesion", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(3)))
+                {
+                    if (m.idModulo == 3)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
+            var album = db.album_jugadora.First(a => a.idAlbum_Jugadora.Equals(id));
+            return View(album);
         }
 
         //
         // POST: /AlbumJugadora/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, album_jugadora album)
         {
             try
             {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
+                    var Album = db.album_jugadora.FirstOrDefault(r => r.idAlbum_Jugadora.Equals(id) && r.estado == true);
+                    if (Album != null)
+                    {
+
+                        Album.nombre = album.nombre;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+
+                    }
+                    else
+                    {
+                        ErrorModel error = new ErrorModel()
+                        {
+                            mensaje = "Otro usuario elimino el album durante la operacion"
+                        };
+                        return View("Error", error);
+                    }
+             }
+            catch (Exception e)
             {
-                return View();
+                ErrorModel error = new ErrorModel { mensaje = e.Message };
+                return View("Error", error);
             }
         }
 
-        //
-        // GET: /AlbumJugadora/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
-            return View();
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("ErrorSesion", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(3)))
+                {
+                    if (m.idModulo == 3)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
+            var album = db.album_jugadora.First(a => a.idAlbum_Jugadora.Equals(id));
+            if (!album.estado)
+            {
+                ErrorModel error = new ErrorModel { mensaje = "El album ya fue eliminada" };
+                return View("Error", error);
+            }
+            return View(album);
         }
 
         //
-        // POST: /AlbumJugadora/Delete/5
+        // POST: /AlbumEquipo/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
+
+                var Album = db.album_jugadora.First(a => a.idAlbum_Jugadora.Equals(id));
+                if (Album != null)
+                {
+
+                    for (int i = 0; i < Album.multimedia.Where<multimedia>(m => m.estado == true).Count(); )
+                    {
+                        var l = Album.multimedia.Where<multimedia>(m => m.estado == true).ToList();
+                        var multi = l[i];
+                        multi.estado = false;
+                    }
+                    Album.estado = false;
+                    db.SaveChanges();
+                    return RedirectToAction("Index", id = Album.idJugadora);
+                }
+                else
+                {
+                    ErrorModel error = new ErrorModel { mensaje = "El Album ya fue eliminado" };
+                    return View("Error", error);
+                }
+
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                ErrorModel error = new ErrorModel { mensaje = e.Message };
+                return View("Error", error);
             }
         }
 
