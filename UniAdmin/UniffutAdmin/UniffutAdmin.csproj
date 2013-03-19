@@ -509,6 +509,7 @@
     <Content Include="Views\Rol\eliminarModulos.aspx" />
     <Content Include="Views\Rol\Index.aspx" />
     <Content Include="Views\Rol\Search.aspx" />
+    <Content Include="Views\Rol\SearchIndex.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\TablaPosiciones\Details.aspx" />
     <Content Include="Views\TablaPosiciones\Edit.aspx" />

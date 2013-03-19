@@ -15,6 +15,7 @@
     <div id="busqueda">
         <form id="validateForm" action= '<%:Url.Action("Search","Rol")%>' method="post">
             <p>Buscar por nombre</p>
+            
             <input type="text" name="nombre" />
             <input type="submit" value="buscar" id="opcionCrud"/>
             
