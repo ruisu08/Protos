@@ -282,7 +282,16 @@ namespace UniffutAdmin.Controllers.Divisiones
 
                 if (Division != null)
                 {
-                    var CampeonatosEnDivision = Division.campeonato;
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
+
+                    var CampeonatosEnDivision = Division.campeonato.Where<campeonato>(c=>c.estado == true);
                     foreach (var x in CampeonatosEnDivision) {
                         
                         for (int i = 0; i < x.equipo.Count; )
@@ -292,53 +301,59 @@ namespace UniffutAdmin.Controllers.Divisiones
                             x.equipo.Remove(e);
                             e.campeonato.Remove(x);
                         }
-                        var tabla = db.tabla_posiciones.First(t => t.idCampeonato.Equals(x.idCampeonato));
+                        var tabla = db.tabla_posiciones.FirstOrDefault(t => t.idCampeonato.Equals(x.idCampeonato) && t.estado == true);
                         for (int i = 0; i < tabla.tabla_equipo.Count; )
                         {
                             var l = tabla.tabla_equipo.ToList();
                             var t = l[i];
                             tabla.tabla_equipo.Remove(t);
                         }
-                        db.DeleteObject(tabla);
+                        tabla.estado = false;
                         x.estado = false;
                     }
 
 
-                    var EquiposEnDivision = Division.equipo;
+                    var EquiposEnDivision = Division.equipo.Where<equipo>(e=>e.estado == true);
                     foreach (var x in EquiposEnDivision)
                     {
-
-                        for (int i = 0; i < x.album_equipo.Count; )
+                        for (int i = 0; i < x.album_equipo.Where<album_equipo>(juga => juga.estado == true).Count(); )
                         {
-                            var l = x.album_equipo.ToList();
+                            var l = x.album_equipo.Where<album_equipo>(juga => juga.estado == true).ToList();
                             var e = l[i];
 
                             for (int j = 0; j < e.multimedia.Count; )
                             {
                                 var lm = e.multimedia.ToList();
                                 var m = lm[j];
+                                m.estado = false;
                                 e.multimedia.Remove(m);
                             }
+                            e.estado = false;
                         }
-                        var JugadoraEnEquipo = x.jugadora;
+
+                        var JugadoraEnEquipo = x.jugadora.Where<jugadora>(j => j.estado == true);
                         foreach (var j in JugadoraEnEquipo)
                         {
-                            for (int i = 0; i < j.album_jugadora.Count; )
+                            for (int i = 0; i < j.album_jugadora.Where<album_jugadora>(juga => juga.estado == true).Count(); )
                             {
-                                var l = j.album_jugadora.ToList();
+                                var l = j.album_jugadora.Where<album_jugadora>(juga => juga.estado == true).ToList();
                                 var e = l[i];
 
                                 for (int k = 0; k < e.multimedia.Count; )
                                 {
                                     var lm = e.multimedia.ToList();
                                     var m = lm[k];
+                                    m.estado = false;
                                     e.multimedia.Remove(m);
                                 }
+                                e.estado = false;
                             }
+
                             j.estado = false;
                         }
 
                         x.estado = false;
+                        
                     }
 
 
