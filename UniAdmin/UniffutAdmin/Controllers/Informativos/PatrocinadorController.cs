@@ -319,7 +319,7 @@ namespace UniffutAdmin.Controllers.Informativos
             return View(patrocinadores);
         }
 
-        [HttpPost]
+
         public ActionResult eliminarMultimedia(int id)
         {
             var patrocinador = db.patrocinador.FirstOrDefault(e => e.idPatrocinador.Equals(id));
@@ -346,7 +346,7 @@ namespace UniffutAdmin.Controllers.Informativos
             return View("SearchIndex", patrocinador.ToList());
         }
 
-
+        [HttpPost]
         public ActionResult SearchIndex(List<patrocinador> list)
         {
             if (Session["userID"] == null)
