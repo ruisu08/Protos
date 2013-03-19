@@ -15,8 +15,7 @@
         
         <div id="detallesWrapper">
 
-        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
-        <div class="propiedadDetalle"><h4><%: Model.idUsuario %></h4></div>
+
         <div class="nombrePropiedadDetalle"><h3>Identificacion</h3></div>
         <div class="propiedadDetalle"><h4><%: Model.identificacion %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Nombre</h3></div>
@@ -27,8 +26,6 @@
         <div class="propiedadDetalle"><h4><%: Model.telefono %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Correo</h3></div>
         <div class="propiedadDetalle"><h4><%: Model.correo %></h4></div>
-        <div class="nombrePropiedadDetalle"><h3>Estado</h3></div>
-        <div class="propiedadDetalle"><h4><%: (bool)Model.estado ? "Activo":"Inactivo" %></h4></div>
         </div>
 
         <div>

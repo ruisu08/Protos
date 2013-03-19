@@ -15,18 +15,14 @@
         
         <div id="detallesWrapper">
 
-        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
-        <div class="propiedadDetalle"><h4><%: Model.idRol %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Nombre</h3></div>
         <div class="propiedadDetalle"><h4><%: Model.nombre %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Descripcion</h3></div>
         <div class="propiedadDetalle"><h4><%: Model.descripcion %></h4></div>
-        <div class="nombrePropiedadDetalle"><h3>Estado</h3></div>
-        <div class="propiedadDetalle"><h4><%: (bool)Model.estado ? "Activo":"Inactivo" %></h4></div>
         </div>
 
         <div>
-              <input type="submit" value="Eliminar Datos" class="opcionCrud" />
+              <input type="submit" value="Eliminar Datos" class="opcionCrud" data-confirm= "Si elimina este rol se eliminaran todos los usuarios con el"  />
         </div>
     </form>
 </asp:Content>

@@ -287,6 +287,9 @@ namespace UniffutAdmin.Controllers.Administracion
                 if (Rol != null)
                 {
                     Rol.estado = false;
+                    foreach (var u in Rol.usuario) {
+                        u.estado = false;
+                    }
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
