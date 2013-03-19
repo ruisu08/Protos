@@ -11,10 +11,14 @@
         <h2><%:" "+Model.nombre +" "+Model.apellidos%></h2>
     </div>
     <div id="detallesWrapper">
-        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
-        <div class="propiedadDetalle"><h4><%: Model.idJugadora %></h4></div>
-        <div class="nombrePropiedadDetalle"><h3>Fecha de nacimiento</h3></div>
-        <div class="propiedadDetalle"><h4><%: Model.fechaNacimiento %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Edad</h3></div>
+        <div class="propiedadDetalle"><h4><%
+                  
+                        DateTime today = DateTime.Today;
+                        int age = today.Year - Model.fechaNacimiento.Year;
+                        if (Model.fechaNacimiento > today.AddYears(-age)) age--;
+
+                        Response.Write(age); %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Identificación</h3></div>
         <div class="propiedadDetalle"><h4><%: Model.identificacion %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Equipo al que pertenece</h3></div>

@@ -11,8 +11,6 @@
         <h2><%:" "+Model.titulo%></h2>
     </div>
     <div id="detallesWrapper">
-        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
-        <div class="propiedadDetalle"><h4><%: Model.idNoticia %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Fecha</h3></div>
         <div class="propiedadDetalle"><h4><%: Model.fecha %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Autor</h3></div>

@@ -11,8 +11,6 @@
         <h2><%:" "+Model.identificacion%></h2>
     </div>
     <div id="detallesWrapper">
-        <div class="nombrePropiedadDetalle"><h3>ID (en la base de datos)</h3></div>
-        <div class="propiedadDetalle"><h4><%: Model.idUsuario %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Nombre</h3></div>
         <div class="propiedadDetalle"><h4><%: Model.nombre %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Apellidos</h3></div>

@@ -34,10 +34,7 @@
 
     <% foreach (var item in Model) { %>
             <div class="itemWrapper">
-                <div class="indexData">
-                    <h3>Identificación:</h3>
-                    <h4><%:item.identificacion %></h4>
-                </div>
+
                 <div class="indexData">
                     <h3>Nombre:</h3>
                     <h4><%:item.nombre%></h4>
@@ -46,19 +43,7 @@
                     <h3>Apellidos:</h3>
                     <h4><%:item.apellidos%></h4>
                 </div>
-                <div class="indexData">
-                    <h3>Edad:</h3>
-                    <h4><%
-                        DateTime today = DateTime.Today;
-                        int age = today.Year - item.fechaNacimiento.Year;
-                        if (item.fechaNacimiento > today.AddYears(-age)) age--;
 
-                        Response.Write(age); %></h4>
-                </div>
-               <div class="indexData">
-                    <h3>Nacionalidad:</h3>
-                    <h4><%:item.nacionalidad%></h4>
-                </div>
                 <div class="indexData">
                     <h3>Equipo:</h3>
                     <h4><%:item.equipo.nombre%></h4>
