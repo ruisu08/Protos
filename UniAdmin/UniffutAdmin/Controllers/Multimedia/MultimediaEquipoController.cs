@@ -44,8 +44,9 @@ namespace UniffutAdmin.Controllers
                     return View("Error", error);
                 }
             }
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
             db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
             var multimedia = db.album_equipo.First(a => a.idAlbum_Equipo.Equals(id)).multimedia.Where<multimedia>(multi=>multi.estado == true);
             return View(multimedia.ToList());
         }
