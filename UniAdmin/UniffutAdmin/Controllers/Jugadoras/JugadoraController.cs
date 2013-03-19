@@ -342,20 +342,30 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
+                db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
+                db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora);
+                db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
+                db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
+                db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
+                db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
+
                 Jugadora = db.jugadora.FirstOrDefault(p => p.idJugadora.Equals(id) && p.estado == true);
                 if (Jugadora != null)
                 {
-                    for (int i = 0; i < Jugadora.album_jugadora.Count; )
+   
+                    for (int i = 0; i < Jugadora.album_jugadora.Where<album_jugadora>(juga => juga.estado == true).Count(); )
                     {
-                        var l = Jugadora.album_jugadora.ToList();
+                        var l = Jugadora.album_jugadora.Where<album_jugadora>(juga => juga.estado == true).ToList();
                         var e = l[i];
 
                         for (int j = 0; j < e.multimedia.Count; )
                         {
                             var lm = e.multimedia.ToList();
                             var m = lm[j];
+                            m.estado = false;
                             e.multimedia.Remove(m);
                         }
+                        e.estado = false;
                     }
 
                     Jugadora.estado = false;

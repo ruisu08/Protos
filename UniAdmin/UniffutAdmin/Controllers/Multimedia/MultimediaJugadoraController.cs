@@ -49,6 +49,10 @@ namespace UniffutAdmin.Controllers.Multimedia
             db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
             db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora);
             db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
+            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
+
             var multimedia = db.album_jugadora.First(a => a.idAlbum_Jugadora.Equals(id)).multimedia.Where<multimedia>(multi => multi.estado == true);
             return View(multimedia.ToList());
         }

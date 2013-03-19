@@ -357,7 +357,9 @@ namespace UniffutAdmin.Controllers
                         e.equipo.Remove(Equipo);
                         e.estado = false;
                     }
-
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
+                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
                     for (int i = 0; i < Equipo.album_equipo.Count; ){
                         var l = Equipo.album_equipo.ToList();
                         var e = l[i];
@@ -368,7 +370,9 @@ namespace UniffutAdmin.Controllers
                             var m = lm[j];
                             e.multimedia.Remove(m);
                         }
+                        db.album_equipo.DeleteObject(e);
                     }
+
                     var JugadoraEnEquipo = Equipo.jugadora;
                     foreach (var x in JugadoraEnEquipo) {
                         for (int i = 0; i < x.album_jugadora.Count; )
