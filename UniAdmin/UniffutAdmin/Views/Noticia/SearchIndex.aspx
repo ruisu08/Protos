@@ -18,7 +18,6 @@
             <input type="text" name="tipo" />
             <p>Buscar por autor (apellidos o identificación)</p>
             <input type="text" name="autor" />
-
             <input type="submit" value="buscar" id="opcionCrud"/>
         </form>
     </div>
@@ -65,4 +64,3 @@
     </div>
 
 </asp:Content>
-

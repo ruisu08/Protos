@@ -491,6 +491,7 @@
     <Content Include="Views\Noticia\Details.aspx" />
     <Content Include="Views\Noticia\Edit.aspx" />
     <Content Include="Views\Noticia\Index.aspx" />
+    <Content Include="Views\Noticia\SearchIndex.aspx" />
     <Content Include="Views\PaginaInformativa\agregarContenido.aspx" />
     <Content Include="Views\PaginaInformativa\Create.aspx" />
     <Content Include="Views\PaginaInformativa\Delete.aspx" />
