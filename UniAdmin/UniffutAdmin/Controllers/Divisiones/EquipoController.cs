@@ -143,17 +143,7 @@ namespace UniffutAdmin.Controllers
                if (db.division.First(d => d.idDivisiones.Equals(Equipo.idDivision)).estado != false)
                 {
                     Equipo.abreviatura = Equipo.abreviatura.ToUpper();
-                    var oldEquipo = db.equipo.FirstOrDefault(e => e.abreviatura == Equipo.abreviatura);
-                    if (oldEquipo != null)
-                    {
-                        oldEquipo.abreviatura = Equipo.abreviatura;
-                        oldEquipo.campeonatosGanados = Equipo.campeonatosGanados;
-                        oldEquipo.idDivision = Equipo.idDivision;
-                        //oldEquipo.historia = Equipo.historia;
-                        oldEquipo.estado = true;
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
+                    
                     viewModel.equipo = Equipo;
                     viewModel.equipo.estado = true;
                     var album = new album_equipo();
@@ -348,9 +338,9 @@ namespace UniffutAdmin.Controllers
                     db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
                     db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
 
-                    for (int i = 0; i < Equipo.campeonato.Count; )
+                    for (int i = 0; i < Equipo.campeonato.Where<campeonato>(c=>c.estado == true).Count(); )
                     {
-                        var l = Equipo.campeonato.ToList();
+                        var l = Equipo.campeonato.Where<campeonato>(c => c.estado == true).ToList();
                         var e = l[i];
                         var tabla = db.tabla_posiciones.First(t => t.idCampeonato.Equals(e.idCampeonato));
                         for (int j = 0; j < tabla.tabla_equipo.Count; )
@@ -359,9 +349,7 @@ namespace UniffutAdmin.Controllers
                             var t = a[j];
                             tabla.tabla_equipo.Remove(t);
                         }
-                        db.DeleteObject(tabla);
-                        Equipo.campeonato.Remove(e);
-                        e.equipo.Remove(Equipo);
+                        tabla.estado = false;
                         e.estado = false;
                     }
 
@@ -377,7 +365,6 @@ namespace UniffutAdmin.Controllers
                                 var lm = e.multimedia.ToList();
                                 var m = lm[j];
                                 m.estado = false;
-                                e.multimedia.Remove(m);
                             }
                             e.estado = false;
                     }
@@ -394,7 +381,6 @@ namespace UniffutAdmin.Controllers
                                 var lm = e.multimedia.ToList();
                                 var m = lm[j];
                                 m.estado = false;
-                                e.multimedia.Remove(m);
                             }
                             e.estado = false;
                         }

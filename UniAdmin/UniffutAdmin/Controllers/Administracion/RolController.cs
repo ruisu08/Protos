@@ -133,15 +133,6 @@ namespace UniffutAdmin.Controllers.Administracion
             try
             {
                 Rol.nombre = Rol.nombre.ToUpper();
-                var oldRol = db.rol.FirstOrDefault(e => e.nombre == Rol.nombre);
-                if (oldRol != null)
-                {
-                    oldRol.nombre = Rol.nombre;
-                    oldRol.descripcion = Rol.descripcion;
-                    oldRol.estado = true;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                 }
                 
                 Rol.estado = true;
                 db.rol.AddObject(Rol);

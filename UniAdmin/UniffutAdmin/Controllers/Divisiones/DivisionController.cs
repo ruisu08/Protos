@@ -132,15 +132,6 @@ namespace UniffutAdmin.Controllers.Divisiones
             {
                 // TODO: Add insert logic here
                 Division.abreviatura = Division.abreviatura.ToUpper();
-                var oldDivision = db.division.FirstOrDefault(j => j.abreviatura == Division.abreviatura);
-                if (oldDivision != null)
-                {
-                    oldDivision.nombre = Division.nombre;
-                    oldDivision.descripcion = Division.descripcion;
-                    oldDivision.estado = true;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
                 Division.estado = true;
                 db.division.AddObject(Division);
                 db.SaveChanges();

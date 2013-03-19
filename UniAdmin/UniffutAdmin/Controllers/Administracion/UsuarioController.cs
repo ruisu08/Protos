@@ -148,20 +148,6 @@ namespace UniffutAdmin.Controllers
             {
                 if (db.rol.First(d => d.idRol.Equals(Usuario.Rol_idRol)).estado != false)
                 {
-                    var oldUsuario = db.usuario.FirstOrDefault(e => e.identificacion == Usuario.identificacion);
-                    if (oldUsuario != null)
-                    {
-                        oldUsuario.nombre = Usuario.nombre;
-                        oldUsuario.apellido = Usuario.apellido;
-                        oldUsuario.telefono = Usuario.telefono;
-                        oldUsuario.correo = Usuario.correo;
-                        oldUsuario.password = Usuario.password;
-                        oldUsuario.Rol_idRol = Usuario.Rol_idRol;
-                        oldUsuario.estado = true;
-                        oldUsuario.identificacion = Usuario.identificacion;
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
 
                     viewModel.Usuario = Usuario;
                     viewModel.Usuario.estado = true;

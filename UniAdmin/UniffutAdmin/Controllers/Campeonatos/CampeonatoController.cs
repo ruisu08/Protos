@@ -147,16 +147,7 @@ namespace UniffutAdmin.Controllers
             {
                 if (db.division.First(d => d.idDivisiones.Equals(Campeonato.idDivision)).estado != false)
                 {
-                    var oldCampeonato = db.campeonato.FirstOrDefault(e => e.nombre == Campeonato.nombre);
-                    if (oldCampeonato != null)
-                    {
-                        oldCampeonato.nombre = Campeonato.nombre;
-                        oldCampeonato.descripcion = Campeonato.descripcion;
-                        oldCampeonato.idDivision = Campeonato.idDivision;
-                        oldCampeonato.estado = true;
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
+
                     Campeonato.division = db.division.First(d => d.idDivisiones.Equals(Campeonato.idDivision));
                     viewModel.Campeonato = Campeonato;
                     viewModel.Campeonato.estado = true;
@@ -376,7 +367,7 @@ namespace UniffutAdmin.Controllers
                         var t = l[i];
                         tabla.tabla_equipo.Remove(t);
                     }
-                    db.DeleteObject(tabla);
+                    tabla.estado = false;
                     campeonato.estado = false;
                     db.SaveChanges();
                     return RedirectToAction("Index");

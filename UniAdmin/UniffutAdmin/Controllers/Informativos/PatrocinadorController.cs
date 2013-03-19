@@ -131,17 +131,6 @@ namespace UniffutAdmin.Controllers.Informativos
         {
             try
             {
-                var oldPatrocinador = db.patrocinador.FirstOrDefault(e => e.nombre == Patrocinador.nombre);
-                if (oldPatrocinador != null)
-                {
-                    oldPatrocinador.nombre = Patrocinador.nombre;
-                    oldPatrocinador.descripcion = Patrocinador.descripcion;
-                    oldPatrocinador.fechaIngreso = Patrocinador.fechaIngreso;
-                    oldPatrocinador.fechaSalida = Patrocinador.fechaSalida;
-                    oldPatrocinador.estado = true;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
                 Patrocinador.estado = true;
                 db.patrocinador.AddObject(Patrocinador);
                 db.SaveChanges();

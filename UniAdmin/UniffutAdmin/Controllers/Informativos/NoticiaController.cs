@@ -143,18 +143,6 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-               
-                    var oldNoticia = db.noticia.FirstOrDefault(e => e.titulo == Noticia.titulo);
-                    if (oldNoticia != null)
-                    {
-                        oldNoticia.titulo = Noticia.titulo;
-                        oldNoticia.fecha = Noticia.fecha;
-                        oldNoticia.autor = Noticia.autor;
-                        //oldEquipo.historia = Equipo.historia;
-                        oldNoticia.estado = true;
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
 
                     viewModel.Usuarios = db.usuario.ToList();
                     viewModel.Noticia = Noticia;

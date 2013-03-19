@@ -136,17 +136,7 @@ namespace UniffutAdmin.Controllers.Informativos
         {
             try
             {
-                var oldPagina = db.pagina_informativa.FirstOrDefault(e => e.titulo == pagina.titulo);
-                if (oldPagina != null)
-                {
-                    oldPagina.titulo = pagina.titulo;
-                    oldPagina.fecha = pagina.fecha;
-                    oldPagina.autor = pagina.autor;
-                    //oldEquipo.historia = Equipo.historia;
-                    oldPagina.estado = true;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+
                 viewModel.Usuario = db.usuario.ToList();
                 viewModel.Pagina = pagina;
                 viewModel.Pagina.estado = true;

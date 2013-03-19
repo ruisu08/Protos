@@ -149,19 +149,6 @@ namespace UniffutAdmin.Controllers
                 viewModel.Jugadora = Jugadora;*/
                 if (db.equipo.First(e => e.idEquipo.Equals(Jugadora.Equipo_idEquipo)).estado != false)
                 {
-                    var oldJugadora = db.jugadora.FirstOrDefault(j => j.identificacion == Jugadora.identificacion);
-                    if (oldJugadora != null)
-                    {
-                        oldJugadora.nacionalidad = Jugadora.nacionalidad;
-                        oldJugadora.nombre = Jugadora.nombre;
-                        oldJugadora.apellidos = Jugadora.apellidos;
-                        oldJugadora.Equipo_idEquipo = Jugadora.Equipo_idEquipo;
-                        oldJugadora.fechaNacimiento = Jugadora.fechaNacimiento;
-                        oldJugadora.historia = Jugadora.historia;
-                        oldJugadora.estado = true;
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
                     viewModel.Jugadora = Jugadora;
                     viewModel.Jugadora.estado = true;
                     var album = new album_jugadora();
@@ -363,7 +350,6 @@ namespace UniffutAdmin.Controllers
                             var lm = e.multimedia.ToList();
                             var m = lm[j];
                             m.estado = false;
-                            e.multimedia.Remove(m);
                         }
                         e.estado = false;
                     }
