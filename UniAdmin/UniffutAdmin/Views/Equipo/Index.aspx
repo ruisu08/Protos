@@ -40,13 +40,13 @@
                 </div>
                 <div id="opcionWrapper">
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar Equipo", "Edit", new { id=item.idEquipo}) %>
+                    <%: Html.ActionLink("Editar", "Edit", new { id=item.idEquipo}) %>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Detalles del Equipo", "Details", new { id=item.idEquipo })%>
+                    <%: Html.ActionLink("Detalles", "Details", new { id=item.idEquipo })%>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar este Equipo", "Delete", new { id=item.idEquipo })%>
+                    <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idEquipo })%>
                     </div>
                     <div class="opcionCrud">
                     <%: Html.ActionLink("Redactar Historia", "agregarHistoria", new { id=item.idEquipo })%>

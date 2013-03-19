@@ -39,10 +39,10 @@
                 </div>
                 <div id="opcionWrapper">
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar Album", "Edit", new { id=item.idAlbum_Equipo}) %>
+                    <%: Html.ActionLink("Editar", "Edit", new { id=item.idAlbum_Equipo}) %>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar este Album", "Delete", new { id=item.idAlbum_Equipo })%>
+                    <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idAlbum_Equipo })%>
                     </div>
                     <div class="opcionCrud">
                     <%: Html.ActionLink("Agregar multimedia", "agregarMultimedia", new { id = item.idAlbum_Equipo })%>

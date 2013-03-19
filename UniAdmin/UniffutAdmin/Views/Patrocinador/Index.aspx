@@ -44,13 +44,13 @@
                 </div>
                 <div id="opcionWrapper">
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar Patrocinador", "Edit", new { id=item.idPatrocinador}) %>
+                    <%: Html.ActionLink("Editar", "Edit", new { id=item.idPatrocinador}) %>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Detalles del Patrocinador", "Details", new { id=item.idPatrocinador })%>
+                    <%: Html.ActionLink("Detalles", "Details", new { id=item.idPatrocinador })%>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar este Patrocinador", "Delete", new { id=item.idPatrocinador })%>
+                    <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idPatrocinador })%>
                     </div>
                     <div class="opcionCrud">
                     <%: Html.ActionLink("Asignar multimedia", "agregarMultimedia", new { id=item.idPatrocinador })%>

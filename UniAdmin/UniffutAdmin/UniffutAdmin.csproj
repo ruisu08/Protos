@@ -455,11 +455,6 @@
     <Content Include="Views\AlbumJugadora\agregarMultimedia.aspx" />
     <Content Include="Views\AlbumJugadora\Create.aspx" />
     <Content Include="Views\AlbumJugadora\Index.aspx" />
-    <Content Include="Views\Calendario\Create.aspx" />
-    <Content Include="Views\Calendario\Delete.aspx" />
-    <Content Include="Views\Calendario\Details.aspx" />
-    <Content Include="Views\Calendario\Edit.aspx" />
-    <Content Include="Views\Calendario\Index.aspx" />
     <Content Include="Views\Campeonato\agregarEquipo.aspx" />
     <Content Include="Views\Campeonato\Create.aspx" />
     <Content Include="Views\Campeonato\Delete.aspx" />

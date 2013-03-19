@@ -44,13 +44,13 @@
                 </div>
                 <div id="opcionWrapper">
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar Página", "Edit", new { id=item.idPagina_Informativa}) %>
+                    <%: Html.ActionLink("Editar", "Edit", new { id=item.idPagina_Informativa}) %>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Detalles de la Página", "Details", new { id=item.idPagina_Informativa })%>
+                    <%: Html.ActionLink("Detalles", "Details", new { id=item.idPagina_Informativa })%>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar esta Página", "Delete", new { id=item.idPagina_Informativa })%>
+                    <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idPagina_Informativa })%>
                     </div>
                     <div class="opcionCrud">
                     <%: Html.ActionLink("Redactar contenido", "agregarContenido", new { id=item.idPagina_Informativa })%>

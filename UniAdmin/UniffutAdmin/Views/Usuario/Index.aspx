@@ -44,13 +44,13 @@
                 </div>
                 <div id="opcionWrapper">
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar Usuario", "Edit", new { id=item.idUsuario}) %>
+                    <%: Html.ActionLink("Editar", "Edit", new { id=item.idUsuario}) %>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Detalles del Usuario", "Details", new { id=item.idUsuario })%>
+                    <%: Html.ActionLink("Detalles", "Details", new { id=item.idUsuario })%>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar este Usuario", "Delete", new { id=item.idUsuario })%>
+                    <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idUsuario })%>
                     </div>
                 </div>
             </div>

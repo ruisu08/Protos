@@ -36,16 +36,16 @@
                 </div>
                 <div id="opcionWrapper">
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar Rol", "Edit", new { id=item.idRol}) %>
+                    <%: Html.ActionLink("Editar", "Edit", new { id=item.idRol}) %>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Detalles del Rol", "Details", new { id=item.idRol })%>
+                    <%: Html.ActionLink("Detalles", "Details", new { id=item.idRol })%>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar este Rol", "Delete", new { id=item.idRol })%>
+                    <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idRol })%>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Asignar permisos a Rol", "asignarModulosARol", new { id = item.idRol })%>
+                    <%: Html.ActionLink("Asignar permisos", "asignarModulosARol", new { id = item.idRol })%>
                     </div>
                 </div>
             </div>

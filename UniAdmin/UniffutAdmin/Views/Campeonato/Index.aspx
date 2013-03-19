@@ -38,13 +38,13 @@
                 </div>
                 <div id="opcionWrapper">
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar Campeonato", "Edit", new { id=item.idCampeonato}) %>
+                    <%: Html.ActionLink("Editar", "Edit", new { id=item.idCampeonato}) %>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Detalles del Campeonato", "Details", new { id=item.idCampeonato })%>
+                    <%: Html.ActionLink("Detalles", "Details", new { id=item.idCampeonato })%>
                     </div>
                     <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar este Campeonato", "Delete", new { id=item.idCampeonato })%>
+                    <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idCampeonato })%>
                     </div>
                     <div class="opcionCrud">
                     <%: Html.ActionLink("Tabla de posiciones", "verTabla", new { id = item.idCampeonato })%>
