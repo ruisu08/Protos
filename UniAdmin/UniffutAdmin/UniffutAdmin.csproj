@@ -70,7 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Administracion\RolController.cs" />
-    <Compile Include="Controllers\Campeonatos\CalendarioController.cs" />
     <Compile Include="Controllers\Campeonatos\CampeonatoController.cs" />
     <Compile Include="Controllers\Campeonatos\TablaPosicionesController.cs" />
     <Compile Include="Controllers\Divisiones\DivisionController.cs" />
@@ -462,6 +461,7 @@
     <Content Include="Views\Campeonato\Edit.aspx" />
     <Content Include="Views\Campeonato\eliminarEquipo.aspx" />
     <Content Include="Views\Campeonato\Index.aspx" />
+    <Content Include="Views\Campeonato\SearchIndex.aspx" />
     <Content Include="Views\Division\Create.aspx" />
     <Content Include="Views\Division\Delete.aspx" />
     <Content Include="Views\Division\Details.aspx" />
