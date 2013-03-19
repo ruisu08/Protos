@@ -12,20 +12,22 @@
     <h6 id="descripcionController">Aquí puedes ver los tipos de usuarios existentes y a que partes del sistema tiene acceso, puedes crear un tipo de usuario nuevo también</h6>
     </div>
 
-    <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","Rol")%>' method="post">
-            <p>Buscar por nombre</p>
-            <input type="text" name="nombre" />
-            <input type="submit" value="buscar" id="opcionCrud"/>
-            
-        </form>
-    </div>
+    
 </div>
 
 <div>
     <h2>Lista de roles:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Rol", "Create") %></h3>
 </div>
+
+<div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Rol")%>' method="post">
+            <p>Buscar por nombre</p>
+            <input type="text" name="nombre" class="infofield"/>
+            <input type="submit" value="buscar" class="opcionCrud"/>
+            
+        </form>
+    </div>
 
     <div id="indexWrapper">
 

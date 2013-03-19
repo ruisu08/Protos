@@ -12,21 +12,23 @@
         <h6 id="descripcionController">Aquí se pueden ver los equipos creados hasta el momento, además de editarlos, eliminarlos o crearlos</h6>
         </div>
 
-        <div id="busqueda">
-            <form id="validateForm" action= '<%:Url.Action("Search","Equipo")%>' method="post">
-                <p>Buscar por nombre</p>
-                <input type="text" name="nombre" />
-                <p>Buscar por división</p>
-                <input type="text" name="division" />
-                <input type="submit" value="buscar" id="opcionCrud"/>
-            </form>
-        </div>
+        
     </div>
 
      <div>
     <h2>Lista de Equipos:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Equipo", "Create") %></h3>
     </div>
+
+    <div id="busqueda">
+            <form id="validateForm" action= '<%:Url.Action("Search","Equipo")%>' method="post">
+                <p>Buscar por nombre</p>
+                <input type="text" name="nombre" class="infofield"/>
+                <p>Buscar por división</p>
+                <input type="text" name="division" class="infofield"/>
+                <input type="submit" value="buscar" class="opcionCrud"/>
+            </form>
+        </div>
 
     <div id="indexWrapper">
 

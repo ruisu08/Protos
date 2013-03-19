@@ -10,22 +10,24 @@
     <h1>Jugadoras</h1>
     <h4 id="descripcionController">Aqui es donde puedes ver,editar,agregar y eliminar la información de las jugadoras así con sus fotos y videos</h4>
     </div>
-    <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","Jugadora")%>' method="post">
-            <p>Buscar por apellidos</p>
-            <input type="text" name="apellidos" />
-            <p>Buscar por equipo</p>
-            <input type="text" name="equipo" />
-            <p>Buscar por nacionalidad</p>
-            <input type="text" name="nacionalidad" />
-            <input id="botonBusqueda" type="submit" value="buscar"/>
-        </form>
-    </div>
+    
 </div>
 
     <div>
     <h2>Lista de Jugadoras:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nueva Jugadora", "Create") %></h3>
+    </div>
+
+    <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Jugadora")%>' method="post">
+            <p>Buscar por apellidos</p>
+            <input type="text" name="apellidos" class="infofield"/>
+            <p>Buscar por equipo</p>
+            <input type="text" name="equipo" class="infofield"/>
+            <p>Buscar por nacionalidad</p>
+            <input type="text" name="nacionalidad" class="infofield"/>
+            <input  type="submit" value="buscar" class="opcionCrud"/>
+        </form>
     </div>
 
  <div id="indexWrapper">

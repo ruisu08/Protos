@@ -12,18 +12,20 @@
     <h6 id="descripcionController">Aquí se pueden ver todas las divisiones existentes, además de poder crearlas, eliminarlas o editarlas</h6>
     </div>
 
-    <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","Division")%>' method="post">
-            <p>Buscar por nombre</p>
-            <input type="text" name="nombre" />
-            <input type="submit" value="buscar" id="opcionCrud"/>
-        </form>
-    </div>
+    
 </div>
 
     <div>
     <h2>Lista de Divisiones:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nueva Division", "Create") %></h3>
+    </div>
+
+    <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Division")%>' method="post">
+            <p>Buscar por nombre</p>
+            <input type="text" name="nombre" class="infofield"/>
+            <input type="submit" value="buscar" class="opcionCrud"/>
+        </form>
     </div>
 
     <div id="indexWrapper">

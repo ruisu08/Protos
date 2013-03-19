@@ -12,18 +12,20 @@
     <h6 id="descripcionController">Aquí puedes ver todas las patrocinadores creados hasta el momento</h6>
     </div>
 
-    <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","Patrocinador")%>' method="post">
-            <p>Buscar por nombre</p>
-            <input type="text" name="nombre" />
-            <input type="submit" value="buscar" id="opcionCrud"/>
-        </form>
-    </div>
+    
 </div>
 
     <div>
     <h2>Lista de Patrocinadores:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Patrocinador", "Create") %></h3>
+    </div>
+
+    <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Patrocinador")%>' method="post">
+            <p>Buscar por nombre</p>
+            <input type="text" name="nombre" class="infofield"/>
+            <input type="submit" value="buscar" class="opcionCrud"/>
+        </form>
     </div>
 
  <div id="indexWrapper">

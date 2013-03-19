@@ -485,7 +485,7 @@
     <Content Include="Views\Jugadora\Index.aspx" />
     <Content Include="Views\Jugadora\SearchIndex.aspx" />
     <Content Include="Views\Login\Index.aspx" />
-    <Content Include="MultimediaEquipo\Index.aspx" />
+    <Content Include="Views\MultimediaEquipo\Index.aspx" />
     <Content Include="Views\MultimediaJugadora\Index.aspx" />
     <Content Include="Views\Noticia\agregarContenido.aspx" />
     <Content Include="Views\Noticia\Create.aspx" />

@@ -12,20 +12,22 @@
     <h6 id="descripcionController">Aquí puedes ver todas las páginas informativas creadas hasta el momento</h6>
     </div>
 
-    <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","PaginaInformativa")%>' method="post">
-            <p>Buscar por título</p>
-            <input type="text" name="titulo" />
-            <p>Buscar por autor(apellidos o indetificación)</p>
-            <input type="text" name="autor" />
-            <input type="submit" value="buscar" id="opcionCrud"/>
-        </form>
-    </div>
+    
 </div>
 
     <div>
     <h2>Lista de Páginas informativas:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nueva Página informativa", "Create") %></h3>
+    </div>
+
+    <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","PaginaInformativa")%>' method="post">
+            <p>Buscar por título</p>
+            <input type="text" name="titulo" class="infofield"/>
+            <p>Buscar por autor(apellidos o indetificación)</p>
+            <input type="text" name="autor" class="infofield"/>
+            <input type="submit" value="buscar" class="opcionCrud"/>
+        </form>
     </div>
 
  <div id="indexWrapper">

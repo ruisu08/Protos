@@ -12,19 +12,21 @@
     <h6 id="descripcionController">Aquí puedes los campeonatos creados, además de poder editarlos, eliminarlos o crearlos</h6>
     </div>
 
-    <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","Campeonato")%>' method="post">
-            <p>Buscar por nombre</p>
-            <input type="text" name="nombre" />
-            <p>Buscar por división</p>
-            <input type="text" name="division" />
-            <input type="submit" value="Buscar" id="opcionCrud"/>
-        </form>
-    </div>
+    
 </div>
 
     <h2>Lista de Campeonatos:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Campeonato", "Create") %></h3>
+
+        <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Campeonato")%>' method="post">
+            <p>Buscar por nombre</p>
+            <input type="text" name="nombre" class="infofield"/>
+            <p>Buscar por división</p>
+            <input type="text" name="division" class="infofield"/>
+            <input type="submit" value="Buscar" class="opcionCrud"/>
+        </form>
+    </div>
 
         <div id="indexWrapper">
 

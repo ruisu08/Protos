@@ -30,7 +30,7 @@ namespace UniffutAdmin.Controllers.Multimedia
                 bool autorizado = false;
                 int idUser = (int)Session["userID"];
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(3)))
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
                 {
                     if (m.idModulo == 2 && usuario.rol.estado == true)
                     {
@@ -69,7 +69,7 @@ namespace UniffutAdmin.Controllers.Multimedia
                 bool autorizado = false;
                 int idUser = (int)Session["userID"];
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(3)))
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
                 {
                     if (m.idModulo == 2 && usuario.rol.estado == true)
                     {
@@ -143,7 +143,7 @@ namespace UniffutAdmin.Controllers.Multimedia
                 bool autorizado = false;
                 int idUser = (int)Session["userID"];
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(3)))
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
                 {
                     if (m.idModulo == 2 && usuario.rol.estado == true)
                     {
@@ -258,7 +258,7 @@ namespace UniffutAdmin.Controllers.Multimedia
                 bool autorizado = false;
                 int idUser = (int)Session["userID"];
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(3)))
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
                 {
                     if (m.idModulo == 2 && usuario.rol.estado == true)
                     {

@@ -12,22 +12,24 @@
     <h6 id="descripcionController">Aquí puedes ver los usuarios existentes, además de crear, editar o eliminar los existentes</h6>
     </div>
 
-    <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","Usuario")%>' method="post">
-            <p>Buscar por identificación</p>
-            <input type="text" name="ID" />
-            <p>Buscar por apellido</p>
-            <input type="text" name="Apellido" />
-            <p>Buscar por rol</p>
-            <input type="text" name="Rol" />
-            <input type="submit" value="Buscar" id="opcionCrud"/>
-        </form>
-    </div>
+   
 </div>
 
     <div>
     <h2>Lista de Usuarios:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Usuario", "Create") %></h3>
+    </div>
+
+     <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Usuario")%>' method="post">
+            <p>Buscar por identificación</p>
+            <input type="text" name="ID" class="infofield"/>
+            <p>Buscar por apellido</p>
+            <input type="text" name="Apellido" class="infofield"/>
+            <p>Buscar por rol</p>
+            <input type="text" name="Rol" class="infofield"/>
+            <input type="submit" value="Buscar" class="opcionCrud"/>
+        </form>
     </div>
 
     <div id="indexWrapper">

@@ -12,21 +12,23 @@
     <h6 id="descripcionController">Aquí puedes ver todas las noticias creadas hasta el momento</h6>
     </div>
 
-    <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","Noticia")%>' method="post">
-            <p>Buscar por tipo</p>
-            <input type="text" name="tipo" />
-            <p>Buscar por autor (apellidos o identificación)</p>
-            <input type="text" name="autor" />
-
-            <input type="submit" value="buscar" id="opcionCrud"/>
-        </form>
-    </div>
+    
 </div>
 
     <div>
     <h2>Lista de Noticias:</h2>
     <h3 id="crearLink"><%:Html.ActionLink("Crear nueva Noticia", "Create") %></h3>
+    </div>
+
+    <div id="busqueda">
+        <form id="validateForm" action= '<%:Url.Action("Search","Noticia")%>' method="post">
+            <p>Buscar por tipo</p>
+            <input type="text" name="tipo" class="infofield"/>
+            <p>Buscar por autor (apellidos o identificación)</p>
+            <input type="text" name="autor" class="infofield"/>
+
+            <input type="submit" value="buscar" class="opcionCrud"/>
+        </form>
     </div>
 
  <div id="indexWrapper">
