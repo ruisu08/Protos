@@ -13,9 +13,11 @@
     </div>
 
     <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","Noticia")%>' method="post">
-            <p>Buscar por nombre</p>
-            <input type="text" name="identificacion" />
+        <form id="validateForm" action= '<%:Url.Action("Search","PaginaInformativa")%>' method="post">
+            <p>Buscar por título</p>
+            <input type="text" name="titulo" />
+            <p>Buscar por autor(apellidos o indetificación)</p>
+            <input type="text" name="autor" />
             <input type="submit" value="buscar" id="opcionCrud"/>
         </form>
     </div>

@@ -17,7 +17,7 @@
     remove_script_host: true,
     document_base_url: "",
     file_browser_callback: "filebrowser",
-    max_chars: "0",
+    max_chars: "500",
     setup: function (ed) {
         ed.onKeyDown.add(function (ed, evt) {
             if ($(ed.getBody()).text().length + 1 > ed.getParam('max_chars')) {
