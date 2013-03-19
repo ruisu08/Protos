@@ -404,5 +404,49 @@ namespace UniffutAdmin.Controllers
         {
             return RedirectToAction("Index", new RouteValueDictionary(new { controller = "AlbumJugadora", action = "Index", id = id }));
         }
+
+        [HttpPost]
+        public ActionResult Search(String apellidos, String equipo, String nacionalidad)
+        {
+            var jugadoras = db.jugadora.Where<jugadora>(r => (r.apellidos.Equals(apellidos) || r.equipo.nombre.Equals(equipo) || r.nacionalidad.Equals(nacionalidad)) && r.estado == true);
+            return View("SearchIndex", jugadoras.ToList());
+        }
+
+
+        public ActionResult SearchIndex(List<jugadora> list)
+        {
+            if (Session["userID"] == null)
+            {
+
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("Error", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
+                {
+                    if (m.idModulo == 1)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
+
+            return View(list);
+        }
     }
 }
