@@ -46,11 +46,6 @@
                     <h3>Identificación:</h3>
                     <h4><%:item.identificacion %></h4>
                 </div>
-
-                <div class="indexData">
-                    <h3>Rol:</h3>
-                    <h4><%:item.rol.nombre %></h4>
-                </div>
                 <div id="opcionWrapper">
                     <div class="opcionCrud">
                     <%: Html.ActionLink("Editar", "Edit", new { id=item.idUsuario}) %>
@@ -68,4 +63,3 @@
     </div>
 
 </asp:Content>
-

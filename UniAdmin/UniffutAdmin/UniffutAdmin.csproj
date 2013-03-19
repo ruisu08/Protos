@@ -518,6 +518,7 @@
     <Content Include="Views\Usuario\Details.aspx" />
     <Content Include="Views\Usuario\Edit.aspx" />
     <Content Include="Views\Usuario\Index.aspx" />
+    <Content Include="Views\Usuario\SearchIndex.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
