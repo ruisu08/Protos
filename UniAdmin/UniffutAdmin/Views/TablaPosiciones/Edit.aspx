@@ -46,7 +46,7 @@
     </form>
 
     <div id="volverIndex">
-        <h3><%: Html.ActionLink("Volver a la tabla", "Details", new {id = Model.idTabla})%></h3>
+        <h3><%: Html.ActionLink("Volver a la tabla", "Details", new {id = Model.tabla_posiciones.campeonato.idCampeonato})%></h3>
     </div>
 
 </asp:Content>
