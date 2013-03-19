@@ -57,7 +57,7 @@ namespace UniffutAdmin.Controllers.Campeonatos
                 var tablaE = db.tabla_equipo.FirstOrDefault(t => t.idEquipo.Equals(idEquipo) && t.idTabla.Equals(idTabla));
                 tablaE.puntos = Tabla.puntos;
                 db.SaveChanges();
-                return RedirectToAction("Details", new RouteValueDictionary(new { controller = "TablaPosiciones", action = "Details", id = idTabla }));
+                return RedirectToAction("Details", new RouteValueDictionary(new { controller = "TablaPosiciones", action = "Details", id = tablaE.tabla_posiciones.campeonato.idCampeonato }));
             }
             catch
             {
