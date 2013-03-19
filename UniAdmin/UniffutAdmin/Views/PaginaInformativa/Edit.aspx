@@ -20,21 +20,6 @@
                 <%: Html.TextBoxFor(model => model.Pagina.titulo, new { @required = "required", @maxlength = "45", @class = "infofield" })%>
             </div>
             
-            <div class="editor-label">
-                <h3>Fecha</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Pagina.fecha, new { @class = "datepicker infofield" })%>
-                
-            </div>
-            
-            <div class="editor-label">
-                <h3>Autor</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Pagina.autor, new SelectList(Model.Usuario, "idUsuario", "nombre", Model.Usuario.First().idUsuario), new { @class="infofield" })%>
-                
-            </div>
             
         </div>
             

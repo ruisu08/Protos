@@ -22,22 +22,6 @@
             </div>
             
             <div class="editor-label">
-                <h3>Fecha</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Noticia.fecha, new { @class = "datepicker infofield" })%>
-                
-            </div>
-            
-            <div class="editor-label">
-                <h3>Autor</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.DropDownListFor(model => model.Noticia.autor, new SelectList(Model.Usuarios, "idUsuario", "idUsuario", Model.Usuarios.First().idUsuario), new { @class="infofield" })%>
-                
-            </div>
-            
-            <div class="editor-label">
                 <h3>Tipo de noticia</h3>
             </div>
             <div class="editor-field">

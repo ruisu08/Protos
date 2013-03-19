@@ -21,12 +21,6 @@
                 <%: Html.TextBoxFor(model => model.Pagina.titulo, new { @required = "required", @maxlength = "45", @class = "infofield" })%>
             </div>
             
-            <div class="editor-label">
-               <h2>Fecha</h2>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Pagina.fecha, new { @class = "datepicker infofield" })%>
-            </div>
             
             <div class="editor-label">
                 <h2>Autor</h2>

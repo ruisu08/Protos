@@ -143,7 +143,7 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-
+                    Noticia.fecha = DateTime.Now;
                     viewModel.Usuarios = db.usuario.ToList();
                     viewModel.Noticia = Noticia;
                     viewModel.Noticia.estado = true;
@@ -230,9 +230,6 @@ namespace UniffutAdmin.Controllers
                         Noticia = noticia,
                         Usuarios = db.usuario.ToList()
                     };
-                    VM.Noticia.autor = Noticia.autor;
-                    VM.Noticia.fecha = Noticia.fecha;
-                    VM.Noticia.TipoNoticia_idTipoNoticia = Noticia.TipoNoticia_idTipoNoticia;
                     VM.Noticia.titulo = Noticia.titulo;
                     db.SaveChanges();
                     return RedirectToAction("Index");

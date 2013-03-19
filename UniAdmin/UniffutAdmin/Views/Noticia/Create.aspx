@@ -22,13 +22,7 @@
                 <%: Html.ValidationMessageFor(model => model.Noticia.titulo)%>
             </div>
             
-            <div class="editor-label">
-                <h3>Fecha</h3>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Noticia.fecha, new { @class = "datepicker" })%>
-                <%: Html.ValidationMessageFor(model => model.Noticia.fecha)%>
-            </div>
+            
             
             <div class="editor-label">
                 <h3>Autor</h3>

@@ -136,7 +136,7 @@ namespace UniffutAdmin.Controllers.Informativos
         {
             try
             {
-
+                pagina.fecha = DateTime.Now;
                 viewModel.Usuario = db.usuario.ToList();
                 viewModel.Pagina = pagina;
                 viewModel.Pagina.estado = true;
@@ -213,8 +213,6 @@ namespace UniffutAdmin.Controllers.Informativos
                     Pagina = pagina,
                     Usuario = db.usuario.Where(d=>d.estado == true).ToList()
                 };
-                viewModel.Pagina.autor = Pagina.autor;
-                viewModel.Pagina.fecha = Pagina.fecha;
                 viewModel.Pagina.titulo = Pagina.titulo;
                 db.SaveChanges();
 
