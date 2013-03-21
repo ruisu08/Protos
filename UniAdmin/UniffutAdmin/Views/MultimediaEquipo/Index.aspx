@@ -25,7 +25,7 @@
     <%foreach (var m in Model)
       { %>
       <div class="OrdenAlbum">
-           <a class="imagenAlbum">
+           <a class="imagenAlbum fancybox-media">
             <%:new HtmlString (HttpUtility.HtmlDecode(m.fuenteGrafica))%>
            </a>
            <div class="opcionBorrarMult">

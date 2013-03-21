@@ -122,6 +122,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\dpLanguage.js" />
     <Content Include="Scripts\editor.js" />
+    <Content Include="Scripts\fancyBox\jquery.fancybox-buttons.css" />
+    <Content Include="Scripts\fancyBox\jquery.fancybox-buttons.js" />
+    <Content Include="Scripts\fancyBox\jquery.fancybox-media.js" />
+    <Content Include="Scripts\fancyBox\jquery.fancybox-thumbs.css" />
+    <Content Include="Scripts\fancyBox\jquery.fancybox-thumbs.js" />
+    <Content Include="Scripts\fancyBox\jquery.fancybox.css" />
+    <Content Include="Scripts\fancyBox\jquery.fancybox.pack.js" />
     <Content Include="Scripts\imageAdder.js" />
     <Content Include="Scripts\imageDisplay.js" />
     <Content Include="Scripts\inputs.js" />

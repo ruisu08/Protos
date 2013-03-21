@@ -10,6 +10,10 @@
     <link rel="Stylesheet" href="../../Content/ContentSS.css"/>
     <link  rel="Stylesheet" href="../../Scripts/myThumbNail/MyThumbnail.css"/>
     <link rel="stylesheet" href="../../Content/modern.css"/>
+    <link rel="Stylesheet" href="../../Scripts/fancyBox/jquery.fancybox.css" type="text/css" media="screen" />
+    <link rel="Stylesheet" href="../../Scripts/fancyBox/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
+    <link rel="Stylesheet" href="../../Scripts/fancyBox/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+
     <script type="text/javascript" src="../../Scripts/JQ1.6.4.js"></script>
     <script type="text/javascript" src="../../Scripts/jquery-ui-1.10.1.custom.min.js"></script>
     <script type="text/javascript" src="../../Scripts/dpLanguage.js"></script>
@@ -21,6 +25,10 @@
     <script type="text/javascript" src="../../Scripts/myThumbNail/jquery.MyThumbnail.js"></script>
     <script type="text/javascript" src="../../Scripts/yoxview/yoxview-init.js"></script>
     <script type="text/javascript" src="../../Scripts/imageDisplay.js"></script>
+    <script type="text/javascript" src="../../Scripts/fancyBox/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="../../Scripts/fancyBox/jquery.fancybox-media.js"></script>
+    <script type="text/javascript" src="../../Scripts/fancyBox/jquery.fancybox-thumbs.js"></script>
+    <script type="text/javascript" src="../../Scripts/fancyBox/jquery.fancybox-buttons.js"></script>
     <link rel="Stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
 </head>
 <body>

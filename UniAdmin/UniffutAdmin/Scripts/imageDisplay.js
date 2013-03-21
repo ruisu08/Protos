@@ -10,11 +10,22 @@
         l.attr("href", h);
         l.append(g);
     }
-    $(".yoxview").yoxview();
-    $(".yoxview img").MyThumbnail({
+
+
+    $(".imagenAlbum img").MyThumbnail({
         thumbWidth: 120,
         thumbHeight: 100,
         backgroundColor: "#ccc",
         imageDivClass: "myPic"
+    });
+
+    $(".imagenAlbum").fancybox();
+    $(".fancybox-media").fancybox({
+
+        openEffect: 'elastic',
+        closeEffect: 'elastic',
+        helpers: {
+            media: {}
+        }
     });
 });
