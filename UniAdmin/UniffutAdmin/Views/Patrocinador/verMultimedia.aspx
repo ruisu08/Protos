@@ -11,7 +11,7 @@
     </div>
     <div class="thumbnails yoxview">
       <div class="OrdenAlbum">
-           <a class="imagenAlbum">
+           <a class="imagenAlbum fancybox-media">
             <%:new HtmlString (HttpUtility.HtmlDecode(Model.fuenteGrafica))%>
            </a>            
         </div>
