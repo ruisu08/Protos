@@ -6,64 +6,58 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div id="headerContenido">
-    <div id="tituloContenido">
-    <h1>Páginas Informativas</h1>
-    <h6 id="descripcionController">Aquí puedes ver todas las páginas informativas creadas hasta el momento</h6>
-    </div>
 
-    
-</div>
-
-    <div>
-    <h2>Lista de Páginas informativas:</h2>
-    <h3 id="crearLink"><%:Html.ActionLink("Crear nueva Página informativa", "Create") %></h3>
-    </div>
-
-    <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","PaginaInformativa")%>' method="post">
-            <p>Buscar por título</p>
-            <input type="text" name="titulo" class="infofield"/>
-            <p>Buscar por autor(apellidos o indetificación)</p>
-            <input type="text" name="autor" class="infofield"/>
-            <input type="submit" value="buscar" class="opcionCrud"/>
-        </form>
-    </div>
-
- <div id="indexWrapper">
-
-    <% foreach (var item in Model) { %>
-            <div class="itemWrapper">
-                <div class="indexData">
-                    <h3>Título:</h3>
-                    <h4><%:item.titulo %></h4>
-                </div>
-                <div class="indexData">
-                    <h3>Autor:</h3>
-                    <h4><%:item.usuario.identificacion%></h4>
-                </div>
-                <div class="indexData">
-                    <h3>Fecha:</h3>
-                    <h4><%:item.fecha%></h4>
-                </div>
-                <div id="opcionWrapper">
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar", "Edit", new { id=item.idPagina_Informativa}) %>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Detalles", "Details", new { id=item.idPagina_Informativa })%>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idPagina_Informativa })%>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Redactar contenido", "agregarContenido", new { id=item.idPagina_Informativa })%>
-                    </div>
-                </div>
+ <div id="topBar">
+            <div id="searchBar"> 
+                <form id="searchForm" action= '<%:Url.Action("Search","PaginaInformativa")%>' method="post">
+                        <input type="submit"  value="Buscar" id="searchButton"/>
+                        <input type="text" name="autor" class="searchText" id="searchBoxOne" value="Buscar por autor"/>
+                </form>
             </div>
-    <% } %>
+            <div id="logOut" class="opcionLogOut">
+                <a href="#">Cerrar sesión</a>
+            </div>
+        </div>
+        <div id="contenidoHeader">
+            <div id="contenedorContenidoTitulo">
+                <h1 id="contenidoTitulo">Páginas Informativas:</h1>
+                <h4 id="contenidoDescripcion">Administración de base de datos de páginas informativas de la Uniffut</h4>
+            </div>
+            <div id="contenedorCrear">
+                <%:Html.ActionLink("Crear nueva página informativa", "Create") %>
+            </div>
+        </div>
+        <div id="contenidoEspecifico">
+        <% foreach (var item in Model) { %>
+                <div class="itemWrapper">
+                    <div class="info">
+                        <div class="itemInfo" >
+                            <div class="infoTitle"><p>Título</p></div>
+                            <div class="infoText"><p><%:item.titulo%></p></div>
+                        </div>
+                        <div class="itemInfo" >
+                            <div class="infoTitle"><p>Autor</p></div>
+                            <div class="infoText"><p><%:item.usuario.nombre + " "+item.usuario.apellido%></p></div>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Editar", "Edit", new { id=item.idPagina_Informativa}) %>
+                        </div>
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Detalles", "Details", new { id=item.idPagina_Informativa})%>
+                        </div>
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Redactar contenido", "agregarContenido", new { id=item.idPagina_Informativa })%>
+                        </div>
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idPagina_Informativa })%>
+                        </div>
+                    </div>
+                </div>
+           <% } %>
+            </div>
 
-    </div>
 
 
 </asp:Content>

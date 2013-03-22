@@ -6,64 +6,55 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-        <div id="headerContenido">
-    <div id="tituloContenido">
-    <h1>Patrocinadores</h1>
-    <h6 id="descripcionController">Aquí puedes ver todas las patrocinadores creados hasta el momento</h6>
-    </div>
 
-    
-</div>
-
-    <div>
-    <h2>Lista de Patrocinadores:</h2>
-    <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Patrocinador", "Create") %></h3>
-    </div>
-
-    <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","Patrocinador")%>' method="post">
-            <p>Buscar por nombre</p>
-            <input type="text" name="nombre" class="infofield"/>
-            <input type="submit" value="buscar" class="opcionCrud"/>
-        </form>
-    </div>
-
- <div id="indexWrapper">
-
-    <% foreach (var item in Model) { %>
-            <div class="itemWrapper">
-                <div class="indexData">
-                    <h3>Nombre:</h3>
-                    <h4><%:item.nombre %></h4>
-                </div>
-                <div class="indexData">
-                    <h3>Fecha de ingreso:</h3>
-                    <h4><%:item.fechaIngreso%></h4>
-                </div>
-                <div class="indexData">
-                    <h3>Fecha de salida:</h3>
-                    <h4><%:item.fechaSalida%></h4>
-                </div>
-                <div id="opcionWrapper">
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar", "Edit", new { id=item.idPatrocinador}) %>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Detalles", "Details", new { id=item.idPatrocinador })%>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idPatrocinador })%>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Asignar multimedia", "agregarMultimedia", new { id=item.idPatrocinador })%>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Ver multimedia", "verMultimedia", new { id=item.idPatrocinador })%>
-                    </div>
-                </div>
+ <div id="topBar">
+            <div id="searchBar"> 
+                <form id="searchForm" action= '<%:Url.Action("Search","Patrocinador")%>' method="post">
+                        <input type="submit"  value="Buscar" id="searchButton"/>
+                        <input type="text" name="autor" class="searchText" id="searchBoxOne" value="Buscar por autor"/>
+                </form>
             </div>
-    <% } %>
-
-    </div>
+            <div id="logOut" class="opcionLogOut">
+                <a href="#">Cerrar sesión</a>
+            </div>
+        </div>
+        <div id="contenidoHeader">
+            <div id="contenedorContenidoTitulo">
+                <h1 id="contenidoTitulo">Patrocinadores:</h1>
+                <h4 id="contenidoDescripcion">Administración de base de datos de patrocinadores de la Uniffut</h4>
+            </div>
+            <div id="contenedorCrear">
+                <%:Html.ActionLink("Crear nueva página informativa", "Create") %>
+            </div>
+        </div>
+        <div id="contenidoEspecifico">
+        <% foreach (var item in Model) { %>
+                <div class="itemWrapper">
+                    <div class="info">
+                        <div class="itemInfo" >
+                            <div class="infoTitle"><p>Nombre</p></div>
+                            <div class="infoText"><p><%:item.nombre%></p></div>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Editar", "Edit", new { id=item.idPatrocinador}) %>
+                        </div>
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Detalles", "Details", new { id=item.idPatrocinador})%>
+                        </div>
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Asignar media", "agregarMultimedia", new { id=item.idPatrocinador })%>
+                        </div>
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Ver media", "verMultimedia", new { id=item.idPatrocinador })%>
+                        </div>
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idPatrocinador })%>
+                        </div>
+                    </div>
+                </div>
+           <% } %>
+            </div>
 
 </asp:Content>
