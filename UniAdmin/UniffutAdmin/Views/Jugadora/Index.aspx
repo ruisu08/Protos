@@ -5,70 +5,70 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<div id="headerContenido">
-    <div id="tituloContenido">
-    <h1>Jugadoras</h1>
-    <h4 id="descripcionController">Aqui es donde puedes ver,editar,agregar y eliminar la información de las jugadoras así con sus fotos y videos</h4>
-    </div>
-    
-</div>
 
-    <div>
-    <h2>Lista de Jugadoras:</h2>
-    <h3 id="crearLink"><%:Html.ActionLink("Crear nueva Jugadora", "Create") %></h3>
-    </div>
-
-    <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","Jugadora")%>' method="post">
-            <p>Buscar por apellidos</p>
-            <input type="text" name="apellidos" class="infofield"/>
-            <p>Buscar por equipo</p>
-            <input type="text" name="equipo" class="infofield"/>
-            <p>Buscar por nacionalidad</p>
-            <input type="text" name="nacionalidad" class="infofield"/>
-            <input  type="submit" value="buscar" class="opcionCrud"/>
-        </form>
-    </div>
-
- <div id="indexWrapper">
-
-    <% foreach (var item in Model) { %>
-            <div class="itemWrapper">
-
-                <div class="indexData">
-                    <h3>Nombre:</h3>
-                    <h4><%:item.nombre%></h4>
-                </div>
-                <div class="indexData">
-                    <h3>Apellidos:</h3>
-                    <h4><%:item.apellidos%></h4>
-                </div>
-
-                <div class="indexData">
-                    <h3>Equipo:</h3>
-                    <h4><%:item.equipo.nombre%></h4>
-                </div>
-                <div id="opcionWrapper">
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar", "Edit", new { id=item.idJugadora}) %>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Detalles", "Details", new { id=item.idJugadora })%>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idJugadora })%>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Redactar historia", "agregarHistoria", new { id = item.idJugadora })%>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Albumes Multimedia", "albumesMultimedia", new { id = item.idJugadora })%>
-                    </div>
-                </div>
+        <div id="topBar">
+            <div id="searchBar"> 
+                <form id="searchForm" action= '<%:Url.Action("Search","Jugadora")%>' method="post">
+                        <input type="submit"  value="Buscar" id="searchButton"/>
+                        <input type="text" name="apellidos" class="searchText" id="searchBoxOne" value="Buscar por apellido"/>
+                        <input type="text" name="equipo"  class="searchText" id="searchBoxTwo" value="Buscar por equipo"/>
+                </form>
             </div>
-    <% } %>
-
-    </div>
+            <div id="logOut" class="opcionLogOut">
+                <a href="#">Cerrar sesión</a>
+            </div>
+        </div>
+        <div id="contenidoHeader">
+            <div id="contenedorContenidoTitulo">
+                <h1 id="contenidoTitulo">Jugadoras:</h1>
+                <h4 id="contenidoDescripcion">Administración de base de datos de jugadoras de la Uniffut</h4>
+            </div>
+            <div id="contenedorCrear">
+                <%:Html.ActionLink("Añadir nueva Jugadora", "Create") %>
+            </div>
+        </div>
+        <div id="contenidoEspecifico">
+        <% foreach (var item in Model) { %>
+                <div class="itemWrapper">
+                    <div class="info">
+                        <div class="itemInfo" >
+                            <div class="infoTitle"><p>Nombre</p></div>
+                            <div class="infoText"><p><%:item.nombre + " "+item.apellidos%></p></div>
+                        </div>
+                        <div class="itemInfo" >
+                            <div class="infoTitle"><p>Equipo</p></div>
+                            <div class="infoText"><p><%:item.equipo.nombre%></p></div>
+                        </div>
+                        <div class="itemInfo" >
+                            <div class="infoTitle"><p>Edad</p></div>
+                            <div class="infoText"><p><% DateTime today = DateTime.Today;
+                                                        int age = today.Year - item.fechaNacimiento.Year;
+                                                        if (item.fechaNacimiento > today.AddYears(-age)) age--;
+                                                        Response.Write(age);
+                                                        %>
+                                                        </p></div>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Editar", "Edit", new { id=item.idJugadora}) %>
+                        </div>
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Detalles", "Details", new { id=item.idJugadora })%>
+                        </div>
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idJugadora })%>
+                        </div>
+                        <div class="itemOption">
+                             <%: Html.ActionLink("Redactar historia", "agregarHistoria", new { id = item.idJugadora })%>
+                        </div>
+                        <div class="itemOption">
+                             <%: Html.ActionLink("Multimedia", "albumesMultimedia", new { id = item.idJugadora })%>
+                        </div>
+                    </div>
+                </div>
+           <% } %>
+            </div>
  
 </asp:Content>
 

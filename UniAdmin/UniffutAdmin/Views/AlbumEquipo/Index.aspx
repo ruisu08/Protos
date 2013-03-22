@@ -6,47 +6,51 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div id="headerContenido">
-        <div id="tituloContenido">
-        <h1>Albumes</h1>
-        <h6 id="descripcionController">Aquí se pueden ver los albumes creados hasta el momento, además de editarlos, eliminarlos o crearlos</h6>
-        </div>
-
-    </div>
-
-     <div>
-    <h2>Lista de Albumes:</h2>
-  
-    
-    <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Album", "Create", new { id = Model.First().idEquipo})%></h3>
-
-    </div>
-
-    <div id="indexWrapper">
-
-    <% foreach (var item in Model) { %>
-            <div class="itemWrapper">
-                <div class="indexData">
-                    <h3>Nombre:</h3>
-                    <h4><%:item.nombre %></h4>
-                </div>
-                <div id="opcionWrapper">
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar", "Edit", new { id=item.idAlbum_Equipo}) %>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idAlbum_Equipo })%>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Agregar multimedia", "agregarMultimedia", new { id = item.idAlbum_Equipo })%>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Ver multimedia", "verMultimedia", new { id = item.idAlbum_Equipo })%>
-                    </div>
-                </div>
+        <div id="topBar">
+            <div id="searchBar"> 
+                <form id="searchForm" action= '<%:Url.Action("Search","AlbumEquipo")%>' method="post">
+                        <input type="submit"  value="Buscar" id="searchButton"/>
+                        <input type="text" name="apellidos" class="searchText" id="searchBoxOne" value="Buscar por nombre"/>
+                </form>
             </div>
-    <% } %>
-
-    </div>
+            <div id="logOut" class="opcionLogOut">
+                <a href="#">Cerrar sesión</a>
+            </div>
+        </div>
+        <div id="contenidoHeader">
+            <div id="contenedorContenidoTitulo">
+                <h1 id="contenidoTitulo">Albumes Multimedia de Equipo</h1>
+                <h4 id="contenidoDescripcion">Administración de Multimedia de Equipo</h4>
+            </div>
+            <div id="contenedorCrear">
+                <%:Html.ActionLink("Crear nuevo Album", "Create", new { id = Model.First().idEquipo})%>
+            </div>
+        </div>
+        <div id="contenidoEspecifico">
+        <% foreach (var item in Model) { %>
+                <div class="itemWrapper">
+                    <div class="info">
+                        <div class="itemInfo" >
+                            <div class="infoTitle"><p>Nombre</p></div>
+                            <div class="infoText"><p><%:item.nombre %></p></div>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Editar", "Edit", new { id = item.idAlbum_Equipo })%>
+                        </div>
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Agregar multimedia", "agregarMultimedia", new { id = item.idAlbum_Equipo })%>
+                        </div>
+                        <div class="itemOption">
+                           <%: Html.ActionLink("Ver multimedia", "verMultimedia", new { id = item.idAlbum_Equipo })%>
+                        </div>
+                        <div class="itemOption">
+                             <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idAlbum_Equipo })%>
+                        </div>
+                    </div>
+                </div>
+           <% } %>
+            </div>
 </asp:Content>
 

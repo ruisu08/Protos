@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="uniffut.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="uniffut.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="uniffutStoreContainer">
           <EntitySet Name="album_equipo" EntityType="uniffut.Store.album_equipo" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="album_jugadora" EntityType="uniffut.Store.album_jugadora" store:Type="Tables" Schema="uniffut" />
@@ -29,6 +29,98 @@
           <EntitySet Name="tabla_posiciones" EntityType="uniffut.Store.tabla_posiciones" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="tiponoticia" EntityType="uniffut.Store.tiponoticia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="usuario" EntityType="uniffut.Store.usuario" store:Type="Tables" Schema="uniffut" />
+          <AssociationSet Name="album_has_equipo" Association="uniffut.Store.album_has_equipo">
+            <End Role="equipo" EntitySet="equipo" />
+            <End Role="album_equipo" EntitySet="album_equipo" />
+          </AssociationSet>
+          <AssociationSet Name="album_Jugadora1" Association="uniffut.Store.album_Jugadora1">
+            <End Role="jugadora" EntitySet="jugadora" />
+            <End Role="album_jugadora" EntitySet="album_jugadora" />
+          </AssociationSet>
+          <AssociationSet Name="calendario_campeonato" Association="uniffut.Store.calendario_campeonato">
+            <End Role="campeonato" EntitySet="campeonato" />
+            <End Role="calendario" EntitySet="calendario" />
+          </AssociationSet>
+          <AssociationSet Name="campeonato_equipo1" Association="uniffut.Store.campeonato_equipo1">
+            <End Role="campeonato" EntitySet="campeonato" />
+            <End Role="campeonato_equipo" EntitySet="campeonato_equipo" />
+          </AssociationSet>
+          <AssociationSet Name="equipo_campeonato" Association="uniffut.Store.equipo_campeonato">
+            <End Role="equipo" EntitySet="equipo" />
+            <End Role="campeonato_equipo" EntitySet="campeonato_equipo" />
+          </AssociationSet>
+          <AssociationSet Name="equipo_tabla" Association="uniffut.Store.equipo_tabla">
+            <End Role="equipo" EntitySet="equipo" />
+            <End Role="tabla_equipo" EntitySet="tabla_equipo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_bitacora_Usuario1" Association="uniffut.Store.fk_bitacora_Usuario1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="bitacora" EntitySet="bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Campeonato_Divisiones1" Association="uniffut.Store.fk_Campeonato_Divisiones1">
+            <End Role="division" EntitySet="division" />
+            <End Role="campeonato" EntitySet="campeonato" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DirectorTecnico_Equipo1" Association="uniffut.Store.fk_DirectorTecnico_Equipo1">
+            <End Role="equipo" EntitySet="equipo" />
+            <End Role="directortecnico" EntitySet="directortecnico" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Equipo_Divisiones1" Association="uniffut.Store.fk_Equipo_Divisiones1">
+            <End Role="division" EntitySet="division" />
+            <End Role="equipo" EntitySet="equipo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Jugadora_Equipo1" Association="uniffut.Store.fk_Jugadora_Equipo1">
+            <End Role="equipo" EntitySet="equipo" />
+            <End Role="jugadora" EntitySet="jugadora" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Noticia_TipoNoticia1" Association="uniffut.Store.fk_Noticia_TipoNoticia1">
+            <End Role="tiponoticia" EntitySet="tiponoticia" />
+            <End Role="noticia" EntitySet="noticia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Noticia_Usuario1" Association="uniffut.Store.fk_Noticia_Usuario1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="noticia" EntitySet="noticia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pagina Informativa_Usuario1" Association="uniffut.Store.fk_Pagina Informativa_Usuario1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="pagina informativa" EntitySet="pagina informativa" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Usuario_Rol1" Association="uniffut.Store.fk_Usuario_Rol1">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="modulo_RolTieneModulo" Association="uniffut.Store.modulo_RolTieneModulo">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="rol_tiene_modulo" EntitySet="rol_tiene_modulo" />
+          </AssociationSet>
+          <AssociationSet Name="R_album_multimedia" Association="uniffut.Store.R_album_multimedia">
+            <End Role="album_jugadora" EntitySet="album_jugadora" />
+            <End Role="album_multimedia_jugadora" EntitySet="album_multimedia_jugadora" />
+          </AssociationSet>
+          <AssociationSet Name="R_albumEquipo_multimedia" Association="uniffut.Store.R_albumEquipo_multimedia">
+            <End Role="album_equipo" EntitySet="album_equipo" />
+            <End Role="album_multimedia_equipo" EntitySet="album_multimedia_equipo" />
+          </AssociationSet>
+          <AssociationSet Name="R_multimedia_album" Association="uniffut.Store.R_multimedia_album">
+            <End Role="multimedia" EntitySet="multimedia" />
+            <End Role="album_multimedia_jugadora" EntitySet="album_multimedia_jugadora" />
+          </AssociationSet>
+          <AssociationSet Name="R_multimedia_albumEquipo" Association="uniffut.Store.R_multimedia_albumEquipo">
+            <End Role="multimedia" EntitySet="multimedia" />
+            <End Role="album_multimedia_equipo" EntitySet="album_multimedia_equipo" />
+          </AssociationSet>
+          <AssociationSet Name="rol_RolTieneModulo" Association="uniffut.Store.rol_RolTieneModulo">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rol_tiene_modulo" EntitySet="rol_tiene_modulo" />
+          </AssociationSet>
+          <AssociationSet Name="tabla_campeonato" Association="uniffut.Store.tabla_campeonato">
+            <End Role="campeonato" EntitySet="campeonato" />
+            <End Role="tabla_posiciones" EntitySet="tabla_posiciones" />
+          </AssociationSet>
+          <AssociationSet Name="tabla_tabla" Association="uniffut.Store.tabla_tabla">
+            <End Role="tabla_posiciones" EntitySet="tabla_posiciones" />
+            <End Role="tabla_equipo" EntitySet="tabla_equipo" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="album_equipo">
           <Key>
@@ -259,6 +351,282 @@
           <Property Name="Rol_idRol" Type="int" Nullable="false" />
           <Property Name="identificacion" Type="varchar" Nullable="false" MaxLength="10" />
         </EntityType>
+        <Association Name="album_has_equipo">
+          <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="1" />
+          <End Role="album_equipo" Type="uniffut.Store.album_equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipo">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="album_equipo">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="album_Jugadora1">
+          <End Role="jugadora" Type="uniffut.Store.jugadora" Multiplicity="1" />
+          <End Role="album_jugadora" Type="uniffut.Store.album_jugadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jugadora">
+              <PropertyRef Name="idJugadora" />
+            </Principal>
+            <Dependent Role="album_jugadora">
+              <PropertyRef Name="idJugadora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="calendario_campeonato">
+          <End Role="campeonato" Type="uniffut.Store.campeonato" Multiplicity="1" />
+          <End Role="calendario" Type="uniffut.Store.calendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campeonato">
+              <PropertyRef Name="idCampeonato" />
+            </Principal>
+            <Dependent Role="calendario">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="campeonato_equipo1">
+          <End Role="campeonato" Type="uniffut.Store.campeonato" Multiplicity="1" />
+          <End Role="campeonato_equipo" Type="uniffut.Store.campeonato_equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campeonato">
+              <PropertyRef Name="idCampeonato" />
+            </Principal>
+            <Dependent Role="campeonato_equipo">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="equipo_campeonato">
+          <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="1" />
+          <End Role="campeonato_equipo" Type="uniffut.Store.campeonato_equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipo">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="campeonato_equipo">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="equipo_tabla">
+          <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="1" />
+          <End Role="tabla_equipo" Type="uniffut.Store.tabla_equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipo">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tabla_equipo">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_bitacora_Usuario1">
+          <End Role="usuario" Type="uniffut.Store.usuario" Multiplicity="1" />
+          <End Role="bitacora" Type="uniffut.Store.bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="bitacora">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Campeonato_Divisiones1">
+          <End Role="division" Type="uniffut.Store.division" Multiplicity="1" />
+          <End Role="campeonato" Type="uniffut.Store.campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="division">
+              <PropertyRef Name="idDivisiones" />
+            </Principal>
+            <Dependent Role="campeonato">
+              <PropertyRef Name="idDivision" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DirectorTecnico_Equipo1">
+          <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="1" />
+          <End Role="directortecnico" Type="uniffut.Store.directortecnico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipo">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="directortecnico">
+              <PropertyRef Name="Equipo_idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Equipo_Divisiones1">
+          <End Role="division" Type="uniffut.Store.division" Multiplicity="1" />
+          <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="division">
+              <PropertyRef Name="idDivisiones" />
+            </Principal>
+            <Dependent Role="equipo">
+              <PropertyRef Name="idDivision" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Jugadora_Equipo1">
+          <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="1" />
+          <End Role="jugadora" Type="uniffut.Store.jugadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipo">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="jugadora">
+              <PropertyRef Name="Equipo_idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Noticia_TipoNoticia1">
+          <End Role="tiponoticia" Type="uniffut.Store.tiponoticia" Multiplicity="1" />
+          <End Role="noticia" Type="uniffut.Store.noticia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tiponoticia">
+              <PropertyRef Name="idTipoNoticia" />
+            </Principal>
+            <Dependent Role="noticia">
+              <PropertyRef Name="TipoNoticia_idTipoNoticia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Noticia_Usuario1">
+          <End Role="usuario" Type="uniffut.Store.usuario" Multiplicity="1" />
+          <End Role="noticia" Type="uniffut.Store.noticia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="noticia">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pagina Informativa_Usuario1">
+          <End Role="usuario" Type="uniffut.Store.usuario" Multiplicity="1" />
+          <End Role="pagina informativa" Type="uniffut.Store.pagina informativa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="pagina informativa">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Usuario_Rol1">
+          <End Role="rol" Type="uniffut.Store.rol" Multiplicity="1" />
+          <End Role="usuario" Type="uniffut.Store.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="Rol_idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="modulo_RolTieneModulo">
+          <End Role="modulo" Type="uniffut.Store.modulo" Multiplicity="1" />
+          <End Role="rol_tiene_modulo" Type="uniffut.Store.rol_tiene_modulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="idModulo" />
+            </Principal>
+            <Dependent Role="rol_tiene_modulo">
+              <PropertyRef Name="idModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_album_multimedia">
+          <End Role="album_jugadora" Type="uniffut.Store.album_jugadora" Multiplicity="1" />
+          <End Role="album_multimedia_jugadora" Type="uniffut.Store.album_multimedia_jugadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="album_jugadora">
+              <PropertyRef Name="idAlbum_Jugadora" />
+            </Principal>
+            <Dependent Role="album_multimedia_jugadora">
+              <PropertyRef Name="idAlbum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_albumEquipo_multimedia">
+          <End Role="album_equipo" Type="uniffut.Store.album_equipo" Multiplicity="1" />
+          <End Role="album_multimedia_equipo" Type="uniffut.Store.album_multimedia_equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="album_equipo">
+              <PropertyRef Name="idAlbum_Equipo" />
+            </Principal>
+            <Dependent Role="album_multimedia_equipo">
+              <PropertyRef Name="idAlbum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_multimedia_album">
+          <End Role="multimedia" Type="uniffut.Store.multimedia" Multiplicity="1" />
+          <End Role="album_multimedia_jugadora" Type="uniffut.Store.album_multimedia_jugadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="multimedia">
+              <PropertyRef Name="idMultimedia" />
+            </Principal>
+            <Dependent Role="album_multimedia_jugadora">
+              <PropertyRef Name="idMultimedia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_multimedia_albumEquipo">
+          <End Role="multimedia" Type="uniffut.Store.multimedia" Multiplicity="1" />
+          <End Role="album_multimedia_equipo" Type="uniffut.Store.album_multimedia_equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="multimedia">
+              <PropertyRef Name="idMultimedia" />
+            </Principal>
+            <Dependent Role="album_multimedia_equipo">
+              <PropertyRef Name="idMultimedia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rol_RolTieneModulo">
+          <End Role="rol" Type="uniffut.Store.rol" Multiplicity="1" />
+          <End Role="rol_tiene_modulo" Type="uniffut.Store.rol_tiene_modulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="rol_tiene_modulo">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tabla_campeonato">
+          <End Role="campeonato" Type="uniffut.Store.campeonato" Multiplicity="1" />
+          <End Role="tabla_posiciones" Type="uniffut.Store.tabla_posiciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campeonato">
+              <PropertyRef Name="idCampeonato" />
+            </Principal>
+            <Dependent Role="tabla_posiciones">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tabla_tabla">
+          <End Role="tabla_posiciones" Type="uniffut.Store.tabla_posiciones" Multiplicity="1" />
+          <End Role="tabla_equipo" Type="uniffut.Store.tabla_equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabla_posiciones">
+              <PropertyRef Name="idTabla" />
+            </Principal>
+            <Dependent Role="tabla_equipo">
+              <PropertyRef Name="idTabla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>

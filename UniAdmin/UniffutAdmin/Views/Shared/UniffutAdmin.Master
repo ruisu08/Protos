@@ -15,6 +15,7 @@
     <link rel="Stylesheet" href="../../Scripts/fancyBox/jquery.fancybox-buttons.css" type="text/css" media="screen" />
 
     <script type="text/javascript" src="../../Scripts/JQ1.6.4.js"></script>
+    <script type="text/javascript" src="../../Scripts/watermark.js"></script>
     <script type="text/javascript" src="../../Scripts/jquery-ui-1.10.1.custom.min.js"></script>
     <script type="text/javascript" src="../../Scripts/dpLanguage.js"></script>
     <script type="text/javascript" src="../../Scripts/tiny_mce/tiny_mce.js"></script>
@@ -29,6 +30,7 @@
     <script type="text/javascript" src="../../Scripts/fancyBox/jquery.fancybox-media.js"></script>
     <script type="text/javascript" src="../../Scripts/fancyBox/jquery.fancybox-thumbs.js"></script>
     <script type="text/javascript" src="../../Scripts/fancyBox/jquery.fancybox-buttons.js"></script>
+        
     <link rel="Stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
 </head>
 <body>
@@ -64,13 +66,8 @@
             </div>
         </div>
         <div id="contenido">
-        <div id="logOut" class="opcionLogOut">
-                <%:Html.ActionLink("Cerrar sesión","LogOut","Login") %>
-        </div>
-            <div id="contenidoEspecifico">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            </div>
         </div>
     </div>
 </body>

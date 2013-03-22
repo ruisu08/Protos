@@ -394,6 +394,7 @@
     <Content Include="Scripts\tiny_mce\utils\form_utils.js" />
     <Content Include="Scripts\tiny_mce\utils\mctabs.js" />
     <Content Include="Scripts\tiny_mce\utils\validate.js" />
+    <Content Include="Scripts\watermark.js" />
     <Content Include="Scripts\yoxview\data\flickr.js" />
     <Content Include="Scripts\yoxview\data\flickr.source.js" />
     <Content Include="Scripts\yoxview\data\picasa.js" />
