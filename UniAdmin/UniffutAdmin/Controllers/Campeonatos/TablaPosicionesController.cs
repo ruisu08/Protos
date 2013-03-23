@@ -11,7 +11,7 @@ namespace UniffutAdmin.Controllers.Campeonatos
 {
     public class TablaPosicionesController : Controller
     {
-        private static uniffutData db = new uniffutData();
+        private uniffutData db = new uniffutData();
         //
         // GET: /TablaPosiciones/
 

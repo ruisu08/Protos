@@ -13,7 +13,7 @@
                 </form>
             </div>
             <div id="logOut" class="opcionLogOut">
-                <a href="#">Cerrar sesión</a>
+                <%:Html.ActionLink("Cerrar sesión","LogOut","Login") %>
             </div>
         </div>
         <div id="contenidoHeader">

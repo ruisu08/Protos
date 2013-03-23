@@ -9,7 +9,7 @@ namespace UniffutAdmin.Controllers
 {
     public class NoticiaController : Controller
     {
-        private static uniffutData db = new uniffutData();
+        private uniffutData db = new uniffutData();
         //
         // GET: /Noticia/
 

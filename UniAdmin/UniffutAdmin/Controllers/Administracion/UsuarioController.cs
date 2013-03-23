@@ -10,7 +10,7 @@ namespace UniffutAdmin.Controllers
 {
     public class UsuarioController : Controller
     {
-        private static uniffutData db = new uniffutData();
+        private uniffutData db = new uniffutData();
         //
         // GET: /Usuario/
 

@@ -10,7 +10,7 @@ namespace UniffutAdmin.Controllers
 {
     public class MultimediaEquipoController : Controller
     {
-        private static uniffutData db = new uniffutData();
+        private uniffutData db = new uniffutData();
         //
         // GET: /Multimedia/
 
@@ -44,12 +44,6 @@ namespace UniffutAdmin.Controllers
                     return View("Error", error);
                 }
             }
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
             var multimedia = db.album_equipo.First(a => a.idAlbum_Equipo.Equals(id)).multimedia.Where<multimedia>(multi=>multi.estado == true);
             return View(multimedia.ToList());
         }
@@ -132,7 +126,6 @@ namespace UniffutAdmin.Controllers
                 mult.estado = false;
                 db.SaveChanges();
                 // TODO: Add delete logic here
-
                 return RedirectToAction("Index", new RouteValueDictionary(new { controller = "MultimediaEquipo", action = "Index", id = idAlbum }));
             }
             catch

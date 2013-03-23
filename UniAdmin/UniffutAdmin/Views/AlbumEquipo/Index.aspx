@@ -14,7 +14,7 @@
                 </form>
             </div>
             <div id="logOut" class="opcionLogOut">
-                <a href="#">Cerrar sesión</a>
+                <%:Html.ActionLink("Cerrar sesión","LogOut","Login") %>
             </div>
         </div>
         <div id="contenidoHeader">
@@ -40,7 +40,7 @@
                             <%: Html.ActionLink("Editar", "Edit", new { id = item.idAlbum_Equipo })%>
                         </div>
                         <div class="itemOption">
-                            <%: Html.ActionLink("Agregar multimedia", "agregarMultimedia", new { id = item.idAlbum_Equipo })%>
+                            <%: Html.ActionLink("Agregar media", "agregarMultimedia", new { id = item.idAlbum_Equipo })%>
                         </div>
                         <div class="itemOption">
                            <%: Html.ActionLink("Ver multimedia", "verMultimedia", new { id = item.idAlbum_Equipo })%>

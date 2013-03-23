@@ -11,12 +11,19 @@ namespace UniffutAdmin.Controllers
     {
         //
         // GET: /Home/
-        private static uniffutData db = new uniffutData();
+        private uniffutData db = new uniffutData();
 
         public ActionResult Index()
         {
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.modulo);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.rol);
+            if (Session["userID"] == null)
+            {
+
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("ErrorSesion", error);
+            }
             return View();
         }
     }

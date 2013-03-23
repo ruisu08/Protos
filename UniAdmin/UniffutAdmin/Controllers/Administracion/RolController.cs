@@ -10,7 +10,7 @@ namespace UniffutAdmin.Controllers.Administracion
 {
     public class RolController : Controller
     {
-        private static uniffutData db = new uniffutData();
+        private uniffutData db = new uniffutData();
         //
         // GET: /Rol/
 
@@ -408,8 +408,7 @@ namespace UniffutAdmin.Controllers.Administracion
                     return View("Error", error);
                 }
             }
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.modulo);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.rol);
+
             var rol = db.rol.First(r => r.idRol.Equals(id));
 
             var viewModel = new RolModuloViewModel

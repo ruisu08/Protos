@@ -11,7 +11,7 @@ namespace UniffutAdmin.Controllers.Multimedia
 {
     public class AlbumJugadoraController : Controller
     {
-        private static uniffutData db = new uniffutData();
+        private uniffutData db = new uniffutData();
         //
         // GET: /AlbumJugadora/
 
@@ -46,9 +46,6 @@ namespace UniffutAdmin.Controllers.Multimedia
                     return View("Error", error);
                 }
             }
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
             var album = db.album_jugadora.Where<album_jugadora>(r => r.idJugadora.Equals(id));
 
             return View(album.ToList());
@@ -311,7 +308,6 @@ namespace UniffutAdmin.Controllers.Multimedia
             {
                 album.multimedia.Add(m);
                 db.SaveChanges();
-
                 return RedirectToAction("Index", new RouteValueDictionary(new { controller = "AlbumJugadora", action = "Index", id = jugadora.idJugadora }));
             }
 
@@ -321,9 +317,6 @@ namespace UniffutAdmin.Controllers.Multimedia
 
         public ActionResult verMultimedia(int id)
         {
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora); 
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
                        
             return RedirectToAction("Index", new RouteValueDictionary(new { controller = "MultimediaJugadora", action = "Index", id = id }));
 

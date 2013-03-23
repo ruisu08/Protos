@@ -14,12 +14,12 @@
                 </form>
             </div>
             <div id="logOut" class="opcionLogOut">
-                <a href="#">Cerrar sesión</a>
+                <%:Html.ActionLink("Cerrar sesión","LogOut","Login") %>
             </div>
         </div>
         <div id="contenidoHeader">
             <div id="contenedorContenidoTitulo">
-                <h1 id="contenidoTitulo">Patrocinadores:</h1>
+                <h1 id="contenidoTitulo">Roles:</h1>
                 <h4 id="contenidoDescripcion">Administración de base de datos de roles de la Uniffut</h4>
             </div>
             <div id="contenedorCrear">

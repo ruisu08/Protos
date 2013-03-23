@@ -9,7 +9,7 @@ namespace UniffutAdmin.Controllers.Informativos
 {
     public class PatrocinadorController : Controller
     {
-        private static uniffutData db = new uniffutData();
+        private uniffutData db = new uniffutData();
         //
         // GET: /Patrocinador/
 

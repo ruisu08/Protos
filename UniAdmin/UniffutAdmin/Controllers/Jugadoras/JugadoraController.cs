@@ -11,7 +11,7 @@ namespace UniffutAdmin.Controllers
 {
     public class JugadoraController : Controller
     {
-        private static uniffutData db = new uniffutData();
+        private uniffutData db = new uniffutData();
         //
         // GET: /Jugadora/
 
@@ -329,12 +329,7 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-                db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
-                db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora);
-                db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
-                db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
-                db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
-                db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
+
 
                 Jugadora = db.jugadora.FirstOrDefault(p => p.idJugadora.Equals(id) && p.estado == true);
                 if (Jugadora != null)

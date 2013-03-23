@@ -10,7 +10,7 @@ namespace UniffutAdmin.Controllers.Divisiones
 {
     public class DivisionController : Controller
     {
-        private static uniffutData db = new uniffutData();
+        private uniffutData db = new uniffutData();
         //
         // GET: /Division/
 

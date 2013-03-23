@@ -11,7 +11,7 @@ namespace UniffutAdmin.Controllers
 {
     public class CampeonatoController : Controller
     {
-        private static uniffutData db = new uniffutData();
+        private uniffutData db = new uniffutData();
         //
         // GET: /Campeonato/
 
@@ -394,11 +394,6 @@ namespace UniffutAdmin.Controllers
         }
 
         public ActionResult agregarEquipo(int id) {
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_posiciones);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_equipo);
 
             var Campeonato = db.campeonato.FirstOrDefault(cam => cam.idCampeonato.Equals(id));
             if (Campeonato.division.equipo.Count <= 0) { 
@@ -431,11 +426,6 @@ namespace UniffutAdmin.Controllers
             var equipo = db.equipo.FirstOrDefault(e => e.idEquipo.Equals(viewModel.EquipoEspecifico.idEquipo));
             campeonato.equipo.Add(equipo);
             equipo.campeonato.Add(campeonato);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_posiciones);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_equipo);
             db.SaveChanges();
             var tabla = db.tabla_posiciones.FirstOrDefault(t => t.idCampeonato.Equals(campeonato.idCampeonato));
             var tablaEquipo = new tabla_equipo();
@@ -448,11 +438,7 @@ namespace UniffutAdmin.Controllers
 
 
         public ActionResult eliminarEquipo(int id) {
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_posiciones);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_equipo);
+
 
             var Campeonato = db.campeonato.FirstOrDefault(cam => cam.idCampeonato.Equals(id));
            
@@ -471,11 +457,7 @@ namespace UniffutAdmin.Controllers
             var equipo = db.equipo.First(e=>e.idEquipo.Equals(viewModel.EquipoEspecifico.idEquipo));
             campeonato.equipo.Remove(equipo);
             equipo.campeonato.Remove(campeonato);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_posiciones);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_equipo);
+
             //db.SaveChanges();
             var tabla = db.tabla_posiciones.First(t => t.idCampeonato.Equals(campeonato.idCampeonato));
             var tablaEquipo = tabla.tabla_equipo.First(te => te.idEquipo.Equals(equipo.idEquipo) && te.idTabla.Equals(tabla.idTabla));

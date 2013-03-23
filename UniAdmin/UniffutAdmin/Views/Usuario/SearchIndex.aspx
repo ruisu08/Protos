@@ -6,62 +6,56 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<div id="headerContenido">
-    <div id="tituloContenido">
-    <h1>Usuarios</h1>
-    <h6 id="descripcionController">Aquí puedes ver los usuarios existentes, además de crear, editar o eliminar los existentes</h6>
-    </div>
-
-   
-</div>
-
-    <div>
-    <h2>Lista de Usuarios:</h2>
-    <h3 id="crearLink"><%:Html.ActionLink("Crear nuevo Usuario", "Create") %></h3>
-    </div>
-
-     <div id="busqueda">
-        <form id="validateForm" action= '<%:Url.Action("Search","Usuario")%>' method="post">
-            <p>Buscar por identificación</p>
-            <input type="text" name="ID" class="infofield"/>
-            <p>Buscar por apellido</p>
-            <input type="text" name="Apellido" class="infofield"/>
-            <p>Buscar por rol</p>
-            <input type="text" name="Rol" class="infofield"/>
-            <input type="submit" value="Buscar" class="opcionCrud"/>
-        </form>
-    </div>
-
-    <div id="indexWrapper">
-
-    <% foreach (var item in Model) { %>
-            <div class="itemWrapper">
-                <div class="indexData">
-                    <h3>Nombre:</h3>
-                    <h4><%:item.nombre %></h4>
-                </div>
-                <div class="indexData">
-                    <h3>Apellido:</h3>
-                    <h4><%:item.apellido %></h4>
-                </div>
-                <div class="indexData">
-                    <h3>Identificación:</h3>
-                    <h4><%:item.identificacion %></h4>
-                </div>
-                <div id="opcionWrapper">
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Editar", "Edit", new { id=item.idUsuario}) %>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Detalles", "Details", new { id=item.idUsuario })%>
-                    </div>
-                    <div class="opcionCrud">
-                    <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idUsuario })%>
-                    </div>
-                </div>
+ <div id="topBar">
+            <div id="searchBar"> 
+                <form id="searchForm" action= '<%:Url.Action("Search","Usuario")%>' method="post">
+                        <input type="submit"  value="Buscar" id="searchButton"/>
+                        <input type="text" name="Rol" class="searchText" id="searchBoxOne" value="Buscar por rol"/>
+                        <input type="text" name="Apellido" class="searchText" id="searchBoxTwo" value="Buscar por apellido"/>
+                </form>
             </div>
-    <% } %>
+            <div id="logOut" class="opcionLogOut">
+                <%:Html.ActionLink("Cerrar sesión","LogOut","Login") %>
+            </div>
+        </div>
+        <div id="contenidoHeader">
+            <div id="contenedorContenidoTitulo">
+                <h1 id="contenidoTitulo">Usuarios:</h1>
+                <h4 id="contenidoDescripcion">Administración de base de datos de usuarios de la Uniffut</h4>
+            </div>
+            <div id="contenedorCrear">
+                <%:Html.ActionLink("Crear nuevo usuario", "Create") %>
+            </div>
+        </div>
+        <div id="contenidoEspecifico">
+        <% foreach (var item in Model) { %>
+                <div class="itemWrapper">
+                    <div class="info">
+                        <div class="itemInfo" >
+                            <div class="infoTitle"><p>Nombre</p></div>
+                            <div class="infoText"><p><%:item.nombre + " "+item.apellido%></p></div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div class="itemInfo" >
+                            <div class="infoTitle"><p>Rol</p></div>
+                            <div class="infoText"><p><%:item.rol.nombre%></p></div>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Editar", "Edit", new { id=item.idUsuario}) %>
+                        </div>
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Detalles", "Details", new { id=item.idUsuario})%>
+                        </div>
+                        <div class="itemOption">
+                           <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idUsuario })%>
+                        </div>
+                    </div>
+                </div>
+           <% } %>
+            </div>
 
-    </div>
 
 </asp:Content>
