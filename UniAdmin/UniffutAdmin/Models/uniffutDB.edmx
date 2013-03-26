@@ -326,6 +326,7 @@
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="autor" Type="int" Nullable="false" />
           <Property Name="isLYG" Type="bool" />
+          <Property Name="isPDD" Type="bool" />
         </EntityType>
         <EntityType Name="partido">
           <Key>
@@ -1037,6 +1038,7 @@
           <Property Type="Int32" Name="autor" Nullable="false" />
           <NavigationProperty Name="usuario" Relationship="uniffut.fk_Pagina_Informativa_Usuario1" FromRole="pagina_informativa" ToRole="usuario" />
           <Property Type="Boolean" Name="isLYG" />
+          <Property Type="Boolean" Name="isPDD" />
         </EntityType>
         <EntityType Name="patrocinador">
           <Key>
@@ -1550,6 +1552,7 @@
           <EntitySetMapping Name="pagina_informativa">
             <EntityTypeMapping TypeName="uniffut.pagina_informativa">
               <MappingFragment StoreEntitySet="pagina informativa">
+                <ScalarProperty Name="isPDD" ColumnName="isPDD" />
                 <ScalarProperty Name="isLYG" ColumnName="isLYG" />
                 <ScalarProperty Name="autor" ColumnName="autor" />
                 <ScalarProperty Name="estado" ColumnName="estado" />

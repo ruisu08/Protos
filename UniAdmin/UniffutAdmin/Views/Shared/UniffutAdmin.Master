@@ -53,9 +53,17 @@
                     <h5><%: Html.ActionLink("Noticias","Index","Noticia")%></h5>
                     <h5><%: Html.ActionLink("Páginas informativas","Index","PaginaInformativa")%></h5>
                 </div>
+
+                <div class="opcionMenu"><h4>Publicidad</h4></div>
+                <div class="contenidoOpcion">
+                    <h5><%:Html.ActionLink("Administrar patrocinadores","Index","Patrocinador")%></h5>
+                    <h5><%: Html.ActionLink("Administrar anuncios","Index","Anuncio")%></h5>
+                </div>
                     
-                <div class="opcionMenu">
-                    <h4><%:Html.ActionLink("Administrar patrocinadores","Index","Patrocinador")%></h4>
+                <div class="opcionMenu"><h4>Programas de desarrollo</h4></div>
+                <div class="contenidoOpcion">
+                    <h5><%:Html.ActionLink("Administrar páginas live your goals","Index","LiveYourGoals")%></h5>
+                    <h5><%: Html.ActionLink("Administrar páginas de programas de desarrollo", "Index", "ProgramasDesarrollo")%></h5>
                 </div>
                 <div class="opcionMenu"><h4>Administración de usuarios</h4></div>
                 <div class="contenidoOpcion">

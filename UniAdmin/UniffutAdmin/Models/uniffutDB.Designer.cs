@@ -4182,6 +4182,30 @@ namespace UniffutAdmin.Models
         private Nullable<global::System.Boolean> _isLYG;
         partial void OnisLYGChanging(Nullable<global::System.Boolean> value);
         partial void OnisLYGChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> isPDD
+        {
+            get
+            {
+                return _isPDD;
+            }
+            set
+            {
+                OnisPDDChanging(value);
+                ReportPropertyChanging("isPDD");
+                _isPDD = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("isPDD");
+                OnisPDDChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _isPDD;
+        partial void OnisPDDChanging(Nullable<global::System.Boolean> value);
+        partial void OnisPDDChanged();
 
         #endregion
 
