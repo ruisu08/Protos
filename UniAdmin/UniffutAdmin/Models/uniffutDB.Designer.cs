@@ -4256,7 +4256,8 @@ namespace UniffutAdmin.Models
         /// <param name="golesEquipoDos">Initial value of the golesEquipoDos property.</param>
         /// <param name="idCampeonato">Initial value of the idCampeonato property.</param>
         /// <param name="estado">Initial value of the estado property.</param>
-        public static partido Createpartido(global::System.Int32 idpartido, global::System.DateTime fecha, global::System.TimeSpan hora, global::System.Int32 equipoUno, global::System.Int32 golesEquipoUno, global::System.Int32 equipoDos, global::System.Int32 golesEquipoDos, global::System.Int32 idCampeonato, global::System.Boolean estado)
+        /// <param name="estadio">Initial value of the estadio property.</param>
+        public static partido Createpartido(global::System.Int32 idpartido, global::System.DateTime fecha, global::System.TimeSpan hora, global::System.Int32 equipoUno, global::System.Int32 golesEquipoUno, global::System.Int32 equipoDos, global::System.Int32 golesEquipoDos, global::System.Int32 idCampeonato, global::System.Boolean estado, global::System.String estadio)
         {
             partido partido = new partido();
             partido.idpartido = idpartido;
@@ -4268,6 +4269,7 @@ namespace UniffutAdmin.Models
             partido.golesEquipoDos = golesEquipoDos;
             partido.idCampeonato = idCampeonato;
             partido.estado = estado;
+            partido.estadio = estadio;
             return partido;
         }
 
@@ -4492,6 +4494,30 @@ namespace UniffutAdmin.Models
         private global::System.Boolean _estado;
         partial void OnestadoChanging(global::System.Boolean value);
         partial void OnestadoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String estadio
+        {
+            get
+            {
+                return _estadio;
+            }
+            set
+            {
+                OnestadioChanging(value);
+                ReportPropertyChanging("estadio");
+                _estadio = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("estadio");
+                OnestadioChanged();
+            }
+        }
+        private global::System.String _estadio;
+        partial void OnestadioChanging(global::System.String value);
+        partial void OnestadioChanged();
 
         #endregion
     

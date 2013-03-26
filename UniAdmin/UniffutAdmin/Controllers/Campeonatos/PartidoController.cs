@@ -17,7 +17,35 @@ namespace UniffutAdmin.Controllers.Campeonatos
 
         public ActionResult Index(int id)
         {
-             
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("ErrorSesion", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
+                {
+                    if (m.idModulo == 2 && usuario.rol.estado == true)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
             var partidos = db.partido.Where<partido>(r => r.estado == true && r.idCampeonato.Equals(id));
             return View(partidos.ToList());
         }
@@ -185,13 +213,23 @@ namespace UniffutAdmin.Controllers.Campeonatos
         // POST: /Partido/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, partido Partido)
         {
             try
             {
                 // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
+                var par = db.partido.FirstOrDefault(t => t.idpartido.Equals(id));
+                par.equipoUno = Partido.equipoUno;
+                par.equipo = Partido.equipo;
+                par.equipoDos = Partido.equipoDos;
+                par.equipo1 = Partido.equipo1;
+                par.fecha = Partido.fecha;
+                par.golesEquipoUno = Partido.golesEquipoUno;
+                par.golesEquipoDos = Partido.golesEquipoDos;
+                par.hora = Partido.hora;
+                par.estadio = Partido.estadio;
+                db.SaveChanges();
+                return RedirectToAction("Index", new RouteValueDictionary(new { controller = "TablaPosiciones", action = "Index", id = par.idCampeonato}));
             }
             catch
             {
@@ -204,7 +242,46 @@ namespace UniffutAdmin.Controllers.Campeonatos
  
         public ActionResult Delete(int id)
         {
-            return View();
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("ErrorSesion", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
+                {
+                    if (m.idModulo == 2 && usuario.rol.estado == true)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
+            var partido= db.partido.First(p => p.idpartido.Equals(id));
+            if (!partido.estado)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "No existen campeonatos"
+                };
+                return View("Error", error);
+            }
+
+            return View(partido);
         }
 
         //

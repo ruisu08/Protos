@@ -349,25 +349,10 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-                var campeonato = db.campeonato.FirstOrDefault(p => p.idCampeonato.Equals(id) && p.estado == true);
-                if (campeonato != null)
+                var partido = db.partido.FirstOrDefault(p => p.idpartido.Equals(id) && p.estado == true);
+                if (partido != null)
                 {
-
-                    for (int i = 0; i < campeonato.equipo.Count;){
-                        var l = campeonato.equipo.ToList();
-                        var e = l[i];
-                        campeonato.equipo.Remove(e);
-                        e.campeonato.Remove(campeonato);
-                    }
-                    var tabla = db.tabla_posiciones.First(t => t.idCampeonato.Equals(campeonato.idCampeonato));
-                    for (int i = 0; i < tabla.tabla_equipo.Count; )
-                    {
-                        var l = tabla.tabla_equipo.ToList();
-                        var t = l[i];
-                        tabla.tabla_equipo.Remove(t);
-                    }
-                    tabla.estado = false;
-                    campeonato.estado = false;
+                    partido.estado = false;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
