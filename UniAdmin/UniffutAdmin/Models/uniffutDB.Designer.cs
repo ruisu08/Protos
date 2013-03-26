@@ -1051,7 +1051,8 @@ namespace UniffutAdmin.Models
         /// <param name="estado">Valor inicial de la propiedad estado.</param>
         /// <param name="fuenteGrafica">Valor inicial de la propiedad fuenteGrafica.</param>
         /// <param name="isPrincipal">Valor inicial de la propiedad isPrincipal.</param>
-        public static anuncio Createanuncio(global::System.Int32 idAnuncio, global::System.DateTime fechaInicio, global::System.DateTime fechaFinal, global::System.Boolean estado, global::System.String fuenteGrafica, global::System.Boolean isPrincipal)
+        /// <param name="nombre">Valor inicial de la propiedad nombre.</param>
+        public static anuncio Createanuncio(global::System.Int32 idAnuncio, global::System.DateTime fechaInicio, global::System.DateTime fechaFinal, global::System.Boolean estado, global::System.String fuenteGrafica, global::System.Boolean isPrincipal, global::System.String nombre)
         {
             anuncio anuncio = new anuncio();
             anuncio.idAnuncio = idAnuncio;
@@ -1060,6 +1061,7 @@ namespace UniffutAdmin.Models
             anuncio.estado = estado;
             anuncio.fuenteGrafica = fuenteGrafica;
             anuncio.isPrincipal = isPrincipal;
+            anuncio.nombre = nombre;
             return anuncio;
         }
 
@@ -1213,6 +1215,30 @@ namespace UniffutAdmin.Models
         private global::System.Boolean _isPrincipal;
         partial void OnisPrincipalChanging(global::System.Boolean value);
         partial void OnisPrincipalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                OnnombreChanging(value);
+                ReportPropertyChanging("nombre");
+                _nombre = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("nombre");
+                OnnombreChanged();
+            }
+        }
+        private global::System.String _nombre;
+        partial void OnnombreChanging(global::System.String value);
+        partial void OnnombreChanged();
 
         #endregion
 

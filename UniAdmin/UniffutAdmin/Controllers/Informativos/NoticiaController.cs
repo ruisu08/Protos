@@ -123,13 +123,12 @@ namespace UniffutAdmin.Controllers
             var viewModel = new NoticiaViewModel 
             { 
                 Noticia = Noticia,
-                Usuarios = db.usuario.ToList(),
                 Tipos = db.tiponoticia.ToList()  
             };
-            if (viewModel.Usuarios.Count <= 0)
+            if (viewModel.Tipos.Count <= 0)
             {
                 ErrorModel error = new ErrorModel();
-                error.mensaje = "No existen usuarios, debe crear algun usuario para editar estar seccion";
+                error.mensaje = "No existen tipos de noticia, debe crear algun tipo de noticia para editar estar seccion";
                 return View("Error", error);
             }
             return View(viewModel);
@@ -144,7 +143,10 @@ namespace UniffutAdmin.Controllers
             try
             {
                     Noticia.fecha = DateTime.Now;
-                    viewModel.Usuarios = db.usuario.ToList();
+                    int idUser = (int)Session["userID"];
+                    
+                    Noticia.usuario = db.usuario.First(u => u.idUsuario.Equals(idUser));
+                    Noticia.autor = Noticia.usuario.idUsuario;
                     viewModel.Noticia = Noticia;
                     viewModel.Noticia.estado = true;
                     viewModel.Tipos = db.tiponoticia.ToList();
@@ -201,13 +203,12 @@ namespace UniffutAdmin.Controllers
             var VM = new NoticiaViewModel
             {
                 Noticia = noticia,
-                Usuarios = db.usuario.Where(d => d.estado == true).ToList(),
                 Tipos = db.tiponoticia.ToList()
             };
-            if (VM.Usuarios.Count <= 0)
+            if (VM.Tipos.Count <= 0)
             {
                 ErrorModel error = new ErrorModel();
-                error.mensaje = "No existen usuarios, debe crear algun usuario para editar estar seccion";
+                error.mensaje = "No existen tipos de noticia, debe crear algun tipo de noticia para editar estar seccion";
                 return View("Error", error);
             }
 
@@ -228,9 +229,10 @@ namespace UniffutAdmin.Controllers
                     VM = new NoticiaViewModel
                     {
                         Noticia = noticia,
-                        Usuarios = db.usuario.ToList()
                     };
                     VM.Noticia.titulo = Noticia.titulo;
+                    VM.Noticia.tiponoticia = Noticia.tiponoticia;
+                    VM.Noticia.TipoNoticia_idTipoNoticia = Noticia.TipoNoticia_idTipoNoticia;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }

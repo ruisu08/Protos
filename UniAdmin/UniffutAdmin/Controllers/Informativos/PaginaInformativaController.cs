@@ -89,7 +89,7 @@ namespace UniffutAdmin.Controllers.Informativos
         //
         // GET: /PaginaInformativa/Create
 
-        public ActionResult Create(pagina_informativa pagina)
+        public ActionResult Create()
         {
             if (Session["userID"] == null)
             {
@@ -120,27 +120,22 @@ namespace UniffutAdmin.Controllers.Informativos
                     return View("Error", error);
                 }
             }
-            var viewModel = new PaginaInformativaUsuarioViewModel
-            { 
-            Usuario = db.usuario.Where<usuario>(d=>d.estado == true).ToList(),
-            Pagina = pagina
-            };
-            return View(viewModel);
+            return View();
         } 
 
         //
         // POST: /PaginaInformativa/Create
 
         [HttpPost]
-        public ActionResult Create(pagina_informativa pagina, PaginaInformativaUsuarioViewModel viewModel)
+        public ActionResult Create(pagina_informativa pagina)
         {
             try
-            {
+            {   int idU = (int)Session["userID"];
                 pagina.fecha = DateTime.Now;
-                viewModel.Usuario = db.usuario.ToList();
-                viewModel.Pagina = pagina;
-                viewModel.Pagina.estado = true;
-                db.pagina_informativa.AddObject(viewModel.Pagina);
+                pagina.usuario = db.usuario.First(u => u.idUsuario.Equals(idU));
+                pagina.autor = pagina.usuario.idUsuario;
+                pagina.estado = true;
+                db.pagina_informativa.AddObject(pagina);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -188,32 +183,21 @@ namespace UniffutAdmin.Controllers.Informativos
                     return View("Error", error);
                 }
             }
-            var pagina = db.pagina_informativa.First(p => p.idPagina_Informativa.Equals(id));
-            var viewModel = new PaginaInformativaUsuarioViewModel 
-            {
-            
-                Usuario = db.usuario.Where(d=>d.estado == true).ToList(),
-                Pagina = pagina
-            };
+            var Pagina = db.pagina_informativa.First(p => p.idPagina_Informativa.Equals(id));
 
-            return View(viewModel);
+            return View(Pagina);
         }
 
         //
         // POST: /PaginaInformativa/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id,pagina_informativa Pagina, PaginaInformativaUsuarioViewModel viewModel)
+        public ActionResult Edit(int id,pagina_informativa Pagina)
         {
             try
             {
                 var pagina = db.pagina_informativa.First(p => p.idPagina_Informativa.Equals(id) && p.estado == true);
-                viewModel = new PaginaInformativaUsuarioViewModel
-                {
-                    Pagina = pagina,
-                    Usuario = db.usuario.Where(d=>d.estado == true).ToList()
-                };
-                viewModel.Pagina.titulo = Pagina.titulo;
+                pagina.titulo = Pagina.titulo;
                 db.SaveChanges();
 
                 return RedirectToAction("Index");

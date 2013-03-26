@@ -1,16 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.pagina_informativa>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Nueva página informativa
+	Nueva página Live your Goals
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div id="headerContenido">
-        <h1>Crear una nueva pagina informativa</h1>
+        <h1>Crear una nueva pagina Live your Goals</h1>
     </div>
 
-    <form id="validateForm" action= '<%:Url.Action("Create","PaginaInformativa")%>' method="post">
+    <form id="validateForm" action= '<%:Url.Action("Create","LiveYourGoals")%>' method="post">
 
         <div id="createWrapper">
             
@@ -34,4 +34,3 @@
     </div>
 
 </asp:Content>
-

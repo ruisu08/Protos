@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div id="detallesTitulo">
-        <h1>Detalles de la página informativa:</h1>
+        <h1>Detalles de la página Live your Goals:</h1>
         <h2><%:" "+Model.titulo%></h2>
     </div>
     <div id="detallesWrapper">
@@ -21,4 +21,3 @@
      </div>
 
 </asp:Content>
-

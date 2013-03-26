@@ -1,37 +1,36 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.pagina_informativa>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Nueva página informativa
+	Editar página Live your Goals
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div id="headerContenido">
-        <h1>Crear una nueva pagina informativa</h1>
+        <h1>Editar página Live your Goals</h1>
     </div>
 
-    <form id="validateForm" action= '<%:Url.Action("Create","PaginaInformativa")%>' method="post">
-
-        <div id="createWrapper">
+    <form id="validateForm" action= '<%:Url.Action("Edit","LiveYourGoals")%>' method="post">
+        <div id="createWrapper">            
             
             <div class="editor-label">
-                <h2>Titulo</h2>
+               <h3>Titulo</h3>
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.titulo, new { @required = "required", @maxlength = "45", @class = "infofield" })%>
             </div>
+            
+            
         </div>
             
             <div>
-                <input type="submit" value="Crear nueva pagina informativa" class="opcionCrud" />
+                <input type="submit" value="Guardar" class="opcionCrud" />
             </div>
-        
 
     </form>
 
-    <div id="Div1">
+    <div id="volverIndex">
         <h3><%: Html.ActionLink("Volver a la Lista", "Index") %></h3>
     </div>
 
 </asp:Content>
-

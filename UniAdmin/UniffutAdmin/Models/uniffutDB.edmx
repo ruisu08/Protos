@@ -189,6 +189,7 @@
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="fuenteGrafica" Type="varchar" Nullable="false" />
           <Property Name="isPrincipal" Type="bool" Nullable="false" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="bitacora">
           <Key>
@@ -1317,6 +1318,7 @@
           <Property Type="Boolean" Name="estado" Nullable="false" />
           <Property Type="String" Name="fuenteGrafica" Nullable="false" />
           <Property Type="Boolean" Name="isPrincipal" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" />
         </EntityType>
         <EntityType Name="goleadoras">
           <Key>
@@ -1663,6 +1665,7 @@
           <EntitySetMapping Name="anuncio">
             <EntityTypeMapping TypeName="uniffut.anuncio">
               <MappingFragment StoreEntitySet="anuncio">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="isPrincipal" ColumnName="isPrincipal" />
                 <ScalarProperty Name="fuenteGrafica" ColumnName="fuenteGrafica" />
                 <ScalarProperty Name="estado" ColumnName="estado" />

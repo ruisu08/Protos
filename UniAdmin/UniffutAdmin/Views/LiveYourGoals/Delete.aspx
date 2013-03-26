@@ -1,16 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.pagina_informativa>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Eliminar página informativa
+	Eliminar página Live your goals
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div id="headerContenido">
-        <h1>Eliminar Pagina Informativa</h1>
+        <h1>Eliminar página Live your goals</h1>
     </div>
 
-    <form id="validateForm" action= '<%:Url.Action("Delete","PaginaInformativa")%>' method="post">
+    <form id="validateForm" action= '<%:Url.Action("Delete","LiveYourGoals")%>' method="post">
         
         <div id="detallesWrapper">
 
@@ -29,4 +29,3 @@
     </form>
 
 </asp:Content>
-
