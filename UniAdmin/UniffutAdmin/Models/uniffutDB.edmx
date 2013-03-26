@@ -341,6 +341,7 @@
           <Property Name="equipoDos" Type="int" Nullable="false" />
           <Property Name="golesEquipoDos" Type="int" Nullable="false" />
           <Property Name="idCampeonato" Type="int" Nullable="false" />
+          <Property Name="estado" Type="bool" Nullable="false" />
         </EntityType>
         <EntityType Name="patrocinador">
           <Key>
@@ -1346,6 +1347,7 @@
           <NavigationProperty Name="campeonato" Relationship="uniffut.partidoCampeonato" FromRole="partido" ToRole="campeonato" />
           <NavigationProperty Name="equipo" Relationship="uniffut.partidoEquipoDos" FromRole="partido" ToRole="equipo" />
           <NavigationProperty Name="equipo1" Relationship="uniffut.partidoEquipoUno" FromRole="partido" ToRole="equipo" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
         </EntityType>
         <Association Name="goleadorasCampeonato">
           <End Type="uniffut.campeonato" Role="campeonato" Multiplicity="1" />
@@ -1687,6 +1689,7 @@
           <EntitySetMapping Name="partido">
             <EntityTypeMapping TypeName="uniffut.partido">
               <MappingFragment StoreEntitySet="partido">
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="idCampeonato" ColumnName="idCampeonato" />
                 <ScalarProperty Name="golesEquipoDos" ColumnName="golesEquipoDos" />
                 <ScalarProperty Name="equipoDos" ColumnName="equipoDos" />

@@ -46,7 +46,6 @@ namespace UniffutAdmin.Controllers
                     return View("Error", error);
                 }
             }
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
             var campeonatos = db.campeonato.Where<campeonato>(r => r.estado == true);
             return View(campeonatos.ToList());
         }

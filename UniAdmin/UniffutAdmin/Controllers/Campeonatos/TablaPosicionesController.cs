@@ -22,6 +22,35 @@ namespace UniffutAdmin.Controllers.Campeonatos
 
         public ActionResult Details(int id)
         {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("ErrorSesion", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
+                {
+                    if (m.idModulo == 2 && usuario.rol.estado == true)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
             var tabla = db.tabla_posiciones.First(t=>t.idCampeonato.Equals(id) && t.estado == true);
             return View(tabla);
         }
@@ -65,11 +94,6 @@ namespace UniffutAdmin.Controllers.Campeonatos
                     return View("Error", error);
                 }
             }
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_posiciones);
-            db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.tabla_equipo);
 
             var tablaE = db.tabla_equipo.FirstOrDefault(t => t.idEquipo.Equals(idEquipo) && t.idTabla.Equals(idTabla));
             return View(tablaE);
