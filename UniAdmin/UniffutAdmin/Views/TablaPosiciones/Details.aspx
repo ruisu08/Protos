@@ -21,7 +21,8 @@
             </div>
             <div id="contenedorCrear">
                 <%:Html.ActionLink("Agregar Equipo", "agregarEquipo", new { id = Model.campeonato.idCampeonato })%><br /><br />
-                <%:Html.ActionLink("Eliminar Equipo", "eliminarEquipo", new { id=Model.campeonato.idCampeonato})%>
+                <%:Html.ActionLink("Eliminar Equipo", "eliminarEquipo", new { id=Model.campeonato.idCampeonato})%><br /><br />
+                <%: Html.ActionLink("Goleadoras", "Delete", new { id = Model.campeonato.idCampeonato })%>
             </div>
         </div>
 

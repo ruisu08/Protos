@@ -45,16 +45,10 @@
                             <%: Html.ActionLink("Editar", "Edit", new { id=item.idCampeonato}) %>
                         </div>
                         <div class="itemOption">
-                            <%: Html.ActionLink("Detalles", "Details", new { id=item.idCampeonato })%>
-                        </div>
-                        <div class="itemOption">
-                            <%: Html.ActionLink("Posiciones", "verTabla", new { id = item.idCampeonato })%>
+                            <%: Html.ActionLink("Datos de Campeonato", "verTabla", new { id = item.idCampeonato })%>
                         </div>
                         <div class="itemOption">
                               <%: Html.ActionLink("Eliminar", "Delete", new { id = item.idCampeonato })%>
-                        </div>
-                        <div class="itemOption">
-                              <%: Html.ActionLink("Goleadoras", "Delete", new { id = item.idCampeonato })%>
                         </div>
                         <div class="itemOption">
                               <%: Html.ActionLink("Partidos", "verPartidos", new { id = item.idCampeonato })%>
