@@ -38,6 +38,11 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("uniffut", "album_multimedia_jugadora", "album_jugadora", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.album_jugadora), "multimedia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.multimedia))]
 [assembly: EdmRelationshipAttribute("uniffut", "rol_tiene_modulo", "modulo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.modulo), "rol", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.rol))]
 [assembly: EdmRelationshipAttribute("uniffut", "campeonato_equipo", "campeonato", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.campeonato), "equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.equipo))]
+[assembly: EdmRelationshipAttribute("uniffut", "goleadorasCampeonato", "campeonato", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.campeonato), "goleadoras", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.goleadoras), true)]
+[assembly: EdmRelationshipAttribute("uniffut", "partidoCampeonato", "campeonato", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.campeonato), "partido", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.partido), true)]
+[assembly: EdmRelationshipAttribute("uniffut", "partidoEquipoDos", "equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.equipo), "partido", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.partido), true)]
+[assembly: EdmRelationshipAttribute("uniffut", "partidoEquipoUno", "equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.equipo), "partido", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.partido), true)]
+[assembly: EdmRelationshipAttribute("uniffut", "goleadorasJugadora", "jugadora", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(UniffutAdmin.Models.jugadora), "goleadoras", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(UniffutAdmin.Models.goleadoras), true)]
 
 #endregion
 
@@ -392,6 +397,54 @@ namespace UniffutAdmin.Models
             }
         }
         private ObjectSet<usuario> _usuario;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<anuncio> anuncio
+        {
+            get
+            {
+                if ((_anuncio == null))
+                {
+                    _anuncio = base.CreateObjectSet<anuncio>("anuncio");
+                }
+                return _anuncio;
+            }
+        }
+        private ObjectSet<anuncio> _anuncio;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<goleadoras> goleadoras
+        {
+            get
+            {
+                if ((_goleadoras == null))
+                {
+                    _goleadoras = base.CreateObjectSet<goleadoras>("goleadoras");
+                }
+                return _goleadoras;
+            }
+        }
+        private ObjectSet<goleadoras> _goleadoras;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<partido> partido
+        {
+            get
+            {
+                if ((_partido == null))
+                {
+                    _partido = base.CreateObjectSet<partido>("partido");
+                }
+                return _partido;
+            }
+        }
+        private ObjectSet<partido> _partido;
 
         #endregion
 
@@ -547,6 +600,30 @@ namespace UniffutAdmin.Models
         public void AddTousuario(usuario usuario)
         {
             base.AddObject("usuario", usuario);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet anuncio. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToanuncio(anuncio anuncio)
+        {
+            base.AddObject("anuncio", anuncio);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet goleadoras. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddTogoleadoras(goleadoras goleadoras)
+        {
+            base.AddObject("goleadoras", goleadoras);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet partido. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddTopartido(partido partido)
+        {
+            base.AddObject("partido", partido);
         }
 
         #endregion
@@ -953,6 +1030,193 @@ namespace UniffutAdmin.Models
 
         #endregion
 
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="uniffut", Name="anuncio")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class anuncio : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto anuncio.
+        /// </summary>
+        /// <param name="idAnuncio">Valor inicial de la propiedad idAnuncio.</param>
+        /// <param name="fechaInicio">Valor inicial de la propiedad fechaInicio.</param>
+        /// <param name="fechaFinal">Valor inicial de la propiedad fechaFinal.</param>
+        /// <param name="estado">Valor inicial de la propiedad estado.</param>
+        /// <param name="fuenteGrafica">Valor inicial de la propiedad fuenteGrafica.</param>
+        /// <param name="isPrincipal">Valor inicial de la propiedad isPrincipal.</param>
+        public static anuncio Createanuncio(global::System.Int32 idAnuncio, global::System.DateTime fechaInicio, global::System.DateTime fechaFinal, global::System.Boolean estado, global::System.String fuenteGrafica, global::System.Boolean isPrincipal)
+        {
+            anuncio anuncio = new anuncio();
+            anuncio.idAnuncio = idAnuncio;
+            anuncio.fechaInicio = fechaInicio;
+            anuncio.fechaFinal = fechaFinal;
+            anuncio.estado = estado;
+            anuncio.fuenteGrafica = fuenteGrafica;
+            anuncio.isPrincipal = isPrincipal;
+            return anuncio;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idAnuncio
+        {
+            get
+            {
+                return _idAnuncio;
+            }
+            set
+            {
+                if (_idAnuncio != value)
+                {
+                    OnidAnuncioChanging(value);
+                    ReportPropertyChanging("idAnuncio");
+                    _idAnuncio = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idAnuncio");
+                    OnidAnuncioChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idAnuncio;
+        partial void OnidAnuncioChanging(global::System.Int32 value);
+        partial void OnidAnuncioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fechaInicio
+        {
+            get
+            {
+                return _fechaInicio;
+            }
+            set
+            {
+                OnfechaInicioChanging(value);
+                ReportPropertyChanging("fechaInicio");
+                _fechaInicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fechaInicio");
+                OnfechaInicioChanged();
+            }
+        }
+        private global::System.DateTime _fechaInicio;
+        partial void OnfechaInicioChanging(global::System.DateTime value);
+        partial void OnfechaInicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fechaFinal
+        {
+            get
+            {
+                return _fechaFinal;
+            }
+            set
+            {
+                OnfechaFinalChanging(value);
+                ReportPropertyChanging("fechaFinal");
+                _fechaFinal = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fechaFinal");
+                OnfechaFinalChanged();
+            }
+        }
+        private global::System.DateTime _fechaFinal;
+        partial void OnfechaFinalChanging(global::System.DateTime value);
+        partial void OnfechaFinalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean estado
+        {
+            get
+            {
+                return _estado;
+            }
+            set
+            {
+                OnestadoChanging(value);
+                ReportPropertyChanging("estado");
+                _estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("estado");
+                OnestadoChanged();
+            }
+        }
+        private global::System.Boolean _estado;
+        partial void OnestadoChanging(global::System.Boolean value);
+        partial void OnestadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String fuenteGrafica
+        {
+            get
+            {
+                return _fuenteGrafica;
+            }
+            set
+            {
+                OnfuenteGraficaChanging(value);
+                ReportPropertyChanging("fuenteGrafica");
+                _fuenteGrafica = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("fuenteGrafica");
+                OnfuenteGraficaChanged();
+            }
+        }
+        private global::System.String _fuenteGrafica;
+        partial void OnfuenteGraficaChanging(global::System.String value);
+        partial void OnfuenteGraficaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean isPrincipal
+        {
+            get
+            {
+                return _isPrincipal;
+            }
+            set
+            {
+                OnisPrincipalChanging(value);
+                ReportPropertyChanging("isPrincipal");
+                _isPrincipal = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("isPrincipal");
+                OnisPrincipalChanged();
+            }
+        }
+        private global::System.Boolean _isPrincipal;
+        partial void OnisPrincipalChanging(global::System.Boolean value);
+        partial void OnisPrincipalChanged();
+
+        #endregion
+
+    
     }
     
     /// <summary>
@@ -1622,6 +1886,50 @@ namespace UniffutAdmin.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<equipo>("uniffut.campeonato_equipo", "equipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "goleadorasCampeonato", "goleadoras")]
+        public EntityCollection<goleadoras> goleadoras
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<goleadoras>("uniffut.goleadorasCampeonato", "goleadoras");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<goleadoras>("uniffut.goleadorasCampeonato", "goleadoras", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "partidoCampeonato", "partido")]
+        public EntityCollection<partido> partido
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<partido>("uniffut.partidoCampeonato", "partido");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<partido>("uniffut.partidoCampeonato", "partido", value);
                 }
             }
         }
@@ -2500,6 +2808,242 @@ namespace UniffutAdmin.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "partidoEquipoDos", "partido")]
+        public EntityCollection<partido> partido
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<partido>("uniffut.partidoEquipoDos", "partido");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<partido>("uniffut.partidoEquipoDos", "partido", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "partidoEquipoUno", "partido")]
+        public EntityCollection<partido> partido1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<partido>("uniffut.partidoEquipoUno", "partido");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<partido>("uniffut.partidoEquipoUno", "partido", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="uniffut", Name="goleadoras")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class goleadoras : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto goleadoras.
+        /// </summary>
+        /// <param name="idJugadora">Valor inicial de la propiedad idJugadora.</param>
+        /// <param name="idCampeonato">Valor inicial de la propiedad idCampeonato.</param>
+        /// <param name="goles">Valor inicial de la propiedad goles.</param>
+        public static goleadoras Creategoleadoras(global::System.Int32 idJugadora, global::System.Int32 idCampeonato, global::System.Int32 goles)
+        {
+            goleadoras goleadoras = new goleadoras();
+            goleadoras.idJugadora = idJugadora;
+            goleadoras.idCampeonato = idCampeonato;
+            goleadoras.goles = goles;
+            return goleadoras;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idJugadora
+        {
+            get
+            {
+                return _idJugadora;
+            }
+            set
+            {
+                if (_idJugadora != value)
+                {
+                    OnidJugadoraChanging(value);
+                    ReportPropertyChanging("idJugadora");
+                    _idJugadora = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idJugadora");
+                    OnidJugadoraChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idJugadora;
+        partial void OnidJugadoraChanging(global::System.Int32 value);
+        partial void OnidJugadoraChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idCampeonato
+        {
+            get
+            {
+                return _idCampeonato;
+            }
+            set
+            {
+                if (_idCampeonato != value)
+                {
+                    OnidCampeonatoChanging(value);
+                    ReportPropertyChanging("idCampeonato");
+                    _idCampeonato = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idCampeonato");
+                    OnidCampeonatoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idCampeonato;
+        partial void OnidCampeonatoChanging(global::System.Int32 value);
+        partial void OnidCampeonatoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 goles
+        {
+            get
+            {
+                return _goles;
+            }
+            set
+            {
+                OngolesChanging(value);
+                ReportPropertyChanging("goles");
+                _goles = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("goles");
+                OngolesChanged();
+            }
+        }
+        private global::System.Int32 _goles;
+        partial void OngolesChanging(global::System.Int32 value);
+        partial void OngolesChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "goleadorasCampeonato", "campeonato")]
+        public campeonato campeonato
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<campeonato>("uniffut.goleadorasCampeonato", "campeonato").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<campeonato>("uniffut.goleadorasCampeonato", "campeonato").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<campeonato> campeonatoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<campeonato>("uniffut.goleadorasCampeonato", "campeonato");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<campeonato>("uniffut.goleadorasCampeonato", "campeonato", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "goleadorasJugadora", "jugadora")]
+        public jugadora jugadora
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<jugadora>("uniffut.goleadorasJugadora", "jugadora").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<jugadora>("uniffut.goleadorasJugadora", "jugadora").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<jugadora> jugadoraReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<jugadora>("uniffut.goleadorasJugadora", "jugadora");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<jugadora>("uniffut.goleadorasJugadora", "jugadora", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -2824,6 +3368,28 @@ namespace UniffutAdmin.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<equipo>("uniffut.fk_Jugadora_Equipo1", "equipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "goleadorasJugadora", "goleadoras")]
+        public EntityCollection<goleadoras> goleadoras
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<goleadoras>("uniffut.goleadorasJugadora", "goleadoras");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<goleadoras>("uniffut.goleadorasJugadora", "goleadoras", value);
                 }
             }
         }
@@ -3592,6 +4158,30 @@ namespace UniffutAdmin.Models
         private global::System.Int32 _autor;
         partial void OnautorChanging(global::System.Int32 value);
         partial void OnautorChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> isLYG
+        {
+            get
+            {
+                return _isLYG;
+            }
+            set
+            {
+                OnisLYGChanging(value);
+                ReportPropertyChanging("isLYG");
+                _isLYG = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("isLYG");
+                OnisLYGChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _isLYG;
+        partial void OnisLYGChanging(Nullable<global::System.Boolean> value);
+        partial void OnisLYGChanged();
 
         #endregion
 
@@ -3632,6 +4222,363 @@ namespace UniffutAdmin.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<usuario>("uniffut.fk_Pagina_Informativa_Usuario1", "usuario", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="uniffut", Name="partido")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class partido : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto partido.
+        /// </summary>
+        /// <param name="idpartido">Valor inicial de la propiedad idpartido.</param>
+        /// <param name="fecha">Valor inicial de la propiedad fecha.</param>
+        /// <param name="hora">Valor inicial de la propiedad hora.</param>
+        /// <param name="equipoUno">Valor inicial de la propiedad equipoUno.</param>
+        /// <param name="golesEquipoUno">Valor inicial de la propiedad golesEquipoUno.</param>
+        /// <param name="equipoDos">Valor inicial de la propiedad equipoDos.</param>
+        /// <param name="golesEquipoDos">Valor inicial de la propiedad golesEquipoDos.</param>
+        /// <param name="idCampeonato">Valor inicial de la propiedad idCampeonato.</param>
+        public static partido Createpartido(global::System.Int32 idpartido, global::System.DateTime fecha, global::System.TimeSpan hora, global::System.Int32 equipoUno, global::System.Int32 golesEquipoUno, global::System.Int32 equipoDos, global::System.Int32 golesEquipoDos, global::System.Int32 idCampeonato)
+        {
+            partido partido = new partido();
+            partido.idpartido = idpartido;
+            partido.fecha = fecha;
+            partido.hora = hora;
+            partido.equipoUno = equipoUno;
+            partido.golesEquipoUno = golesEquipoUno;
+            partido.equipoDos = equipoDos;
+            partido.golesEquipoDos = golesEquipoDos;
+            partido.idCampeonato = idCampeonato;
+            return partido;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idpartido
+        {
+            get
+            {
+                return _idpartido;
+            }
+            set
+            {
+                if (_idpartido != value)
+                {
+                    OnidpartidoChanging(value);
+                    ReportPropertyChanging("idpartido");
+                    _idpartido = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idpartido");
+                    OnidpartidoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idpartido;
+        partial void OnidpartidoChanging(global::System.Int32 value);
+        partial void OnidpartidoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fecha
+        {
+            get
+            {
+                return _fecha;
+            }
+            set
+            {
+                OnfechaChanging(value);
+                ReportPropertyChanging("fecha");
+                _fecha = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fecha");
+                OnfechaChanged();
+            }
+        }
+        private global::System.DateTime _fecha;
+        partial void OnfechaChanging(global::System.DateTime value);
+        partial void OnfechaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.TimeSpan hora
+        {
+            get
+            {
+                return _hora;
+            }
+            set
+            {
+                OnhoraChanging(value);
+                ReportPropertyChanging("hora");
+                _hora = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("hora");
+                OnhoraChanged();
+            }
+        }
+        private global::System.TimeSpan _hora;
+        partial void OnhoraChanging(global::System.TimeSpan value);
+        partial void OnhoraChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 equipoUno
+        {
+            get
+            {
+                return _equipoUno;
+            }
+            set
+            {
+                OnequipoUnoChanging(value);
+                ReportPropertyChanging("equipoUno");
+                _equipoUno = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("equipoUno");
+                OnequipoUnoChanged();
+            }
+        }
+        private global::System.Int32 _equipoUno;
+        partial void OnequipoUnoChanging(global::System.Int32 value);
+        partial void OnequipoUnoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 golesEquipoUno
+        {
+            get
+            {
+                return _golesEquipoUno;
+            }
+            set
+            {
+                OngolesEquipoUnoChanging(value);
+                ReportPropertyChanging("golesEquipoUno");
+                _golesEquipoUno = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("golesEquipoUno");
+                OngolesEquipoUnoChanged();
+            }
+        }
+        private global::System.Int32 _golesEquipoUno;
+        partial void OngolesEquipoUnoChanging(global::System.Int32 value);
+        partial void OngolesEquipoUnoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 equipoDos
+        {
+            get
+            {
+                return _equipoDos;
+            }
+            set
+            {
+                OnequipoDosChanging(value);
+                ReportPropertyChanging("equipoDos");
+                _equipoDos = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("equipoDos");
+                OnequipoDosChanged();
+            }
+        }
+        private global::System.Int32 _equipoDos;
+        partial void OnequipoDosChanging(global::System.Int32 value);
+        partial void OnequipoDosChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 golesEquipoDos
+        {
+            get
+            {
+                return _golesEquipoDos;
+            }
+            set
+            {
+                OngolesEquipoDosChanging(value);
+                ReportPropertyChanging("golesEquipoDos");
+                _golesEquipoDos = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("golesEquipoDos");
+                OngolesEquipoDosChanged();
+            }
+        }
+        private global::System.Int32 _golesEquipoDos;
+        partial void OngolesEquipoDosChanging(global::System.Int32 value);
+        partial void OngolesEquipoDosChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idCampeonato
+        {
+            get
+            {
+                return _idCampeonato;
+            }
+            set
+            {
+                OnidCampeonatoChanging(value);
+                ReportPropertyChanging("idCampeonato");
+                _idCampeonato = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idCampeonato");
+                OnidCampeonatoChanged();
+            }
+        }
+        private global::System.Int32 _idCampeonato;
+        partial void OnidCampeonatoChanging(global::System.Int32 value);
+        partial void OnidCampeonatoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "partidoCampeonato", "campeonato")]
+        public campeonato campeonato
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<campeonato>("uniffut.partidoCampeonato", "campeonato").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<campeonato>("uniffut.partidoCampeonato", "campeonato").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<campeonato> campeonatoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<campeonato>("uniffut.partidoCampeonato", "campeonato");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<campeonato>("uniffut.partidoCampeonato", "campeonato", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "partidoEquipoDos", "equipo")]
+        public equipo equipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<equipo>("uniffut.partidoEquipoDos", "equipo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<equipo>("uniffut.partidoEquipoDos", "equipo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<equipo> equipoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<equipo>("uniffut.partidoEquipoDos", "equipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<equipo>("uniffut.partidoEquipoDos", "equipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("uniffut", "partidoEquipoUno", "equipo")]
+        public equipo equipo1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<equipo>("uniffut.partidoEquipoUno", "equipo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<equipo>("uniffut.partidoEquipoUno", "equipo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<equipo> equipo1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<equipo>("uniffut.partidoEquipoUno", "equipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<equipo>("uniffut.partidoEquipoUno", "equipo", value);
                 }
             }
         }

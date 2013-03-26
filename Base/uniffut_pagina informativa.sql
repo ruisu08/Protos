@@ -31,6 +31,7 @@ CREATE TABLE `pagina informativa` (
   `contenido` varchar(2000) DEFAULT NULL,
   `estado` tinyint(1) NOT NULL,
   `autor` int(11) NOT NULL,
+  `isLYG` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idPagina Informativa`),
   KEY `fk_Pagina Informativa_Usuario1_idx` (`autor`),
   CONSTRAINT `fk_Pagina Informativa_Usuario1` FOREIGN KEY (`autor`) REFERENCES `usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-19  6:56:26
+-- Dump completed on 2013-03-25 22:28:24

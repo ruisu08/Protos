@@ -10,6 +10,7 @@
           <EntitySet Name="album_jugadora" EntityType="uniffut.Store.album_jugadora" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="album_multimedia_equipo" EntityType="uniffut.Store.album_multimedia_equipo" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="album_multimedia_jugadora" EntityType="uniffut.Store.album_multimedia_jugadora" store:Type="Tables" Schema="uniffut" />
+          <EntitySet Name="anuncio" EntityType="uniffut.Store.anuncio" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="bitacora" EntityType="uniffut.Store.bitacora" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="calendario" EntityType="uniffut.Store.calendario" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="campeonato" EntityType="uniffut.Store.campeonato" store:Type="Tables" Schema="uniffut" />
@@ -17,11 +18,13 @@
           <EntitySet Name="directortecnico" EntityType="uniffut.Store.directortecnico" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="division" EntityType="uniffut.Store.division" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="equipo" EntityType="uniffut.Store.equipo" store:Type="Tables" Schema="uniffut" />
+          <EntitySet Name="goleadoras" EntityType="uniffut.Store.goleadoras" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="jugadora" EntityType="uniffut.Store.jugadora" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="modulo" EntityType="uniffut.Store.modulo" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="multimedia" EntityType="uniffut.Store.multimedia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="noticia" EntityType="uniffut.Store.noticia" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="pagina informativa" EntityType="uniffut.Store.pagina informativa" store:Type="Tables" Schema="uniffut" />
+          <EntitySet Name="partido" EntityType="uniffut.Store.partido" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="patrocinador" EntityType="uniffut.Store.patrocinador" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="rol" EntityType="uniffut.Store.rol" store:Type="Tables" Schema="uniffut" />
           <EntitySet Name="rol_tiene_modulo" EntityType="uniffut.Store.rol_tiene_modulo" store:Type="Tables" Schema="uniffut" />
@@ -89,9 +92,29 @@
             <End Role="rol" EntitySet="rol" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
+          <AssociationSet Name="goleadorasCampeonato" Association="uniffut.Store.goleadorasCampeonato">
+            <End Role="campeonato" EntitySet="campeonato" />
+            <End Role="goleadoras" EntitySet="goleadoras" />
+          </AssociationSet>
+          <AssociationSet Name="goleadorasJugadora" Association="uniffut.Store.goleadorasJugadora">
+            <End Role="jugadora" EntitySet="jugadora" />
+            <End Role="goleadoras" EntitySet="goleadoras" />
+          </AssociationSet>
           <AssociationSet Name="modulo_RolTieneModulo" Association="uniffut.Store.modulo_RolTieneModulo">
             <End Role="modulo" EntitySet="modulo" />
             <End Role="rol_tiene_modulo" EntitySet="rol_tiene_modulo" />
+          </AssociationSet>
+          <AssociationSet Name="partidoCampeonato" Association="uniffut.Store.partidoCampeonato">
+            <End Role="campeonato" EntitySet="campeonato" />
+            <End Role="partido" EntitySet="partido" />
+          </AssociationSet>
+          <AssociationSet Name="partidoEquipoDos" Association="uniffut.Store.partidoEquipoDos">
+            <End Role="equipo" EntitySet="equipo" />
+            <End Role="partido" EntitySet="partido" />
+          </AssociationSet>
+          <AssociationSet Name="partidoEquipoUno" Association="uniffut.Store.partidoEquipoUno">
+            <End Role="equipo" EntitySet="equipo" />
+            <End Role="partido" EntitySet="partido" />
           </AssociationSet>
           <AssociationSet Name="R_album_multimedia" Association="uniffut.Store.R_album_multimedia">
             <End Role="album_jugadora" EntitySet="album_jugadora" />
@@ -155,6 +178,17 @@
           </Key>
           <Property Name="idAlbum" Type="int" Nullable="false" />
           <Property Name="idMultimedia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="anuncio">
+          <Key>
+            <PropertyRef Name="idAnuncio" />
+          </Key>
+          <Property Name="idAnuncio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="fechaInicio" Type="date" Nullable="false" />
+          <Property Name="fechaFinal" Type="date" Nullable="false" />
+          <Property Name="estado" Type="bool" Nullable="false" />
+          <Property Name="fuenteGrafica" Type="varchar" Nullable="false" />
+          <Property Name="isPrincipal" Type="bool" Nullable="false" />
         </EntityType>
         <EntityType Name="bitacora">
           <Key>
@@ -230,6 +264,15 @@
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="escudo" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="goleadoras">
+          <Key>
+            <PropertyRef Name="idJugadora" />
+            <PropertyRef Name="idCampeonato" />
+          </Key>
+          <Property Name="idJugadora" Type="int" Nullable="false" />
+          <Property Name="idCampeonato" Type="int" Nullable="false" />
+          <Property Name="goles" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="jugadora">
           <Key>
             <PropertyRef Name="idJugadora" />
@@ -282,6 +325,20 @@
           <Property Name="contenido" Type="varchar" MaxLength="2000" />
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="autor" Type="int" Nullable="false" />
+          <Property Name="isLYG" Type="bool" />
+        </EntityType>
+        <EntityType Name="partido">
+          <Key>
+            <PropertyRef Name="idpartido" />
+          </Key>
+          <Property Name="idpartido" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="hora" Type="time" Nullable="false" />
+          <Property Name="equipoUno" Type="int" Nullable="false" />
+          <Property Name="golesEquipoUno" Type="int" Nullable="false" />
+          <Property Name="equipoDos" Type="int" Nullable="false" />
+          <Property Name="golesEquipoDos" Type="int" Nullable="false" />
+          <Property Name="idCampeonato" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="patrocinador">
           <Key>
@@ -531,6 +588,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="goleadorasCampeonato">
+          <End Role="campeonato" Type="uniffut.Store.campeonato" Multiplicity="1" />
+          <End Role="goleadoras" Type="uniffut.Store.goleadoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campeonato">
+              <PropertyRef Name="idCampeonato" />
+            </Principal>
+            <Dependent Role="goleadoras">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="goleadorasJugadora">
+          <End Role="jugadora" Type="uniffut.Store.jugadora" Multiplicity="1" />
+          <End Role="goleadoras" Type="uniffut.Store.goleadoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jugadora">
+              <PropertyRef Name="idJugadora" />
+            </Principal>
+            <Dependent Role="goleadoras">
+              <PropertyRef Name="idJugadora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="modulo_RolTieneModulo">
           <End Role="modulo" Type="uniffut.Store.modulo" Multiplicity="1" />
           <End Role="rol_tiene_modulo" Type="uniffut.Store.rol_tiene_modulo" Multiplicity="*" />
@@ -540,6 +621,42 @@
             </Principal>
             <Dependent Role="rol_tiene_modulo">
               <PropertyRef Name="idModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="partidoCampeonato">
+          <End Role="campeonato" Type="uniffut.Store.campeonato" Multiplicity="1" />
+          <End Role="partido" Type="uniffut.Store.partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campeonato">
+              <PropertyRef Name="idCampeonato" />
+            </Principal>
+            <Dependent Role="partido">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="partidoEquipoDos">
+          <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="1" />
+          <End Role="partido" Type="uniffut.Store.partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipo">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="partido">
+              <PropertyRef Name="equipoDos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="partidoEquipoUno">
+          <End Role="equipo" Type="uniffut.Store.equipo" Multiplicity="1" />
+          <End Role="partido" Type="uniffut.Store.partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipo">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="partido">
+              <PropertyRef Name="equipoUno" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -727,6 +844,29 @@
             <End Role="campeonato" EntitySet="campeonato" />
             <End Role="equipo" EntitySet="equipo" />
           </AssociationSet>
+          <EntitySet Name="anuncio" EntityType="uniffut.anuncio" />
+          <EntitySet Name="goleadoras" EntityType="uniffut.goleadoras" />
+          <EntitySet Name="partido" EntityType="uniffut.partido" />
+          <AssociationSet Name="goleadorasCampeonato" Association="uniffut.goleadorasCampeonato">
+            <End Role="campeonato" EntitySet="campeonato" />
+            <End Role="goleadoras" EntitySet="goleadoras" />
+          </AssociationSet>
+          <AssociationSet Name="partidoCampeonato" Association="uniffut.partidoCampeonato">
+            <End Role="campeonato" EntitySet="campeonato" />
+            <End Role="partido" EntitySet="partido" />
+          </AssociationSet>
+          <AssociationSet Name="partidoEquipoDos" Association="uniffut.partidoEquipoDos">
+            <End Role="equipo" EntitySet="equipo" />
+            <End Role="partido" EntitySet="partido" />
+          </AssociationSet>
+          <AssociationSet Name="partidoEquipoUno" Association="uniffut.partidoEquipoUno">
+            <End Role="equipo" EntitySet="equipo" />
+            <End Role="partido" EntitySet="partido" />
+          </AssociationSet>
+          <AssociationSet Name="goleadorasJugadora" Association="uniffut.goleadorasJugadora">
+            <End Role="jugadora" EntitySet="jugadora" />
+            <End Role="goleadoras" EntitySet="goleadoras" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="album_equipo">
           <Key>
@@ -785,6 +925,8 @@
           <NavigationProperty Name="division" Relationship="uniffut.fk_Campeonato_Divisiones1" FromRole="campeonato" ToRole="division" />
           <NavigationProperty Name="tabla_posiciones" Relationship="uniffut.tabla_campeonato" FromRole="campeonato" ToRole="tabla_posiciones" />
           <NavigationProperty Name="equipo" Relationship="uniffut.campeonato_equipo" FromRole="campeonato" ToRole="equipo" />
+          <NavigationProperty Name="goleadoras" Relationship="uniffut.goleadorasCampeonato" FromRole="campeonato" ToRole="goleadoras" />
+          <NavigationProperty Name="partido" Relationship="uniffut.partidoCampeonato" FromRole="campeonato" ToRole="partido" />
         </EntityType>
         <EntityType Name="directortecnico">
           <Key>
@@ -830,6 +972,8 @@
           <NavigationProperty Name="tabla_equipo" Relationship="uniffut.equipo_tabla" FromRole="equipo" ToRole="tabla_equipo" />
           <NavigationProperty Name="jugadora" Relationship="uniffut.fk_Jugadora_Equipo1" FromRole="equipo" ToRole="jugadora" />
           <NavigationProperty Name="campeonato" Relationship="uniffut.campeonato_equipo" FromRole="equipo" ToRole="campeonato" />
+          <NavigationProperty Name="partido" Relationship="uniffut.partidoEquipoDos" FromRole="equipo" ToRole="partido" />
+          <NavigationProperty Name="partido1" Relationship="uniffut.partidoEquipoUno" FromRole="equipo" ToRole="partido" />
         </EntityType>
         <EntityType Name="jugadora">
           <Key>
@@ -846,6 +990,7 @@
           <Property Type="String" Name="nacionalidad" Nullable="false" />
           <NavigationProperty Name="album_jugadora" Relationship="uniffut.album_Jugadora1" FromRole="jugadora" ToRole="album_jugadora" />
           <NavigationProperty Name="equipo" Relationship="uniffut.fk_Jugadora_Equipo1" FromRole="jugadora" ToRole="equipo" />
+          <NavigationProperty Name="goleadoras" Relationship="uniffut.goleadorasJugadora" FromRole="jugadora" ToRole="goleadoras" />
         </EntityType>
         <EntityType Name="modulo">
           <Key>
@@ -891,6 +1036,7 @@
           <Property Type="Boolean" Name="estado" Nullable="false" />
           <Property Type="Int32" Name="autor" Nullable="false" />
           <NavigationProperty Name="usuario" Relationship="uniffut.fk_Pagina_Informativa_Usuario1" FromRole="pagina_informativa" ToRole="usuario" />
+          <Property Type="Boolean" Name="isLYG" />
         </EntityType>
         <EntityType Name="patrocinador">
           <Key>
@@ -1159,6 +1305,104 @@
           <End Type="uniffut.campeonato" Role="campeonato" Multiplicity="*" />
           <End Type="uniffut.equipo" Role="equipo" Multiplicity="*" />
         </Association>
+        <EntityType Name="anuncio">
+          <Key>
+            <PropertyRef Name="idAnuncio" />
+          </Key>
+          <Property Type="Int32" Name="idAnuncio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="fechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="fechaFinal" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="String" Name="fuenteGrafica" Nullable="false" />
+          <Property Type="Boolean" Name="isPrincipal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="goleadoras">
+          <Key>
+            <PropertyRef Name="idJugadora" />
+            <PropertyRef Name="idCampeonato" />
+          </Key>
+          <Property Type="Int32" Name="idJugadora" Nullable="false" />
+          <Property Type="Int32" Name="idCampeonato" Nullable="false" />
+          <Property Type="Int32" Name="goles" Nullable="false" />
+          <NavigationProperty Name="campeonato" Relationship="uniffut.goleadorasCampeonato" FromRole="goleadoras" ToRole="campeonato" />
+          <NavigationProperty Name="jugadora" Relationship="uniffut.goleadorasJugadora" FromRole="goleadoras" ToRole="jugadora" />
+        </EntityType>
+        <EntityType Name="partido">
+          <Key>
+            <PropertyRef Name="idpartido" />
+          </Key>
+          <Property Type="Int32" Name="idpartido" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="Time" Name="hora" Nullable="false" />
+          <Property Type="Int32" Name="equipoUno" Nullable="false" />
+          <Property Type="Int32" Name="golesEquipoUno" Nullable="false" />
+          <Property Type="Int32" Name="equipoDos" Nullable="false" />
+          <Property Type="Int32" Name="golesEquipoDos" Nullable="false" />
+          <Property Type="Int32" Name="idCampeonato" Nullable="false" />
+          <NavigationProperty Name="campeonato" Relationship="uniffut.partidoCampeonato" FromRole="partido" ToRole="campeonato" />
+          <NavigationProperty Name="equipo" Relationship="uniffut.partidoEquipoDos" FromRole="partido" ToRole="equipo" />
+          <NavigationProperty Name="equipo1" Relationship="uniffut.partidoEquipoUno" FromRole="partido" ToRole="equipo" />
+        </EntityType>
+        <Association Name="goleadorasCampeonato">
+          <End Type="uniffut.campeonato" Role="campeonato" Multiplicity="1" />
+          <End Type="uniffut.goleadoras" Role="goleadoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campeonato">
+              <PropertyRef Name="idCampeonato" />
+            </Principal>
+            <Dependent Role="goleadoras">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="partidoCampeonato">
+          <End Type="uniffut.campeonato" Role="campeonato" Multiplicity="1" />
+          <End Type="uniffut.partido" Role="partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campeonato">
+              <PropertyRef Name="idCampeonato" />
+            </Principal>
+            <Dependent Role="partido">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="partidoEquipoDos">
+          <End Type="uniffut.equipo" Role="equipo" Multiplicity="1" />
+          <End Type="uniffut.partido" Role="partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipo">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="partido">
+              <PropertyRef Name="equipoDos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="partidoEquipoUno">
+          <End Type="uniffut.equipo" Role="equipo" Multiplicity="1" />
+          <End Type="uniffut.partido" Role="partido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipo">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="partido">
+              <PropertyRef Name="equipoUno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="goleadorasJugadora">
+          <End Type="uniffut.jugadora" Role="jugadora" Multiplicity="1" />
+          <End Type="uniffut.goleadoras" Role="goleadoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jugadora">
+              <PropertyRef Name="idJugadora" />
+            </Principal>
+            <Dependent Role="goleadoras">
+              <PropertyRef Name="idJugadora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1306,6 +1550,7 @@
           <EntitySetMapping Name="pagina_informativa">
             <EntityTypeMapping TypeName="uniffut.pagina_informativa">
               <MappingFragment StoreEntitySet="pagina informativa">
+                <ScalarProperty Name="isLYG" ColumnName="isLYG" />
                 <ScalarProperty Name="autor" ColumnName="autor" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="contenido" ColumnName="contenido" />
@@ -1412,6 +1657,41 @@
               <ScalarProperty Name="idCampeonato" ColumnName="idCampeonato" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="anuncio">
+            <EntityTypeMapping TypeName="uniffut.anuncio">
+              <MappingFragment StoreEntitySet="anuncio">
+                <ScalarProperty Name="isPrincipal" ColumnName="isPrincipal" />
+                <ScalarProperty Name="fuenteGrafica" ColumnName="fuenteGrafica" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fechaFinal" ColumnName="fechaFinal" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="idAnuncio" ColumnName="idAnuncio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="goleadoras">
+            <EntityTypeMapping TypeName="uniffut.goleadoras">
+              <MappingFragment StoreEntitySet="goleadoras">
+                <ScalarProperty Name="goles" ColumnName="goles" />
+                <ScalarProperty Name="idCampeonato" ColumnName="idCampeonato" />
+                <ScalarProperty Name="idJugadora" ColumnName="idJugadora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="partido">
+            <EntityTypeMapping TypeName="uniffut.partido">
+              <MappingFragment StoreEntitySet="partido">
+                <ScalarProperty Name="idCampeonato" ColumnName="idCampeonato" />
+                <ScalarProperty Name="golesEquipoDos" ColumnName="golesEquipoDos" />
+                <ScalarProperty Name="equipoDos" ColumnName="equipoDos" />
+                <ScalarProperty Name="golesEquipoUno" ColumnName="golesEquipoUno" />
+                <ScalarProperty Name="equipoUno" ColumnName="equipoUno" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="idpartido" ColumnName="idpartido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1453,11 +1733,11 @@
         <EntityTypeShape EntityType="uniffut.tiponoticia" Width="1.5" PointX="19.25" PointY="6.75" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="uniffut.usuario" Width="1.5" PointX="16.25" PointY="3.875" Height="3.5186979166666674" />
         <AssociationConnector Association="uniffut.album_has_equipo" >
-          <ConnectorPoint PointX="3.95312625" PointY="10.25" />
-          <ConnectorPoint PointX="3.95312625" PointY="8.2559472363281277" />
-          <ConnectorPoint PointX="4.2057297916666672" PointY="8.2559472363281277" />
-          <ConnectorPoint PointX="4.3723964583333332" PointY="8.2559472363281277" />
-          <ConnectorPoint PointX="5.25" PointY="8.2559472363281277" />
+          <ConnectorPoint PointX="3.8242171875" PointY="10.25" />
+          <ConnectorPoint PointX="3.8242171875" PointY="8.20680121073405" />
+          <ConnectorPoint PointX="4.1412752604166672" PointY="8.20680121073405" />
+          <ConnectorPoint PointX="4.3079419270833332" PointY="8.20680121073405" />
+          <ConnectorPoint PointX="5.25" PointY="8.20680121073405" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.album_Jugadora1" >
           <ConnectorPoint PointX="6.75" PointY="15.211293945312502" />
@@ -1473,30 +1753,36 @@
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Campeonato_Divisiones1" >
           <ConnectorPoint PointX="1.5" PointY="8" />
-          <ConnectorPoint PointX="1.5" PointY="4.12474609375" />
-          <ConnectorPoint PointX="3" PointY="4.12474609375" />
+          <ConnectorPoint PointX="1.5" PointY="4.3170475260416659" />
+          <ConnectorPoint PointX="3" PointY="4.3170475260416659" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.tabla_campeonato" >
-          <ConnectorPoint PointX="4.5" PointY="4.99974609375" />
-          <ConnectorPoint PointX="5.25" PointY="4.99974609375" />
+          <ConnectorPoint PointX="4.5" PointY="5.1920475260416659" />
+          <ConnectorPoint PointX="5.25" PointY="5.1920475260416659" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_DirectorTecnico_Equipo1" >
           <ConnectorPoint PointX="4.5" PointY="11.562246093749998" />
           <ConnectorPoint PointX="5.25" PointY="11.562246093749998" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Equipo_Divisiones1" >
-          <ConnectorPoint PointX="2.25" PointY="9.2217211181640621" />
-          <ConnectorPoint PointX="3.4453106250000003" PointY="9.2217211181640621" />
-          <ConnectorPoint PointX="3.4453106250000003" PointY="10.25" />
+          <ConnectorPoint PointX="2.25" PointY="9.10099738922119" />
+          <ConnectorPoint PointX="3.38085609375" PointY="9.10099738922119" />
+          <ConnectorPoint PointX="3.38085609375" PointY="10.25" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.equipo_tabla" >
-          <ConnectorPoint PointX="4.5" PointY="13.249746093749998" />
-          <ConnectorPoint PointX="8.0625" PointY="13.249746093749998" />
-          <ConnectorPoint PointX="8.0625" PointY="10.105286458333339" />
+          <ConnectorPoint PointX="3.602536640625" PointY="10.25" />
+          <ConnectorPoint PointX="3.602536640625" PointY="9.7401407291666633" />
+          <ConnectorPoint PointX="3.7408838541666665" PointY="9.7401407291666633" />
+          <ConnectorPoint PointX="3.9075505208333334" PointY="9.7401407291666633" />
+          <ConnectorPoint PointX="4.1412752604166672" PointY="9.7401407291666633" />
+          <ConnectorPoint PointX="4.3079419270833332" PointY="9.7401407291666633" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="9.7401407291666633" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="9.7401407291666633" />
+          <ConnectorPoint PointX="7.5" PointY="9.7401407291666633" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Jugadora_Equipo1" >
-          <ConnectorPoint PointX="4.5" PointY="13.792999674479166" />
-          <ConnectorPoint PointX="5.25" PointY="13.792999674479166" />
+          <ConnectorPoint PointX="4.5" PointY="13.985301106770834" />
+          <ConnectorPoint PointX="5.25" PointY="13.985301106770834" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Noticia_TipoNoticia1" >
           <ConnectorPoint PointX="20.75" PointY="7.7687391067708393" />
@@ -1509,37 +1795,78 @@
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Pagina_Informativa_Usuario1" >
           <ConnectorPoint PointX="17" PointY="7.3936979166666674" />
-          <ConnectorPoint PointX="17" PointY="10.557444661458334" />
-          <ConnectorPoint PointX="18.5" PointY="10.557444661458334" />
+          <ConnectorPoint PointX="17" PointY="10.653595377604166" />
+          <ConnectorPoint PointX="18.5" PointY="10.653595377604166" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.fk_Usuario_Rol1" >
           <ConnectorPoint PointX="15.5" PointY="5.7112939453125051" />
           <ConnectorPoint PointX="16.25" PointY="5.7112939453125051" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.tabla_tabla" >
-          <ConnectorPoint PointX="6.75" PointY="5.4901432291666694" />
-          <ConnectorPoint PointX="8.25" PointY="5.4901432291666694" />
-          <ConnectorPoint PointX="8.25" PointY="8.125" />
+          <ConnectorPoint PointX="6.75" PointY="6.4802864583333388" />
+          <ConnectorPoint PointX="7.125" PointY="6.8552864583333388" />
+          <ConnectorPoint PointX="7.125" PointY="8.90131836458333" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="8.90131836458333" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="8.90131836458333" />
+          <ConnectorPoint PointX="7.5" PointY="8.90131836458333" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.album_multimedia_equipo" >
           <ConnectorPoint PointX="6.75" PointY="7.65625" />
-          <ConnectorPoint PointX="8.1666666666666661" PointY="7.6562499999999991" />
-          <ConnectorPoint PointX="8.3333333333333339" PointY="7.65625" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="7.6562499999999991" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="7.65625" />
+          <ConnectorPoint PointX="9.1041641666666653" PointY="7.6562499999999991" />
+          <ConnectorPoint PointX="9.2708308333333331" PointY="7.65625" />
+          <ConnectorPoint PointX="9.2916666666666661" PointY="7.6562499999999991" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="7.65625" />
           <ConnectorPoint PointX="10.5" PointY="7.65625" />
           <ConnectorPoint PointX="10.5" PointY="10.75" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.album_multimedia_jugadora" >
-          <ConnectorPoint PointX="8.625" PointY="14.125" />
-          <ConnectorPoint PointX="8.625" PointY="11.836293945312505" />
-          <ConnectorPoint PointX="9.75" PointY="11.836293945312505" />
+          <ConnectorPoint PointX="9" PointY="15.211293945312502" />
+          <ConnectorPoint PointX="10.5" PointY="15.211293945312502" />
+          <ConnectorPoint PointX="10.5" PointY="12.92258789062501" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.rol_tiene_modulo" >
           <ConnectorPoint PointX="13.25" PointY="5.672841796874998" />
           <ConnectorPoint PointX="14" PointY="5.672841796874998" />
         </AssociationConnector>
         <AssociationConnector Association="uniffut.campeonato_equipo" >
-          <ConnectorPoint PointX="4.289063125" PointY="5.4994921875" />
-          <ConnectorPoint PointX="4.289063125" PointY="10.25" />
+          <ConnectorPoint PointX="4.22460859375" PointY="5.8840950520833326" />
+          <ConnectorPoint PointX="4.22460859375" PointY="10.25" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="uniffut.anuncio" Width="1.5" PointX="10.375" PointY="0.75" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="uniffut.goleadoras" Width="1.5" PointX="7.5" PointY="10.875" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="uniffut.partido" Width="1.5" PointX="8.25" PointY="4" Height="3.1340950520833282" />
+        <AssociationConnector Association="uniffut.goleadorasCampeonato" >
+          <ConnectorPoint PointX="4.5" PointY="4.148793945312498" />
+          <ConnectorPoint PointX="7.25" PointY="4.148793945312498" />
+          <ConnectorPoint PointX="7.25" PointY="10.5" />
+          <ConnectorPoint PointX="8.25" PointY="10.5" />
+          <ConnectorPoint PointX="8.25" PointY="10.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="uniffut.partidoCampeonato" >
+          <ConnectorPoint PointX="4.5" PointY="4.355646972656249" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="4.3556469726562481" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="4.355646972656249" />
+          <ConnectorPoint PointX="8.25" PointY="4.355646972656249" />
+        </AssociationConnector>
+        <AssociationConnector Association="uniffut.partidoEquipoDos" >
+          <ConnectorPoint PointX="4.5" PointY="13.249746093749998" />
+          <ConnectorPoint PointX="9.375" PointY="13.249746093749998" />
+          <ConnectorPoint PointX="9.375" PointY="7.1340950520833282" />
+        </AssociationConnector>
+        <AssociationConnector Association="uniffut.partidoEquipoUno" >
+          <ConnectorPoint PointX="4.5" PointY="13.062116640624996" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="13.062116640624996" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="13.062116640624996" />
+          <ConnectorPoint PointX="9.1874975" PointY="13.062116640624996" />
+          <ConnectorPoint PointX="9.1874975" PointY="7.1340950520833282" />
+        </AssociationConnector>
+        <AssociationConnector Association="uniffut.goleadorasJugadora" >
+          <ConnectorPoint PointX="6.75" PointY="13.626152846153847" />
+          <ConnectorPoint PointX="7.125" PointY="13.251152846153847" />
+          <ConnectorPoint PointX="7.125" PointY="11.865143229166669" />
+          <ConnectorPoint PointX="7.5" PointY="11.865143229166669" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

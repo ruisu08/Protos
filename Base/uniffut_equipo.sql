@@ -36,7 +36,7 @@ CREATE TABLE `equipo` (
   PRIMARY KEY (`idEquipo`),
   KEY `fk_Equipo_Divisiones1_idx` (`idDivision`),
   CONSTRAINT `fk_Equipo_Divisiones1` FOREIGN KEY (`idDivision`) REFERENCES `division` (`idDivisiones`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +45,7 @@ CREATE TABLE `equipo` (
 
 LOCK TABLES `equipo` WRITE;
 /*!40000 ALTER TABLE `equipo` DISABLE KEYS */;
+INSERT INTO `equipo` VALUES (1,'DS','Deportivo Saprissa',NULL,NULL,1,1,NULL),(2,'LDA','Liga Deportiva Alajuelense',NULL,NULL,1,1,NULL);
 /*!40000 ALTER TABLE `equipo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-19  6:56:32
+-- Dump completed on 2013-03-25 22:28:30

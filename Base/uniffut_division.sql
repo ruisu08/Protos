@@ -31,7 +31,7 @@ CREATE TABLE `division` (
   `descripcion` varchar(45) NOT NULL,
   `estado` tinyint(1) NOT NULL,
   PRIMARY KEY (`idDivisiones`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `division` (
 
 LOCK TABLES `division` WRITE;
 /*!40000 ALTER TABLE `division` DISABLE KEYS */;
+INSERT INTO `division` VALUES (1,'PD','Primera Division','sdsd',1);
 /*!40000 ALTER TABLE `division` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-19  6:56:07
+-- Dump completed on 2013-03-25 22:28:17

@@ -30,7 +30,7 @@ CREATE TABLE `multimedia` (
   `comentario` varchar(200) DEFAULT NULL,
   `estado` tinyint(1) NOT NULL,
   PRIMARY KEY (`idMultimedia`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `multimedia` (
 
 LOCK TABLES `multimedia` WRITE;
 /*!40000 ALTER TABLE `multimedia` DISABLE KEYS */;
-INSERT INTO `multimedia` VALUES (21,'&lt;p&gt;&lt;img src=&quot;/UserFiles/1361_photo.jpg&quot; alt=&quot;fdfdfd&quot; width=&quot;600&quot; height=&quot;485&quot; /&gt;&lt;/p&gt;','fdfdfdfdf',0),(22,'&lt;p&gt;&lt;img src=&quot;/UserFiles/2628376325_68c642a9ee_o.png&quot; alt=&quot;fdfdfdfd&quot; width=&quot;550&quot; height=&quot;400&quot; /&gt;&lt;/p&gt;','fdfdfdfd',0),(23,'&lt;p&gt;&lt;img src=&quot;/UserFiles/1361_photo.jpg&quot; alt=&quot;&quot; width=&quot;600&quot; height=&quot;485&quot; /&gt;&lt;/p&gt;','sds',0),(24,'&lt;p&gt;&lt;img src=&quot;/UserFiles/Atrapitis.gif&quot; alt=&quot;&quot; width=&quot;288&quot; height=&quot;374&quot; /&gt;&lt;/p&gt;','x',0),(25,'&lt;p&gt;&lt;img src=&quot;/UserFiles/Atrapitis.gif&quot; alt=&quot;fdfdf&quot; width=&quot;288&quot; height=&quot;374&quot; /&gt;&lt;/p&gt;','dfdfdfdd',1);
+INSERT INTO `multimedia` VALUES (21,'&lt;p&gt;&lt;img src=&quot;/UserFiles/1361_photo.jpg&quot; alt=&quot;fdfdfd&quot; width=&quot;600&quot; height=&quot;485&quot; /&gt;&lt;/p&gt;','fdfdfdfdf',0),(22,'&lt;p&gt;&lt;img src=&quot;/UserFiles/2628376325_68c642a9ee_o.png&quot; alt=&quot;fdfdfdfd&quot; width=&quot;550&quot; height=&quot;400&quot; /&gt;&lt;/p&gt;','fdfdfdfd',0),(23,'&lt;p&gt;&lt;img src=&quot;/UserFiles/1361_photo.jpg&quot; alt=&quot;&quot; width=&quot;600&quot; height=&quot;485&quot; /&gt;&lt;/p&gt;','sds',0),(24,'&lt;p&gt;&lt;img src=&quot;/UserFiles/Atrapitis.gif&quot; alt=&quot;&quot; width=&quot;288&quot; height=&quot;374&quot; /&gt;&lt;/p&gt;','x',0),(25,'&lt;p&gt;&lt;img src=&quot;/UserFiles/Atrapitis.gif&quot; alt=&quot;fdfdf&quot; width=&quot;288&quot; height=&quot;374&quot; /&gt;&lt;/p&gt;','dfdfdfdd',1),(26,'&lt;p&gt;&lt;img src=&quot;/UserFiles/1361_photo.jpg&quot; alt=&quot;dfdfd&quot; width=&quot;600&quot; height=&quot;485&quot; /&gt;&lt;/p&gt;','dfdfdfdd',1),(27,'&lt;p&gt;&lt;img src=&quot;http://www.youtube.com/watch?NR=1&amp;amp;feature=endscreen&amp;amp;v=f3LLX9ThXjI&quot; alt=&quot;dsds&quot; /&gt;&lt;/p&gt;','dfdfdfdd',0),(28,'&lt;p&gt;&lt;img src=&quot;http://www.eldiariony.com/apps/pbcsi.dll/storyimage/IM/20130108/DEPORTES04/130109466/AR/0/AR-130109466.jpg&amp;amp;imageversion=Article&quot; alt=&quot;&quot; width=&quot;953&quot; height=&quot;733&quot; /&gt;&lt;/p&gt;','dsdsd',1),(29,'&lt;p&gt;&lt;img src=&quot;/UserFiles/1361_photo.jpg&quot; alt=&quot;fgfgfg&quot; width=&quot;600&quot; height=&quot;485&quot; /&gt;&lt;/p&gt;','fgfgf',1),(30,'&lt;p&gt;&lt;img src=&quot;http://www.youtube.com/watch?v=XcvHk-vN088&quot; alt=&quot;sdf&quot; /&gt;&lt;/p&gt;','sdsdsd',1),(31,'&lt;p&gt;&lt;img title=&quot;fdf&quot; src=&quot;http://www.youtube.com/watch?v=2nkeBG0nh84&quot; alt=&quot;fdf&quot; /&gt;&lt;/p&gt;','dfdfd',1),(32,'&lt;p&gt;&lt;img src=&quot;http://www.youtube.com/watch?v=D55PP3IJ0xo&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;','fdfdfdfdf',1),(33,'&lt;p&gt;&lt;img src=&quot;http://www.youtube.com/watch?v=XnSuVev5fVc&quot; alt=&quot;fd&quot; /&gt;&lt;/p&gt;','sdfdf',1),(34,'&lt;p&gt;&lt;img src=&quot;http://cdn.pocket-lint.com/images/JtKM/porsche-cayman-pictures-and-hands-on-0.jpg?20121130-191448&quot; alt=&quot;fd&quot; width=&quot;960&quot; height=&quot;641&quot; /&gt;&lt;/p&gt;','dfdfs',1),(35,'&lt;p&gt;&lt;img src=&quot;http://www.youtube.com/watch?v=c9N8svHfwD0&quot; alt=&quot;fdf&quot; /&gt;&lt;/p&gt;','fdfdf',1),(36,'&lt;p&gt;&lt;img src=&quot;http://www.youtube.com/watch?v=wJnv2CdcYRI&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;','dfdfdf',1);
 /*!40000 ALTER TABLE `multimedia` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-19  6:56:08
+-- Dump completed on 2013-03-25 22:28:20

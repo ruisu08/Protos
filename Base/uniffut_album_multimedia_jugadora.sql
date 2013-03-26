@@ -41,6 +41,7 @@ CREATE TABLE `album_multimedia_jugadora` (
 
 LOCK TABLES `album_multimedia_jugadora` WRITE;
 /*!40000 ALTER TABLE `album_multimedia_jugadora` DISABLE KEYS */;
+INSERT INTO `album_multimedia_jugadora` VALUES (1,29),(1,30),(1,31),(1,36);
 /*!40000 ALTER TABLE `album_multimedia_jugadora` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-19  6:56:15
+-- Dump completed on 2013-03-25 22:28:10

@@ -32,7 +32,7 @@ CREATE TABLE `album_equipo` (
   PRIMARY KEY (`idAlbum_Equipo`),
   KEY `album_equipo_idx` (`idEquipo`),
   CONSTRAINT `album_has_equipo` FOREIGN KEY (`idEquipo`) REFERENCES `equipo` (`idEquipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `album_equipo` (
 
 LOCK TABLES `album_equipo` WRITE;
 /*!40000 ALTER TABLE `album_equipo` DISABLE KEYS */;
+INSERT INTO `album_equipo` VALUES (1,'Sin título',1,1),(2,'Sin título',2,1);
 /*!40000 ALTER TABLE `album_equipo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-19  6:56:29
+-- Dump completed on 2013-03-25 22:28:28

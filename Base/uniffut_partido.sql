@@ -18,31 +18,38 @@ USE `uniffut`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `calendario`
+-- Table structure for table `partido`
 --
 
-DROP TABLE IF EXISTS `calendario`;
+DROP TABLE IF EXISTS `partido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `calendario` (
-  `idCalendario` int(11) NOT NULL AUTO_INCREMENT,
-  `fechaInicio` date NOT NULL,
-  `fechaFinal` date NOT NULL,
-  `estado` tinyint(1) NOT NULL,
+CREATE TABLE `partido` (
+  `idpartido` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `equipoUno` int(11) NOT NULL,
+  `golesEquipoUno` int(2) NOT NULL,
+  `equipoDos` int(11) NOT NULL,
+  `golesEquipoDos` int(2) NOT NULL,
   `idCampeonato` int(11) NOT NULL,
-  PRIMARY KEY (`idCalendario`),
-  KEY `calendario_campeonato_idx` (`idCampeonato`),
-  CONSTRAINT `calendario_campeonato` FOREIGN KEY (`idCampeonato`) REFERENCES `campeonato` (`idCampeonato`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`idpartido`),
+  KEY `partidoEquipoUno_idx` (`equipoUno`),
+  KEY `partidoEquipoDos_idx` (`equipoDos`),
+  KEY `partidoCampeonato_idx` (`idCampeonato`),
+  CONSTRAINT `partidoCampeonato` FOREIGN KEY (`idCampeonato`) REFERENCES `campeonato` (`idCampeonato`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `partidoEquipoDos` FOREIGN KEY (`equipoDos`) REFERENCES `equipo` (`idEquipo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `partidoEquipoUno` FOREIGN KEY (`equipoUno`) REFERENCES `equipo` (`idEquipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `calendario`
+-- Dumping data for table `partido`
 --
 
-LOCK TABLES `calendario` WRITE;
-/*!40000 ALTER TABLE `calendario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `calendario` ENABLE KEYS */;
+LOCK TABLES `partido` WRITE;
+/*!40000 ALTER TABLE `partido` DISABLE KEYS */;
+/*!40000 ALTER TABLE `partido` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-25 22:28:27
+-- Dump completed on 2013-03-25 22:28:23
