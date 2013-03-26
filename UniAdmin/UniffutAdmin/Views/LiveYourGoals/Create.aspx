@@ -23,7 +23,7 @@
         </div>
             
             <div>
-                <input type="submit" value="Crear nueva pagina informativa" class="opcionCrud" />
+                <input type="submit" value="Crear nueva pagina live your goals" class="opcionCrud" />
             </div>
         
 

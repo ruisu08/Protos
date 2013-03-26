@@ -11,7 +11,7 @@
             <div id="searchBar"> 
                 <form id="searchForm" action= '<%:Url.Action("Search","Patrocinador")%>' method="post">
                         <input type="submit"  value="Buscar" id="searchButton"/>
-                        <input type="text" name="autor" class="searchText" id="searchBoxOne" value="Buscar por autor"/>
+                        <input type="text" name="nombre" class="searchText" id="searchBoxOne" value="Buscar por nombre"/>
                 </form>
             </div>
             <div id="logOut" class="opcionLogOut">
@@ -24,7 +24,7 @@
                 <h4 id="contenidoDescripcion">Administración de base de datos de patrocinadores de la Uniffut</h4>
             </div>
             <div id="contenedorCrear">
-                <%:Html.ActionLink("Crear nueva página informativa", "Create") %>
+                <%:Html.ActionLink("Crear nuevo patrocinador", "Create") %>
             </div>
         </div>
         <div id="contenidoEspecifico">

@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/UniffutAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.patrocinador>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	agregarMultimedia
+	Agregar multimedia
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div id="headerContenido">
-        <h1>Agregar multimedia</h1>
+        <h1>Agregar multimedia a anuncio</h1>
     </div>
 
     <form id="validateForm" action= '<%:Url.Action("agregarMultimedia","Patrocinador")%>' method="post">
