@@ -1802,6 +1802,30 @@ namespace UniffutAdmin.Models
         private Nullable<global::System.DateTime> _fechaFinal;
         partial void OnfechaFinalChanging(Nullable<global::System.DateTime> value);
         partial void OnfechaFinalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> terminado
+        {
+            get
+            {
+                return _terminado;
+            }
+            set
+            {
+                OnterminadoChanging(value);
+                ReportPropertyChanging("terminado");
+                _terminado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("terminado");
+                OnterminadoChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _terminado;
+        partial void OnterminadoChanging(Nullable<global::System.Boolean> value);
+        partial void OnterminadoChanged();
 
         #endregion
 
@@ -4585,6 +4609,30 @@ namespace UniffutAdmin.Models
         private global::System.String _estadio;
         partial void OnestadioChanging(global::System.String value);
         partial void OnestadioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> terminado
+        {
+            get
+            {
+                return _terminado;
+            }
+            set
+            {
+                OnterminadoChanging(value);
+                ReportPropertyChanging("terminado");
+                _terminado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("terminado");
+                OnterminadoChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _terminado;
+        partial void OnterminadoChanging(Nullable<global::System.Boolean> value);
+        partial void OnterminadoChanged();
 
         #endregion
 

@@ -108,6 +108,7 @@
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="fechaInicio" Type="date" />
           <Property Name="fechaFinal" Type="date" />
+          <Property Name="terminado" Type="bool" />
         </EntityType>
         <EntityType Name="campeonato_equipo">
           <Key>
@@ -232,6 +233,7 @@
           <Property Name="idCampeonato" Type="int" Nullable="false" />
           <Property Name="estado" Type="bool" />
           <Property Name="estadio" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="terminado" Type="bool" />
         </EntityType>
         <EntityType Name="patrocinador">
           <Key>
@@ -485,6 +487,7 @@
           <NavigationProperty Name="partido" Relationship="uniffut.partidoCampeonato" FromRole="campeonato" ToRole="partido" />
           <Property Type="DateTime" Name="fechaInicio" />
           <Property Type="DateTime" Name="fechaFinal" />
+          <Property Type="Boolean" Name="terminado" />
         </EntityType>
         <EntityType Name="directortecnico">
           <Key>
@@ -906,6 +909,7 @@
           <NavigationProperty Name="equipo1" Relationship="uniffut.partidoEquipoUno" FromRole="partido" ToRole="equipo" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
           <Property Type="String" Name="estadio" Nullable="false" />
+          <Property Type="Boolean" Name="terminado" />
         </EntityType>
         <Association Name="goleadorasCampeonato">
           <End Type="uniffut.campeonato" Role="campeonato" Multiplicity="1" />
@@ -1016,6 +1020,7 @@
           <EntitySetMapping Name="campeonato">
             <EntityTypeMapping TypeName="uniffut.campeonato">
               <MappingFragment StoreEntitySet="campeonato">
+                <ScalarProperty Name="terminado" ColumnName="terminado" />
                 <ScalarProperty Name="fechaFinal" ColumnName="fechaFinal" />
                 <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
@@ -1249,6 +1254,7 @@
           <EntitySetMapping Name="partido">
             <EntityTypeMapping TypeName="uniffut.partido">
               <MappingFragment StoreEntitySet="partido">
+                <ScalarProperty Name="terminado" ColumnName="terminado" />
                 <ScalarProperty Name="estadio" ColumnName="estadio" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="idCampeonato" ColumnName="idCampeonato" />
