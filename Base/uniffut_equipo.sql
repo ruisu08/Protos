@@ -4,7 +4,7 @@ USE `uniffut`;
 --
 -- Host: localhost    Database: uniffut
 -- ------------------------------------------------------
--- Server version	5.0.51b-community-nt-log
+-- Server version	5.5.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,10 +18,6 @@ USE `uniffut`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Not dumping tablespaces as no INFORMATION_SCHEMA.FILES table on this server
---
-
---
 -- Table structure for table `equipo`
 --
 
@@ -29,15 +25,15 @@ DROP TABLE IF EXISTS `equipo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `equipo` (
-  `idEquipo` int(11) NOT NULL auto_increment,
+  `idEquipo` int(11) NOT NULL AUTO_INCREMENT,
   `abreviatura` varchar(10) NOT NULL,
   `nombre` varchar(45) NOT NULL,
-  `historia` varchar(2000) default NULL,
-  `campeonatosGanados` int(11) default NULL,
+  `historia` varchar(2000) DEFAULT NULL,
+  `campeonatosGanados` int(11) DEFAULT NULL,
   `idDivision` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL,
-  `escudo` varchar(100) default NULL,
-  PRIMARY KEY  (`idEquipo`),
+  `escudo` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`idEquipo`),
   KEY `fk_Equipo_Divisiones1_idx` (`idDivision`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -61,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-26 13:14:03
+-- Dump completed on 2013-03-27 13:42:51

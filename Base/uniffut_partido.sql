@@ -4,7 +4,7 @@ USE `uniffut`;
 --
 -- Host: localhost    Database: uniffut
 -- ------------------------------------------------------
--- Server version	5.0.51b-community-nt-log
+-- Server version	5.5.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,10 +18,6 @@ USE `uniffut`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Not dumping tablespaces as no INFORMATION_SCHEMA.FILES table on this server
---
-
---
 -- Table structure for table `partido`
 --
 
@@ -29,7 +25,7 @@ DROP TABLE IF EXISTS `partido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `partido` (
-  `idpartido` int(11) NOT NULL auto_increment,
+  `idpartido` int(11) NOT NULL AUTO_INCREMENT,
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
   `equipoUno` int(11) NOT NULL,
@@ -37,13 +33,14 @@ CREATE TABLE `partido` (
   `equipoDos` int(11) NOT NULL,
   `golesEquipoDos` int(2) NOT NULL,
   `idCampeonato` int(11) NOT NULL,
-  `estado` tinyint(1) default NULL,
+  `estado` tinyint(1) DEFAULT NULL,
   `estadio` varchar(100) NOT NULL,
-  PRIMARY KEY  (`idpartido`),
+  `terminado` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`idpartido`),
   KEY `partidoEquipoUno_idx` (`equipoUno`),
   KEY `partidoEquipoDos_idx` (`equipoDos`),
   KEY `partidoCampeonato_idx` (`idCampeonato`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,6 +49,7 @@ CREATE TABLE `partido` (
 
 LOCK TABLES `partido` WRITE;
 /*!40000 ALTER TABLE `partido` DISABLE KEYS */;
+INSERT INTO `partido` VALUES (1,'2013-04-04','18:00:00',1,0,2,0,1,1,'Ricardo Saprissa',NULL);
 /*!40000 ALTER TABLE `partido` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -64,4 +62,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-26 13:13:56
+-- Dump completed on 2013-03-27 13:42:44

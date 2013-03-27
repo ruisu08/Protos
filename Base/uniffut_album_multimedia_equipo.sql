@@ -4,7 +4,7 @@ USE `uniffut`;
 --
 -- Host: localhost    Database: uniffut
 -- ------------------------------------------------------
--- Server version	5.0.51b-community-nt-log
+-- Server version	5.5.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,10 +18,6 @@ USE `uniffut`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Not dumping tablespaces as no INFORMATION_SCHEMA.FILES table on this server
---
-
---
 -- Table structure for table `album_multimedia_equipo`
 --
 
@@ -31,7 +27,7 @@ DROP TABLE IF EXISTS `album_multimedia_equipo`;
 CREATE TABLE `album_multimedia_equipo` (
   `idAlbum` int(11) NOT NULL,
   `idMultimedia` int(11) NOT NULL,
-  PRIMARY KEY  (`idAlbum`,`idMultimedia`),
+  PRIMARY KEY (`idAlbum`,`idMultimedia`),
   KEY `R_albumEquipo_multimedia_idx` (`idAlbum`),
   KEY `R_albumEquipo_multimedia_idx1` (`idMultimedia`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -56,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-26 13:13:39
+-- Dump completed on 2013-03-27 13:42:26
