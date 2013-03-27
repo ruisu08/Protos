@@ -15,8 +15,6 @@ namespace UniffutAdmin.Controllers.Campeonatos
         //
         // GET: /TablaPosiciones/
 
-
-
         //
         // GET: /TablaPosiciones/Details/5
 
@@ -117,6 +115,19 @@ namespace UniffutAdmin.Controllers.Campeonatos
             {
                 return View();
             }
+        }
+
+        
+        public ActionResult agregarEquipo(int id)
+        {
+            return RedirectToAction("agregarEquipo", new RouteValueDictionary(new { controller = "Campeonato", action = "agregarEquipo", id = id }));
+
+        }
+
+        public ActionResult eliminarEquipo(int id)
+        {
+            return RedirectToAction("eliminarEquipo", new RouteValueDictionary(new { controller = "Campeonato", action = "eliminarEquipo", id = id }));
+
         }
 
 

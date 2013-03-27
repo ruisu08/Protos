@@ -3,25 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UniffutAdmin.Models;
+using UniffutAdmin.Models.ViewModels;
+using System.Web.Routing;
 
 namespace UniffutAdmin.Controllers.Campeonatos
 {
     public class TablaGoleadorasController : Controller
     {
-        //
-        // GET: /TablaGoleadoras/
+        private uniffutData db = new uniffutData();
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        //
         // GET: /TablaGoleadoras/Details/5
 
         public ActionResult Details(int id)
         {
-            return View();
+            var tabla = db.goleadoras.First(t => t.idCampeonato.Equals(id) && t.estado == true);
+            return View(tabla);
         }
 
         //

@@ -6,10 +6,25 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div id="detallesTitulo">
-        <h1>Tabla de posiciones de campeonato:</h1>
-        <h2><%:" "+Model.campeonato.nombre%></h2>
-    </div>
+    <div id="topBar">
+            <div id="searchBar"> 
+                
+            </div>
+            <div id="logOut" class="opcionLogOut">
+                <%:Html.ActionLink("Cerrar sesión","LogOut","Login") %>
+            </div>
+        </div>
+        <div id="contenidoHeader">
+            <div id="contenedorContenidoTitulo">
+                <h1 id="contenidoTitulo">Tabla Posiciones:</h1>
+                <h4 id="contenidoDescripcion">Tabla de posiciones del campeonato  <%:" "+Model.campeonato.nombre %></h4>
+            </div>
+            <div id="contenedorCrear">
+                <%:Html.ActionLink("Agregar Equipo", "agregarEquipo", new { id = Model.campeonato.idCampeonato })%><br /><br />
+                <%:Html.ActionLink("Eliminar Equipo", "eliminarEquipo", new { id=Model.campeonato.idCampeonato})%>
+            </div>
+        </div>
+
     <div id="detallesWrapper">
         <%  
             
