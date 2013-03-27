@@ -4,7 +4,7 @@ USE `uniffut`;
 --
 -- Host: localhost    Database: uniffut
 -- ------------------------------------------------------
--- Server version	5.5.29
+-- Server version	5.0.51b-community-nt-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,6 +18,10 @@ USE `uniffut`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Not dumping tablespaces as no INFORMATION_SCHEMA.FILES table on this server
+--
+
+--
 -- Table structure for table `goleadoras`
 --
 
@@ -28,12 +32,11 @@ CREATE TABLE `goleadoras` (
   `idJugadora` int(11) NOT NULL,
   `idCampeonato` int(11) NOT NULL,
   `goles` int(4) NOT NULL,
-  PRIMARY KEY (`idJugadora`,`idCampeonato`),
+  `estado` tinyint(1) default NULL,
+  PRIMARY KEY  (`idJugadora`,`idCampeonato`),
   KEY `goleadorasJugadora_idx` (`idJugadora`),
-  KEY `goleadorasCampeonato_idx` (`idCampeonato`),
-  CONSTRAINT `goleadorasJugadora` FOREIGN KEY (`idJugadora`) REFERENCES `jugadora` (`idJugadora`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `goleadorasCampeonato` FOREIGN KEY (`idCampeonato`) REFERENCES `campeonato` (`idCampeonato`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `goleadorasCampeonato_idx` (`idCampeonato`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-25 23:02:45
+-- Dump completed on 2013-03-26 13:13:36

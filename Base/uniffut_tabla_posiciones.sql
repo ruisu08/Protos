@@ -4,7 +4,7 @@ USE `uniffut`;
 --
 -- Host: localhost    Database: uniffut
 -- ------------------------------------------------------
--- Server version	5.5.29
+-- Server version	5.0.51b-community-nt-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,6 +18,10 @@ USE `uniffut`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Not dumping tablespaces as no INFORMATION_SCHEMA.FILES table on this server
+--
+
+--
 -- Table structure for table `tabla_posiciones`
 --
 
@@ -25,13 +29,12 @@ DROP TABLE IF EXISTS `tabla_posiciones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tabla_posiciones` (
-  `idTabla` int(11) NOT NULL AUTO_INCREMENT,
+  `idTabla` int(11) NOT NULL auto_increment,
   `idCampeonato` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`idTabla`),
-  KEY `tabla_campeonato_idx` (`idCampeonato`),
-  CONSTRAINT `tabla_campeonato` FOREIGN KEY (`idCampeonato`) REFERENCES `campeonato` (`idCampeonato`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY  (`idTabla`),
+  KEY `tabla_campeonato_idx` (`idCampeonato`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-25 23:02:48
+-- Dump completed on 2013-03-26 13:13:38

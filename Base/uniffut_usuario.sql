@@ -4,7 +4,7 @@ USE `uniffut`;
 --
 -- Host: localhost    Database: uniffut
 -- ------------------------------------------------------
--- Server version	5.5.29
+-- Server version	5.0.51b-community-nt-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,6 +18,10 @@ USE `uniffut`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Not dumping tablespaces as no INFORMATION_SCHEMA.FILES table on this server
+--
+
+--
 -- Table structure for table `usuario`
 --
 
@@ -25,7 +29,7 @@ DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
-  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `idUsuario` int(11) NOT NULL auto_increment,
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
   `telefono` int(11) NOT NULL,
@@ -34,10 +38,9 @@ CREATE TABLE `usuario` (
   `estado` tinyint(1) NOT NULL,
   `Rol_idRol` int(11) NOT NULL,
   `identificacion` varchar(10) NOT NULL,
-  PRIMARY KEY (`idUsuario`),
-  KEY `fk_Usuario_Rol1_idx` (`Rol_idRol`),
-  CONSTRAINT `fk_Usuario_Rol1` FOREIGN KEY (`Rol_idRol`) REFERENCES `rol` (`idRol`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY  (`idUsuario`),
+  KEY `fk_Usuario_Rol1_idx` (`Rol_idRol`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -59,4 +62,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-25 23:03:08
+-- Dump completed on 2013-03-26 13:13:58
