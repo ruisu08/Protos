@@ -515,12 +515,14 @@
     <Content Include="Views\MultimediaEquipo\Index.aspx" />
     <Content Include="Views\MultimediaJugadora\Index.aspx" />
     <Content Include="Views\Noticia\agregarContenido.aspx" />
+    <Content Include="Views\Noticia\agregarImagenPrincipal.aspx" />
     <Content Include="Views\Noticia\Create.aspx" />
     <Content Include="Views\Noticia\Delete.aspx" />
     <Content Include="Views\Noticia\Details.aspx" />
     <Content Include="Views\Noticia\Edit.aspx" />
     <Content Include="Views\Noticia\Index.aspx" />
     <Content Include="Views\Noticia\SearchIndex.aspx" />
+    <Content Include="Views\Noticia\verMultimedia.aspx" />
     <Content Include="Views\PaginaInformativa\agregarContenido.aspx" />
     <Content Include="Views\PaginaInformativa\Create.aspx" />
     <Content Include="Views\PaginaInformativa\Delete.aspx" />

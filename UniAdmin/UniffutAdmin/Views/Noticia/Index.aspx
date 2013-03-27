@@ -55,8 +55,15 @@
                             <%: Html.ActionLink("Redactar noticia", "agregarContenido", new { id=item.idNoticia })%>
                         </div>
                         <div class="itemOption">
+                            <%: Html.ActionLink("Agregar Imagen Principal", "agregarImagenPrincipal", new { id=item.idNoticia })%>
+                        </div>
+                        <div class="itemOption">
+                            <%: Html.ActionLink("Ver Imagen Principal", "verMultimedia", new { id = item.idNoticia })%>
+                        </div>
+                        <div class="itemOption">
                             <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idNoticia })%>
                         </div>
+
                     </div>
                 </div>
            <% } %>

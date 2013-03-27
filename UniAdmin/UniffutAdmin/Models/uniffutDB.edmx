@@ -205,6 +205,7 @@
           <Property Name="estado" Type="bool" Nullable="false" />
           <Property Name="autor" Type="int" Nullable="false" />
           <Property Name="TipoNoticia_idTipoNoticia" Type="int" Nullable="false" />
+          <Property Name="imagenPrincipal" Type="varchar" MaxLength="400" />
         </EntityType>
         <EntityType Name="pagina informativa">
           <Key>
@@ -585,6 +586,7 @@
           <Property Type="Int32" Name="TipoNoticia_idTipoNoticia" Nullable="false" />
           <NavigationProperty Name="tiponoticia" Relationship="uniffut.fk_Noticia_TipoNoticia1" FromRole="noticia" ToRole="tiponoticia" />
           <NavigationProperty Name="usuario" Relationship="uniffut.fk_Noticia_Usuario1" FromRole="noticia" ToRole="usuario" />
+          <Property Type="String" Name="imagenPrincipal" MaxLength="400" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="pagina_informativa">
           <Key>
@@ -1106,6 +1108,7 @@
           <EntitySetMapping Name="noticia">
             <EntityTypeMapping TypeName="uniffut.noticia">
               <MappingFragment StoreEntitySet="noticia">
+                <ScalarProperty Name="imagenPrincipal" ColumnName="imagenPrincipal" />
                 <ScalarProperty Name="TipoNoticia_idTipoNoticia" ColumnName="TipoNoticia_idTipoNoticia" />
                 <ScalarProperty Name="autor" ColumnName="autor" />
                 <ScalarProperty Name="estado" ColumnName="estado" />

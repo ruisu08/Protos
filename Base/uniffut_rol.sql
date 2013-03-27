@@ -4,7 +4,7 @@ USE `uniffut`;
 --
 -- Host: localhost    Database: uniffut
 -- ------------------------------------------------------
--- Server version	5.5.29
+-- Server version	5.5.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,16 +32,6 @@ CREATE TABLE `rol` (
   PRIMARY KEY (`idRol`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `rol`
---
-
-LOCK TABLES `rol` WRITE;
-/*!40000 ALTER TABLE `rol` DISABLE KEYS */;
-INSERT INTO `rol` VALUES (1,'Admin',1,'ADMIN'),(2,'Publicista',0,'PUBLICISTA'),(3,'Noticias y eso',1,'EDITOR');
-/*!40000 ALTER TABLE `rol` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -52,4 +42,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-27 13:42:36
+-- Dump completed on 2013-03-27 15:35:48

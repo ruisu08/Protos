@@ -347,10 +347,55 @@ namespace UniffutAdmin.Controllers
             {
                 ErrorModel error = new ErrorModel
                 {
-                    mensaje = "Otro usuario elimino la division durante la operacion"
+                    mensaje = "Otro usuario elimino la noticia durante la operacion"
                 };
                 return View("Error", error);
             }
+        }
+
+        public ActionResult agregarImagenPrincipal(int id)
+        {
+            var Noticia = db.noticia.FirstOrDefault(e => e.idNoticia.Equals(id));
+            var h = new HtmlString(HttpUtility.HtmlDecode(Noticia.contenido));
+            Noticia.imagenPrincipal = h.ToString();
+            return View(Noticia);
+        }
+
+        [HttpPost]
+        public ActionResult agregarImagenPrincipal(int id, noticia Noticia)
+        {
+            try
+            {
+                var noticia = db.noticia.First(d => d.idNoticia.Equals(id) && d.estado == true);
+                if (noticia != null)
+                {
+                    noticia.imagenPrincipal = Noticia.imagenPrincipal;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "Otro usuario elimino la noticia durante la operacion"
+                    };
+                    return View("Error", error);
+                }
+            }
+            catch (Exception e)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = e.InnerException.ToString()
+                };
+                return View("Error", error);
+            }
+        }
+
+        public ActionResult verMultimedia(int id)
+        {
+            var noticia = db.noticia.First(p => p.idNoticia.Equals(id) && p.imagenPrincipal != null);
+            return View(noticia);
         }
 
 

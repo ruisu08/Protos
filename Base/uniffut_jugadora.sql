@@ -4,7 +4,7 @@ USE `uniffut`;
 --
 -- Host: localhost    Database: uniffut
 -- ------------------------------------------------------
--- Server version	5.5.29
+-- Server version	5.5.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,16 +38,6 @@ CREATE TABLE `jugadora` (
   KEY `fk_Jugadora_Equipo1_idx` (`Equipo_idEquipo`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `jugadora`
---
-
-LOCK TABLES `jugadora` WRITE;
-/*!40000 ALTER TABLE `jugadora` DISABLE KEYS */;
-INSERT INTO `jugadora` VALUES (1,'Ana','MendezZuniga','1992-01-09',NULL,1,1,1133320344,'Costarricense');
-/*!40000 ALTER TABLE `jugadora` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -58,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-27 13:42:33
+-- Dump completed on 2013-03-27 15:35:46
