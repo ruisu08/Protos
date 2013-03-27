@@ -349,10 +349,24 @@ namespace UniffutAdmin.Controllers
         {
             try
             {
-                var partido = db.partido.FirstOrDefault(p => p.idpartido.Equals(id) && p.estado == true);
-                if (partido != null)
+                var campeonato = db.campeonato.FirstOrDefault(p => p.idCampeonato.Equals(id) && p.estado == true);
+                if (campeonato != null)
                 {
-                    partido.estado = false;
+
+
+                    var tabla = db.tabla_posiciones.FirstOrDefault(t => t.idCampeonato.Equals(campeonato.idCampeonato) && t.estado == true);
+                    for (int i = 0; i < tabla.tabla_equipo.Count; )
+                    {
+                        var l = tabla.tabla_equipo.ToList();
+                        var t = l[i];
+                        t.estado = false;
+                    }
+                    var partidos = db.partido.Where<partido>(p => p.idCampeonato.Equals(id) && p.estado == true);
+                    foreach (var x in partidos) {
+                        x.estado = false;
+                    }
+                    tabla.estado = false;
+                    campeonato.estado = false;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -375,6 +389,10 @@ namespace UniffutAdmin.Controllers
         public ActionResult verTabla(int id) {
             return RedirectToAction("Details", new RouteValueDictionary(new { controller = "TablaPosiciones", action = "Details", id = id }));
         
+        }
+
+        public ActionResult verPartidos(int id) {
+            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Partido", action = "Index", id = id }));
         }
 
         public ActionResult agregarEquipo(int id) {

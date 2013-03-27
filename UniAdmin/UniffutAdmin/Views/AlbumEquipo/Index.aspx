@@ -23,7 +23,8 @@
                 <h4 id="contenidoDescripcion">Administración de Multimedia de Equipo</h4>
             </div>
             <div id="contenedorCrear">
-                <%:Html.ActionLink("Crear nuevo Album", "Create", new { id = Model.First().idEquipo})%>
+                <%int ID = Convert.ToInt32(RouteData.Values["id"]);%>
+                <%:Html.ActionLink("Crear nuevo Album", "Create", new { id = ID })%>
             </div>
         </div>
         <div id="contenidoEspecifico">

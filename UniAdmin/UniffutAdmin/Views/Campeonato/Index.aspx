@@ -56,6 +56,9 @@
                         <div class="itemOption">
                               <%: Html.ActionLink("Goleadoras", "Delete", new { id = item.idCampeonato })%>
                         </div>
+                        <div class="itemOption">
+                              <%: Html.ActionLink("Partidos", "verPartidos", new { id = item.idCampeonato })%>
+                        </div>
                     </div>
                 </div>
            <% } %>

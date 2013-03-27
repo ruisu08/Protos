@@ -22,7 +22,8 @@
                 <h4 id="contenidoDescripcion">Administración de Multimedia de Jugadora</h4>
             </div>
             <div id="contenedorCrear">
-                <%:Html.ActionLink("Crear nuevo Album", "Create", new { id = Model.First().idJugadora})%>
+                <%int ID = Convert.ToInt32(RouteData.Values["id"]);%>
+                <%:Html.ActionLink("Crear nuevo Album", "Create", new { id = ID })%>
             </div>
         </div>
         <div id="contenidoEspecifico">

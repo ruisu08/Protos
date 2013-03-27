@@ -273,31 +273,21 @@ namespace UniffutAdmin.Controllers.Divisiones
 
                 if (Division != null)
                 {
-                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
-                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_jugadora);
-                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.jugadora);
-                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.multimedia);
-                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.album_equipo);
-                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.equipo);
-                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.campeonato);
-                    db.Refresh(System.Data.Objects.RefreshMode.StoreWins, db.division);
 
                     var CampeonatosEnDivision = Division.campeonato.Where<campeonato>(c=>c.estado == true);
                     foreach (var x in CampeonatosEnDivision) {
                         
-                        for (int i = 0; i < x.equipo.Count; )
-                        {
-                            var l = x.equipo.ToList();
-                            var e = l[i];
-                            x.equipo.Remove(e);
-                            e.campeonato.Remove(x);
-                        }
                         var tabla = db.tabla_posiciones.FirstOrDefault(t => t.idCampeonato.Equals(x.idCampeonato) && t.estado == true);
                         for (int i = 0; i < tabla.tabla_equipo.Count; )
                         {
                             var l = tabla.tabla_equipo.ToList();
                             var t = l[i];
-                            tabla.tabla_equipo.Remove(t);
+                            t.estado = false;
+                        }
+                        var partidos = db.partido.Where<partido>(p => p.idCampeonato.Equals(id) && p.estado == true);
+                        foreach (var p in partidos)
+                        {
+                            p.estado = false;
                         }
                         tabla.estado = false;
                         x.estado = false;

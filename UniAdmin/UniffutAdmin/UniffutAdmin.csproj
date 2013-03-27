@@ -528,6 +528,12 @@
     <Content Include="Views\PaginaInformativa\Edit.aspx" />
     <Content Include="Views\PaginaInformativa\Index.aspx" />
     <Content Include="Views\PaginaInformativa\SearchIndex.aspx" />
+    <Content Include="Views\Partido\Create.aspx" />
+    <Content Include="Views\Partido\Delete.aspx" />
+    <Content Include="Views\Partido\Details.aspx" />
+    <Content Include="Views\Partido\Edit.aspx" />
+    <Content Include="Views\Partido\Index.aspx" />
+    <Content Include="Views\Partido\SearchIndex.aspx" />
     <Content Include="Views\Patrocinador\agregarMultimedia.aspx" />
     <Content Include="Views\Patrocinador\Create.aspx" />
     <Content Include="Views\Patrocinador\Delete.aspx" />

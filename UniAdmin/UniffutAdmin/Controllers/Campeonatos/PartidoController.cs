@@ -50,54 +50,7 @@ namespace UniffutAdmin.Controllers.Campeonatos
             return View(partidos.ToList());
         }
 
-        //
-        // GET: /Partido/Details/5
 
-        public ActionResult Details(int id)
-        {
-            if (Session["userID"] == null)
-            {
-                ErrorModel error = new ErrorModel
-                {
-                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
-                };
-                return View("ErrorSesion", error);
-            }
-            else
-            {
-                bool autorizado = false;
-                int idUser = (int)Session["userID"];
-                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
-                {
-                    if (m.idModulo == 2 && usuario.rol.estado == true)
-                    {
-                        autorizado = true;
-                    }
-                }
-                if (!autorizado)
-                {
-                    ErrorModel error = new ErrorModel
-                    {
-                        mensaje = "No tienes permisos para acceder a esta página"
-                    };
-                    return View("Error", error);
-                }
-            }
-            var partido = db.partido.First(r => r.estado == true && r.idCampeonato.Equals(id));
-            if (partido != null)
-            {
-                return View(partido);
-            }
-            else {
-                ErrorModel error = new ErrorModel
-                {
-                    mensaje="Otro usuario elimino el partido"
-                };
-                return View("Error",error);
-            }
-
-        }
 
         //
         // GET: /Partido/Create
@@ -154,6 +107,8 @@ namespace UniffutAdmin.Controllers.Campeonatos
                     Partido.campeonato = campeonato;
                     Partido.idCampeonato = campeonato.idCampeonato;
                     Partido.estado = true;
+                    Partido.golesEquipoUno = 0;
+                    Partido.golesEquipoDos = 0;
                     db.partido.AddObject(Partido);
                     db.SaveChanges();
                     return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Partido", action = "Index", id = id }));
@@ -170,7 +125,42 @@ namespace UniffutAdmin.Controllers.Campeonatos
                 return View();
             }
         }
-        
+
+
+        public ActionResult Details(int id)
+        {
+            if (Session["userID"] == null)
+            {
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("ErrorSesion", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
+                {
+                    if (m.idModulo == 2 && usuario.rol.estado == true)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
+            var partido = db.partido.First(a => a.idpartido.Equals(id));
+            return View(partido);
+        }
         //
         // GET: /Partido/Edit/5
  
@@ -224,8 +214,6 @@ namespace UniffutAdmin.Controllers.Campeonatos
                 par.equipoDos = Partido.equipoDos;
                 par.equipo1 = Partido.equipo1;
                 par.fecha = Partido.fecha;
-                par.golesEquipoUno = Partido.golesEquipoUno;
-                par.golesEquipoDos = Partido.golesEquipoDos;
                 par.hora = Partido.hora;
                 par.estadio = Partido.estadio;
                 db.SaveChanges();
@@ -292,14 +280,74 @@ namespace UniffutAdmin.Controllers.Campeonatos
         {
             try
             {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
+                var partido = db.partido.FirstOrDefault(p => p.idpartido.Equals(id) && p.estado == true);
+                if (partido != null)
+                {
+                    partido.estado = false;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ErrorModel error = new ErrorModel { mensaje = "El campeonato ya fue eliminado" };
+                    return View("Error", error);
+                }
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = e.InnerException.ToString()
+                };
+                return View("Error", error);
             }
+        }
+
+
+
+
+        [HttpPost]
+        public ActionResult Search(String equipoUno, String equipoDos)
+        {
+            var partidos = db.partido.Where<partido>(r => (r.equipo.nombre.Equals(equipoUno) || r.equipo1.nombre.Equals(equipoDos)) && r.estado == true);
+            return View("SearchIndex", partidos.ToList());
+        }
+
+
+        public ActionResult SearchIndex(List<partido> list)
+        {
+            if (Session["userID"] == null)
+            {
+
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("ErrorSesion", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
+                {
+                    if (m.idModulo == 2 && usuario.rol.estado == true)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
+
+            return View(list);
         }
     }
 }
