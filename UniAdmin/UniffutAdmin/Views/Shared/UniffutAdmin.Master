@@ -52,6 +52,7 @@
                 <div class="contenidoOpcion">
                     <h5><%: Html.ActionLink("Noticias","Index","Noticia")%></h5>
                     <h5><%: Html.ActionLink("Páginas informativas","Index","PaginaInformativa")%></h5>
+                    <h5><%: Html.ActionLink("Tipos de Noticias","Index","TipoNoticia")%></h5>
                 </div>
 
                 <div class="opcionMenu"><h4>Publicidad</h4></div>

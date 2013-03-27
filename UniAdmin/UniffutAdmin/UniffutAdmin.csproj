@@ -85,6 +85,7 @@
     <Compile Include="Controllers\Informativos\PaginaInformativaController.cs" />
     <Compile Include="Controllers\Informativos\PatrocinadorController.cs" />
     <Compile Include="Controllers\Informativos\ProgramasDesarrolloController.cs" />
+    <Compile Include="Controllers\Informativos\TipoNoticiaController.cs" />
     <Compile Include="Controllers\Jugadoras\JugadoraController.cs" />
     <Compile Include="Controllers\Multimedia\AlbumEquipoController.cs" />
     <Compile Include="Controllers\Multimedia\AlbumJugadoraController.cs" />
@@ -569,6 +570,11 @@
     <Content Include="Views\TablaGoleadoras\Index.aspx" />
     <Content Include="Views\TablaPosiciones\Details.aspx" />
     <Content Include="Views\TablaPosiciones\Edit.aspx" />
+    <Content Include="Views\TipoNoticia\Create.aspx" />
+    <Content Include="Views\TipoNoticia\Delete.aspx" />
+    <Content Include="Views\TipoNoticia\Details.aspx" />
+    <Content Include="Views\TipoNoticia\Edit.aspx" />
+    <Content Include="Views\TipoNoticia\Index.aspx" />
     <Content Include="Views\Usuario\Create.aspx" />
     <Content Include="Views\Usuario\Delete.aspx" />
     <Content Include="Views\Usuario\Details.aspx" />

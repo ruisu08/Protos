@@ -5606,6 +5606,30 @@ namespace UniffutAdmin.Models
         private global::System.String _nombre;
         partial void OnnombreChanging(global::System.String value);
         partial void OnnombreChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> estado
+        {
+            get
+            {
+                return _estado;
+            }
+            set
+            {
+                OnestadoChanging(value);
+                ReportPropertyChanging("estado");
+                _estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("estado");
+                OnestadoChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _estado;
+        partial void OnestadoChanging(Nullable<global::System.Boolean> value);
+        partial void OnestadoChanged();
 
         #endregion
     

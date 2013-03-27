@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using UniffutAdmin.Models;
 using UniffutAdmin.Models.ViewModels;
+using System.Web.Routing;
 namespace UniffutAdmin.Controllers
 {
     public class NoticiaController : Controller
@@ -442,6 +443,12 @@ namespace UniffutAdmin.Controllers
             }
 
             return View(list);
+        }
+
+        public ActionResult verPagina()
+        {
+            var noticia = db.noticia.Where<noticia>(d => d.estado == true);
+            return View(noticia.ToList());
         }
 
     }
