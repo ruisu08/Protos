@@ -109,6 +109,7 @@ namespace UniffutAdmin.Controllers.Campeonatos
                     Partido.estado = true;
                     Partido.golesEquipoUno = 0;
                     Partido.golesEquipoDos = 0;
+                    Partido.terminado = false;
                     db.partido.AddObject(Partido);
                     db.SaveChanges();
                     return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Partido", action = "Index", id = id }));
@@ -285,7 +286,7 @@ namespace UniffutAdmin.Controllers.Campeonatos
                 {
                     partido.estado = false;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new RouteValueDictionary(new { controller = "TablaPosiciones", action = "Index", id = partido.idCampeonato }));
                 }
                 else
                 {
@@ -348,6 +349,52 @@ namespace UniffutAdmin.Controllers.Campeonatos
             }
 
             return View(list);
+        }
+
+        public ActionResult marcarComoTerminado(int id) {
+
+            if (Session["userID"] == null)
+            {
+
+                ErrorModel error = new ErrorModel
+                {
+                    mensaje = "Debes iniciar sesion para acceder a esta pagina"
+                };
+                return View("ErrorSesion", error);
+            }
+            else
+            {
+                bool autorizado = false;
+                int idUser = (int)Session["userID"];
+                var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
+                {
+                    if (m.idModulo == 2 && usuario.rol.estado == true)
+                    {
+                        autorizado = true;
+                    }
+                }
+                if (!autorizado)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No tienes permisos para acceder a esta página"
+                    };
+                    return View("Error", error);
+                }
+            }
+            var par = db.partido.FirstOrDefault(t => t.idpartido.Equals(id));
+            return View(par);
+        }
+
+        [HttpPost]
+        public ActionResult marcarComoTerminado(int id, partido Partido) {
+
+            var par = db.partido.FirstOrDefault(t => t.idpartido.Equals(id));
+            par.golesEquipoUno = Partido.golesEquipoUno;
+            par.golesEquipoDos = Partido.golesEquipoDos;
+            par.terminado = true;
+            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "TablaPosiciones", action = "Index", id = par.idCampeonato }));
         }
     }
 }
