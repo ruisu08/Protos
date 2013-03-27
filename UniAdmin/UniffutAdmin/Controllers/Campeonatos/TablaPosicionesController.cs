@@ -131,6 +131,12 @@ namespace UniffutAdmin.Controllers.Campeonatos
         }
 
 
+        public ActionResult verGoleadoras(int id)
+        {
+            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "TablaGoleadoras", action = "Index", id = id }));
+
+        }
+
 
       
     }

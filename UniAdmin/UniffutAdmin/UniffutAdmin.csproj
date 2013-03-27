@@ -560,6 +560,11 @@
     <Content Include="Views\Rol\SearchIndex.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\ErrorSesion.aspx" />
+    <Content Include="Views\TablaGoleadoras\Create.aspx" />
+    <Content Include="Views\TablaGoleadoras\Delete.aspx" />
+    <Content Include="Views\TablaGoleadoras\Details.aspx" />
+    <Content Include="Views\TablaGoleadoras\Edit.aspx" />
+    <Content Include="Views\TablaGoleadoras\Index.aspx" />
     <Content Include="Views\TablaPosiciones\Details.aspx" />
     <Content Include="Views\TablaPosiciones\Edit.aspx" />
     <Content Include="Views\Usuario\Create.aspx" />
