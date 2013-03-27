@@ -533,6 +533,7 @@
     <Content Include="Views\Partido\Details.aspx" />
     <Content Include="Views\Partido\Edit.aspx" />
     <Content Include="Views\Partido\Index.aspx" />
+    <Content Include="Views\Partido\marcarComoTerminado.aspx" />
     <Content Include="Views\Partido\SearchIndex.aspx" />
     <Content Include="Views\Patrocinador\agregarMultimedia.aspx" />
     <Content Include="Views\Patrocinador\Create.aspx" />

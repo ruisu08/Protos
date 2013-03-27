@@ -12,6 +12,8 @@
                         <input type="submit"  value="Buscar" id="searchButton"/>
                         <input type="text" name="equipoUno" class="searchText" id="searchBoxOne" value="Primer Equipo"/>
                         <input type="text" name="equipoDos" class="searchText" id="searchBoxTwo" value="Segundo Equipo"/>
+                        <input type="checkbox" name="terminado" value="true" checked="checked" /> Partidos Jugados
+                        <input type="hidden" name="terminado" value="false" />
                 </form>
             </div>
             <div id="logOut" class="opcionLogOut">
@@ -53,6 +55,9 @@
                             <%: Html.ActionLink("Detalles", "Details", new { id = item.idpartido })%>
                         </div>
                         <div class="itemOption">
+                            <%: Html.ActionLink("Marcar como terminado", "marcarComoTerminado", new { id = item.idpartido })%>
+                        </div>
+                        <div class="itemOption">
                              <%: Html.ActionLink("Eliminar", "Delete", new { id=item.idpartido })%>
                         </div>
                     </div>
@@ -60,5 +65,6 @@
            <% } %>
             </div>
 </asp:Content>
+
 
 

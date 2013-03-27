@@ -218,7 +218,7 @@ namespace UniffutAdmin.Controllers.Campeonatos
                 par.hora = Partido.hora;
                 par.estadio = Partido.estadio;
                 db.SaveChanges();
-                return RedirectToAction("Index", new RouteValueDictionary(new { controller = "TablaPosiciones", action = "Index", id = par.idCampeonato}));
+                return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Partido", action = "Index", id = par.idCampeonato}));
             }
             catch
             {
@@ -286,7 +286,7 @@ namespace UniffutAdmin.Controllers.Campeonatos
                 {
                     partido.estado = false;
                     db.SaveChanges();
-                    return RedirectToAction("Index", new RouteValueDictionary(new { controller = "TablaPosiciones", action = "Index", id = partido.idCampeonato }));
+                    return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Partido", action = "Index", id = partido.idCampeonato }));
                 }
                 else
                 {
@@ -308,9 +308,9 @@ namespace UniffutAdmin.Controllers.Campeonatos
 
 
         [HttpPost]
-        public ActionResult Search(String equipoUno, String equipoDos)
+        public ActionResult Search(String equipoUno, String equipoDos, bool terminado)
         {
-            var partidos = db.partido.Where<partido>(r => (r.equipo.nombre.Equals(equipoUno) || r.equipo1.nombre.Equals(equipoDos)) && r.estado == true);
+            var partidos = db.partido.Where<partido>(r => (r.equipo.nombre.Equals(equipoUno) || r.equipo1.nombre.Equals(equipoDos) || r.terminado == terminado) && r.estado == true);
             return View("SearchIndex", partidos.ToList());
         }
 
@@ -331,7 +331,7 @@ namespace UniffutAdmin.Controllers.Campeonatos
                 bool autorizado = false;
                 int idUser = (int)Session["userID"];
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
                 {
                     if (m.idModulo == 2 && usuario.rol.estado == true)
                     {
@@ -367,7 +367,7 @@ namespace UniffutAdmin.Controllers.Campeonatos
                 bool autorizado = false;
                 int idUser = (int)Session["userID"];
                 var usuario = db.usuario.FirstOrDefault(u => u.idUsuario.Equals(idUser));
-                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(1)))
+                foreach (var m in usuario.rol.modulo.Where<modulo>(mod => mod.idModulo.Equals(2)))
                 {
                     if (m.idModulo == 2 && usuario.rol.estado == true)
                     {
@@ -394,7 +394,8 @@ namespace UniffutAdmin.Controllers.Campeonatos
             par.golesEquipoUno = Partido.golesEquipoUno;
             par.golesEquipoDos = Partido.golesEquipoDos;
             par.terminado = true;
-            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "TablaPosiciones", action = "Index", id = par.idCampeonato }));
+            db.SaveChanges();
+            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Partido", action = "Index", id = par.idCampeonato }));
         }
     }
 }
