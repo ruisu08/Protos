@@ -71,6 +71,11 @@
                     <h5><%: Html.ActionLink("Usuario","Index","Usuario")%></h5>
                     <h5><%: Html.ActionLink("Roles","Index","Rol")%></h5>
                 </div>
+                <div class="opcionMenu"><h4>Paginas</h4></div>
+                <div class="contenidoOpcion">
+                    <h5><%: Html.ActionLink("Noticia","verPagina","Noticia")%></h5>
+                </div>
+
 
             </div>
         </div>

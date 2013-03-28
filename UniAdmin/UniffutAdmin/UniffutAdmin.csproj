@@ -118,11 +118,19 @@
     <Compile Include="Views\Shared\LoginMaster.Master.designer.cs">
       <DependentUpon>LoginMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shared\PaginaNoticia.Master.cs">
+      <DependentUpon>PaginaNoticia.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\PaginaNoticia.Master.designer.cs">
+      <DependentUpon>PaginaNoticia.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\ContentSS.css" />
     <Content Include="Content\jquery-ui-1.10.1.custom.min.css" />
     <Content Include="Content\modern.css" />
+    <Content Include="Content\Noticia-Style.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\dpLanguage.js" />
@@ -524,6 +532,7 @@
     <Content Include="Views\Noticia\Index.aspx" />
     <Content Include="Views\Noticia\SearchIndex.aspx" />
     <Content Include="Views\Noticia\verMultimedia.aspx" />
+    <Content Include="Views\Noticia\verPagina.aspx" />
     <Content Include="Views\PaginaInformativa\agregarContenido.aspx" />
     <Content Include="Views\PaginaInformativa\Create.aspx" />
     <Content Include="Views\PaginaInformativa\Delete.aspx" />
@@ -612,6 +621,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\LoginMaster.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\PaginaNoticia.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

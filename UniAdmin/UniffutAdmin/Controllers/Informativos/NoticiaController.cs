@@ -447,8 +447,7 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult verPagina()
         {
-            var noticia = db.noticia.Where<noticia>(d => d.estado == true);
-            return View(noticia.ToList());
+            return View();
         }
 
     }
