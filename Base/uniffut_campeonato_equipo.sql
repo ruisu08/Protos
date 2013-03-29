@@ -42,4 +42,4 @@ CREATE TABLE `campeonato_equipo` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-27 17:34:41
+-- Dump completed on 2013-03-29 15:22:40

@@ -47,4 +47,4 @@ CREATE TABLE `pagina informativa` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-27 17:34:44
+-- Dump completed on 2013-03-29 15:22:43

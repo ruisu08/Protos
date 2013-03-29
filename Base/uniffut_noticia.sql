@@ -33,10 +33,11 @@ CREATE TABLE `noticia` (
   `autor` int(11) NOT NULL,
   `TipoNoticia_idTipoNoticia` int(11) NOT NULL,
   `imagenPrincipal` varchar(400) DEFAULT NULL,
+  `resumen` varchar(400) DEFAULT NULL,
   PRIMARY KEY (`idNoticia`),
   KEY `fk_Noticia_Usuario1_idx` (`autor`),
   KEY `fk_Noticia_TipoNoticia1` (`TipoNoticia_idTipoNoticia`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +49,4 @@ CREATE TABLE `noticia` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-27 17:34:51
+-- Dump completed on 2013-03-29 15:22:50

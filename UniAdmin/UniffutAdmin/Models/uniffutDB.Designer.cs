@@ -3946,6 +3946,30 @@ namespace UniffutAdmin.Models
         private global::System.String _imagenPrincipal;
         partial void OnimagenPrincipalChanging(global::System.String value);
         partial void OnimagenPrincipalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String resumen
+        {
+            get
+            {
+                return _resumen;
+            }
+            set
+            {
+                OnresumenChanging(value);
+                ReportPropertyChanging("resumen");
+                _resumen = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("resumen");
+                OnresumenChanged();
+            }
+        }
+        private global::System.String _resumen;
+        partial void OnresumenChanging(global::System.String value);
+        partial void OnresumenChanged();
 
         #endregion
     
