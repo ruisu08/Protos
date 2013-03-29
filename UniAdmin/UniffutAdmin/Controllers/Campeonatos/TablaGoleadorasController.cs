@@ -128,6 +128,7 @@ namespace UniffutAdmin.Controllers.Campeonatos
                     return View("Error", error);
                 }
             }
+            
             var campeonato = db.campeonato.First(d => d.idCampeonato.Equals(id) && d.estado == true);
             if (campeonato.division.equipo.Count <= 0)
             {
@@ -141,6 +142,14 @@ namespace UniffutAdmin.Controllers.Campeonatos
             goleadoras.idCampeonato = campeonato.idCampeonato;
             return View(goleadoras);
         }
+
+        [HttpPost]
+        public ActionResult refrescar(int idEquipo)
+        {
+            return Json(db.jugadora.Where<jugadora>(j => j.Equipo_idEquipo == idEquipo).ToList());
+
+        }
+
 
         //
         // POST: /TablaGoleadoras/Create
@@ -320,5 +329,7 @@ namespace UniffutAdmin.Controllers.Campeonatos
                 return View("Error", error);
             }
         }
+
+
     }
 }
