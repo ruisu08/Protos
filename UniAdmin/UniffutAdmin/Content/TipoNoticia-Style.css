@@ -4,7 +4,7 @@
     padding:0;
 }
 
-#cuadro-Noticia
+#cuadro-TipoNoticia
 {
     background-color:#fff;
     margin:3%;
@@ -27,14 +27,14 @@
     filter: alpha(opacity = 67);
 
 }
-#cuadro-Noticia
+#cuadro-TipoNoticia
 {
     float:left;
     display:block;
     margin-left:15%;
 }
 
-#cuadro-Noticia *
+#cuadro-TipoNoticia *
 {
 
     text-align:center;
@@ -43,16 +43,18 @@
     font-family:Century Gothic;
 }
 
-#cuadro-Noticia:hover
+#cuadro-TipoNoticia:hover
 {
     text-shadow: 0px 1px 1px #555;
 }
 
-#Content-Noticias
+#Content-TipoNoticias
 {
     width:70%;
     height:800px;
     margin-left:20%;
 }
+
+
 
 

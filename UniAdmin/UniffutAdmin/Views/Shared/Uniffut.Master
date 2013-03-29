@@ -28,7 +28,7 @@
         <div id="headerContainer">
             <div id="logoContainer">
                 <div id="logo">
-                    <p>Uniffut</p>
+                    <a href="../UniffutHome/Index" style="text-decoration:none;"><p>Uniffut</p></a>
                 </div>
             </div>
             <div id="menuContainer">

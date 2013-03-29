@@ -126,7 +126,7 @@
     <Content Include="Content\ContentSS.css" />
     <Content Include="Content\jquery-ui-1.10.1.custom.min.css" />
     <Content Include="Content\modern.css" />
-    <Content Include="Content\Noticia-Style.css" />
+    <Content Include="Content\TipoNoticia-Style.css" />
     <Content Include="Content\UniffutWebSite\Images\0,,12814~10411264,00.jpg" />
     <Content Include="Content\UniffutWebSite\Images\CRC-CoreaMundialFemeninoNuevaZleanda2008[3].jpg" />
     <Content Include="Content\UniffutWebSite\Images\Futbol_femenino-Juegos_Centroamericanos-San_Jose_2013_ALDIMA20130306_0051_4.jpg" />
@@ -136,6 +136,7 @@
     <Content Include="Content\UniffutWebSite\Images\Raquel-Rodriguez.jpg" />
     <Content Include="Content\UniffutWebSite\Images\slider1.jpg" />
     <Content Include="Content\UniffutWebSite\Images\slider2.jpg" />
+    <Content Include="Content\UniffutWebSite\Noticia-Style.css" />
     <Content Include="Content\UniffutWebSite\slider.css" />
     <Content Include="Content\UniffutWebSite\UniffutSiteMain.css" />
     <Content Include="Content\UniffutWebSite\Home.css" />

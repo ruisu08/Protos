@@ -6,14 +6,14 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-      <link rel="Stylesheet" type="text/css" href="../../Content/Noticia-Style.css" />
+      <link rel="Stylesheet" type="text/css" href="../../Content/TipoNoticia-Style.css" />
 
-    <div id=Content-Noticias>
+    <div id=Content-TipoNoticias>
     
     <% foreach (var item in Model)
        { %>
-        <a href="#">
-        <div id="cuadro-Noticia">
+        <a href="../UniffutNoticia/Index">
+        <div id="cuadro-TipoNoticia">
                 
                 
                 <h2 style=" color:#D45354; font-size:100%;">Noticias sobre <%:item.nombre%></h2>

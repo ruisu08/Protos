@@ -1,0 +1,32 @@
+﻿*
+{
+    margin:0;
+    padding:0;
+}
+
+#accordion
+{
+    margin-top:5%;
+    padding:10%;
+    background-color:#fff;
+}
+#accordion img
+{
+    padding-left:18%;
+}
+
+.Content-Noticias
+{
+    width:70%;
+    margin-left:15%;
+}
+
+#textInside
+{
+    margin-top:5%;
+}
+
+#titleNotice
+{
+    margin:10% 0 0 30%;
+}
