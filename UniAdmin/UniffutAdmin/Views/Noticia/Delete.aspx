@@ -25,6 +25,8 @@
         <div class="propiedadDetalle"><h4><%: Model.fecha %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Autor</h3></div>
         <div class="propiedadDetalle"><h4><%: Model.autor %></h4></div>
+        <div class="nombrePropiedadDetalle"><h3>Resumen</h3></div>
+        <div class="propiedadDetalle"><h4><%: Model.resumen %></h4></div>
         <div class="nombrePropiedadDetalle"><h3>Estado</h3></div>
         <div class="propiedadDetalle"><h4><%: (bool)Model.estado ? "Activo":"Inactivo" %></h4></div>
         </div>

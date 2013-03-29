@@ -21,6 +21,14 @@
                 <%: Html.ValidationMessageFor(model => model.Noticia.titulo)%>
             </div>
             
+             <div class="editor-label">
+                <h3>Resumen</h3>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.Noticia.resumen, new { @required = "required", @maxlength = "400", @class = "infofield" })%>
+                <%: Html.ValidationMessageFor(model => model.Noticia.resumen)%>
+            </div>
+
             <div class="editor-label">
                 <h3>Tipo de noticia</h3>
             </div>

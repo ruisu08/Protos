@@ -234,6 +234,7 @@ namespace UniffutAdmin.Controllers
                     VM.Noticia.titulo = Noticia.titulo;
                     VM.Noticia.tiponoticia = Noticia.tiponoticia;
                     VM.Noticia.TipoNoticia_idTipoNoticia = Noticia.TipoNoticia_idTipoNoticia;
+                    VM.Noticia.resumen = Noticia.resumen;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
