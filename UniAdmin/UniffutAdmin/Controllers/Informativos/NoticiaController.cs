@@ -395,7 +395,17 @@ namespace UniffutAdmin.Controllers
 
         public ActionResult verMultimedia(int id)
         {
-            var noticia = db.noticia.First(p => p.idNoticia.Equals(id) && p.imagenPrincipal != null);
+            var noticia = db.noticia.FirstOrDefault(p => p.idNoticia.Equals(id));
+            {
+                if (noticia.imagenPrincipal == null)
+                {
+                    ErrorModel error = new ErrorModel
+                    {
+                        mensaje = "No hay imagenes para mostrar"
+                    };
+                    return View("Error", error);
+                }
+            }
             return View(noticia);
         }
 
@@ -443,11 +453,6 @@ namespace UniffutAdmin.Controllers
             }
 
             return View(list);
-        }
-
-        public ActionResult verPagina()
-        {
-            return View();
         }
 
     }

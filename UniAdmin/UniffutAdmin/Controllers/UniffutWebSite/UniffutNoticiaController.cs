@@ -16,8 +16,8 @@ namespace UniffutAdmin.Controllers.UniffutWebSite
 
         public ActionResult Index()
         {
-            var tipos = db.noticia.Where(d => d.estado == true);
-            return View(tipos);
+            var Noticias = db.noticia.Where<noticia>(n => n.imagenPrincipal != null && n.estado == true).Take(10).ToList();
+            return View(Noticias);
         }
 
     }
