@@ -92,6 +92,7 @@
     <Compile Include="Controllers\Multimedia\MultimediaEquipoController.cs" />
     <Compile Include="Controllers\Multimedia\MultimediaJugadoraController.cs" />
     <Compile Include="Controllers\UniffutWebSite\UniffutHomeController.cs" />
+    <Compile Include="Controllers\UniffutWebSite\UniffutNoticiaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -536,6 +537,7 @@
     <Content Include="Views\TipoNoticia\Edit.aspx" />
     <Content Include="Views\TipoNoticia\Index.aspx" />
     <Content Include="Views\UniffutHome\Index.aspx" />
+    <Content Include="Views\UniffutNoticia\Index.aspx" />
     <Content Include="Views\Usuario\Create.aspx" />
     <Content Include="Views\Usuario\Delete.aspx" />
     <Content Include="Views\Usuario\Details.aspx" />

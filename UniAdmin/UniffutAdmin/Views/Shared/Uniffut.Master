@@ -8,6 +8,7 @@
     <link rel="Stylesheet" type="text/css" href="../../Content/UniffutWebSite/UniffutSiteMain.css"/>
     <script type="text/javascript" src="../../Scripts/JQ1.6.4.js"></script>
     <script type="text/javascript" src="../../Scripts/UniffutWebSite/master.js"></script>
+	<script type="text/javascript" src="../../Scripts/jquery-ui-1.10.1.custom.min.js"></script>
 </head>
 <body>
     <div id="fb-root"></div>
@@ -32,7 +33,7 @@
             </div>
             <div id="menuContainer">
                 <div class="menuOptionParent">
-                    <a class="menuOption" href="#">
+                    <a class="menuOption" href="../UniffutNoticia/Index">
                         <h6>Noticias</h6>
                     </a>
                 </div>
