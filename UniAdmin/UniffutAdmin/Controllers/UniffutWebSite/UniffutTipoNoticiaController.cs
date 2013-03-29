@@ -9,14 +9,14 @@ using System.Web.Routing;
 
 namespace UniffutAdmin.Controllers.UniffutWebSite
 {
-    public class UniffutNoticiaController : Controller
+    public class UniffutTipoNoticiaController : Controller
     {
         private uniffutData db = new uniffutData();
-        // GET: /UniffutNoticia/
+        // GET: /TipoNoticia/
 
         public ActionResult Index()
         {
-            var tipos = db.noticia.Where(d => d.estado == true);
+            var tipos = db.tiponoticia.Where(d => d.estado == true);
             return View(tipos);
         }
 

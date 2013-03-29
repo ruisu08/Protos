@@ -91,6 +91,7 @@
     <Compile Include="Controllers\Multimedia\AlbumJugadoraController.cs" />
     <Compile Include="Controllers\Multimedia\MultimediaEquipoController.cs" />
     <Compile Include="Controllers\Multimedia\MultimediaJugadoraController.cs" />
+    <Compile Include="Controllers\UniffutWebSite\UniffutTipoNoticiaController.cs" />
     <Compile Include="Controllers\UniffutWebSite\UniffutHomeController.cs" />
     <Compile Include="Controllers\UniffutWebSite\UniffutNoticiaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -538,6 +539,7 @@
     <Content Include="Views\TipoNoticia\Index.aspx" />
     <Content Include="Views\UniffutHome\Index.aspx" />
     <Content Include="Views\UniffutNoticia\Index.aspx" />
+    <Content Include="Views\UniffutTipoNoticia\Index.aspx" />
     <Content Include="Views\Usuario\Create.aspx" />
     <Content Include="Views\Usuario\Delete.aspx" />
     <Content Include="Views\Usuario\Details.aspx" />

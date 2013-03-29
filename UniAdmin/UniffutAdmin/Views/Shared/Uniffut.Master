@@ -33,7 +33,7 @@
             </div>
             <div id="menuContainer">
                 <div class="menuOptionParent">
-                    <a class="menuOption" href="../UniffutNoticia/Index">
+                    <a class="menuOption" href="../UniffutTipoNoticia/Index">
                         <h6>Noticias</h6>
                     </a>
                 </div>
