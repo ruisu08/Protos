@@ -13,13 +13,15 @@
     
     <% foreach (var item in Model)
        { %>
-
+        <a href="#">
         <div id="cuadro-Noticia">
+                
                 
                 <h2 style=" color:#D45354; font-size:100%;">Noticias sobre <%:item.nombre%></h2>
                 <p style="color:#D45354; font-size:100%;"><%: item.descripcion %></p>
                 
         </div>
+        </a>
      <%} %>
     
     </div>
