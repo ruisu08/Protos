@@ -119,13 +119,6 @@
     <Compile Include="Views\Shared\LoginMaster.Master.designer.cs">
       <DependentUpon>LoginMaster.Master</DependentUpon>
     </Compile>
-    <Compile Include="Views\Shared\PaginaNoticia.Master.cs">
-      <DependentUpon>PaginaNoticia.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\PaginaNoticia.Master.designer.cs">
-      <DependentUpon>PaginaNoticia.Master</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\ContentSS.css" />
@@ -579,9 +572,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\LoginMaster.Master" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\PaginaNoticia.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Uniffut.Master" />
