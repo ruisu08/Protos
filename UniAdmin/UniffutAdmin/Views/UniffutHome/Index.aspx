@@ -6,9 +6,24 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <link  type="text/css" rel="Stylesheet" href="../../Content/UniffutWebSite/Home.css"/>
+    <link  type="text/css" rel="Stylesheet" href="../../Content/UniffutWebSite/slider.css"/>
+    <script type="text/javascript" src="../../Scripts/UniffutWebSite/s3Slider.js"></script>
+    <script type="text/javascript" src="../../Scripts/UniffutWebSite/Home.js"></script>
         <div id="topContainer">
             <div id="sliderContainer">
-
+                <div id="s3slider">
+                    <ul id="s3sliderContent">
+                        <li class="s3sliderImage">
+                            <a href="#"><img src="../../Content/UniffutWebSite/Images/slider1.jpg"></a>
+                            <span>Lorem ipsum dolor sit amet: <br />consectetur adipisicing elit</span>
+                        </li>
+                        <li class="s3sliderImage">
+                            <a href="#"><img src="../../Content/UniffutWebSite/Images/slider2.jpg"></a>
+                            <span>Lorem ipsum dolor sit amet: <br />consectetur adipisicing elit</span>
+                        </li>
+                        <div class="clear s3sliderImage"></div>
+                    </ul>
+                </div>
             </div>
             <div id="worldCupLink">
                 <a href = "#">
