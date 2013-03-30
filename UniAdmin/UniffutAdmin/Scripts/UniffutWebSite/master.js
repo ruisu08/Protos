@@ -2,6 +2,4 @@
     $("#hide").click(function () {
         $("#headerContainer").slideToggle("slow");
     });
-
-
 });

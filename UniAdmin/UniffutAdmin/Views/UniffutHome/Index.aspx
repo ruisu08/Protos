@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Uniffut.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Uniffut.Master" Inherits="System.Web.Mvc.ViewPage<UniffutAdmin.Models.ViewModels.UniffutWebSite.HomeViewModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Uniffut
@@ -13,14 +13,16 @@
             <div id="sliderContainer">
                 <div id="s3slider">
                     <ul id="s3sliderContent">
+                        <%if (Model.Noticias != null)
+                          {
+                              foreach (var item in Model.Noticias)
+                              { %>
                         <li class="s3sliderImage">
-                            <a href="#"><img src="../../Content/UniffutWebSite/Images/slider1.jpg"></a>
-                            <span><strong>Lorem ipsum dolor sit amet:</strong><br />consectetur adipisicing elit</span>
+                            <a href="#"><%:new HtmlString(HttpUtility.HtmlDecode(item.imagenPrincipal))%></a>
+                            <span><strong><%: item.titulo%></strong><br />consectetur adipisicing elit</span>
                         </li>
-                        <li class="s3sliderImage">
-                            <a href="#"><img src="../../Content/UniffutWebSite/Images/slider2.jpg"></a>
-                            <span><strong>Lorem ipsum dolor sit amet:</strong> <br />consectetur adipisicing elit</span>
-                        </li>
+                        <%}
+                          } %>
                         <div class="clear s3sliderImage"></div>
                     </ul>
                 </div>
