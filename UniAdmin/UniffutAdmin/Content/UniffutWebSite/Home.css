@@ -1,0 +1,243 @@
+﻿#topContainer
+{
+    width:100%; 
+    height:400px;
+    margin-top:50px;  
+}
+
+#sliderContainer
+{
+    width:70%;
+    height:100%;
+    background-color:#FFFFFF;
+    float:left;  
+}
+
+#worldCupLink 
+{
+    width:27%;
+    height:100%;
+    float:right; 
+    background-color:#D45354;
+}
+
+#worldCupLink  a
+{
+    color:#FFFFFF;
+    display:block;
+    width:100%;
+    height:100%;
+    font-size:150%;
+    font-family:Century Gothic;
+    font-weight:lighter;
+    text-decoration:none;
+}
+
+#worldCupLink  a p
+{
+    position:relative;
+    top:130px;    
+    margin-left:15px;
+}
+
+#middleContainer
+{
+    width:100%;
+    height:400px;
+    margin-top:40px; 
+
+}
+.middleBoxThree
+{
+   width:30%;
+   height:100%;
+   float:right; 
+   background-color:#FFFFFF;
+   text-decoration:none;
+}
+
+.middleBoxTwo
+{
+   width:30%;
+   height:100%;
+   float:left; 
+   margin-left:5%;
+   background-color:#FFFFFF;
+   text-decoration:none;
+}
+.middleBoxOne
+{
+   width:30%;
+   height:100%;
+   float:left; 
+   background-color:#FFFFFF;
+   text-decoration:none;
+}
+
+.middleBoxImageContainer
+{
+   width:100%;
+   height:60%; 
+}
+
+#middelBoxPinkLine
+{
+    width:100%;
+    height:5%;
+    background-color:#D45354;    
+}
+
+#middelBoxBlueLine
+{
+    width:100%;
+    height:5%;
+    background-color:#2FCAD8;    
+}
+
+#middelBoxGrayLine
+{
+    width:100%;
+    height:5%;
+    background-color:#818B85;    
+}
+
+#middleBoxOneText
+{
+    width:100%;
+    height:20%;
+    color:#D45354;
+    font-family:Century Gothic;
+    font-size:14px;
+}
+
+#middleBoxOneText p
+{
+    margin-left:4%;
+    margin-top:10px;
+}
+
+#middleBoxTwoText
+{
+    width:100%;
+    height:20%;
+    color:#2FCAD8;
+    font-family:Century Gothic;
+    font-size:14px;
+}
+
+#middleBoxTwoText p
+{
+    margin-left:4%;
+    margin-top:10px;
+}
+
+
+#middleBoxThreeText
+{
+    width:100%;
+    height:20%;
+    color:#818B85;
+    font-family:Century Gothic;
+    font-size:14px;
+}
+
+#middleBoxThreeText p
+{
+    margin-left:4%;
+    margin-top:10px;
+}
+
+.mbImage
+{
+ width:100%;
+ height:100%;   
+ }
+
+#bottomContainer
+{
+   width:100%;
+   height:200px;
+   margin-top:40px;
+}
+
+#sponsorSpace
+{
+    float:right;
+    width: 65%;
+    height:100%;
+    background-color:#FFFFFF;
+}
+
+#donationSpace
+{
+  float:left;
+    width: 30%;
+    height:100%;
+    background-color:#FFFFFF;
+    display:block;  
+    text-decoration:none;
+}
+#greenDonationLine
+{
+    width:100%;
+    height:10%;
+    background-color: #A9DC3A;   
+}
+
+#donationsText
+{
+   width:100%;
+   height:80%;   
+   margin-top:10px;  
+}
+
+#donationsText p
+{
+    color:#818B85;
+    margin-left:4%;
+    font-family:Century Gothic;
+    font-size:14px;
+}
+#donationsText h3
+{
+   font-size:20px;  
+    color:#818B85;
+    margin-left:4%;
+    font-family:Century Gothic;   
+}
+
+#advertisementContainer
+{
+    width:100%;
+    height:300px;
+    margin-top:40px;
+    
+}
+
+#nextGames
+{
+   width:30%;
+   height:100%;
+   float:left; 
+   background-color:#FFFFFF;
+   text-decoration:none; 
+}
+
+#advertisementSpaceOne
+{
+      width:30%;
+   height:100%;
+   float:left; 
+   margin-left:5%;
+   background-color:#FFFFFF;
+   text-decoration:none;
+}
+
+#advertisementSpaceTwo
+{
+    width:30%;
+   height:100%;
+   float:right; 
+   background-color:#FFFFFF;
+   text-decoration:none;
+}

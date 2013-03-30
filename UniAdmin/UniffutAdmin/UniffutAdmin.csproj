@@ -91,6 +91,7 @@
     <Compile Include="Controllers\Multimedia\AlbumJugadoraController.cs" />
     <Compile Include="Controllers\Multimedia\MultimediaEquipoController.cs" />
     <Compile Include="Controllers\Multimedia\MultimediaJugadoraController.cs" />
+    <Compile Include="Controllers\UniffutWebSite\UniffutHomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -131,6 +132,15 @@
     <Content Include="Content\jquery-ui-1.10.1.custom.min.css" />
     <Content Include="Content\modern.css" />
     <Content Include="Content\Noticia-Style.css" />
+    <Content Include="Content\UniffutWebSite\Images\0,,12814~10411264,00.jpg" />
+    <Content Include="Content\UniffutWebSite\Images\CRC-CoreaMundialFemeninoNuevaZleanda2008[3].jpg" />
+    <Content Include="Content\UniffutWebSite\Images\Futbol_femenino-Juegos_Centroamericanos-San_Jose_2013_ALDIMA20130306_0051_4.jpg" />
+    <Content Include="Content\UniffutWebSite\Images\honcos 4.jpg" />
+    <Content Include="Content\UniffutWebSite\Images\img_8958.jpg" />
+    <Content Include="Content\UniffutWebSite\Images\lyg_promo.jpg" />
+    <Content Include="Content\UniffutWebSite\Images\Raquel-Rodriguez.jpg" />
+    <Content Include="Content\UniffutWebSite\UniffutSiteMain.css" />
+    <Content Include="Content\UniffutWebSite\Home.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\dpLanguage.js" />
@@ -584,6 +594,7 @@
     <Content Include="Views\TipoNoticia\Details.aspx" />
     <Content Include="Views\TipoNoticia\Edit.aspx" />
     <Content Include="Views\TipoNoticia\Index.aspx" />
+    <Content Include="Views\UniffutHome\Index.aspx" />
     <Content Include="Views\Usuario\Create.aspx" />
     <Content Include="Views\Usuario\Delete.aspx" />
     <Content Include="Views\Usuario\Details.aspx" />
@@ -624,6 +635,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\PaginaNoticia.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Uniffut.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

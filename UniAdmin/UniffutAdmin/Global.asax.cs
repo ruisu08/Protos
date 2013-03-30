@@ -19,7 +19,7 @@ namespace UniffutAdmin
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Login", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "UniffutHome", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
         }

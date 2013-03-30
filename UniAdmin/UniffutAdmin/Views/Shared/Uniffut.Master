@@ -1,0 +1,88 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" />Uniffut</title>
+    <link rel="Stylesheet" type="text/css" href="../../Content/UniffutWebSite/UniffutSiteMain.css"/>
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>    (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        } (document, 'script', 'facebook-jssdk'));
+    </script>
+
+        <div id="header">
+        <div id="hide">
+        </div>
+        <div id="logoContainer">
+            <div id="logo">
+                <p>Uniffut</p>
+            </div>
+        </div>
+        <div id="menuContainer">
+            <div class="menuOptionParent">
+                <a class="menuOption" href="#">
+                    <h6>Noticias</h6>
+                </a>
+            </div>
+            <div class="menuOptionParent">
+                <a class="menuOption" href="#">
+                    <h6>Primera División</h6>
+                </a>
+            </div>
+            <div class="menuOptionParent">
+                <a class="menuOption" href="#">
+                    <h6>Segúnda División</h6>
+                </a>
+            </div>
+            <div class="menuOptionParent">
+                <a class="menuOption" href="#">
+                    <h6>Ligas Menores</h6>
+                </a>
+            </div>
+            <div class="menuOptionParent">
+                <a class="menuOption" href="#">
+                    <h6>Programas de desarrollo</h6>
+                </a>
+            </div>
+            <div class="menuOptionParent">
+                <a class="menuOption" href="#">
+                    <h6>Páginas informativas</h6>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="pageContent">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    <div id="socialNetworkSpace">
+       <div class="fb-like" data-href="https://www.facebook.com/pages/F%C3%BAtbol-Femenino-de-Costa-RicaUNIFFUT-Sitio-Oficial/309621012412491" data-send="true" data-width="450" data-show-faces="false" data-font="arial"></div>
+    </div>
+    <div id="footer">
+       <div id="footerContentLeft">
+            <p>Desarrollado por Inno</p>
+            <br />
+            <br />
+            <%:Html.ActionLink("Administración","Index","Login") %>
+       </div>
+        <div id="footerContentRight">
+            <p>Sitio oficial del futbol femenino de Costa Rica</p> <br /><br />
+            <p>Copyright © 2013 uniffut.com</p>
+       </div>            
+    </div>
+    <div id="appreciationSpace">
+        <div id="appreciationTitle">
+            <p>La Uniffut agradece a las siguientes personas por su excelente labor:</p>
+       </div>     
+    </div>
+</body>
+</html>

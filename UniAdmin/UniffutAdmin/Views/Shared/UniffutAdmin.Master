@@ -13,7 +13,6 @@
     <link rel="Stylesheet" href="../../Scripts/fancyBox/jquery.fancybox.css" type="text/css" media="screen" />
     <link rel="Stylesheet" href="../../Scripts/fancyBox/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
     <link rel="Stylesheet" href="../../Scripts/fancyBox/jquery.fancybox-buttons.css" type="text/css" media="screen" />
-
     <script type="text/javascript" src="../../Scripts/JQ1.6.4.js"></script>
     <script type="text/javascript" src="../../Scripts/watermark.js"></script>
     <script type="text/javascript" src="../../Scripts/jquery-ui-1.10.1.custom.min.js"></script>
@@ -24,7 +23,6 @@
     <script type="text/javascript" src= "../../Scripts/site.js"></script>
     <script type="text/javascript" src="../../Scripts/inputs.js"></script>
     <script type="text/javascript" src="../../Scripts/myThumbNail/jquery.MyThumbnail.js"></script>
-    <script type="text/javascript" src="../../Scripts/yoxview/yoxview-init.js"></script>
     <script type="text/javascript" src="../../Scripts/imageDisplay.js"></script>
     <script type="text/javascript" src="../../Scripts/fancyBox/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="../../Scripts/fancyBox/jquery.fancybox-media.js"></script>
