@@ -15,17 +15,22 @@ body
 {
     width:100%;
     height:100px;
-    background-color:#FFFFFF; 
     position:fixed;
     z-index: 5;
   
 }
-
+#headerContainer
+{
+  width:100%;
+  height:90%;
+  background-color:#FFFFFF;   
+}
 #hide
 {
     width:100%;
-    height:6%;
-    background-color:#D45354;    
+    height:10px;
+    background-color:#D45354;  
+    cursor:pointer;  
 }
 
 #logoContainer

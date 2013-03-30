@@ -414,6 +414,7 @@
     <Content Include="Scripts\tiny_mce\utils\mctabs.js" />
     <Content Include="Scripts\tiny_mce\utils\validate.js" />
     <Content Include="Scripts\UniffutWebSite\Home.js" />
+    <Content Include="Scripts\UniffutWebSite\master.js" />
     <Content Include="Scripts\UniffutWebSite\s3Slider.js" />
     <Content Include="Scripts\watermark.js" />
     <Content Include="Views\AlbumEquipo\agregarMultimedia.aspx" />
