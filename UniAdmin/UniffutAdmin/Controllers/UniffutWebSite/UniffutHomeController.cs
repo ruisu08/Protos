@@ -18,7 +18,7 @@ namespace UniffutAdmin.Controllers.UniffutWebSite
         {
             var viewModel = new HomeViewModel
             {
-                Noticias = db.noticia.Where<noticia>(n => n.imagenPrincipal != null && n.estado == true).Take(5).ToList()
+                Noticias = db.noticia.OrderByDescending(i=>i.idNoticia).Where<noticia>(n => n.imagenPrincipal != null && n.estado == true).Take(5).ToList()
             };
             return View(viewModel);
         }
