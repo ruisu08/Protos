@@ -17,6 +17,7 @@ body
     height:100px;
     background-color:#FFFFFF; 
     position:fixed;
+    z-index: 5;
   
 }
 

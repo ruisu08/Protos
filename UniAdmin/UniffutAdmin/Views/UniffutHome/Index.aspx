@@ -15,11 +15,11 @@
                     <ul id="s3sliderContent">
                         <li class="s3sliderImage">
                             <a href="#"><img src="../../Content/UniffutWebSite/Images/slider1.jpg"></a>
-                            <span>Lorem ipsum dolor sit amet: <br />consectetur adipisicing elit</span>
+                            <span><strong>Lorem ipsum dolor sit amet:</strong><br />consectetur adipisicing elit</span>
                         </li>
                         <li class="s3sliderImage">
                             <a href="#"><img src="../../Content/UniffutWebSite/Images/slider2.jpg"></a>
-                            <span>Lorem ipsum dolor sit amet: <br />consectetur adipisicing elit</span>
+                            <span><strong>Lorem ipsum dolor sit amet:</strong> <br />consectetur adipisicing elit</span>
                         </li>
                         <div class="clear s3sliderImage"></div>
                     </ul>
